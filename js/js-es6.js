@@ -27,6 +27,10 @@ let abc = {
     abc.assignInitialHandlers()
 
     abc.handlerTestSound()
+
+	let user = JSON.parse($("#data-for-you").html())
+    console.log(user)
+    alert(`hello ${user.local.username}`)
   },
 
   assignInitialHandlers: () => {

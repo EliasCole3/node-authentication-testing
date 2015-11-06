@@ -1,5 +1,11 @@
 
 
+// var app     = express();
+// var server  = require('http').createServer(app);
+// var io      = require('socket.io').listen(server);
+// ...
+// server.listen(app.get('port')); // not 'app.listen'!
+
 
 // set up ======================================================================
 var nomo = require('node-monkey').start();
@@ -84,5 +90,9 @@ io.on('connection', function(socket) {
 
 
 // launch ======================================================================
-app.listen(port);
-console.log('The magic happens on port ' + port);
+// app.listen(port);
+// console.log('The magic happens on port ' + port);
+
+http.listen(8082, function() {
+  console.log('listening on *:8082')
+})

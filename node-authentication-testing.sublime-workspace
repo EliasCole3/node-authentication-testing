@@ -87,7 +87,7 @@
 			"file": "server.js",
 			"settings":
 			{
-				"buffer_size": 1735,
+				"buffer_size": 2857,
 				"line_ending": "Windows"
 			}
 		},
@@ -95,15 +95,7 @@
 			"file": "app/routes.js",
 			"settings":
 			{
-				"buffer_size": 1781,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/models/user.js",
-			"settings":
-			{
-				"buffer_size": 1209,
+				"buffer_size": 4540,
 				"line_ending": "Windows"
 			}
 		},
@@ -111,24 +103,24 @@
 			"file": "config/passport.js",
 			"settings":
 			{
-				"buffer_size": 4783,
+				"buffer_size": 4843,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "package.json",
+			"file": "views/signup.ejs",
 			"settings":
 			{
-				"buffer_size": 593,
-				"line_ending": "Unix"
+				"buffer_size": 1317,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/Bliss/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+			"file": "views/profile.ejs",
 			"settings":
 			{
-				"buffer_size": 34030,
-				"line_ending": "Unix"
+				"buffer_size": 1479,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -166,21 +158,25 @@
 	[
 		"/C/Users/Bliss/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Bliss/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/C/Users/Bliss/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
-		"/C/wamp/www/node-authentication-testing/views/signup.ejs",
+		"/C/wamp/www/node-authentication-testing/app/models/user.js",
+		"/C/wamp/www/node-authentication-testing/package.json",
+		"/C/wamp/www/node-authentication-testing/js/js-es6.js",
 		"/C/wamp/www/node-authentication-testing/views/login.ejs",
-		"/C/wamp/www/node-authentication-testing/views/index.ejs",
+		"/C/wamp/www/node-authentication-testing/views/signup.ejs",
 		"/C/wamp/www/node-authentication-testing/views/profile.ejs",
+		"/C/wamp/www/node-authentication-testing/index.html",
+		"/C/wamp/www/socket-io-testing/index.js",
+		"/C/wamp/www/socket-io-testing/package.json",
+		"/C/wamp/www/node-authentication-testing/views/index.ejs",
+		"/C/wamp/www/Timeline/js/js-es6.js",
+		"/C/Users/Bliss/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
 		"/C/wamp/www/node-authentication-testing/node_modules/mongoose/node_modules/mongodb/node_modules/bson/ext/index.js",
 		"/C/wamp/www/Timeline/node/server.js",
 		"/C/wamp/www/node-authentication-testing/config/database.js",
-		"/C/wamp/www/node-authentication-testing/package.json",
 		"/C/wamp/www/Timeline/package.json",
 		"/C/wamp/www/Timeline/js/moment.js",
 		"/C/wamp/www/Timeline/js/js.js",
-		"/C/wamp/www/socket-io-testing/package.json",
 		"/C/wamp/www/Timeline/Gruntfile.js",
-		"/C/wamp/www/socket-io-testing/index.js",
 		"/C/wamp/www/socket-io-testing/js/js-es6.js",
 		"/C/wamp/www/socket-io-testing/css/css.css",
 		"/C/wamp/www/socket-io-testing/index.html",
@@ -261,6 +257,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"__dirname + '",
+			"email",
+			"Email",
+			"email",
+			"em",
+			"email",
 			"ctrl+c",
 			"ctrl\nctrl+c",
 			"ctrl+c\nctrl+c",
@@ -387,7 +389,7 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -395,15 +397,15 @@
 					"file": "server.js",
 					"settings":
 					{
-						"buffer_size": 1735,
+						"buffer_size": 2857,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								764,
-								764
+								2857,
+								2857
 							]
 						],
 						"settings":
@@ -411,7 +413,7 @@
 							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 135.0,
+						"translation.y": 315.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -421,43 +423,15 @@
 					"file": "app/routes.js",
 					"settings":
 					{
-						"buffer_size": 1781,
+						"buffer_size": 4540,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								375,
-								375
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/models/user.js",
-					"settings":
-					{
-						"buffer_size": 1209,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								751,
-								751
+								1522,
+								1522
 							]
 						],
 						"settings":
@@ -473,19 +447,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "config/passport.js",
 					"settings":
 					{
-						"buffer_size": 4783,
+						"buffer_size": 4843,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3015,
-								3015
+								3879,
+								3879
 							]
 						],
 						"settings":
@@ -495,61 +469,59 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 798.0,
+						"translation.y": 360.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "views/signup.ejs",
+					"settings":
+					{
+						"buffer_size": 1317,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								805,
+								805
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "package.json",
+					"file": "views/profile.ejs",
 					"settings":
 					{
-						"buffer_size": 593,
+						"buffer_size": 1479,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								587,
-								587
+								1479,
+								1479
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/C/Users/Bliss/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-					"settings":
-					{
-						"buffer_size": 34030,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 108.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -613,6 +585,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 208.0,
+	"side_bar_width": 235.0,
 	"status_bar_visible": true
 }

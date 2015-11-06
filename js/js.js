@@ -27,6 +27,10 @@ var abc = {
     abc.assignInitialHandlers();
 
     abc.handlerTestSound();
+
+    var user = JSON.parse($("#data-for-you").html());
+    console.log(user);
+    alert('hello ' + user.local.username);
   },
 
   assignInitialHandlers: function assignInitialHandlers() {
