@@ -1,0 +1,618 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pass",
+				"passportFunc"
+			],
+			[
+				"event",
+				"eventData"
+			],
+			[
+				"par",
+				"parse"
+			],
+			[
+				"json",
+				"JSON"
+			],
+			[
+				"def",
+				"deferred"
+			],
+			[
+				"emit",
+				"emitObj"
+			],
+			[
+				"backgroun",
+				"background-color"
+			],
+			[
+				"re",
+				"resizable"
+			],
+			[
+				"work",
+				"workOrders"
+			],
+			[
+				"scr",
+				"scrollbars5"
+			],
+			[
+				"scrol",
+				"scrollbars"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"and",
+				"android-fragments"
+			],
+			[
+				"res",
+				"resume"
+			],
+			[
+				"upd",
+				"updateAllHexHtml"
+			],
+			[
+				"return",
+				"returnArray"
+			],
+			[
+				"Upp",
+				"UpperLeft"
+			],
+			[
+				"Lower",
+				"LowerLeft"
+			],
+			[
+				"html",
+				"htmlString"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "server.js",
+			"settings":
+			{
+				"buffer_size": 1735,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/routes.js",
+			"settings":
+			{
+				"buffer_size": 1781,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/models/user.js",
+			"settings":
+			{
+				"buffer_size": 1209,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "config/passport.js",
+			"settings":
+			{
+				"buffer_size": 4783,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 593,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Bliss/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 34030,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 81.0,
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Bliss/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Bliss/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Bliss/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/wamp/www/node-authentication-testing/views/signup.ejs",
+		"/C/wamp/www/node-authentication-testing/views/login.ejs",
+		"/C/wamp/www/node-authentication-testing/views/index.ejs",
+		"/C/wamp/www/node-authentication-testing/views/profile.ejs",
+		"/C/wamp/www/node-authentication-testing/node_modules/mongoose/node_modules/mongodb/node_modules/bson/ext/index.js",
+		"/C/wamp/www/Timeline/node/server.js",
+		"/C/wamp/www/node-authentication-testing/config/database.js",
+		"/C/wamp/www/node-authentication-testing/package.json",
+		"/C/wamp/www/Timeline/package.json",
+		"/C/wamp/www/Timeline/js/moment.js",
+		"/C/wamp/www/Timeline/js/js.js",
+		"/C/wamp/www/socket-io-testing/package.json",
+		"/C/wamp/www/Timeline/Gruntfile.js",
+		"/C/wamp/www/socket-io-testing/index.js",
+		"/C/wamp/www/socket-io-testing/js/js-es6.js",
+		"/C/wamp/www/socket-io-testing/css/css.css",
+		"/C/wamp/www/socket-io-testing/index.html",
+		"/C/wamp/www/socket-io-testing/js/socket-io.js",
+		"/C/wamp/www/socket-io-testing/css/jquery-ui.css",
+		"/C/wamp/www/socket-io-testing/js/jquery-ui.js",
+		"/C/wamp/www/socket-io-testing/js/js.js",
+		"/C/wamp/www/socket-io-testing/Gruntfile.js",
+		"/C/wamp/www/scraper/index.js",
+		"/C/wamp/www/DefaultGruntfile.js",
+		"/C/wamp/www/SkeletonProject/index.html",
+		"/C/wamp/www/CoderByte/Gruntfile.js",
+		"/C/wamp/www/CoderByte/js/js-es6.js",
+		"/C/wamp/www/CoderByte/js/js.js",
+		"/C/Users/Bliss/Documents/code stuff/reverse a string.js",
+		"/C/wamp/www/CoderByte/package.json",
+		"/C/wamp/www/WorkingFromHome/DataMigration/js/events.js",
+		"/C/wamp/www/WorkingFromHome/DataMigration/Events.json",
+		"/C/wamp/www/WorkingFromHome/DataMigration/js/work-orders.js",
+		"/C/wamp/www/WorkingFromHome/DataMigration/WorkOrders.json",
+		"/C/wamp/www/WorkingFromHome/DataMigration/css/css.css",
+		"/C/wamp/www/WorkingFromHome/DataMigration/js/js-es6.js",
+		"/C/wamp/www/WorkingFromHome/DataMigration/index.html",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/resources/views/wrapper.blade.php",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/resources/views/misc/portfolio.blade.php",
+		"/C/wamp/www/scraper/node_modules/image-scraper/index.js",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/resources/views/app.blade.php",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/resources/views/demos/matching-game.blade.php",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/resources/views/demos/assembly.blade.php",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/resources/views/demos/android-fragments.blade.php",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/public/index.php",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/resources/views/timeline/timeline.blade.php",
+		"/C/wamp/www/MyWebsite/timeline/index.html",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/resources/views/scrollbars/scrollbars5.blade.php",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/public/css/css.css",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/app/Http/routes.php",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/resources/views/misc/index.blade.php",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/resources/views/misc/resume.blade.php",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/resources/views/scrollbars/scrollbars.blade.php",
+		"/C/wamp/www/MyWebsite/scrollbars5/index.html",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/resources/views/welcome.blade.php",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/app/Http/Controllers/Controller.php",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/app/Http/Requests/Request.php",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/resources/views/tasks/partials/_form.blade.php",
+		"/C/wamp/www/LaravelTesting/LaravelTesting/resources/views/projects/partials/_form.blade.php",
+		"/C/wamp/www/Eclipse/js/js.js",
+		"/C/wamp/www/DataStructures/css/css.css",
+		"/C/wamp/www/DataStructures/js/js-es6.js",
+		"/C/wamp/www/DataStructures/js/js.js",
+		"/C/wamp/www/DataStructures/index.html",
+		"/c/wamp/www/DataStructures/Gruntfile.js",
+		"/C/wamp/www/Eclipse/schema.graphml",
+		"/C/Users/Bliss/AppData/Roaming/Sublime Text 2/Packages/User/JavaScript.sublime-settings",
+		"/C/wamp/www/ReactTesting1/Gruntfile.js",
+		"/C/Users/Bliss/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
+		"/C/wamp/www/ReactTesting1/package.json",
+		"/C/wamp/www/ReactTesting1/js/test.jsx",
+		"/C/wamp/www/ReactTesting1/js/test.js",
+		"/C/wamp/www/WorkingFromHome/New/GruntTesting/Gruntfile.js",
+		"/C/wamp/www/LetsPlayAGame/js/js.js",
+		"/C/wamp/www/ReactTesting1/js/js.js",
+		"/C/Users/Bliss/AppData/Roaming/Sublime Text 2/Packages/User/Javascript.sublime-settings",
+		"/C/Users/Bliss/AppData/Roaming/Sublime Text 2/Packages/User/CSS.sublime-settings"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"ctrl+c",
+			"ctrl\nctrl+c",
+			"ctrl+c\nctrl+c",
+			"ctrl+c",
+			"nomo",
+			"$ ",
+			"Bliss@NOVA /C/wamp/www/node-authentication-testing (master)",
+			"=>",
+			"user-",
+			"URI",
+			"'",
+			"URI",
+			"assignHandlerAddDiv",
+			"assignHandlerChat",
+			"assignHanderDrag",
+			"lg",
+			";  ",
+			"req.body.",
+			"json",
+			"JSON",
+			"json",
+			"console.log",
+			"POST",
+			"createGroups",
+			"Date",
+			"\"",
+			"\" + ",
+			"type='text' ",
+			"\"",
+			"\" + ",
+			"handlerseventre",
+			"assignHandler",
+			"function(",
+			"function(eventType)",
+			"function(events)",
+			"function",
+			"function(event)",
+			";",
+			"var ",
+			"function(jqXHR, status)",
+			"function(data, status, jqXHR)",
+			"function(e)",
+			"function()",
+			"console",
+			"body",
+			"page",
+			"//",
+			"'",
+			"800",
+			"){",
+			"js/js.js",
+			"socket",
+			"var",
+			";",
+			"){",
+			"function",
+			"function()",
+			";",
+			"){",
+			"socket-io",
+			"css/",
+			"'js",
+			"/js/js.js",
+			"timeline",
+			"js/",
+			"\\\"",
+			"<br>",
+			"<br />",
+			"\";",
+			"&nbsp;",
+			"{<br />",
+			"\"; ",
+			"echo \"",
+			"\\\"",
+			"&nbsp",
+			"<br>",
+			"<br />",
+			"echo \"",
+			"\"; ",
+			"<br>",
+			"\"; ",
+			"; ",
+			";",
+			"echo \"",
+			"<br />",
+			"&nbsp;",
+			"font-size",
+			"80px",
+			"content",
+			"()\">",
+			"\\\"",
+			"ctrl+d",
+			">\n",
+			"ctrl+shift+k",
+			"    "
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\"",
+			"<br>",
+			"",
+			" ",
+			"",
+			"\"",
+			" \"",
+			" ",
+			"<br>",
+			"",
+			"<br>",
+			"",
+			" ",
+			"  "
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "server.js",
+					"settings":
+					{
+						"buffer_size": 1735,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								764,
+								764
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 135.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/routes.js",
+					"settings":
+					{
+						"buffer_size": 1781,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								375,
+								375
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/models/user.js",
+					"settings":
+					{
+						"buffer_size": 1209,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								751,
+								751
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 135.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "config/passport.js",
+					"settings":
+					{
+						"buffer_size": 4783,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3015,
+								3015
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 798.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "package.json",
+					"settings":
+					{
+						"buffer_size": 593,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								587,
+								587
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/Users/Bliss/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+					"settings":
+					{
+						"buffer_size": 34030,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 208.0,
+	"status_bar_visible": true
+}

@@ -17,6 +17,9 @@ var session      = require('express-session');
 
 var configDB = require('./config/database.js');
 
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 
 
 // configuration ===============================================================
@@ -47,6 +50,37 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
+
+//socket-io stuff
+io.on('connection', function(socket) {
+  console.log('a user connected')
+  io.emit('user connected');
+  
+  socket.on('disconnect', function() {
+    console.log('user disconnected')
+    io.emit('user disconnected')
+  })
+  
+  socket.on('chat message', function(msg) {
+    console.log('message: ' + msg)
+    io.emit('chat message', msg)
+  })
+
+  socket.on('element dragged', function(dragObj) {
+    console.log('drag object: ')
+    console.log(dragObj)
+    // io.emit('element dragged', dragObj)
+    socket.broadcast.emit('element dragged', dragObj)
+  })
+
+  socket.on('element resized', function(emitObj) {
+    socket.broadcast.emit('element resized', emitObj)
+  })
+
+  socket.on('div added', function() {
+    socket.broadcast.emit('div added')
+  })
+})
 
 
 // launch ======================================================================

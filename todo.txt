@@ -1,0 +1,20 @@
+General
+---------------------------
+sound on user connecting
+authentication/authorization
+individual messaging
+Indication of where user's mouse is
+Indication of user typing
+save and load all divs with locations
+
+
+rpg
+---------------------------
+grid
+
+
+Wireframing
+---------------------------
+panel for different div options, e.g. list, pic, grid, table, etc. 
+ - the image should expand when resized
+ - the panel should be a drawer
