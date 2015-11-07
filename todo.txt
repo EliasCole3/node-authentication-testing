@@ -6,6 +6,7 @@ individual messaging
 Indication of where user's mouse is
 Indication of user typing
 save and load all divs with locations
+Lobby list, for who's connected
 
 
 rpg

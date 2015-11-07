@@ -95,7 +95,7 @@
 			"file": "app/routes.js",
 			"settings":
 			{
-				"buffer_size": 4540,
+				"buffer_size": 4699,
 				"line_ending": "Windows"
 			}
 		},
@@ -116,10 +116,37 @@
 			}
 		},
 		{
+			"contents": "<!doctype html>\n<html>\n<head>\n    <title>Node Authentication</title>\n    <link rel=\"stylesheet\" href=\"//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css\">\n    <style>\n        body        { padding-top:80px; word-wrap:break-word; }\n    </style>\n    <script type=\"text/javascript\" src=\"js/jquery.js\"></script>\n</head>\n<body>\n<div class=\"container\">\n\n    <div class=\"page-header text-center\">\n        <h1><span class=\"fa fa-anchor\"></span> Profile Page</h1>\n        <a href=\"/logout\" class=\"btn btn-default btn-sm\">Logout</a>\n    </div>\n\n    <div class=\"row\">\n\n        <!-- LOCAL INFORMATION -->\n        <div class=\"col-sm-6\">\n            <div class=\"well\">\n                <h3><span class=\"fa fa-user\"></span> Local</h3>\n\n                    <p>\n                        <strong>id</strong>: <%= user._id %><br>\n                        <strong>username</strong>: <%= user.local.username %><br>\n                        <strong>password</strong>: <%= user.local.password %>\n                    </p>\n\n            </div>\n        </div>\n\n    </div>\n\n    <div id='' class=''>\n		<a href=\"/socket-main-page\" class=\"btn btn-default btn-md\">Take me to the socket magic!</a>\n    </div>\n\n\n    <div id='data-for-you' style='display: none;'>\n		<%- JSON.stringify(user) %>\n    </div>\n</div>\n</body>\n</html>",
 			"file": "views/profile.ejs",
+			"file_size": 1841,
+			"file_write_time": 130913114797759161,
 			"settings":
 			{
-				"buffer_size": 1479,
+				"buffer_size": 1406,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.ejs",
+			"settings":
+			{
+				"buffer_size": 1557,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/js-es6.js",
+			"settings":
+			{
+				"buffer_size": 3303,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "todo.txt",
+			"settings":
+			{
+				"buffer_size": 463,
 				"line_ending": "Windows"
 			}
 		}
@@ -156,6 +183,9 @@
 	},
 	"file_history":
 	[
+		"/C/wamp/www/Timeline/index.html",
+		"/C/wamp/www/Timeline/js/js-es6.js",
+		"/C/wamp/www/node-authentication-testing/js/js.js",
 		"/C/Users/Bliss/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Bliss/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/C/wamp/www/node-authentication-testing/app/models/user.js",
@@ -168,7 +198,6 @@
 		"/C/wamp/www/socket-io-testing/index.js",
 		"/C/wamp/www/socket-io-testing/package.json",
 		"/C/wamp/www/node-authentication-testing/views/index.ejs",
-		"/C/wamp/www/Timeline/js/js-es6.js",
 		"/C/Users/Bliss/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
 		"/C/wamp/www/node-authentication-testing/node_modules/mongoose/node_modules/mongodb/node_modules/bson/ext/index.js",
 		"/C/wamp/www/Timeline/node/server.js",
@@ -257,6 +286,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"macro-button",
+			"list",
 			"__dirname + '",
 			"email",
 			"Email",
@@ -389,7 +420,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -423,15 +454,15 @@
 					"file": "app/routes.js",
 					"settings":
 					{
-						"buffer_size": 4540,
+						"buffer_size": 4699,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1522,
-								1522
+								2035,
+								2035
 							]
 						],
 						"settings":
@@ -441,7 +472,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 135.0,
+						"translation.y": 470.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -469,7 +500,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 360.0,
+						"translation.y": 60.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -505,15 +536,15 @@
 					"file": "views/profile.ejs",
 					"settings":
 					{
-						"buffer_size": 1479,
+						"buffer_size": 1406,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1479,
-								1479
+								1383,
+								1296
 							]
 						],
 						"settings":
@@ -521,7 +552,85 @@
 							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 108.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "index.ejs",
+					"settings":
+					{
+						"buffer_size": 1557,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1504,
+								1504
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "js/js-es6.js",
+					"settings":
+					{
+						"buffer_size": 3303,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								300,
+								300
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "todo.txt",
+					"settings":
+					{
+						"buffer_size": 463,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								463,
+								463
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
