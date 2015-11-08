@@ -6,6 +6,9 @@
 		},
 		{
 			"path": "/C/wamp/www/socket-io-testing"
+		},
+		{
+			"path": "/C/wamp/www/node-api"
 		}
 	]
 }

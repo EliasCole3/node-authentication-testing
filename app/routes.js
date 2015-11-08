@@ -1,4 +1,6 @@
 var path = require('path')
+var Item = require('../app/models/item')
+
 
 module.exports = function(app, passport) {
 
@@ -43,6 +45,14 @@ module.exports = function(app, passport) {
         req.logout();
         res.redirect('/');
     });
+
+
+
+
+
+
+
+  
 
 
 

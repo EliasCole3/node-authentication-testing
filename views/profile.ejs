@@ -39,28 +39,10 @@
 		<a href="/socket-main-page" class="btn btn-default btn-md">Take me to the socket magic!</a>
     </div>
 
-    <script type='text/javascipt'>
-		window.user = JSON.stringify(<%= user %>)
-		 <%- JSON.stringify(user) %>
-		 window.user = <%- user %>
 
-		 <%- user %>
-
-		 initData = JSON.parse('<%-JSON.stringify(user)%>');
-
-		 
-    </script>
-
-
-        <script type='text/javascipt'>
-    		window.user = {"asdf": "asdf"}
-    		var blah = 1
-    		blah2 = 2
-        </script>
-
-        <div id='data-for-you' style='display: none;'>
-			<%- JSON.stringify(user) %>
-        </div>
+    <div id='data-for-you' style='display: none;'>
+		<%- JSON.stringify(user) %>
+    </div>
 </div>
 </body>
 </html>
