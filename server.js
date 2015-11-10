@@ -42,6 +42,7 @@ require('./config/passport')(passport); // pass passport for configuration
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser()); // get information from html forms
+// app.use(bodyParser.json())
 app.set('view engine', 'ejs'); // set up ejs for templating
 
 
@@ -52,11 +53,26 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 
+// var allowCrossDomain = function(req, res, next) {
+//     res.header('Access-Control-Allow-Origin', '*')
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,PATCH,POST,DELETE')
+//     res.header('Access-Control-Allow-Headers', 'Content-Type')
+//     next()
+// }
+
+// app.use(allowCrossDomain)
+
+
 
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-require('./app/routes-item.js')(app, passport);
-
+require('./app/routes-non-player-character.js')(app, passport)
+require('./app/routes-player-character.js')(app, passport)
+require('./app/routes-creature.js')(app, passport)
+require('./app/routes-log.js')(app, passport)
+require('./app/routes-log-entry.js')(app, passport)
+require('./app/routes-item.js')(app, passport)
+require('./app/routes-power.js')(app, passport)
 
 //socket-io stuff
 io.on('connection', function(socket) {

@@ -161,7 +161,7 @@ playerCharacterId</y:AttributeLabel>
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="430.01000000000016" width="178.67458248472505" x="-501.3699999999985" y="102.91999999999987"/>
+          <y:Geometry height="420.01000000000016" width="178.67458248472505" x="-501.3699999999985" y="102.91999999999987"/>
           <y:Fill color="#3366FF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="136.22802734375" x="21.223277570487525" y="3.0">NonPlayerCharacters
@@ -174,7 +174,6 @@ playerCharacterId</y:AttributeLabel>
           </y:NodeLabel>
           <y:UML clipContent="true" constraint="" omitDetails="false" stereotype="" use3DEffect="true">
             <y:AttributeLabel>nonPlayerCharacterId
-playerName
 characterName
 race
 class

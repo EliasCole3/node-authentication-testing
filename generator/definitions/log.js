@@ -1,8 +1,17 @@
 {
   "name": "log",
   "properties": {
-    "log_id": {},
-    "log_name": {},
-    "player_character_id": {}
+    "log_id": {
+      "testValue": ":)",
+      "updateValue": ":D"
+    },
+    "log_name": {
+      "testValue": ":)",
+      "updateValue": ":D"
+    },
+    "player_character_id": {
+      "testValue": ":)",
+      "updateValue": ":D"
+    }
   }
 }

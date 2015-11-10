@@ -4,6 +4,12 @@ var Item = require('../app/models/item')
 
 module.exports = function(app, passport) {
 
+
+    /*
+
+    Routes from tutuorial
+
+    */
     app.get('/', function(req, res) {
         res.render('index.ejs'); // load the index.ejs file
     });
@@ -56,20 +62,35 @@ module.exports = function(app, passport) {
 
 
 
-    //resources
+    /*
+
+    Custom routes
+
+    */
     app.get('/socket-main-page', function(req, res) {
-      // res.sendFile(__dirname + './../index.html')
-      // res.sendFile(path.resolve(__dirname + './../index.html'));
-      // res.sendFile(__dirname + '/views/index.html')
-
-      // res.locals.user = req.user;
-      // res.sendFile(path.resolve(__dirname + './../index.html'))
-
       res.render(path.resolve(__dirname + './../index.ejs'), {
           user : req.user // get the user out of session and pass to template
       });
     })
 
+    app.get('/testing', function(req, res) {
+      res.render('testing.ejs', {
+          user : req.user // get the user out of session and pass to template
+      });
+    })
+
+    app.get('/js/testing.js', function(req, res) {
+      res.sendFile(path.resolve(__dirname + './../js/testing.js'))
+    })
+
+
+
+
+    /*
+
+    Resources
+
+    */
     app.get('/js/jquery.js', function(req, res) {
       res.sendFile(path.resolve(__dirname + './../js/jquery.js'))
     })
@@ -112,6 +133,10 @@ module.exports = function(app, passport) {
 
     app.get('/css/css.css', function(req, res) {
       res.sendFile(path.resolve(__dirname + './../css/css.css'))
+    })
+
+    app.get('/css/testing.css', function(req, res) {
+      res.sendFile(path.resolve(__dirname + './../css/testing.css'))
     })
 
     app.get('/css/bootstrap.css', function(req, res) {

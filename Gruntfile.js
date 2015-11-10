@@ -7,11 +7,18 @@ module.exports = function(grunt) {
       //   files: ['css/**/*.scss'],
       //   tasks: ['sass:build'],
       // },
-      babel: {
+      babel_main: {
         files: [
           'js/js-es6.js'
         ],
-        tasks: ['babel'],
+        tasks: ['babel:main'],
+      },
+
+      babel_testing: {
+        files: [
+          'js/testing-es6.js'
+        ],
+        tasks: ['babel:testing'],
       },
       // react: {
       //   files: ['js/test.jsx', 'js/js.jsx'],
@@ -22,64 +29,31 @@ module.exports = function(grunt) {
       //   tasks: ['browserify']
       // }
     },
-    
-    sass: {                                           // Task
-      build: {                                        // Target
-        options: {                                   
-          style: 'expanded'
-        },
-        files: {                                     
-          'build/css/css.css': 'css/scss.scss',       // 'destination': 'source'
-        }
-      }
-    },
+
     
     babel: {
       options: {
         sourceMap: true
       },
-      build: {
+      main: {
         files: {
           'js/js.js': 'js/js-es6.js'
         }
-      }
-    },
-
-    react: {
-      single_file_output: {
+      },
+      testing: {
         files: {
-          'js/test.js': 'js/test.jsx',
-          'js/js.js': 'js/js.jsx'
-        }
-      }
-    },
-
-    shell: {
-      dirListing: {
-        command: 'ls'
-      }
-    },
-
-    browserify: {
-      dist: {
-        files: {
-          'js/bundle.js': ['js/js.js'],
-          'js/yEd-builder-bundle.js': ['js/yEd-builder.js'],
+          'js/testing.js': 'js/testing-es6.js'
         }
       }
     }
 
-  });
+  })
  
-  grunt.registerTask("default", ["watch"]);
+  grunt.registerTask("default", ["watch"])
+
+  grunt.loadNpmTasks('grunt-contrib-watch')
+  grunt.loadNpmTasks('grunt-babel')
+
  
-  grunt.loadNpmTasks('grunt-react');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-babel');
-  grunt.loadNpmTasks('grunt-shell');
-  grunt.loadNpmTasks('grunt-browserify');
- 
-};
+}
 

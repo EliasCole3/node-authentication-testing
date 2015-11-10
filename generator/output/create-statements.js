@@ -1,0 +1,7 @@
+db.createCollection("creatures")
+db.createCollection("non_player_characters")
+db.createCollection("player_characters")
+db.createCollection("logs")
+db.createCollection("items")
+db.createCollection("log_entries")
+db.createCollection("powers")
