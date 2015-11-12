@@ -3,10 +3,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     watch: {
-      // scss: {
-      //   files: ['css/**/*.scss'],
-      //   tasks: ['sass:build'],
-      // },
+
       babel_main: {
         files: [
           'js/js-es6.js'
@@ -20,14 +17,14 @@ module.exports = function(grunt) {
         ],
         tasks: ['babel:testing'],
       },
-      // react: {
-      //   files: ['js/test.jsx', 'js/js.jsx'],
-      //   tasks: ['react'],
-      // },
-      // browserify: {
-      //   files: ['js/js.js', 'js/yEd-builder.js'], 
-      //   tasks: ['browserify']
-      // }
+
+      babel_crud_items: {
+        files: [
+          'js/crud-items-es6.js'
+        ],
+        tasks: ['babel:crud_items'],
+      },
+
     },
 
     
@@ -35,16 +32,25 @@ module.exports = function(grunt) {
       options: {
         sourceMap: true
       },
+
       main: {
         files: {
           'js/js.js': 'js/js-es6.js'
         }
       },
+
       testing: {
         files: {
           'js/testing.js': 'js/testing-es6.js'
         }
+      },
+
+      crud_items: {
+        files: {
+          'js/crud-items.js': 'js/crud-items-es6.js'
+        }
       }
+      
     }
 
   })

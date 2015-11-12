@@ -70,17 +70,31 @@ module.exports = function(app, passport) {
     app.get('/socket-main-page', function(req, res) {
       res.render(path.resolve(__dirname + './../index.ejs'), {
           user : req.user // get the user out of session and pass to template
-      });
+      })
     })
 
     app.get('/testing', function(req, res) {
       res.render('testing.ejs', {
           user : req.user // get the user out of session and pass to template
-      });
+      })
     })
 
     app.get('/js/testing.js', function(req, res) {
       res.sendFile(path.resolve(__dirname + './../js/testing.js'))
+    })
+
+    app.get('/crud-items', function(req, res) {
+      res.render('CRUD/items.ejs', {
+          user : req.user // get the user out of session and pass to template
+      })
+    })
+
+    app.get('/css/crud-items.css', function(req, res) {
+      res.sendFile(path.resolve(__dirname + './../css/crud-items.css'))
+    })
+
+    app.get('/js/crud-items.js', function(req, res) {
+      res.sendFile(path.resolve(__dirname + './../js/crud-items.js'))
     })
 
 
@@ -131,6 +145,10 @@ module.exports = function(app, passport) {
       res.sendFile(path.resolve(__dirname + './../js/js.js'))
     })
 
+    app.get('/js/chosen.jquery.js', function(req, res) {
+      res.sendFile(path.resolve(__dirname + './../js/chosen.jquery.js'))
+    })
+
     app.get('/css/css.css', function(req, res) {
       res.sendFile(path.resolve(__dirname + './../css/css.css'))
     })
@@ -149,6 +167,14 @@ module.exports = function(app, passport) {
 
     app.get('/css/jquery-ui.css', function(req, res) {
       res.sendFile(path.resolve(__dirname + './../css/jquery-ui.css'))
+    })
+
+    app.get('/css/chosen.min.css', function(req, res) {
+      res.sendFile(path.resolve(__dirname + './../css/chosen.min.css'))
+    })
+
+    app.get('/css/chosen-sprite.png', function(req, res) {
+      res.sendFile(path.resolve(__dirname + './../css/chosen-images/chosen-sprite.png'))
     })
 
     app.get('/node_modules/howler/howler.js', function(req, res) {
