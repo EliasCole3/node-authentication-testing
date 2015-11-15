@@ -40,12 +40,12 @@
 
   
   <tr>
-    <td><button id='test-log-entries' class='btn btn-md'>Test Log Entries</button></td>
-    <td><button id='test-create-log-entry' class='btn btn-md'>Test Create Log Entry</button></td>
-    <td><button id='test-get-log-entry' class='btn btn-md'>Test Get Log Entry</button></td>
-    <td><button id='test-put-log-entry' class='btn btn-md'>Test Put Log Entry</button></td>
-    <td><button id='test-delete-log-entry' class='btn btn-md'>Test Delete Log Entry</button></td>
-    <td><div id='log-entry-id'></div></td>
+    <td><button id='test-logs' class='btn btn-md'>Test Logs</button></td>
+    <td><button id='test-create-log' class='btn btn-md'>Test Create Log</button></td>
+    <td><button id='test-get-log' class='btn btn-md'>Test Get Log</button></td>
+    <td><button id='test-put-log' class='btn btn-md'>Test Put Log</button></td>
+    <td><button id='test-delete-log' class='btn btn-md'>Test Delete Log</button></td>
+    <td><div id='log-id'></div></td>
   </tr>
 
   
@@ -60,12 +60,12 @@
 
   
   <tr>
-    <td><button id='test-logs' class='btn btn-md'>Test Logs</button></td>
-    <td><button id='test-create-log' class='btn btn-md'>Test Create Log</button></td>
-    <td><button id='test-get-log' class='btn btn-md'>Test Get Log</button></td>
-    <td><button id='test-put-log' class='btn btn-md'>Test Put Log</button></td>
-    <td><button id='test-delete-log' class='btn btn-md'>Test Delete Log</button></td>
-    <td><div id='log-id'></div></td>
+    <td><button id='test-log-entries' class='btn btn-md'>Test Log Entries</button></td>
+    <td><button id='test-create-log-entry' class='btn btn-md'>Test Create Log Entry</button></td>
+    <td><button id='test-get-log-entry' class='btn btn-md'>Test Get Log Entry</button></td>
+    <td><button id='test-put-log-entry' class='btn btn-md'>Test Put Log Entry</button></td>
+    <td><button id='test-delete-log-entry' class='btn btn-md'>Test Delete Log Entry</button></td>
+    <td><div id='log-entry-id'></div></td>
   </tr>
 
   

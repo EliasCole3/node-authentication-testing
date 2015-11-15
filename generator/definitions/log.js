@@ -3,15 +3,18 @@
   "properties": {
     "log_id": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "number"
     },
     "log_name": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "text"
     },
     "player_character_id": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "number"
     }
   }
 }

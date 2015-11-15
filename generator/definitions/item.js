@@ -3,27 +3,33 @@
   "properties": {
     "item_id": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "number"
     },
     "name": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "text"
     },
     "cost": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "text"
     },
     "flavor_text": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "textarea"
     },
     "effect": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "text"
     },
     "image_filename": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "text"
     }
   }
 }

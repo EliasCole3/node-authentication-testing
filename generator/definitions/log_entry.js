@@ -3,19 +3,23 @@
   "properties": {
     "log_entry_id": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "number"
     },
     "message": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "textarea"
     },
     "date": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "date"
     },
     "log_id": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "number"
     }
   }
 }

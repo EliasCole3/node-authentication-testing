@@ -3,43 +3,53 @@
   "properties": {
     "power_id": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "number"
     },
     "name": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "text"
     },
     "type": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "text"
     },
     "flavor_text": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "textarea"
     },
     "attack_type": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "text"
     },
     "damage": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "number"
     },
     "effect": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "text"
     },
     "description": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "textarea"
     },
     "upgrade": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "textarea"
     },
     "image_filename": {
       "testValue": ":)",
-      "updateValue": ":D"
+      "updateValue": ":D",
+      "elementType": "text"
     }
   }
 }

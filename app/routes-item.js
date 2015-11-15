@@ -14,7 +14,6 @@
 
     app.post('/items', function(req, res) {
       var item = new Item()
-      console.log(req.body)
 
       item.itemId = req.body.itemId
       item.name = req.body.name

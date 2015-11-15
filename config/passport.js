@@ -20,6 +20,7 @@ module.exports = function(passport) {
         done(null, user.id);
     });
 
+
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
         User.findById(id, function(err, user) {
@@ -94,7 +95,6 @@ module.exports = function(passport) {
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },
     function(req, username, password, done) { // callback with email and password from our form
-        console.log("Called")
 
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
