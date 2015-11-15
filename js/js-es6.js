@@ -8,7 +8,6 @@ $(() => {
 /**
  * initialize()
  * assignInitialHandlers()
- * handlerChat()
  * handlerDrag()
  * handlerAddDiv()
  * createNewWireframeDiv()
@@ -27,14 +26,23 @@ let abc = {
     abc.assignInitialHandlers()
 
     abc.handlerTestSound()
+    
+    try {
+      let user = JSON.parse($("#data-for-you").html())
+      console.log(user)
+      alert(`hello ${user.local.username}`)
+    } catch(e) {
+      console.log(`error parsing authentication data: ${e}`)
+    }
 
-	  let user = JSON.parse($("#data-for-you").html())
-    console.log(user)
-    alert(`hello ${user.local.username}`)
+    ebot.drawerify({
+      selector: "#top-drawer",
+      contents: "#top-drawer-contents"
+    })
+	  
   },
 
   assignInitialHandlers: () => {
-    abc.handlerChat()
     abc.handlerDrag()
     abc.handlerAddDiv()
     abc.handlersSocketEventReceived()
@@ -42,9 +50,6 @@ let abc = {
   },
 
   handlersSocketEventReceived: () => {
-    abc.socket.on('chat message', msg => {
-      $('#messages').append($('<li>').text(msg))
-    })
 
     abc.socket.on('element dragged', emitObj => {
       $('#' + emitObj.id).css("top", emitObj.y)
@@ -65,14 +70,6 @@ let abc = {
 
     abc.socket.on('user disconnected', () => {
       abc.playSound("me-user-disconnected")
-    })
-  },
-
-  handlerChat: () => {
-    $('form').submit(() => {
-      abc.socket.emit('chat message', $('#m').val())
-      $('#m').val('')
-      return false
     })
   },
 

@@ -106,6 +106,10 @@ module.exports = function(app, passport) {
     Resources
 
     */
+
+    /*
+    JS
+    */
     app.get('/js/jquery.js', function(req, res) {
       res.sendFile(path.resolve(__dirname + './../js/jquery.js'))
     })
@@ -150,6 +154,14 @@ module.exports = function(app, passport) {
       res.sendFile(path.resolve(__dirname + './../js/chosen.jquery.js'))
     })
 
+    app.get('/js/velocity.js', function(req, res) {
+      res.sendFile(path.resolve(__dirname + './../js/velocity.js'))
+    })
+
+
+    /*
+    CSS
+    */
     app.get('/css/css.css', function(req, res) {
       res.sendFile(path.resolve(__dirname + './../css/css.css'))
     })
@@ -178,10 +190,10 @@ module.exports = function(app, passport) {
       res.sendFile(path.resolve(__dirname + './../css/chosen-images/chosen-sprite.png'))
     })
 
-    app.get('/node_modules/howler/howler.js', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../node_modules/howler/howler.js'))
-    })
 
+    /*
+    Sounds
+    */
     app.get('/sounds/me-ding.wav', function(req, res) {
       res.sendFile(path.resolve(__dirname + './../sounds/me-ding.wav'))
     })
@@ -195,6 +207,25 @@ module.exports = function(app, passport) {
     })
 
 
+    /*
+    Fonts
+    */
+    app.get('/fonts/glyphicons-halflings-regular.woff', function(req, res) {
+      res.sendFile(path.resolve(__dirname + './../fonts/glyphicons-halflings-regular.woff'))
+    })
+
+    app.get('/fonts/glyphicons-halflings-regular.ttf', function(req, res) {
+      res.sendFile(path.resolve(__dirname + './../fonts/glyphicons-halflings-regular.ttf'))
+    })
+
+
+    /*
+    Miscellaneous
+    */
+    app.get('/node_modules/howler/howler.js', function(req, res) {
+      res.sendFile(path.resolve(__dirname + './../node_modules/howler/howler.js'))
+    })
+    
 
 
 

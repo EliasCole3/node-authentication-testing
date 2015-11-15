@@ -9,6 +9,12 @@
 		},
 		{
 			"path": "/C/wamp/www/node-api"
+		},
+		{
+			"path": "/C/wamp/www/DnDv2"
+		},
+		{
+			"path": "/C/wamp/www/DnD2"
 		}
 	]
 }

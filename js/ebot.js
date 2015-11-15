@@ -1,7 +1,55 @@
+/**
+ * shoutGlory()
+ * updateDocumentation()
+ * removeKeyFromArray()
+ * retrieveModel()
+ * retrieveModelIfNotLoaded()
+ * retrieveModelv2()
+ * retrieveModelIfNotLoadedv2()
+ * getModel()
+ * showModal()
+ * hideModal()
+ * changeModalView()
+ * assignHandlerForModalShown()
+ * appendErrorMessage()
+ * notify()
+ * notifyModal()
+ * scrollToTop()
+ * getUniqueFields()
+ * scrollUp()
+ * numberWithCommas()
+ * insertModalHtml()
+ * getRandomInt()
+ * logEach()
+ * makeElement()
+ * dynamicSort()
+ * enableStringEndsWith()
+ * delay()
+ * switchExpandButtonSigns()
+ * get()
+ * loadKirby()
+ * getExpandToggleMainHtml()
+ * getExpandToggleRowHtml()
+ * assignHandlerExpandToggleRow()
+ * assignHandlerExpandToggleMain()
+ * drawerify()
+ * makeSelectOutOfArrayOfModels()
+ * chosenOptions
+ * hideOptions
+ * showOptions
+ * showOptionsShort
+ * hideOptionsShort
+ * showOptionsMedium
+ * hideOptionsMedium
+ * showOptionsLong
+ * hideOptionsLong
+ * toggleOptions
+ */
 var ebot = {
   
   shoutGlory: function() {
     alert("Glory! Glory!");
+    // ebot.updateDocumentation(ebot);
   },
   
   updateDocumentation: function(obj) {
@@ -588,8 +636,22 @@ var ebot = {
       #drawer-handle i:hover {
         -webkit-filter: invert(20%);
       }
+   *
+   *
+   * Example options object:
+
+{
+  selector: "drawer-id",
+  contents: "drawer-contents-id"
+}
+
+   *
+   *
+   *
    */
   drawerify: function(options) {
+    console.log("Called")
+    console.log(options)
     var drawer = $(options.selector);
     var drawerContents = $(options.contents);
     var drawerVisible = false;

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 $(function () {
   abc.initialize();
@@ -8,7 +8,6 @@ $(function () {
 /**
  * initialize()
  * assignInitialHandlers()
- * handlerChat()
  * handlerDrag()
  * handlerAddDiv()
  * createNewWireframeDiv()
@@ -28,22 +27,27 @@ var abc = {
 
     abc.handlerTestSound();
 
-    var user = JSON.parse($("#data-for-you").html());
-    console.log(user);
-    alert('hello ' + user.local.username);
+    try {
+      var user = JSON.parse($("#data-for-you").html());
+      console.log(user);
+      alert("hello " + user.local.username);
+    } catch (e) {
+      console.log("error parsing authentication data: " + e);
+    }
+
+    ebot.drawerify({
+      selector: "#top-drawer",
+      contents: "#top-drawer-contents"
+    });
   },
 
   assignInitialHandlers: function assignInitialHandlers() {
-    abc.handlerChat();
     abc.handlerDrag();
     abc.handlerAddDiv();
     abc.handlersSocketEventReceived();
   },
 
   handlersSocketEventReceived: function handlersSocketEventReceived() {
-    abc.socket.on('chat message', function (msg) {
-      $('#messages').append($('<li>').text(msg));
-    });
 
     abc.socket.on('element dragged', function (emitObj) {
       $('#' + emitObj.id).css("top", emitObj.y);
@@ -55,7 +59,7 @@ var abc = {
     });
 
     abc.socket.on('element resized', function (emitObj) {
-      $('#' + emitObj.id).css("width", emitObj.width).css("height", emitObj.height);
+      $("#" + emitObj.id).css("width", emitObj.width).css("height", emitObj.height);
     });
 
     abc.socket.on('user connected', function () {
@@ -64,14 +68,6 @@ var abc = {
 
     abc.socket.on('user disconnected', function () {
       abc.playSound("me-user-disconnected");
-    });
-  },
-
-  handlerChat: function handlerChat() {
-    $('form').submit(function () {
-      abc.socket.emit('chat message', $('#m').val());
-      $('#m').val('');
-      return false;
     });
   },
 
@@ -89,11 +85,11 @@ var abc = {
   createNewWireframeDiv: function createNewWireframeDiv() {
     var ranTop = ebot.getRandomInt(100, 500);
     var ranLeft = ebot.getRandomInt(100, 500);
-    var randomColor = 'rgba(' + ebot.getRandomInt(0, 255) + ', ' + ebot.getRandomInt(0, 255) + ', ' + ebot.getRandomInt(0, 255) + ', 0.8)';
-    var id = 'dynamically-added-div-' + abc.currentDynamicDivId;
-    var htmlString = '<div id=\'' + id + '\' style=\'position:absolute; top:' + ranTop + 'px; left:' + ranLeft + 'px; background-color: ' + randomColor + '; width: 100px; height: 100px;\'></div>';
+    var randomColor = "rgba(" + ebot.getRandomInt(0, 255) + ", " + ebot.getRandomInt(0, 255) + ", " + ebot.getRandomInt(0, 255) + ", 0.8)";
+    var id = "dynamically-added-div-" + abc.currentDynamicDivId;
+    var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; background-color: " + randomColor + "; width: 100px; height: 100px;'></div>";
     $("#wrapper").append(htmlString);
-    $('#' + id).resizable(abc.resizableOptions).draggable(abc.draggableOptions);
+    $("#" + id).resizable(abc.resizableOptions).draggable(abc.draggableOptions);
     abc.currentDynamicDivId++;
   },
 
@@ -111,7 +107,7 @@ var abc = {
 
   playSound: function playSound(sound) {
     var soundUnique = new Howl({
-      urls: ['/sounds/' + sound + '.wav']
+      urls: ["/sounds/" + sound + ".wav"]
     }).play();
   },
 
