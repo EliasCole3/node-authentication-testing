@@ -1,5 +1,6 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font: 13px Helvetica, Arial; }
+html,body{height:100%;}
 
 #draggable {
   width: 100px;
@@ -21,20 +22,35 @@ body { font: 13px Helvetica, Arial; }
   background-color: blue;
 }
 
+#left-drawer {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 150px;
+  background-color: pink;
+}
+
 
 /*
 For Drawerify
 */
-#drawer-handle {
+#drawer-handle-top {
    width: 50px;
    margin: 0 auto;
  }
+
+ #drawer-handle-left {
+   position: relative;
+   width: 50px;
+   /*margin: 0 auto;*/
+ }
  
- #drawer-handle i {
+ .drawer-handle i {
    font-size: 35px;
    opacity: .4;
  }
  
- #drawer-handle i:hover {
+ .drawer-handle i:hover {
    -webkit-filter: invert(20%);
  }

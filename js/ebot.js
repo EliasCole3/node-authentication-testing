@@ -641,6 +641,7 @@ var ebot = {
    * Example options object:
 
 {
+  fromThe: "top"
   selector: "drawer-id",
   contents: "drawer-contents-id"
 }
@@ -650,48 +651,111 @@ var ebot = {
    *
    */
   drawerify: function(options) {
-    console.log("Called")
-    console.log(options)
-    var drawer = $(options.selector);
-    var drawerContents = $(options.contents);
-    var drawerVisible = false;
-    var drawerHeight = drawer.height();
+    var drawer = $(options.selector)
+    var drawerContents = $(options.contents)
+    var drawerVisible = false
+    var drawerHeight = drawer.height()
+    var drawerWidth = drawer.width()
 
-    drawer
-      .after("<div id='drawer-handle'><i class='glyphicon glyphicon-chevron-down'></i></div>")
-      .css("opacity", 0)
-      .css("height", "0px");
+    var drawerifyTop = function drawerifyTop() {
+      drawer
+        .after("<div id='drawer-handle-top' class='drawer-handle'><i class='glyphicon glyphicon-chevron-down'></i></div>")
+        .css("opacity", 0)
+        .css("height", "0px")
 
-    drawerContents
-      .css("opacity", 0);
+      drawerContents
+        .css("opacity", 0)
 
-    var drawerHandleContainer = $("#drawer-handle");
-    var drawerHandle = $("#drawer-handle i");
+      var drawerHandleContainer = $("#drawer-handle-top")
+      var drawerHandle = $("#drawer-handle-top i")
 
-    $("#drawer-handle i").click(function() {
-      if(!drawerVisible) {
-        drawer.velocity({
-          height: `${drawerHeight}px`,
-          opacity: 1
-        },
-        {
-          complete: function(elements) { 
-            drawerContents.css("display", "block")
-            drawerContents.velocity({opacity: 1})
-          }
-        });
-        drawerHandle.removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
-        drawerVisible = true;
-      } else {
-        drawerContents.css("opacity", 0).css("display", "none");
-        drawer.velocity({
-          height: `0px`,
-          opacity: 0
-        });
-        drawerHandle.removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
-        drawerVisible = false;
-      }
-    });
+      $("#drawer-handle-top i").click(function() {
+        if(!drawerVisible) {
+          drawer.velocity({
+            height: `${drawerHeight}px`,
+            opacity: 1
+          },
+          {
+            complete: function(elements) { 
+              drawerContents.css("display", "block")
+              drawerContents.velocity({opacity: 1})
+            }
+          })
+          drawerHandle.removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up")
+          drawerVisible = true
+        } else {
+          drawerContents.css("opacity", 0).css("display", "none")
+          drawer.velocity({
+            height: `0px`,
+            opacity: 0
+          })
+          drawerHandle.removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down")
+          drawerVisible = false
+        }
+      })
+    }
+
+    var drawerifyLeft = function drawerifyLeft() {
+
+      drawer
+        .after(`<div id='drawer-handle-left' class='drawer-handle' style='top: ${(drawerHeight/2)-25}px'><i class='glyphicon glyphicon-chevron-right'></i></div>`)
+        .css("opacity", 0)
+        .css("width", "0px")
+
+      drawerContents
+        .css("opacity", 0)
+
+      var drawerHandleContainer = $("#drawer-handle-left")
+      var drawerHandle = $("#drawer-handle-left i")
+
+      $("#drawer-handle-left i").click(function() {
+        if(!drawerVisible) {
+          drawer.velocity({
+            width: `${drawerWidth}px`,
+            opacity: 1
+          },
+          {
+            complete: function(elements) { 
+              drawerContents.css("display", "block")
+              drawerContents.velocity({opacity: 1})
+            }
+          })
+          drawerHandle.removeClass("glyphicon-chevron-right").addClass("glyphicon-chevron-left").velocity({
+            left: `${drawerWidth}px`,
+          })
+          drawerVisible = true
+        } else {
+          drawerContents.css("opacity", 0).css("display", "none")
+          drawer.velocity({
+            width: `0px`,
+            opacity: 0
+          })
+          drawerHandle.removeClass("glyphicon-chevron-left").addClass("glyphicon-chevron-right").velocity({
+            left: `0px`,
+          })
+          drawerVisible = false
+        }
+      })
+    }
+
+    switch(options.fromThe) {
+      case "top":
+        drawerifyTop()
+        break
+      case "bottom":
+        drawerifyBottom()
+        break
+      case "left":
+        drawerifyLeft()
+        break
+      case "right":
+        drawerifyRight()
+        break
+      default:
+        drawerifyTop()
+    }
+
+    
   },
   
   makeSelectOutOfArrayOfModels: function(arrayOfModels, modelName, selectProps, optionToSelect) {

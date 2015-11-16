@@ -36,8 +36,15 @@ let abc = {
     }
 
     ebot.drawerify({
+      fromThe: "top",
       selector: "#top-drawer",
       contents: "#top-drawer-contents"
+    })
+
+    ebot.drawerify({
+      fromThe: "left",
+      selector: "#left-drawer",
+      contents: "#left-drawer-contents"
     })
 	  
   },
