@@ -31,4 +31,4 @@ var playerCharacterSchema = new Schema({
   imageFilename: String
 })
 
-module.exports = mongoose.model('PlayerCharacter', playerCharacterSchema)
+module.exports = mongoose.model('PlayerCharacter', playerCharacterSchema, 'player_characters')

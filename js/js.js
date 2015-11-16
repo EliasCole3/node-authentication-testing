@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 $(function () {
   abc.initialize();
@@ -25,45 +25,28 @@ var abc = {
     abc.socket = io();
     abc.assignInitialHandlers();
 
+    $.when.apply($, abc.retrieveInitialModels()).done(function () {
+      // abc.fillAttendanceAreas()
+      // alert('all loaded!')
+      abc.fillRightDrawer();
+    });
+
     abc.handlerTestSound();
 
     try {
       var user = JSON.parse($("#data-for-you").html());
       console.log(user);
-      alert("hello " + user.local.username);
+      alert('hello ' + user.local.username);
     } catch (e) {
-      console.log("error parsing authentication data: " + e);
+      console.log('error parsing authentication data: ' + e);
     }
-
-    ebot.drawerify({
-      fromThe: "top",
-      selector: "#top-drawer",
-      contents: "#top-drawer-contents"
-    });
-
-    ebot.drawerify({
-      fromThe: "left",
-      selector: "#left-drawer",
-      contents: "#left-drawer-contents"
-    });
-
-    ebot.drawerify({
-      fromThe: "bottom",
-      selector: "#bottom-drawer",
-      contents: "#bottom-drawer-contents"
-    });
-
-    ebot.drawerify({
-      fromThe: "right",
-      selector: "#right-drawer",
-      contents: "#right-drawer-contents"
-    });
   },
 
   assignInitialHandlers: function assignInitialHandlers() {
     abc.handlerDrag();
     abc.handlerAddDiv();
     abc.handlersSocketEventReceived();
+    abc.makeDrawers();
   },
 
   handlersSocketEventReceived: function handlersSocketEventReceived() {
@@ -78,7 +61,7 @@ var abc = {
     });
 
     abc.socket.on('element resized', function (emitObj) {
-      $("#" + emitObj.id).css("width", emitObj.width).css("height", emitObj.height);
+      $('#' + emitObj.id).css("width", emitObj.width).css("height", emitObj.height);
     });
 
     abc.socket.on('user connected', function () {
@@ -87,6 +70,63 @@ var abc = {
 
     abc.socket.on('user disconnected', function () {
       abc.playSound("me-user-disconnected");
+    });
+  },
+
+  retrieveInitialModels: function retrieveInitialModels() {
+    var deferreds = [];
+
+    deferreds.push(ebot.retrieveEntity(abc, "items"));
+
+    return deferreds;
+  },
+
+  fillRightDrawer: function fillRightDrawer() {
+    $('#right-drawer-contents').html(abc.getRightDrawerHtml());
+  },
+
+  getRightDrawerHtml: function getRightDrawerHtml() {
+    var htmlString = '';
+
+    abc.items.forEach(function (item) {
+      htmlString += '<img src=\'items/' + item.imageFilename + '\'>';
+    });
+    // htmlString += `<img src='loading.gif'>`
+    // htmlString += `<img src='items/${item.imageFilename}'>`
+
+    return htmlString;
+  },
+
+  handlerRightDrawerContents: function handlerRightDrawerContents() {},
+
+  makeDrawers: function makeDrawers() {
+    var opacity = 0.9;
+    ebot.drawerify({
+      fromThe: "top",
+      selector: "#top-drawer",
+      contents: "#top-drawer-contents",
+      opacity: opacity
+    });
+
+    ebot.drawerify({
+      fromThe: "left",
+      selector: "#left-drawer",
+      contents: "#left-drawer-contents",
+      opacity: opacity
+    });
+
+    ebot.drawerify({
+      fromThe: "bottom",
+      selector: "#bottom-drawer",
+      contents: "#bottom-drawer-contents",
+      opacity: opacity
+    });
+
+    ebot.drawerify({
+      fromThe: "right",
+      selector: "#right-drawer",
+      contents: "#right-drawer-contents",
+      opacity: opacity
     });
   },
 
@@ -104,11 +144,11 @@ var abc = {
   createNewWireframeDiv: function createNewWireframeDiv() {
     var ranTop = ebot.getRandomInt(100, 500);
     var ranLeft = ebot.getRandomInt(100, 500);
-    var randomColor = "rgba(" + ebot.getRandomInt(0, 255) + ", " + ebot.getRandomInt(0, 255) + ", " + ebot.getRandomInt(0, 255) + ", 0.8)";
-    var id = "dynamically-added-div-" + abc.currentDynamicDivId;
-    var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; background-color: " + randomColor + "; width: 100px; height: 100px;'></div>";
+    var randomColor = 'rgba(' + ebot.getRandomInt(0, 255) + ', ' + ebot.getRandomInt(0, 255) + ', ' + ebot.getRandomInt(0, 255) + ', 0.8)';
+    var id = 'dynamically-added-div-' + abc.currentDynamicDivId;
+    var htmlString = '<div id=\'' + id + '\' style=\'position:absolute; top:' + ranTop + 'px; left:' + ranLeft + 'px; background-color: ' + randomColor + '; width: 100px; height: 100px;\'></div>';
     $("#wrapper").append(htmlString);
-    $("#" + id).resizable(abc.resizableOptions).draggable(abc.draggableOptions);
+    $('#' + id).resizable(abc.resizableOptions).draggable(abc.draggableOptions);
     abc.currentDynamicDivId++;
   },
 
@@ -126,7 +166,7 @@ var abc = {
 
   playSound: function playSound(sound) {
     var soundUnique = new Howl({
-      urls: ["/sounds/" + sound + ".wav"]
+      urls: ['/sounds/' + sound + '.wav']
     }).play();
   },
 
@@ -154,13 +194,30 @@ var abc = {
     }
   },
 
+  getItems: function getItems() {
+    var deferred = $.ajax({
+      type: "GET",
+      url: abc.apiurl + '/items',
+      success: function success(data, status, jqXHR) {},
+      error: function error(jqXHR, status) {
+        console.log("getItems() Error");
+      }
+    }).promise();
+
+    return deferred;
+  },
+
   dragDelay: 1,
 
   dragCounter: 0,
 
   socket: {},
 
-  currentDynamicDivId: 1
+  currentDynamicDivId: 1,
+
+  apiurl: "http://localhost:8082",
+
+  items: []
 
 };
 //# sourceMappingURL=js.js.map

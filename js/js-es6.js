@@ -25,6 +25,12 @@ let abc = {
     abc.socket = io()
     abc.assignInitialHandlers()
 
+    $.when.apply($, abc.retrieveInitialModels()).done(() => {
+      // abc.fillAttendanceAreas()
+      // alert('all loaded!')
+      abc.fillRightDrawer()
+    })
+
     abc.handlerTestSound()
     
     try {
@@ -35,29 +41,7 @@ let abc = {
       console.log(`error parsing authentication data: ${e}`)
     }
 
-    ebot.drawerify({
-      fromThe: "top",
-      selector: "#top-drawer",
-      contents: "#top-drawer-contents"
-    })
-
-    ebot.drawerify({
-      fromThe: "left",
-      selector: "#left-drawer",
-      contents: "#left-drawer-contents"
-    })
-
-    ebot.drawerify({
-      fromThe: "bottom",
-      selector: "#bottom-drawer",
-      contents: "#bottom-drawer-contents"
-    })
-
-    ebot.drawerify({
-      fromThe: "right",
-      selector: "#right-drawer",
-      contents: "#right-drawer-contents"
-    })
+    
 	  
   },
 
@@ -65,6 +49,8 @@ let abc = {
     abc.handlerDrag()
     abc.handlerAddDiv()
     abc.handlersSocketEventReceived()
+    abc.makeDrawers()
+    
 
   },
 
@@ -89,6 +75,65 @@ let abc = {
 
     abc.socket.on('user disconnected', () => {
       abc.playSound("me-user-disconnected")
+    })
+  },
+
+  retrieveInitialModels: () => {
+    let deferreds = []
+
+    deferreds.push(ebot.retrieveEntity(abc, "items"))
+
+    return deferreds
+  },
+
+  fillRightDrawer: () => {
+    $(`#right-drawer-contents`).html(abc.getRightDrawerHtml())
+  },
+
+  getRightDrawerHtml: () => {
+    let htmlString = ``
+
+    abc.items.forEach(item => {
+      htmlString += `<img src='items/${item.imageFilename}'>`
+    })
+    // htmlString += `<img src='loading.gif'>`
+    // htmlString += `<img src='items/${item.imageFilename}'>`
+
+    return htmlString
+  },
+
+  handlerRightDrawerContents: () => {
+
+  },
+
+  makeDrawers: () => {
+    let opacity = 0.9
+    ebot.drawerify({
+      fromThe: "top",
+      selector: "#top-drawer",
+      contents: "#top-drawer-contents",
+      opacity: opacity
+    })
+
+    ebot.drawerify({
+      fromThe: "left",
+      selector: "#left-drawer",
+      contents: "#left-drawer-contents",
+      opacity: opacity
+    })
+
+    ebot.drawerify({
+      fromThe: "bottom",
+      selector: "#bottom-drawer",
+      contents: "#bottom-drawer-contents",
+      opacity: opacity
+    })
+
+    ebot.drawerify({
+      fromThe: "right",
+      selector: "#right-drawer",
+      contents: "#right-drawer-contents",
+      opacity: opacity
     })
   },
 
@@ -156,13 +201,28 @@ let abc = {
     }
   },
 
+  getItems: () => {
+    let deferred = $.ajax({
+      type: "GET",
+      url: `${abc.apiurl}/items`,
+      success: function(data, status, jqXHR) {},
+      error: function(jqXHR, status) {console.log("getItems() Error")}
+    }).promise()
+
+    return deferred
+  },
+
   dragDelay: 1,
   
   dragCounter: 0,
 
   socket: {},
 
-  currentDynamicDivId: 1
+  currentDynamicDivId: 1,
+
+  apiurl: "http://localhost:8082",
+
+  items: []
 
 }
 

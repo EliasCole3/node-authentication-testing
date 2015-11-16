@@ -384,7 +384,7 @@ var ${flect.camelize(def.name, true)}Schema = new Schema({\n`
 
   string += `})
 
-module.exports = mongoose.model('${flect.camelize(def.name)}', ${flect.camelize(def.name, true)}Schema)`
+module.exports = mongoose.model('${flect.camelize(def.name)}', ${flect.camelize(def.name, true)}Schema, '${flect.pluralize(def.name)}')`
 
   return string
 }

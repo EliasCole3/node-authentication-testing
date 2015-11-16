@@ -230,7 +230,7 @@ var createMongooseModel = function createMongooseModel(def) {
   }
   string = string.replace(/(,\n$)/g, "\n");
 
-  string += '})\n\nmodule.exports = mongoose.model(\'' + flect.camelize(def.name) + '\', ' + flect.camelize(def.name, true) + 'Schema)';
+  string += '})\n\nmodule.exports = mongoose.model(\'' + flect.camelize(def.name) + '\', ' + flect.camelize(def.name, true) + 'Schema, \'' + flect.pluralize(def.name) + '\')';
 
   return string;
 };

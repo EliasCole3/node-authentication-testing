@@ -59,21 +59,6 @@
   })
 
 
-  app.get('/crud-logs', function(req, res) {
-    res.render('CRUD/logs.ejs', {
-        user : req.user
-    })
-  })
-
-  app.get('/css/crud-logs.css', function(req, res) {
-    res.sendFile(path.resolve(__dirname + './../css/crud-logs.css'))
-  })
-
-  app.get('/js/crud-logs.js', function(req, res) {
-    res.sendFile(path.resolve(__dirname + './../js/crud-logs.js'))
-  })
-
-
   app.get('/crud-powers', function(req, res) {
     res.render('CRUD/powers.ejs', {
         user : req.user
@@ -101,5 +86,20 @@
 
   app.get('/js/crud-log-entries.js', function(req, res) {
     res.sendFile(path.resolve(__dirname + './../js/crud-log-entries.js'))
+  })
+
+
+  app.get('/crud-logs', function(req, res) {
+    res.render('CRUD/logs.ejs', {
+        user : req.user
+    })
+  })
+
+  app.get('/css/crud-logs.css', function(req, res) {
+    res.sendFile(path.resolve(__dirname + './../css/crud-logs.css'))
+  })
+
+  app.get('/js/crud-logs.js', function(req, res) {
+    res.sendFile(path.resolve(__dirname + './../js/crud-logs.js'))
   })
 

@@ -22,4 +22,4 @@ var creatureSchema = new Schema({
   imageFilename: String
 })
 
-module.exports = mongoose.model('Creature', creatureSchema)
+module.exports = mongoose.model('Creature', creatureSchema, 'creatures')

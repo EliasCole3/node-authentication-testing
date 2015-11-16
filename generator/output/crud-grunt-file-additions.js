@@ -55,20 +55,6 @@
   },
 
   
-  babel_crud_logs: {
-    files: [
-      'js/crud-logs-es6.js'
-    ],
-    tasks: ['babel:crud_logs'],
-  },
-
-  crud_logs: {
-    files: {
-      'js/crud-logs.js': 'js/crud-logs-es6.js'
-    }
-  },
-
-  
   babel_crud_powers: {
     files: [
       'js/crud-powers-es6.js'
@@ -93,6 +79,20 @@
   crud_log_entries: {
     files: {
       'js/crud-log-entries.js': 'js/crud-log-entries-es6.js'
+    }
+  },
+
+  
+  babel_crud_logs: {
+    files: [
+      'js/crud-logs-es6.js'
+    ],
+    tasks: ['babel:crud_logs'],
+  },
+
+  crud_logs: {
+    files: {
+      'js/crud-logs.js': 'js/crud-logs-es6.js'
     }
   },
 

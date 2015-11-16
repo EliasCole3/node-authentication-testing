@@ -9,4 +9,4 @@ var logEntrySchema = new Schema({
   logId: String
 })
 
-module.exports = mongoose.model('LogEntry', logEntrySchema)
+module.exports = mongoose.model('LogEntry', logEntrySchema, 'log_entries')

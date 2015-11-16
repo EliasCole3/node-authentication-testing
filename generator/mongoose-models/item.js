@@ -11,4 +11,4 @@ var itemSchema = new Schema({
   imageFilename: String
 })
 
-module.exports = mongoose.model('Item', itemSchema)
+module.exports = mongoose.model('Item', itemSchema, 'items')

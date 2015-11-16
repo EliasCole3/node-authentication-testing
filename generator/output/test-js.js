@@ -18,11 +18,6 @@ abc.handlerTestCreatePlayerCharacter()
 abc.handlerTestGetPlayerCharacter()
 abc.handlerTestPutPlayerCharacter()
 abc.handlerTestDeletePlayerCharacter()
-abc.handlerTestLogs()
-abc.handlerTestCreateLog()
-abc.handlerTestGetLog()
-abc.handlerTestPutLog()
-abc.handlerTestDeleteLog()
 abc.handlerTestPowers()
 abc.handlerTestCreatePower()
 abc.handlerTestGetPower()
@@ -33,6 +28,11 @@ abc.handlerTestCreateLogEntry()
 abc.handlerTestGetLogEntry()
 abc.handlerTestPutLogEntry()
 abc.handlerTestDeleteLogEntry()
+abc.handlerTestLogs()
+abc.handlerTestCreateLog()
+abc.handlerTestGetLog()
+abc.handlerTestPutLog()
+abc.handlerTestDeleteLog()
 
 
 
@@ -824,140 +824,6 @@ abc.handlerTestDeleteLogEntry()
     return deferred
   },
 
-  handlerTestLogs: () => {
-    $("#test-logs").click(e => {
-      abc.getLogs().then(data => {
-        console.log(data)
-      })
-    })
-  },
-
-  handlerTestCreateLog: () => {
-    $("#test-create-log").click(e => {
-      let logId = ":)"
-      let logName = ":)"
-      let playerCharacterId = ":)"
-
-      let jsonData = JSON.stringify({
-        "logId": logId,
-        "logName": logName,
-        "playerCharacterId": playerCharacterId
-      })
-
-      abc.createLog(jsonData).then(data => {
-        console.log(data)
-        $("#log-id").html(data.obj._id)
-      })
-    })
-  },
-
-  handlerTestGetLog: () => {
-    $("#test-get-log").click(e => {
-      let id = $("#log-id").html()
-      
-      abc.getLog(id).then(data => {
-        console.log(data)
-      })
-
-    })
-  },
-
-  handlerTestPutLog: () => {
-    $("#test-put-log").click(e => {
-      let id = $("#log-id").html()
-
-      let logId = ":D"
-      let logName = ":D"
-      let playerCharacterId = ":D"
-
-      let jsonData = JSON.stringify({
-        "logId": logId,
-        "logName": logName,
-        "playerCharacterId": playerCharacterId
-      })
-
-      abc.putLog(id, jsonData).then(data => {
-        console.log(data)
-      })
-    })
-  },
-
-  handlerTestDeleteLog: id => {
-    $("#test-delete-log").click(e => {
-      let id = $("#log-id").html()
-      
-      abc.deleteLog(id).then(() => {
-        console.log("deleted!")
-      })
-
-    })
-  },
-
-  getLogs: () => {
-    let deferred = $.ajax({
-      type: "GET",
-      url: `${abc.apiurl}/logs`,
-      success: function(data, status, jqXHR) {},
-      error: function(jqXHR, status) {console.log("getLogs() Error")}
-    }).promise()
-
-    return deferred
-  },
-
-  createLog: jsonData => {
-    let deferred = $.ajax({
-      type: "POST",
-      url: `${abc.apiurl}/logs`,
-      data: abc.convertJsonToFormData(jsonData),
-      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-      success: (data, status, jqXHR) => {},
-      error: (jqXHR, status) => {
-        ebot.notify("error creating a Log")
-        console.log(jqXHR)
-      }
-    }).promise()
-
-    return deferred
-  },
-
-  getLog: id => {
-    let deferred = $.ajax({
-      type: "GET",
-      url: `${abc.apiurl}/logs/${id}`,
-      success: function(data, status, jqXHR) {},
-      error: function(jqXHR, status) {console.log("getLog() Error")}
-    }).promise()
-
-    return deferred
-  },
-
-  putLog: (id, jsonData) => {
-    let deferred = $.ajax({
-      type: "PUT",
-      url: `${abc.apiurl}/logs/${id}`,
-      data: abc.convertJsonToFormData(jsonData),
-      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-      success: (data, status, jqXHR) => {},
-      error: (jqXHR, status) => {
-        ebot.notify("error updating a Log")
-        console.log(jqXHR)
-      }
-    }).promise()
-
-    return deferred
-  },
-
-  deleteLog: id => {
-    let deferred = $.ajax({
-      type: "DELETE",
-      url: `${abc.apiurl}/logs/${id}`,
-      success: function(data, status, jqXHR) {},
-      error: function(jqXHR, status) {console.log("deleteLog() Error")}
-    }).promise()
-
-    return deferred
-  },
-
   handlerTestPowers: () => {
     $("#test-powers").click(e => {
       abc.getPowers().then(data => {
@@ -1253,6 +1119,140 @@ abc.handlerTestDeleteLogEntry()
       url: `${abc.apiurl}/logEntries/${id}`,
       success: function(data, status, jqXHR) {},
       error: function(jqXHR, status) {console.log("deleteLogEntry() Error")}
+    }).promise()
+
+    return deferred
+  },
+
+  handlerTestLogs: () => {
+    $("#test-logs").click(e => {
+      abc.getLogs().then(data => {
+        console.log(data)
+      })
+    })
+  },
+
+  handlerTestCreateLog: () => {
+    $("#test-create-log").click(e => {
+      let logId = ":)"
+      let logName = ":)"
+      let playerCharacterId = ":)"
+
+      let jsonData = JSON.stringify({
+        "logId": logId,
+        "logName": logName,
+        "playerCharacterId": playerCharacterId
+      })
+
+      abc.createLog(jsonData).then(data => {
+        console.log(data)
+        $("#log-id").html(data.obj._id)
+      })
+    })
+  },
+
+  handlerTestGetLog: () => {
+    $("#test-get-log").click(e => {
+      let id = $("#log-id").html()
+      
+      abc.getLog(id).then(data => {
+        console.log(data)
+      })
+
+    })
+  },
+
+  handlerTestPutLog: () => {
+    $("#test-put-log").click(e => {
+      let id = $("#log-id").html()
+
+      let logId = ":D"
+      let logName = ":D"
+      let playerCharacterId = ":D"
+
+      let jsonData = JSON.stringify({
+        "logId": logId,
+        "logName": logName,
+        "playerCharacterId": playerCharacterId
+      })
+
+      abc.putLog(id, jsonData).then(data => {
+        console.log(data)
+      })
+    })
+  },
+
+  handlerTestDeleteLog: id => {
+    $("#test-delete-log").click(e => {
+      let id = $("#log-id").html()
+      
+      abc.deleteLog(id).then(() => {
+        console.log("deleted!")
+      })
+
+    })
+  },
+
+  getLogs: () => {
+    let deferred = $.ajax({
+      type: "GET",
+      url: `${abc.apiurl}/logs`,
+      success: function(data, status, jqXHR) {},
+      error: function(jqXHR, status) {console.log("getLogs() Error")}
+    }).promise()
+
+    return deferred
+  },
+
+  createLog: jsonData => {
+    let deferred = $.ajax({
+      type: "POST",
+      url: `${abc.apiurl}/logs`,
+      data: abc.convertJsonToFormData(jsonData),
+      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+      success: (data, status, jqXHR) => {},
+      error: (jqXHR, status) => {
+        ebot.notify("error creating a Log")
+        console.log(jqXHR)
+      }
+    }).promise()
+
+    return deferred
+  },
+
+  getLog: id => {
+    let deferred = $.ajax({
+      type: "GET",
+      url: `${abc.apiurl}/logs/${id}`,
+      success: function(data, status, jqXHR) {},
+      error: function(jqXHR, status) {console.log("getLog() Error")}
+    }).promise()
+
+    return deferred
+  },
+
+  putLog: (id, jsonData) => {
+    let deferred = $.ajax({
+      type: "PUT",
+      url: `${abc.apiurl}/logs/${id}`,
+      data: abc.convertJsonToFormData(jsonData),
+      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+      success: (data, status, jqXHR) => {},
+      error: (jqXHR, status) => {
+        ebot.notify("error updating a Log")
+        console.log(jqXHR)
+      }
+    }).promise()
+
+    return deferred
+  },
+
+  deleteLog: id => {
+    let deferred = $.ajax({
+      type: "DELETE",
+      url: `${abc.apiurl}/logs/${id}`,
+      success: function(data, status, jqXHR) {},
+      error: function(jqXHR, status) {console.log("deleteLog() Error")}
     }).promise()
 
     return deferred

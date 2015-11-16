@@ -8,4 +8,4 @@ var logSchema = new Schema({
   playerCharacterId: String
 })
 
-module.exports = mongoose.model('Log', logSchema)
+module.exports = mongoose.model('Log', logSchema, 'logs')

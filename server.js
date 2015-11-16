@@ -45,6 +45,12 @@ app.use(bodyParser()); // get information from html forms
 // app.use(bodyParser.json())
 app.set('view engine', 'ejs'); // set up ejs for templating
 
+app.use(express.static('css'));
+app.use(express.static('fonts'));
+app.use(express.static('images'));
+app.use(express.static('js'));
+app.use(express.static('sounds'));
+
 
 // required for passport
 app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret

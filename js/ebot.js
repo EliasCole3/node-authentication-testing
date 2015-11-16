@@ -620,20 +620,38 @@ var ebot = {
     })
   },
   
+
+
   /**
    * needs this css: 
    * 
-     #drawer-handle {
+     #drawer-handle-top {
         width: 50px;
         margin: 0 auto;
       }
+
+      #drawer-handle-bottom {
+        position: fixed;
+        bottom: 0px;
+        width: 50px;
+      }
+
+      #drawer-handle-left {
+        position: relative;
+        width: 50px;
+      }
+
+     #drawer-handle-right {
+        position: fixed;
+        width: 50px;
+      }
       
-      #drawer-handle i {
+      .drawer-handle i {
         font-size: 35px;
         opacity: .4;
       }
       
-      #drawer-handle i:hover {
+      .drawer-handle i:hover {
         -webkit-filter: invert(20%);
       }
    *
@@ -644,6 +662,7 @@ var ebot = {
   fromThe: "top"
   selector: "drawer-id",
   contents: "drawer-contents-id"
+  opacity: .6
 }
 
    *
@@ -673,12 +692,12 @@ var ebot = {
         if(!drawerVisible) {
           drawer.velocity({
             height: `${drawerHeight}px`,
-            opacity: 1
+            opacity: options.opacity
           },
           {
             complete: function(elements) { 
               drawerContents.css("display", "block")
-              drawerContents.velocity({opacity: 1})
+              drawerContents.velocity({opacity: options.opacity})
             }
           })
           drawerHandle.removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up")
@@ -711,12 +730,12 @@ var ebot = {
         if(!drawerVisible) {
           drawer.velocity({
             height: `${drawerHeight}px`,
-            opacity: 1
+            opacity: options.opacity
           },
           {
             complete: function(elements) { 
               drawerContents.css("display", "block")
-              drawerContents.velocity({opacity: 1})
+              drawerContents.velocity({opacity: options.opacity})
             }
           })
           drawerHandle.removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down")
@@ -756,12 +775,12 @@ var ebot = {
         if(!drawerVisible) {
           drawer.velocity({
             width: `${drawerWidth}px`,
-            opacity: 1
+            opacity: options.opacity
           },
           {
             complete: function(elements) { 
               drawerContents.css("display", "block")
-              drawerContents.velocity({opacity: 1})
+              drawerContents.velocity({opacity: options.opacity})
             }
           })
           drawerHandle.removeClass("glyphicon-chevron-right").addClass("glyphicon-chevron-left").velocity({
@@ -799,12 +818,12 @@ var ebot = {
         if(!drawerVisible) {
           drawer.velocity({
             width: `${drawerWidth}px`,
-            opacity: 1
+            opacity: options.opacity
           },
           {
             complete: function(elements) { 
               drawerContents.css("display", "block")
-              drawerContents.velocity({opacity: 1})
+              drawerContents.velocity({opacity: options.opacity})
             }
           })
           drawerHandle.removeClass("glyphicon-chevron-left").addClass("glyphicon-chevron-right").velocity({
@@ -875,6 +894,24 @@ var ebot = {
       return "<select id=''><option value=''>Erro</option></select>"
     }
     
+  },
+
+  retrieveEntity: function(obj, name, queryString) { //expecting a camelcased plural name for name, e.g. blueFrogLegs
+    if(typeof(queryString) === "undefined") queryString = ""
+    
+    var deferred = $.ajax({
+      type: "GET",
+      // url: env.getApiUri() + "/" + name + queryString,
+      url: abc.apiurl + "/" + name + queryString,
+      success: function(data, status, jqXHR) {
+        obj[name] = data
+      },
+      error: function(jqXHR, status) {
+        console.log("retrieveEntity() failed")
+      }
+    }).promise()
+
+    return deferred
   },
 
   chosenOptions: {

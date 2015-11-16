@@ -15,4 +15,4 @@ var powerSchema = new Schema({
   imageFilename: String
 })
 
-module.exports = mongoose.model('Power', powerSchema)
+module.exports = mongoose.model('Power', powerSchema, 'powers')

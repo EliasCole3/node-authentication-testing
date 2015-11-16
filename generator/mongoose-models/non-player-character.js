@@ -31,4 +31,4 @@ var nonPlayerCharacterSchema = new Schema({
   imageFilename: String
 })
 
-module.exports = mongoose.model('NonPlayerCharacter', nonPlayerCharacterSchema)
+module.exports = mongoose.model('NonPlayerCharacter', nonPlayerCharacterSchema, 'non_player_characters')
