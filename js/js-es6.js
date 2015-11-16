@@ -46,6 +46,18 @@ let abc = {
       selector: "#left-drawer",
       contents: "#left-drawer-contents"
     })
+
+    ebot.drawerify({
+      fromThe: "bottom",
+      selector: "#bottom-drawer",
+      contents: "#bottom-drawer-contents"
+    })
+
+    ebot.drawerify({
+      fromThe: "right",
+      selector: "#right-drawer",
+      contents: "#right-drawer-contents"
+    })
 	  
   },
 

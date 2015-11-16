@@ -695,6 +695,50 @@ var ebot = {
       })
     }
 
+    var drawerifyBottom = function drawerifyBottom() {
+      drawer
+        .before(`<div id='drawer-handle-bottom' class='drawer-handle' style='left: ${(drawerWidth/2)-25}px'><i class='glyphicon glyphicon-chevron-up'></i></div>`)
+        .css("opacity", 0)
+        .css("height", "0px")
+
+      drawerContents
+        .css("opacity", 0)
+
+      var drawerHandleContainer = $("#drawer-handle-bottom")
+      var drawerHandle = $("#drawer-handle-bottom i")
+
+      $("#drawer-handle-bottom i").click(function() {
+        if(!drawerVisible) {
+          drawer.velocity({
+            height: `${drawerHeight}px`,
+            opacity: 1
+          },
+          {
+            complete: function(elements) { 
+              drawerContents.css("display", "block")
+              drawerContents.velocity({opacity: 1})
+            }
+          })
+          drawerHandle.removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down")
+          drawerHandleContainer.velocity({
+            bottom: `${drawerHeight}px`,
+          })
+          drawerVisible = true
+        } else {
+          drawerContents.css("opacity", 0).css("display", "none")
+          drawer.velocity({
+            height: `0px`,
+            opacity: 0
+          })
+          drawerHandle.removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up")
+          drawerHandleContainer.velocity({
+            bottom: `0px`,
+          })
+          drawerVisible = false
+        }
+      })
+    }
+
     var drawerifyLeft = function drawerifyLeft() {
 
       drawer
@@ -732,6 +776,49 @@ var ebot = {
           })
           drawerHandle.removeClass("glyphicon-chevron-left").addClass("glyphicon-chevron-right").velocity({
             left: `0px`,
+          })
+          drawerVisible = false
+        }
+      })
+    }
+
+    var drawerifyRight = function drawerifyRight() {
+
+      drawer
+        .after(`<div id='drawer-handle-right' class='drawer-handle' style='top: ${(drawerHeight/2)-25}px;right: 0px'><i class='glyphicon glyphicon-chevron-left'></i></div>`)
+        .css("opacity", 0)
+        .css("width", "0px")
+
+      drawerContents
+        .css("opacity", 0)
+
+      var drawerHandleContainer = $("#drawer-handle-right")
+      var drawerHandle = $("#drawer-handle-right i")
+
+      $("#drawer-handle-right i").click(function() {
+        if(!drawerVisible) {
+          drawer.velocity({
+            width: `${drawerWidth}px`,
+            opacity: 1
+          },
+          {
+            complete: function(elements) { 
+              drawerContents.css("display", "block")
+              drawerContents.velocity({opacity: 1})
+            }
+          })
+          drawerHandle.removeClass("glyphicon-chevron-left").addClass("glyphicon-chevron-right").velocity({
+            right: `${drawerWidth}px`,
+          })
+          drawerVisible = true
+        } else {
+          drawerContents.css("opacity", 0).css("display", "none")
+          drawer.velocity({
+            width: `0px`,
+            opacity: 0
+          })
+          drawerHandle.removeClass("glyphicon-chevron-right").addClass("glyphicon-chevron-left").velocity({
+            right: `0px`,
           })
           drawerVisible = false
         }

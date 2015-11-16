@@ -22,6 +22,14 @@ html,body{height:100%;}
   background-color: blue;
 }
 
+#bottom-drawer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 100px;
+  background-color: green;
+}
+
 #left-drawer {
   position: fixed;
   top: 0px;
@@ -29,6 +37,15 @@ html,body{height:100%;}
   height: 100%;
   width: 150px;
   background-color: pink;
+}
+
+#right-drawer {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  width: 150px;
+  background-color: purple;
 }
 
 
@@ -40,10 +57,20 @@ For Drawerify
    margin: 0 auto;
  }
 
+ #drawer-handle-bottom {
+   position: fixed;
+   bottom: 0px;
+   width: 50px;
+ }
+
  #drawer-handle-left {
    position: relative;
    width: 50px;
-   /*margin: 0 auto;*/
+ }
+
+#drawer-handle-right {
+   position: fixed;
+   width: 50px;
  }
  
  .drawer-handle i {
