@@ -90,7 +90,7 @@ let abc = {
     $(`#right-drawer-contents`).html(abc.getRightDrawerHtml())
     $(".add-item-button").click(e => {
       let button = $(e.currentTarget)
-      let imageFilename = button.attr(item-image-filename)
+      let imageFilename = button.attr("item-image-filename")
       let ranTop = ebot.getRandomInt(100, 500)
       let ranLeft = ebot.getRandomInt(100, 500)
       let id = `dynamically-added-div-${abc.currentDynamicDivId}`

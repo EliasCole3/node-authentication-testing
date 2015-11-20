@@ -85,7 +85,7 @@ var abc = {
     $('#right-drawer-contents').html(abc.getRightDrawerHtml());
     $(".add-item-button").click(function (e) {
       var button = $(e.currentTarget);
-      var imageFilename = button.attr(item - image - filename);
+      var imageFilename = button.attr("item-image-filename");
       var ranTop = ebot.getRandomInt(100, 500);
       var ranLeft = ebot.getRandomInt(100, 500);
       var id = 'dynamically-added-div-' + abc.currentDynamicDivId;
