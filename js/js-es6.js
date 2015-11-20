@@ -91,8 +91,8 @@ let abc = {
     $(".add-item-button").click(e => {
       let button = $(e.currentTarget)
       let imageFilename = button.attr("item-image-filename")
-      let ranTop = ebot.getRandomInt(100, 500)
-      let ranLeft = ebot.getRandomInt(100, 500)
+      let ranTop = ebot.getRandomInt(2, 10) * 50
+      let ranLeft = ebot.getRandomInt(2, 10) * 50
       let id = `dynamically-added-div-${abc.currentDynamicDivId}`
       let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='items/${imageFilename}'></div>`
       $("#wrapper").append(htmlString)
