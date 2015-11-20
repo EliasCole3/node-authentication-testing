@@ -31,8 +31,6 @@ let abc = {
       abc.fillRightDrawer()
     })
 
-    abc.handlerTestSound()
-    
     try {
       let user = JSON.parse($("#data-for-you").html())
       console.log(user)
@@ -88,6 +86,7 @@ let abc = {
 
   fillRightDrawer: () => {
     $(`#right-drawer-contents`).html(abc.getRightDrawerHtml())
+
     $(".add-item-button").click(e => {
       let button = $(e.currentTarget)
       let imageFilename = button.attr("item-image-filename")
@@ -105,11 +104,8 @@ let abc = {
     let htmlString = ``
 
     abc.items.forEach(item => {
-      // htmlString += `<img src='items/${item.imageFilename}'>`
       htmlString += `<button class='add-item-button' item-id='${item._id}' item-image-filename='${item.imageFilename}'><img src='items/${item.imageFilename}'></button>`
     })
-    // htmlString += `<img src='loading.gif'>`
-    // htmlString += `<img src='items/${item.imageFilename}'>`
 
     return htmlString
   },
@@ -169,18 +165,6 @@ let abc = {
     $("#wrapper").append(htmlString)
     $(`#${id}`).resizable(abc.resizableOptions).draggable(abc.draggableOptions)
     abc.currentDynamicDivId++
-  },
-
-  handlerTestSound: () => {
-    $("#test").click(e => {
-      abc.playSoundDing()
-    })
-  },
-
-  playSoundDing: () => {
-    let sound = new Howl({
-      urls: ['/sounds/me-ding.wav']
-    }).play()
   },
 
   playSound: sound => {

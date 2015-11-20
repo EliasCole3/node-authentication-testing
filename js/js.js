@@ -31,8 +31,6 @@ var abc = {
       abc.fillRightDrawer();
     });
 
-    abc.handlerTestSound();
-
     try {
       var user = JSON.parse($("#data-for-you").html());
       console.log(user);
@@ -83,6 +81,7 @@ var abc = {
 
   fillRightDrawer: function fillRightDrawer() {
     $('#right-drawer-contents').html(abc.getRightDrawerHtml());
+
     $(".add-item-button").click(function (e) {
       var button = $(e.currentTarget);
       var imageFilename = button.attr("item-image-filename");
@@ -100,11 +99,8 @@ var abc = {
     var htmlString = '';
 
     abc.items.forEach(function (item) {
-      // htmlString += `<img src='items/${item.imageFilename}'>`
       htmlString += '<button class=\'add-item-button\' item-id=\'' + item._id + '\' item-image-filename=\'' + item.imageFilename + '\'><img src=\'items/' + item.imageFilename + '\'></button>';
     });
-    // htmlString += `<img src='loading.gif'>`
-    // htmlString += `<img src='items/${item.imageFilename}'>`
 
     return htmlString;
   },
@@ -162,18 +158,6 @@ var abc = {
     $("#wrapper").append(htmlString);
     $('#' + id).resizable(abc.resizableOptions).draggable(abc.draggableOptions);
     abc.currentDynamicDivId++;
-  },
-
-  handlerTestSound: function handlerTestSound() {
-    $("#test").click(function (e) {
-      abc.playSoundDing();
-    });
-  },
-
-  playSoundDing: function playSoundDing() {
-    var sound = new Howl({
-      urls: ['/sounds/me-ding.wav']
-    }).play();
   },
 
   playSound: function playSound(sound) {
