@@ -10,16 +10,6 @@
 
   
   <tr>
-    <td><button id='test-non-player-characters' class='btn btn-md'>Test Non Player Characters</button></td>
-    <td><button id='test-create-non-player-character' class='btn btn-md'>Test Create Non Player Character</button></td>
-    <td><button id='test-get-non-player-character' class='btn btn-md'>Test Get Non Player Character</button></td>
-    <td><button id='test-put-non-player-character' class='btn btn-md'>Test Put Non Player Character</button></td>
-    <td><button id='test-delete-non-player-character' class='btn btn-md'>Test Delete Non Player Character</button></td>
-    <td><div id='non-player-character-id'></div></td>
-  </tr>
-
-  
-  <tr>
     <td><button id='test-items' class='btn btn-md'>Test Items</button></td>
     <td><button id='test-create-item' class='btn btn-md'>Test Create Item</button></td>
     <td><button id='test-get-item' class='btn btn-md'>Test Get Item</button></td>
@@ -40,6 +30,26 @@
 
   
   <tr>
+    <td><button id='test-logs' class='btn btn-md'>Test Logs</button></td>
+    <td><button id='test-create-log' class='btn btn-md'>Test Create Log</button></td>
+    <td><button id='test-get-log' class='btn btn-md'>Test Get Log</button></td>
+    <td><button id='test-put-log' class='btn btn-md'>Test Put Log</button></td>
+    <td><button id='test-delete-log' class='btn btn-md'>Test Delete Log</button></td>
+    <td><div id='log-id'></div></td>
+  </tr>
+
+  
+  <tr>
+    <td><button id='test-non-player-characters' class='btn btn-md'>Test Non Player Characters</button></td>
+    <td><button id='test-create-non-player-character' class='btn btn-md'>Test Create Non Player Character</button></td>
+    <td><button id='test-get-non-player-character' class='btn btn-md'>Test Get Non Player Character</button></td>
+    <td><button id='test-put-non-player-character' class='btn btn-md'>Test Put Non Player Character</button></td>
+    <td><button id='test-delete-non-player-character' class='btn btn-md'>Test Delete Non Player Character</button></td>
+    <td><div id='non-player-character-id'></div></td>
+  </tr>
+
+  
+  <tr>
     <td><button id='test-powers' class='btn btn-md'>Test Powers</button></td>
     <td><button id='test-create-power' class='btn btn-md'>Test Create Power</button></td>
     <td><button id='test-get-power' class='btn btn-md'>Test Get Power</button></td>
@@ -56,16 +66,6 @@
     <td><button id='test-put-log-entry' class='btn btn-md'>Test Put Log Entry</button></td>
     <td><button id='test-delete-log-entry' class='btn btn-md'>Test Delete Log Entry</button></td>
     <td><div id='log-entry-id'></div></td>
-  </tr>
-
-  
-  <tr>
-    <td><button id='test-logs' class='btn btn-md'>Test Logs</button></td>
-    <td><button id='test-create-log' class='btn btn-md'>Test Create Log</button></td>
-    <td><button id='test-get-log' class='btn btn-md'>Test Get Log</button></td>
-    <td><button id='test-put-log' class='btn btn-md'>Test Put Log</button></td>
-    <td><button id='test-delete-log' class='btn btn-md'>Test Delete Log</button></td>
-    <td><div id='log-id'></div></td>
   </tr>
 
   
