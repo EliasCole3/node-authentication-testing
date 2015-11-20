@@ -218,7 +218,8 @@ var abc = {
     return string;
   },
 
-  apiurl: "http://localhost:8082",
+  // apiurl: "http://localhost:8082",
+  apiurl: "http://192.241.203.33:8082",
 
   items: []
 
