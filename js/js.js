@@ -83,6 +83,17 @@ var abc = {
 
   fillRightDrawer: function fillRightDrawer() {
     $('#right-drawer-contents').html(abc.getRightDrawerHtml());
+    $(".add-item-button").click(function (e) {
+      var button = $(e.currentTarget);
+      var imageFilename = button.attr(item - image - filename);
+      var ranTop = ebot.getRandomInt(100, 500);
+      var ranLeft = ebot.getRandomInt(100, 500);
+      var id = 'dynamically-added-div-' + abc.currentDynamicDivId;
+      var htmlString = '<div id=\'' + id + '\' style=\'position:absolute; top:' + ranTop + 'px; left:' + ranLeft + 'px; width: 50px; height: 50px;\'><img src=\'items/' + imageFilename + '\'></div>';
+      $("#wrapper").append(htmlString);
+      $('#' + id).draggable(abc.draggableOptionsToken);
+      abc.currentDynamicDivId++;
+    });
   },
 
   getRightDrawerHtml: function getRightDrawerHtml() {
@@ -90,7 +101,7 @@ var abc = {
 
     abc.items.forEach(function (item) {
       // htmlString += `<img src='items/${item.imageFilename}'>`
-      htmlString += '<button id=\'\' class=\'btn btn-sm\'><img src=\'items/' + item.imageFilename + '\'></button>';
+      htmlString += '<button class=\'add-item-button\' item-id=\'' + item._id + '\' item-image-filename=\'' + item.imageFilename + '\'><img src=\'items/' + item.imageFilename + '\'></button>';
     });
     // htmlString += `<img src='loading.gif'>`
     // htmlString += `<img src='items/${item.imageFilename}'>`
@@ -181,6 +192,19 @@ var abc = {
 
       abc.socket.emit('element dragged', emitObj);
     }
+  },
+
+  draggableOptionsToken: {
+    drag: function drag(event, ui) {
+      var emitObj = {
+        id: ui.helper[0].id,
+        x: $(ui.helper[0]).css("left"),
+        y: $(ui.helper[0]).css("top")
+      };
+
+      abc.socket.emit('element dragged', emitObj);
+    },
+    grid: [50, 50]
   },
 
   resizableOptions: {
