@@ -220,7 +220,8 @@ let abc = {
 
   currentDynamicDivId: 1,
 
-  apiurl: "http://localhost:8082",
+  // apiurl: "http://localhost:8082",
+  apiurl: "http://192.241.203:8082",
 
   items: []
 
