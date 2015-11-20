@@ -89,7 +89,8 @@ var abc = {
     var htmlString = '';
 
     abc.items.forEach(function (item) {
-      htmlString += '<img src=\'items/' + item.imageFilename + '\'>';
+      // htmlString += `<img src='items/${item.imageFilename}'>`
+      htmlString += '<button id=\'\' class=\'btn btn-sm\'><img src=\'items/' + item.imageFilename + '\'></button>';
     });
     // htmlString += `<img src='loading.gif'>`
     // htmlString += `<img src='items/${item.imageFilename}'>`
