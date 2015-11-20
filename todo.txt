@@ -20,5 +20,3 @@ panel for different div options, e.g. list, pic, grid, table, etc.
  - the image should expand when resized
  - the panel should be a drawer
  
- a
- sdf
