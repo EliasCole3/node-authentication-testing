@@ -25,16 +25,30 @@ let abc = {
     abc.socket = io()
     abc.assignInitialHandlers()
 
-    $.when.apply($, abc.retrieveInitialModels()).done(() => {
-      // abc.fillAttendanceAreas()
-      // alert('all loaded!')
-      abc.fillRightDrawer()
-    })
+    
 
     try {
       let user = JSON.parse($("#data-for-you").html())
       console.log(user)
-      alert(`hello ${user.local.username}`)
+      console.log(`hello ${user.local.username}`)
+      let DMs = ["a"]
+      let players = ["b", "c"]
+
+      if(DMs.indexOf(user.local.username) > -1) {
+        abc.userIsDM = true
+      }
+
+      if(players.indexOf(user.local.username) > -1) {
+        abc.userIsPlayer = true
+      }
+
+      if(!abc.userIsDM && !abc.userIsPlayer) {
+        alert("why are you here? 0.o")
+      }
+
+      $.when.apply($, abc.retrieveInitialModels()).done(() => {
+        abc.fillRightDrawer()
+      })
     } catch(e) {
       console.log(`error parsing authentication data: ${e}`)
     }
@@ -85,19 +99,14 @@ let abc = {
   },
 
   fillRightDrawer: () => {
-    $(`#right-drawer-contents`).html(abc.getRightDrawerHtml())
-
-    $(".add-item-button").click(e => {
-      let button = $(e.currentTarget)
-      let imageFilename = button.attr("item-image-filename")
-      let ranTop = ebot.getRandomInt(2, 10) * 50
-      let ranLeft = ebot.getRandomInt(2, 10) * 50
-      let id = `dynamically-added-div-${abc.currentDynamicDivId}`
-      let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='items/${imageFilename}'></div>`
-      $("#wrapper").append(htmlString)
-      $(`#${id}`).draggable(abc.draggableOptionsToken)
-      abc.currentDynamicDivId++
-    })
+    if(abc.userIsDM) {
+      $(`#right-drawer-contents`).html(abc.getRightDrawerHtml())
+      abc.handlerRightDrawerContents()
+    } else {
+      $(`#right-drawer-contents`).html("Players don't get to add items lolololol")
+    }
+    
+    
   },
 
   getRightDrawerHtml: () => {
@@ -111,7 +120,17 @@ let abc = {
   },
 
   handlerRightDrawerContents: () => {
-
+    $(".add-item-button").click(e => {
+      let button = $(e.currentTarget)
+      let imageFilename = button.attr("item-image-filename")
+      let ranTop = ebot.getRandomInt(2, 10) * 50
+      let ranLeft = ebot.getRandomInt(2, 10) * 5
+      let id = `dynamically-added-div-${abc.currentDynamicDivId}`
+      let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='items/${imageFilename}'></div>`
+      $("#wrapper").append(htmlString)
+      $(`#${id}`).draggable(abc.draggableOptionsToken)
+      abc.currentDynamicDivId++
+    })
   },
 
   makeDrawers: () => {
@@ -231,6 +250,10 @@ let abc = {
 
   // apiurl: "http://localhost:8082",
   apiurl: "http://192.241.203.33:8082",
+
+  userIsPlayer: false,
+
+  userIsDM: false,
 
   items: []
 

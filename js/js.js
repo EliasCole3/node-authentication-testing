@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 $(function () {
   abc.initialize();
@@ -25,18 +25,30 @@ var abc = {
     abc.socket = io();
     abc.assignInitialHandlers();
 
-    $.when.apply($, abc.retrieveInitialModels()).done(function () {
-      // abc.fillAttendanceAreas()
-      // alert('all loaded!')
-      abc.fillRightDrawer();
-    });
-
     try {
       var user = JSON.parse($("#data-for-you").html());
       console.log(user);
-      alert('hello ' + user.local.username);
+      console.log("hello " + user.local.username);
+      var DMs = ["a"];
+      var players = ["b", "c"];
+
+      if (DMs.indexOf(user.local.username) > -1) {
+        abc.userIsDM = true;
+      }
+
+      if (players.indexOf(user.local.username) > -1) {
+        abc.userIsPlayer = true;
+      }
+
+      if (!abc.userIsDM && !abc.userIsPlayer) {
+        alert("why are you here? 0.o");
+      }
+
+      $.when.apply($, abc.retrieveInitialModels()).done(function () {
+        abc.fillRightDrawer();
+      });
     } catch (e) {
-      console.log('error parsing authentication data: ' + e);
+      console.log("error parsing authentication data: " + e);
     }
   },
 
@@ -59,7 +71,7 @@ var abc = {
     });
 
     abc.socket.on('element resized', function (emitObj) {
-      $('#' + emitObj.id).css("width", emitObj.width).css("height", emitObj.height);
+      $("#" + emitObj.id).css("width", emitObj.width).css("height", emitObj.height);
     });
 
     abc.socket.on('user connected', function () {
@@ -80,32 +92,37 @@ var abc = {
   },
 
   fillRightDrawer: function fillRightDrawer() {
-    $('#right-drawer-contents').html(abc.getRightDrawerHtml());
-
-    $(".add-item-button").click(function (e) {
-      var button = $(e.currentTarget);
-      var imageFilename = button.attr("item-image-filename");
-      var ranTop = ebot.getRandomInt(2, 10) * 50;
-      var ranLeft = ebot.getRandomInt(2, 10) * 50;
-      var id = 'dynamically-added-div-' + abc.currentDynamicDivId;
-      var htmlString = '<div id=\'' + id + '\' style=\'position:absolute; top:' + ranTop + 'px; left:' + ranLeft + 'px; width: 50px; height: 50px;\'><img src=\'items/' + imageFilename + '\'></div>';
-      $("#wrapper").append(htmlString);
-      $('#' + id).draggable(abc.draggableOptionsToken);
-      abc.currentDynamicDivId++;
-    });
+    if (abc.userIsDM) {
+      $("#right-drawer-contents").html(abc.getRightDrawerHtml());
+      abc.handlerRightDrawerContents();
+    } else {
+      $("#right-drawer-contents").html("Players don't get to add items lolololol");
+    }
   },
 
   getRightDrawerHtml: function getRightDrawerHtml() {
-    var htmlString = '';
+    var htmlString = "";
 
     abc.items.forEach(function (item) {
-      htmlString += '<button class=\'add-item-button\' item-id=\'' + item._id + '\' item-image-filename=\'' + item.imageFilename + '\'><img src=\'items/' + item.imageFilename + '\'></button>';
+      htmlString += "<button class='add-item-button' item-id='" + item._id + "' item-image-filename='" + item.imageFilename + "'><img src='items/" + item.imageFilename + "'></button>";
     });
 
     return htmlString;
   },
 
-  handlerRightDrawerContents: function handlerRightDrawerContents() {},
+  handlerRightDrawerContents: function handlerRightDrawerContents() {
+    $(".add-item-button").click(function (e) {
+      var button = $(e.currentTarget);
+      var imageFilename = button.attr("item-image-filename");
+      var ranTop = ebot.getRandomInt(2, 10) * 50;
+      var ranLeft = ebot.getRandomInt(2, 10) * 5;
+      var id = "dynamically-added-div-" + abc.currentDynamicDivId;
+      var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='items/" + imageFilename + "'></div>";
+      $("#wrapper").append(htmlString);
+      $("#" + id).draggable(abc.draggableOptionsToken);
+      abc.currentDynamicDivId++;
+    });
+  },
 
   makeDrawers: function makeDrawers() {
     var opacity = 0.9;
@@ -152,17 +169,17 @@ var abc = {
   createNewWireframeDiv: function createNewWireframeDiv() {
     var ranTop = ebot.getRandomInt(100, 500);
     var ranLeft = ebot.getRandomInt(100, 500);
-    var randomColor = 'rgba(' + ebot.getRandomInt(0, 255) + ', ' + ebot.getRandomInt(0, 255) + ', ' + ebot.getRandomInt(0, 255) + ', 0.8)';
-    var id = 'dynamically-added-div-' + abc.currentDynamicDivId;
-    var htmlString = '<div id=\'' + id + '\' style=\'position:absolute; top:' + ranTop + 'px; left:' + ranLeft + 'px; background-color: ' + randomColor + '; width: 100px; height: 100px;\'></div>';
+    var randomColor = "rgba(" + ebot.getRandomInt(0, 255) + ", " + ebot.getRandomInt(0, 255) + ", " + ebot.getRandomInt(0, 255) + ", 0.8)";
+    var id = "dynamically-added-div-" + abc.currentDynamicDivId;
+    var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; background-color: " + randomColor + "; width: 100px; height: 100px;'></div>";
     $("#wrapper").append(htmlString);
-    $('#' + id).resizable(abc.resizableOptions).draggable(abc.draggableOptions);
+    $("#" + id).resizable(abc.resizableOptions).draggable(abc.draggableOptions);
     abc.currentDynamicDivId++;
   },
 
   playSound: function playSound(sound) {
     var soundUnique = new Howl({
-      urls: ['/sounds/' + sound + '.wav']
+      urls: ["/sounds/" + sound + ".wav"]
     }).play();
   },
 
@@ -206,7 +223,7 @@ var abc = {
   getItems: function getItems() {
     var deferred = $.ajax({
       type: "GET",
-      url: abc.apiurl + '/items',
+      url: abc.apiurl + "/items",
       success: function success(data, status, jqXHR) {},
       error: function error(jqXHR, status) {
         console.log("getItems() Error");
@@ -226,6 +243,10 @@ var abc = {
 
   // apiurl: "http://localhost:8082",
   apiurl: "http://192.241.203.33:8082",
+
+  userIsPlayer: false,
+
+  userIsDM: false,
 
   items: []
 
