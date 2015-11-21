@@ -113,10 +113,10 @@ var abc = {
   getTopDrawerHtml: function getTopDrawerHtml() {
     var htmlString = "<table id='player-stats-table' class=\"table-condensed\">";
 
-    htmlString += "<tr>\n      <th>Player Name</th>\n      <th>Character Name</th>\n      <th>HP</th>\n      <th>AC</th>\n      <th>Will</th>\n      <th>Reflex</th>\n      <th>To hit AC</th>\n      <th>To hit Will</th>\n      <th>To hit Reflex</th>\n      <th>Damage Modifier</th>\n      <th>Speed</th>\n      <th>Initiative</th>\n      <th>Action Points</th>\n      <th>Gold</th>\n      <th>XP</th>\n    </tr>";
+    htmlString += "<tr>\n      <th>Player Name</th>\n      <th>Character Name</th>\n      <th>Current HP</th>\n      <th>Max HP</th>\n      <th>AC</th>\n      <th>Will</th>\n      <th>Reflex</th>\n      <th>To hit AC</th>\n      <th>To hit Will</th>\n      <th>To hit Reflex</th>\n      <th>Damage Modifier</th>\n      <th>Speed</th>\n      <th>Initiative</th>\n      <th>Action Points</th>\n      <th>Gold</th>\n      <th>XP</th>\n    </tr>";
 
     abc.playerCharacters.forEach(function (player) {
-      htmlString += "<tr>\n      <td>" + player.playerName + "</td>\n      <td>" + player.characterName + "</td>\n      <td>" + player.hp + "</td>\n      <td>" + player.ac + "</td>\n      <td>" + player.will + "</td>\n      <td>" + player.reflex + "</td>\n      <td>" + player.baseToHitAc + "</td>\n      <td>" + player.baseToHitWill + "</td>\n      <td>" + player.baseToHitReflex + "</td>\n      <td>" + player.damageModifier + "</td>\n      <td>" + player.speed + "</td>\n      <td>" + player.initiative + "</td>\n      <td>" + player.actionPoints + "</td>\n      <td>" + player.gold + "</td>\n      <td>" + player.xp + "</td>\n\n    </tr>";
+      htmlString += "<tr>\n      <td>" + player.playerName + "</td>\n      <td>" + player.characterName + "</td>\n      <td><input id='current-hp-input-" + player.playerCharacterId + "' class='current-hp-input' type='number' value='" + player.hp + "'></td>\n      <td>" + player.hp + "</td>\n      <td>" + player.ac + "</td>\n      <td>" + player.will + "</td>\n      <td>" + player.reflex + "</td>\n      <td>" + player.baseToHitAc + "</td>\n      <td>" + player.baseToHitWill + "</td>\n      <td>" + player.baseToHitReflex + "</td>\n      <td>" + player.damageModifier + "</td>\n      <td>" + player.speed + "</td>\n      <td>" + player.initiative + "</td>\n      <td>" + player.actionPoints + "</td>\n      <td>" + player.gold + "</td>\n      <td>" + player.xp + "</td>\n\n    </tr>";
     });
 
     htmlString += "</table>";
@@ -124,7 +124,11 @@ var abc = {
     return htmlString;
   },
 
-  handlerTopDrawerContents: function handlerTopDrawerContents() {},
+  handlerTopDrawerContents: function handlerTopDrawerContents() {
+    $(".current-hp-input").on("change", function (e) {
+      console.log(e);
+    });
+  },
 
   fillBottomDrawer: function fillBottomDrawer() {
     if (abc.userIsPlayer) {

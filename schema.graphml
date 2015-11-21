@@ -138,7 +138,7 @@ logId</y:AttributeLabel>
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="99.25999999999993" width="223.67458248472505" x="-222.68499999999926" y="610.98"/>
+          <y:Geometry height="114.45999999999998" width="223.67458248472505" x="-222.68499999999926" y="603.38"/>
           <y:Fill color="#3366FF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="186.1015625" x="18.786509992362525" y="3.0">Join_PlayerCharacters_Items<y:LabelModel>
@@ -151,7 +151,8 @@ logId</y:AttributeLabel>
           <y:UML clipContent="true" constraint="" omitDetails="false" stereotype="" use3DEffect="true">
             <y:AttributeLabel>joinPlayerCharactersItemsId
 itemId
-playerCharacterId</y:AttributeLabel>
+playerCharacterId
+count</y:AttributeLabel>
             <y:MethodLabel/>
           </y:UML>
         </y:UMLClassNode>

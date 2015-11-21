@@ -122,7 +122,8 @@ let abc = {
     htmlString += `<tr>
       <th>Player Name</th>
       <th>Character Name</th>
-      <th>HP</th>
+      <th>Current HP</th>
+      <th>Max HP</th>
       <th>AC</th>
       <th>Will</th>
       <th>Reflex</th>
@@ -141,6 +142,7 @@ let abc = {
       htmlString += `<tr>
       <td>${player.playerName}</td>
       <td>${player.characterName}</td>
+      <td><input id='current-hp-input-${player.playerCharacterId}' class='current-hp-input' type='number' value='${player.hp}'></td>
       <td>${player.hp}</td>
       <td>${player.ac}</td>
       <td>${player.will}</td>
@@ -164,7 +166,9 @@ let abc = {
   },
 
   handlerTopDrawerContents: () => {
-    
+    $(".current-hp-input").on("change", e => {
+      console.log(e)
+    })
   },
 
 
