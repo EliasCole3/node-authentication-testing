@@ -27,7 +27,8 @@ let models = [
   "item",
   "log",
   "log_entry",
-  "power"
+  "power",
+  "join_player_character_item"
 ]
 
 // let models = [

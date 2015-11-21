@@ -22,7 +22,7 @@ var fs = require('fs');
 var flect = require('inflection');
 var filepath = "";
 
-var models = ["creature", "non_player_character", "player_character", "item", "log", "log_entry", "power"];
+var models = ["creature", "non_player_character", "player_character", "item", "log", "log_entry", "power", "join_player_character_item"];
 
 // let models = [
 //   "item"

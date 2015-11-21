@@ -219,7 +219,7 @@ let abc = {
     `
 
     if(abc.userIsDM) {
-      htmlString += `<br>
+      htmlString += `<br><br>
       <select id='background-select' data-placeholder='Choose a background...'>
         <option value=''></option>
         <option value='blank'>Blank</option>

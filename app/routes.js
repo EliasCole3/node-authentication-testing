@@ -349,6 +349,20 @@ module.exports = function(app, passport) {
     })
 
 
+    app.get('/crud-join-player-character-items', function(req, res) {
+      res.render('CRUD/join-player-character-items.ejs', {
+          user : req.user
+      })
+    })
+
+    app.get('/css/crud-join-player-character-items.css', function(req, res) {
+      res.sendFile(path.resolve(__dirname + './../css/crud-join-player-character-items.css'))
+    })
+
+    app.get('/js/crud-join-player-character-items.js', function(req, res) {
+      res.sendFile(path.resolve(__dirname + './../js/crud-join-player-character-items.js'))
+    })
+
 
 };
 
