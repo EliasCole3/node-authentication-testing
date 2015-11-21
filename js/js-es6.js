@@ -405,7 +405,7 @@ let abc = {
         Flavor: ${power.flavorText} <br>
         Upgrade Effects: ${power.upgrade} <br>
 
-      </div>`
+      </div><br><br>`
     })
 
     return htmlString
