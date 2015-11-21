@@ -214,12 +214,12 @@ let abc = {
 
   getLeftDrawerHtml: () => {
     let htmlString = `
-    <button id='toggle-lines' class='btn btn-md'>Toggle Lines</button> <br>
-    <button id='show-all-powers' class='btn btn-md'>Show All Powers</button>
+    <button id='toggle-lines' class='btn btn-md btn-info'>Toggle Lines</button> <br><br>
+    <button id='show-all-powers' class='btn btn-md btn-info'>Show All Powers</button>
     `
 
     if(abc.userIsDM) {
-      htmlString += `
+      htmlString += `<br>
       <select id='background-select' data-placeholder='Choose a background...'>
         <option value=''></option>
         <option value='blank'>Blank</option>

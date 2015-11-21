@@ -164,10 +164,10 @@ var abc = {
   },
 
   getLeftDrawerHtml: function getLeftDrawerHtml() {
-    var htmlString = "\n    <button id='toggle-lines' class='btn btn-md'>Toggle Lines</button> <br>\n    <button id='show-all-powers' class='btn btn-md'>Show All Powers</button>\n    ";
+    var htmlString = "\n    <button id='toggle-lines' class='btn btn-md btn-info'>Toggle Lines</button> <br><br>\n    <button id='show-all-powers' class='btn btn-md btn-info'>Show All Powers</button>\n    ";
 
     if (abc.userIsDM) {
-      htmlString += "\n      <select id='background-select' data-placeholder='Choose a background...'>\n        <option value=''></option>\n        <option value='blank'>Blank</option>\n        <option value='river.jpg'>River</option>\n        <option value='twooth-library.png'>Twooth Library</option>\n        <option value='slime-cave.png'>Slim Cave</option>\n      </select>\n      ";
+      htmlString += "<br>\n      <select id='background-select' data-placeholder='Choose a background...'>\n        <option value=''></option>\n        <option value='blank'>Blank</option>\n        <option value='river.jpg'>River</option>\n        <option value='twooth-library.png'>Twooth Library</option>\n        <option value='slime-cave.png'>Slim Cave</option>\n      </select>\n      ";
     }
 
     return htmlString;
