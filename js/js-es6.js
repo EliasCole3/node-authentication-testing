@@ -30,8 +30,10 @@ let abc = {
       let user = JSON.parse($("#data-for-you").html())
       console.log(user)
 
-      let DMs = ["a"]
-      let players = ["a", "b", "c"]
+      abc.setCurrentPlayerCharacterId(user)
+
+      let DMs = ["a", "bliss"]
+      let players = ["a", "b", "c", "laurana", "andros", "skjor", "placeholder", "ares"]
 
       if(DMs.indexOf(user.local.username) > -1) {
         abc.userIsDM = true
@@ -42,7 +44,7 @@ let abc = {
       }
 
       if(!abc.userIsDM && !abc.userIsPlayer) {
-        alert("why are you here? 0.o")
+        alert("whoooo aaaarrrre yoooouuuu? 0.o")
       }
 
       $.when.apply($, abc.retrieveInitialModels()).done(() => {
@@ -56,6 +58,31 @@ let abc = {
     }
 
 	  
+  },
+
+  setCurrentPlayerCharacterId: user => {
+
+    switch(user.local.username) {
+      case "laurana":
+        abc.currentPlayerCharacterId = 1
+        break
+      case "andros":
+        abc.currentPlayerCharacterId = 2
+        break
+      case "skjor":
+        abc.currentPlayerCharacterId = 3
+        break
+      case "placeholder":
+        abc.currentPlayerCharacterId = 4
+        break
+      case "ares":
+        abc.currentPlayerCharacterId = 5
+        break
+      default:
+        console.log(`setCurrentPlayerCharacterId() fell out of switch statement. Fix me plox. Current user:`)
+        console.log(user)
+    }
+
   },
 
   assignInitialHandlers: () => {
@@ -448,6 +475,8 @@ let abc = {
   userIsPlayer: false,
 
   userIsDM: false,
+
+  currentPlayerCharacterId: 0,
 
   items: [],
 
