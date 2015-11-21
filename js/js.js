@@ -250,6 +250,7 @@ var abc = {
     console.log(abc.joinPlayerCharacterItems);
 
     var relevantItemJoins = abc.joinPlayerCharacterItems.filter(function (join) {
+      console.log("struibn");
       console.log(join.playerCharacterId);
       console.log(abc.currentPlayerCharacterId);
       return +join.playerCharacterId === +abc.currentPlayerCharacterId;
