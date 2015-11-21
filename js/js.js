@@ -30,7 +30,7 @@ var abc = {
       console.log(user);
 
       var DMs = ["a"];
-      var players = ["b", "c"];
+      var players = ["a", "b", "c"];
 
       if (DMs.indexOf(user.local.username) > -1) {
         abc.userIsDM = true;
@@ -46,6 +46,7 @@ var abc = {
 
       $.when.apply($, abc.retrieveInitialModels()).done(function () {
         abc.fillRightDrawer();
+        abc.fillLeftDrawer();
       });
     } catch (e) {
       console.log("error parsing authentication data: " + e);
@@ -87,6 +88,28 @@ var abc = {
     deferreds.push(ebot.retrieveEntity(abc, "items"));
 
     return deferreds;
+  },
+
+  fillLeftDrawer: function fillLeftDrawer() {
+    if (abc.userIsPlayer) {
+      $("#left-drawer-contents").html(abc.getLeftDrawerHtml());
+      abc.handlerLeftDrawerContents();
+    } else {
+      $("#left-drawer-contents").html("Unauthorized user detected!");
+    }
+  },
+
+  getLeftDrawerHtml: function getLeftDrawerHtml() {
+    var htmlString = "\n    <button id='toggle-lines' class='btn btn-md'>Toggle Lines</button>\n    ";
+
+    return htmlString;
+  },
+
+  handlerLeftDrawerContents: function handlerLeftDrawerContents() {
+    $("#toggle-lines").click(function (e) {
+      var element = $(e.currentTarget);
+      $("#lines").velocity({ opacity: "0" });
+    });
   },
 
   fillRightDrawer: function fillRightDrawer() {

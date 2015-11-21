@@ -30,7 +30,7 @@ let abc = {
       console.log(user)
 
       let DMs = ["a"]
-      let players = ["b", "c"]
+      let players = ["a", "b", "c"]
 
       if(DMs.indexOf(user.local.username) > -1) {
         abc.userIsDM = true
@@ -46,6 +46,7 @@ let abc = {
 
       $.when.apply($, abc.retrieveInitialModels()).done(() => {
         abc.fillRightDrawer()
+        abc.fillLeftDrawer()
       })
     } catch(e) {
       console.log(`error parsing authentication data: ${e}`)
@@ -93,6 +94,29 @@ let abc = {
     return deferreds
   },
 
+  fillLeftDrawer: () => {
+    if(abc.userIsPlayer) {
+      $(`#left-drawer-contents`).html(abc.getLeftDrawerHtml())
+      abc.handlerLeftDrawerContents()
+    } else {
+      $(`#left-drawer-contents`).html("Unauthorized user detected!")
+    }
+  },
+
+  getLeftDrawerHtml: () => {
+    let htmlString = `
+    <button id='toggle-lines' class='btn btn-md'>Toggle Lines</button>
+    `
+
+    return htmlString
+  },
+
+  handlerLeftDrawerContents: () => {
+    $("#toggle-lines").click(e => {
+      $("#lines").velocity({opacity: "0"})
+    })
+  },
+
   fillRightDrawer: () => {
     if(abc.userIsDM) {
       $(`#right-drawer-contents`).html(abc.getRightDrawerHtml())
@@ -100,8 +124,6 @@ let abc = {
     } else {
       $(`#right-drawer-contents`).html("Players don't get to add items lolololol")
     }
-    
-    
   },
 
   getRightDrawerHtml: () => {
