@@ -1,4 +1,5 @@
 $(() => {
+  ebot.insertModalHtml("modal-lg")
   abc.initialize()
   // ebot.updateDocumentation(abc)
 })
@@ -90,9 +91,61 @@ let abc = {
     let deferreds = []
 
     deferreds.push(ebot.retrieveEntity(abc, "items"))
+    deferreds.push(ebot.retrieveEntity(abc, "powers"))
+    deferreds.push(ebot.retrieveEntity(abc, "creatures"))
+    deferreds.push(ebot.retrieveEntity(abc, "playerCharacters"))
+    deferreds.push(ebot.retrieveEntity(abc, "nonPlayerCharacters"))
 
     return deferreds
   },
+
+
+
+  fillTopDrawer: () => {
+    if(abc.userIsPlayer) {
+      $(`#top-drawer-contents`).html(abc.getTopDrawerHtml())
+      abc.handlerTopDrawerContents()
+    } else {
+      $(`#top-drawer-contents`).html("Unauthorized user detected!")
+    }
+  },
+
+  getTopDrawerHtml: () => {
+    let htmlString = `
+    
+    `
+
+    return htmlString
+  },
+
+  handlerTopDrawerContents: () => {
+    
+  },
+
+
+
+  fillBottomDrawer: () => {
+    if(abc.userIsPlayer) {
+      $(`#bottom-drawer-contents`).html(abc.getBottomDrawerHtml())
+      abc.handlerBottomDrawerContents()
+    } else {
+      $(`#bottom-drawer-contents`).html("Unauthorized user detected!")
+    }
+  },
+
+  getBottomDrawerHtml: () => {
+    let htmlString = `
+    
+    `
+
+    return htmlString
+  },
+
+  handlerBottomDrawerContents: () => {
+    
+  },
+
+
 
   fillLeftDrawer: () => {
     if(abc.userIsPlayer) {
@@ -106,6 +159,7 @@ let abc = {
   getLeftDrawerHtml: () => {
     let htmlString = `
     <button id='toggle-lines' class='btn btn-md'>Toggle Lines</button>
+    <button id='show-all-powers' class='btn btn-md'>Toggle Lines</button>
     `
 
     return htmlString
@@ -113,22 +167,26 @@ let abc = {
 
   handlerLeftDrawerContents: () => {
     $("#toggle-lines").click(e => {
-      console.log($("#lines").css("opacity"))
       if($("#lines").css("opacity") === "0.3") {
         $("#lines").velocity({opacity: "0"})
       } else {
         $("#lines").velocity({opacity: "0.3"})
       }
-      
+    })
+
+    $("#show-all-powers").click(e => {
+      ebot.showModal("All Powers", abc.viewAllPowers())
     })
   },
+
+
 
   fillRightDrawer: () => {
     if(abc.userIsDM) {
       $(`#right-drawer-contents`).html(abc.getRightDrawerHtml())
       abc.handlerRightDrawerContents()
     } else {
-      $(`#right-drawer-contents`).html("Players don't get to add items lolololol")
+      $(`#right-drawer-contents`).html("")
     }
   },
 
@@ -159,6 +217,39 @@ let abc = {
       abc.socket.emit('token added', emitObj)
     })
   },
+
+
+
+
+
+  viewAllPowers: () => {
+    let htmlString = ``
+
+    abc.powers.forEach(power => {
+      htmlString += `
+      <div class='power-view'>
+
+        <h4>${power.name}</h4>
+        Type: ${power.type} <br>
+        Attack Type: ${power.attackType} <br>
+        Damage: ${power.damage} <br>
+        Effect: ${power.effect} <br>
+        Description: ${power.description} <br>
+        Flavor: ${power.flavorText} <br>
+        Upgrade Effects: ${power.upgrade} <br>
+
+      </div>`
+    })
+
+    return htmlString
+  },
+
+
+
+
+
+
+
 
   addTokenItem: (imageFilename, ranTop, ranLeft) => {
     let id = `dynamically-added-div-${abc.currentDynamicDivId}`
@@ -268,7 +359,15 @@ let abc = {
 
   userIsDM: false,
 
-  items: []
+  items: [],
+
+  powers: [],
+
+  creatures: [],
+
+  playerCharacters: [],
+
+  nonPlayerCharacters: []
 
 }
 

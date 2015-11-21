@@ -1,6 +1,7 @@
 "use strict";
 
 $(function () {
+  ebot.insertModalHtml("modal-lg");
   abc.initialize();
   // ebot.updateDocumentation(abc)
 });
@@ -86,9 +87,47 @@ var abc = {
     var deferreds = [];
 
     deferreds.push(ebot.retrieveEntity(abc, "items"));
+    deferreds.push(ebot.retrieveEntity(abc, "powers"));
+    deferreds.push(ebot.retrieveEntity(abc, "creatures"));
+    deferreds.push(ebot.retrieveEntity(abc, "playerCharacters"));
+    deferreds.push(ebot.retrieveEntity(abc, "nonPlayerCharacters"));
 
     return deferreds;
   },
+
+  fillTopDrawer: function fillTopDrawer() {
+    if (abc.userIsPlayer) {
+      $("#top-drawer-contents").html(abc.getTopDrawerHtml());
+      abc.handlerTopDrawerContents();
+    } else {
+      $("#top-drawer-contents").html("Unauthorized user detected!");
+    }
+  },
+
+  getTopDrawerHtml: function getTopDrawerHtml() {
+    var htmlString = "\n    \n    ";
+
+    return htmlString;
+  },
+
+  handlerTopDrawerContents: function handlerTopDrawerContents() {},
+
+  fillBottomDrawer: function fillBottomDrawer() {
+    if (abc.userIsPlayer) {
+      $("#bottom-drawer-contents").html(abc.getBottomDrawerHtml());
+      abc.handlerBottomDrawerContents();
+    } else {
+      $("#bottom-drawer-contents").html("Unauthorized user detected!");
+    }
+  },
+
+  getBottomDrawerHtml: function getBottomDrawerHtml() {
+    var htmlString = "\n    \n    ";
+
+    return htmlString;
+  },
+
+  handlerBottomDrawerContents: function handlerBottomDrawerContents() {},
 
   fillLeftDrawer: function fillLeftDrawer() {
     if (abc.userIsPlayer) {
@@ -100,19 +139,22 @@ var abc = {
   },
 
   getLeftDrawerHtml: function getLeftDrawerHtml() {
-    var htmlString = "\n    <button id='toggle-lines' class='btn btn-md'>Toggle Lines</button>\n    ";
+    var htmlString = "\n    <button id='toggle-lines' class='btn btn-md'>Toggle Lines</button>\n    <button id='show-all-powers' class='btn btn-md'>Toggle Lines</button>\n    ";
 
     return htmlString;
   },
 
   handlerLeftDrawerContents: function handlerLeftDrawerContents() {
     $("#toggle-lines").click(function (e) {
-      console.log($("#lines").css("opacity"));
       if ($("#lines").css("opacity") === "0.3") {
         $("#lines").velocity({ opacity: "0" });
       } else {
         $("#lines").velocity({ opacity: "0.3" });
       }
+    });
+
+    $("#show-all-powers").click(function (e) {
+      ebot.showModal("All Powers", abc.viewAllPowers());
     });
   },
 
@@ -121,7 +163,7 @@ var abc = {
       $("#right-drawer-contents").html(abc.getRightDrawerHtml());
       abc.handlerRightDrawerContents();
     } else {
-      $("#right-drawer-contents").html("Players don't get to add items lolololol");
+      $("#right-drawer-contents").html("");
     }
   },
 
@@ -151,6 +193,16 @@ var abc = {
 
       abc.socket.emit('token added', emitObj);
     });
+  },
+
+  viewAllPowers: function viewAllPowers() {
+    var htmlString = "";
+
+    abc.powers.forEach(function (power) {
+      htmlString += "\n      <div class='power-view'>\n\n        <h4>" + power.name + "</h4>\n        Type: " + power.type + " <br>\n        Attack Type: " + power.attackType + " <br>\n        Damage: " + power.damage + " <br>\n        Effect: " + power.effect + " <br>\n        Description: " + power.description + " <br>\n        Flavor: " + power.flavorText + " <br>\n        Upgrade Effects: " + power.upgrade + " <br>\n\n      </div>";
+    });
+
+    return htmlString;
   },
 
   addTokenItem: function addTokenItem(imageFilename, ranTop, ranLeft) {
@@ -263,7 +315,15 @@ var abc = {
 
   userIsDM: false,
 
-  items: []
+  items: [],
+
+  powers: [],
+
+  creatures: [],
+
+  playerCharacters: [],
+
+  nonPlayerCharacters: []
 
 };
 //# sourceMappingURL=js.js.map
