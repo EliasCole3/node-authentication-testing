@@ -76,6 +76,9 @@ var abc = {
       case "ares":
         abc.currentPlayerCharacterId = 5;
         break;
+      case "bliss":
+        abc.currentPlayerCharacterId = 0;
+        break;
       default:
         console.log("setCurrentPlayerCharacterId() fell out of switch statement. Fix me plox. Current user:");
         console.log(user);
