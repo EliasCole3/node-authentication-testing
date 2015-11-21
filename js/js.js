@@ -87,6 +87,10 @@ var abc = {
     abc.socket.on('background changed', function (emitObj) {
       abc.changeBackground(emitObj.background);
     });
+
+    abc.socket.on('hp changed', function (emitObj) {
+      abc.changeHp(emitObj.id, emitObj.val);
+    });
   },
 
   retrieveInitialModels: function retrieveInitialModels() {
@@ -126,7 +130,10 @@ var abc = {
 
   handlerTopDrawerContents: function handlerTopDrawerContents() {
     $(".current-hp-input").on("change", function (e) {
-      console.log(e);
+      var element = $(e.currentTarget);
+      var id = element.attr("id");
+      var val = element.val();
+      abc.socket.emit('hp changed', { id: id, val: val });
     });
   },
 
@@ -229,6 +236,10 @@ var abc = {
     } else {
       $("#wrapper").css("background-image", "");
     }
+  },
+
+  changeHp: function changeHp(id, val) {
+    $("#" + id).val(val);
   },
 
   viewAllPowers: function viewAllPowers() {

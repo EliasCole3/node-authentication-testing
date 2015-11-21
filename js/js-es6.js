@@ -91,6 +91,10 @@ let abc = {
     abc.socket.on('background changed', emitObj => {
       abc.changeBackground(emitObj.background)
     })
+
+    abc.socket.on('hp changed', emitObj => {
+      abc.changeHp(emitObj.id, emitObj.val)
+    })
   },
 
   retrieveInitialModels: () => {
@@ -167,7 +171,10 @@ let abc = {
 
   handlerTopDrawerContents: () => {
     $(".current-hp-input").on("change", e => {
-      console.log(e)
+      let element = $(e.currentTarget)
+      let id = element.attr("id")
+      let val = element.val()
+      abc.socket.emit('hp changed', {id: id, val: val})
     })
   },
 
@@ -295,6 +302,10 @@ let abc = {
       $("#wrapper").css("background-image", ``)
     }
     
+  },
+
+  changeHp: (id, val) => {
+    $(`#${id}`).val(val)
   },
 
 

@@ -117,6 +117,10 @@ io.on('connection', function(socket) {
   socket.on('background changed', function(emitObj) {
     socket.broadcast.emit('background changed', emitObj)
   })
+
+  socket.on('hp changed', function(emitObj) {
+    socket.broadcast.emit('hp changed', emitObj)
+  })
 })
 
 

@@ -385,6 +385,10 @@ var ebot = {
    * 
    * an element with id="modal-holder"
    * 
+   * 
+   * 
+   * ebot.insertModalHtml("modal-lg")
+   * 
    */
   insertModalHtml: function(size) {
     var _size = size === undefined ? "" : size
