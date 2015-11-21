@@ -252,7 +252,7 @@ var abc = {
     var relevantItemJoins = abc.joinPlayerCharacterItems.filter(function (join) {
       console.log(join.playerCharacterId);
       console.log(abc.currentPlayerCharacterId);
-      return join.playerCharacterId === abc.currentPlayerCharacterId;
+      return +join.playerCharacterId === +abc.currentPlayerCharacterId;
     });
 
     console.log(relevantItemJoins);

@@ -315,7 +315,7 @@ let abc = {
     let relevantItemJoins = abc.joinPlayerCharacterItems.filter(join => {
       console.log(join.playerCharacterId)
       console.log(abc.currentPlayerCharacterId)
-      return join.playerCharacterId === abc.currentPlayerCharacterId
+      return +join.playerCharacterId === +abc.currentPlayerCharacterId
     })
 
     console.log(relevantItemJoins)
