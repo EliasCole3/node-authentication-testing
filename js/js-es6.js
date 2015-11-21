@@ -233,7 +233,7 @@ let abc = {
     $("#background-select").chosen(ebot.chosenOptions).change(e => {
       let element = $(e.currentTarget)
       console.log(element.val())
-      $("#wrapper").css("background-image", `backgrounds/${element.val()}`)
+      $("#wrapper").css("background-image", `url(backgrounds/${element.val()})`)
     })
   },
 
