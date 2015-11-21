@@ -142,7 +142,7 @@ let abc = {
       htmlString += `<tr>
       <td>${player.playerName}</td>
       <td>${player.characterName}</td>
-      <td><input id='current-hp-input-${player.playerCharacterId}' class='current-hp-input' type='number' value='${player.hp}'></td>
+      <td><input id='current-hp-input-${player.playerCharacterId}' class='current-hp-input form-control' type='number' value='${player.hp}'></td>
       <td>${player.hp}</td>
       <td>${player.ac}</td>
       <td>${player.will}</td>
