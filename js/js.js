@@ -46,6 +46,7 @@ var abc = {
       }
 
       $.when.apply($, abc.retrieveInitialModels()).done(function () {
+        abc.fillTopDrawer();
         abc.fillRightDrawer();
         abc.fillLeftDrawer();
       });

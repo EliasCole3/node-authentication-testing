@@ -46,6 +46,7 @@ let abc = {
       }
 
       $.when.apply($, abc.retrieveInitialModels()).done(() => {
+        abc.fillTopDrawer()
         abc.fillRightDrawer()
         abc.fillLeftDrawer()
       })
