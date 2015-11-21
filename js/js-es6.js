@@ -175,23 +175,13 @@ let abc = {
   },
 
   getBottomDrawerHtml: () => {
-    let htmlString = `
-      <select id='background-select' data-placeholder='Choose a background...'>
-        <option value=''></option>
-        <option value='river.jpg'>River</option>
-        <option value='twooth-library.png'>Twooth Library</option>
-        <option value='slime-cave.png'>Slim Cave</option>
-      </select>
-    `
+    let htmlString = ``
 
     return htmlString
   },
 
   handlerBottomDrawerContents: () => {
-    $("#background-select").chosen(ebot.chosenOptions).change(e => {
-      let element = $(e.currentTarget)
-      console.log(element.val())
-    })
+    
 
   
   },
@@ -213,6 +203,17 @@ let abc = {
     <button id='show-all-powers' class='btn btn-md'>Show All Powers</button>
     `
 
+    if(abc.userIsDM) {
+      htmlString += `
+      <select id='background-select' data-placeholder='Choose a background...'>
+        <option value=''></option>
+        <option value='river.jpg'>River</option>
+        <option value='twooth-library.png'>Twooth Library</option>
+        <option value='slime-cave.png'>Slim Cave</option>
+      </select>
+      `
+    }
+
     return htmlString
   },
 
@@ -227,6 +228,11 @@ let abc = {
 
     $("#show-all-powers").click(e => {
       ebot.showModal("All Powers", abc.viewAllPowers())
+    })
+
+    $("#background-select").chosen(ebot.chosenOptions).change(e => {
+      let element = $(e.currentTarget)
+      console.log(element.val())
     })
   },
 

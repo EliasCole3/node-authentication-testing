@@ -132,17 +132,12 @@ var abc = {
   },
 
   getBottomDrawerHtml: function getBottomDrawerHtml() {
-    var htmlString = "\n      <select id='background-select' data-placeholder='Choose a background...'>\n        <option value=''></option>\n        <option value='river.jpg'>River</option>\n        <option value='twooth-library.png'>Twooth Library</option>\n        <option value='slime-cave.png'>Slim Cave</option>\n      </select>\n    ";
+    var htmlString = "";
 
     return htmlString;
   },
 
-  handlerBottomDrawerContents: function handlerBottomDrawerContents() {
-    $("#background-select").chosen(ebot.chosenOptions).change(function (e) {
-      var element = $(e.currentTarget);
-      console.log(element.val());
-    });
-  },
+  handlerBottomDrawerContents: function handlerBottomDrawerContents() {},
 
   fillLeftDrawer: function fillLeftDrawer() {
     if (abc.userIsPlayer) {
@@ -155,6 +150,10 @@ var abc = {
 
   getLeftDrawerHtml: function getLeftDrawerHtml() {
     var htmlString = "\n    <button id='toggle-lines' class='btn btn-md'>Toggle Lines</button> <br>\n    <button id='show-all-powers' class='btn btn-md'>Show All Powers</button>\n    ";
+
+    if (abc.userIsDM) {
+      htmlString += "\n      <select id='background-select' data-placeholder='Choose a background...'>\n        <option value=''></option>\n        <option value='river.jpg'>River</option>\n        <option value='twooth-library.png'>Twooth Library</option>\n        <option value='slime-cave.png'>Slim Cave</option>\n      </select>\n      ";
+    }
 
     return htmlString;
   },
@@ -170,6 +169,11 @@ var abc = {
 
     $("#show-all-powers").click(function (e) {
       ebot.showModal("All Powers", abc.viewAllPowers());
+    });
+
+    $("#background-select").chosen(ebot.chosenOptions).change(function (e) {
+      var element = $(e.currentTarget);
+      console.log(element.val());
     });
   },
 
