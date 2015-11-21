@@ -234,6 +234,7 @@ let abc = {
       let element = $(e.currentTarget)
       console.log(element.val())
       $("#wrapper").css("background-image", `url(backgrounds/${element.val()})`)
+      .css("background-repeat", "no-repeat")
     })
   },
 
