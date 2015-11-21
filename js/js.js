@@ -107,7 +107,7 @@ var abc = {
 
   handlerLeftDrawerContents: function handlerLeftDrawerContents() {
     $("#toggle-lines").click(function (e) {
-      var element = $(e.currentTarget);
+      console.log($("#lines").css("opacity"));
       $("#lines").velocity({ opacity: "0" });
     });
   },

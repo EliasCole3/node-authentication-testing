@@ -113,6 +113,7 @@ let abc = {
 
   handlerLeftDrawerContents: () => {
     $("#toggle-lines").click(e => {
+      console.log($("#lines").css("opacity"))
       $("#lines").velocity({opacity: "0"})
     })
   },
