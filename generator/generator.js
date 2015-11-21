@@ -138,6 +138,14 @@ var writeCrudFiles = function writeCrudFiles() {
     });
   });
 
+  //this will erase any changes made to crud views
+  definitions.forEach(function (def) {
+    filepath = '../css/crud-' + flect.dasherize(flect.pluralize(def.name)) + '.css';
+    fs.writeFile(filepath, "", function (err) {
+      if (err) console.error("Could not write file: %s", err);
+    });
+  });
+
   var output = '';
   definitions.forEach(function (def) {
     output += createCrudRoutes(def);

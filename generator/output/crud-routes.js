@@ -44,6 +44,21 @@
   })
 
 
+  app.get('/crud-log-entries', function(req, res) {
+    res.render('CRUD/log-entries.ejs', {
+        user : req.user
+    })
+  })
+
+  app.get('/css/crud-log-entries.css', function(req, res) {
+    res.sendFile(path.resolve(__dirname + './../css/crud-log-entries.css'))
+  })
+
+  app.get('/js/crud-log-entries.js', function(req, res) {
+    res.sendFile(path.resolve(__dirname + './../js/crud-log-entries.js'))
+  })
+
+
   app.get('/crud-items', function(req, res) {
     res.render('CRUD/items.ejs', {
         user : req.user
@@ -74,36 +89,6 @@
   })
 
 
-  app.get('/crud-join-player-character-items', function(req, res) {
-    res.render('CRUD/join-player-character-items.ejs', {
-        user : req.user
-    })
-  })
-
-  app.get('/css/crud-join-player-character-items.css', function(req, res) {
-    res.sendFile(path.resolve(__dirname + './../css/crud-join-player-character-items.css'))
-  })
-
-  app.get('/js/crud-join-player-character-items.js', function(req, res) {
-    res.sendFile(path.resolve(__dirname + './../js/crud-join-player-character-items.js'))
-  })
-
-
-  app.get('/crud-log-entries', function(req, res) {
-    res.render('CRUD/log-entries.ejs', {
-        user : req.user
-    })
-  })
-
-  app.get('/css/crud-log-entries.css', function(req, res) {
-    res.sendFile(path.resolve(__dirname + './../css/crud-log-entries.css'))
-  })
-
-  app.get('/js/crud-log-entries.js', function(req, res) {
-    res.sendFile(path.resolve(__dirname + './../js/crud-log-entries.js'))
-  })
-
-
   app.get('/crud-powers', function(req, res) {
     res.render('CRUD/powers.ejs', {
         user : req.user
@@ -116,5 +101,20 @@
 
   app.get('/js/crud-powers.js', function(req, res) {
     res.sendFile(path.resolve(__dirname + './../js/crud-powers.js'))
+  })
+
+
+  app.get('/crud-join-player-character-items', function(req, res) {
+    res.render('CRUD/join-player-character-items.ejs', {
+        user : req.user
+    })
+  })
+
+  app.get('/css/crud-join-player-character-items.css', function(req, res) {
+    res.sendFile(path.resolve(__dirname + './../css/crud-join-player-character-items.css'))
+  })
+
+  app.get('/js/crud-join-player-character-items.js', function(req, res) {
+    res.sendFile(path.resolve(__dirname + './../js/crud-join-player-character-items.js'))
   })
 

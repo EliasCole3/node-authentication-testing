@@ -152,6 +152,12 @@ let writeCrudFiles = () => {
     fs.writeFile(filepath, createCrudViewJS(def), err => {if(err) console.error("Could not write file: %s", err)})
   })
 
+  //this will erase any changes made to crud views
+  definitions.forEach(def => {
+    filepath = `../css/crud-${flect.dasherize(flect.pluralize(def.name))}.css`
+    fs.writeFile(filepath, "", err => {if(err) console.error("Could not write file: %s", err)})
+  })
+
   let output = ``
   definitions.forEach(def => {
     output += createCrudRoutes(def)

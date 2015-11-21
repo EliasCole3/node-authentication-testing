@@ -30,6 +30,16 @@
 
   
   <tr>
+    <td><button id='test-log-entries' class='btn btn-md'>Test Log Entries</button></td>
+    <td><button id='test-create-log-entry' class='btn btn-md'>Test Create Log Entry</button></td>
+    <td><button id='test-get-log-entry' class='btn btn-md'>Test Get Log Entry</button></td>
+    <td><button id='test-put-log-entry' class='btn btn-md'>Test Put Log Entry</button></td>
+    <td><button id='test-delete-log-entry' class='btn btn-md'>Test Delete Log Entry</button></td>
+    <td><div id='log-entry-id'></div></td>
+  </tr>
+
+  
+  <tr>
     <td><button id='test-items' class='btn btn-md'>Test Items</button></td>
     <td><button id='test-create-item' class='btn btn-md'>Test Create Item</button></td>
     <td><button id='test-get-item' class='btn btn-md'>Test Get Item</button></td>
@@ -50,32 +60,22 @@
 
   
   <tr>
-    <td><button id='test-join-player-character-items' class='btn btn-md'>Test Join Player Character Items</button></td>
-    <td><button id='test-create-join-player-character-item' class='btn btn-md'>Test Create Join Player Character Item</button></td>
-    <td><button id='test-get-join-player-character-item' class='btn btn-md'>Test Get Join Player Character Item</button></td>
-    <td><button id='test-put-join-player-character-item' class='btn btn-md'>Test Put Join Player Character Item</button></td>
-    <td><button id='test-delete-join-player-character-item' class='btn btn-md'>Test Delete Join Player Character Item</button></td>
-    <td><div id='join-player-character-item-id'></div></td>
-  </tr>
-
-  
-  <tr>
-    <td><button id='test-log-entries' class='btn btn-md'>Test Log Entries</button></td>
-    <td><button id='test-create-log-entry' class='btn btn-md'>Test Create Log Entry</button></td>
-    <td><button id='test-get-log-entry' class='btn btn-md'>Test Get Log Entry</button></td>
-    <td><button id='test-put-log-entry' class='btn btn-md'>Test Put Log Entry</button></td>
-    <td><button id='test-delete-log-entry' class='btn btn-md'>Test Delete Log Entry</button></td>
-    <td><div id='log-entry-id'></div></td>
-  </tr>
-
-  
-  <tr>
     <td><button id='test-powers' class='btn btn-md'>Test Powers</button></td>
     <td><button id='test-create-power' class='btn btn-md'>Test Create Power</button></td>
     <td><button id='test-get-power' class='btn btn-md'>Test Get Power</button></td>
     <td><button id='test-put-power' class='btn btn-md'>Test Put Power</button></td>
     <td><button id='test-delete-power' class='btn btn-md'>Test Delete Power</button></td>
     <td><div id='power-id'></div></td>
+  </tr>
+
+  
+  <tr>
+    <td><button id='test-join-player-character-items' class='btn btn-md'>Test Join Player Character Items</button></td>
+    <td><button id='test-create-join-player-character-item' class='btn btn-md'>Test Create Join Player Character Item</button></td>
+    <td><button id='test-get-join-player-character-item' class='btn btn-md'>Test Get Join Player Character Item</button></td>
+    <td><button id='test-put-join-player-character-item' class='btn btn-md'>Test Put Join Player Character Item</button></td>
+    <td><button id='test-delete-join-player-character-item' class='btn btn-md'>Test Delete Join Player Character Item</button></td>
+    <td><div id='join-player-character-item-id'></div></td>
   </tr>
 
   

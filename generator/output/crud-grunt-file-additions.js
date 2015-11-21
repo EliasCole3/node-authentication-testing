@@ -41,6 +41,20 @@
   },
 
   
+  babel_crud_log_entries: {
+    files: [
+      'js/crud-log-entries-es6.js'
+    ],
+    tasks: ['babel:crud_log_entries'],
+  },
+
+  crud_log_entries: {
+    files: {
+      'js/crud-log-entries.js': 'js/crud-log-entries-es6.js'
+    }
+  },
+
+  
   babel_crud_items: {
     files: [
       'js/crud-items-es6.js'
@@ -69,34 +83,6 @@
   },
 
   
-  babel_crud_join_player_character_items: {
-    files: [
-      'js/crud-join-player-character-items-es6.js'
-    ],
-    tasks: ['babel:crud_join_player_character_items'],
-  },
-
-  crud_join_player_character_items: {
-    files: {
-      'js/crud-join-player-character-items.js': 'js/crud-join-player-character-items-es6.js'
-    }
-  },
-
-  
-  babel_crud_log_entries: {
-    files: [
-      'js/crud-log-entries-es6.js'
-    ],
-    tasks: ['babel:crud_log_entries'],
-  },
-
-  crud_log_entries: {
-    files: {
-      'js/crud-log-entries.js': 'js/crud-log-entries-es6.js'
-    }
-  },
-
-  
   babel_crud_powers: {
     files: [
       'js/crud-powers-es6.js'
@@ -107,6 +93,20 @@
   crud_powers: {
     files: {
       'js/crud-powers.js': 'js/crud-powers-es6.js'
+    }
+  },
+
+  
+  babel_crud_join_player_character_items: {
+    files: [
+      'js/crud-join-player-character-items-es6.js'
+    ],
+    tasks: ['babel:crud_join_player_character_items'],
+  },
+
+  crud_join_player_character_items: {
+    files: {
+      'js/crud-join-player-character-items.js': 'js/crud-join-player-character-items-es6.js'
     }
   },
 
