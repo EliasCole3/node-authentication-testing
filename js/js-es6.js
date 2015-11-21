@@ -322,7 +322,7 @@ let abc = {
       let relevantItem = abc.items.filter(item => {
         console.log(item.itemId)
         console.log(join.itemId)
-        item.itemId == join.itemId
+        return item.itemId == join.itemId
       })[0]
 
       console.log(relevantItem)
