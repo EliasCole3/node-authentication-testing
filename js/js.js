@@ -250,9 +250,6 @@ var abc = {
     console.log(abc.joinPlayerCharacterItems);
 
     var relevantItemJoins = abc.joinPlayerCharacterItems.filter(function (join) {
-      console.log("struibn");
-      console.log(join.playerCharacterId);
-      console.log(abc.currentPlayerCharacterId);
       return join.playerCharacterId == abc.currentPlayerCharacterId;
     });
 
@@ -260,7 +257,7 @@ var abc = {
 
     relevantItemJoins.forEach(function (join) {
       var relevantItem = abc.items.filter(function (item) {
-        item.itemId === join.itemId;
+        item.itemId == join.itemId;
       })[0];
 
       console.log(relevantItem);

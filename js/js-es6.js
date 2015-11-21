@@ -313,9 +313,6 @@ let abc = {
     console.log(abc.joinPlayerCharacterItems)
 
     let relevantItemJoins = abc.joinPlayerCharacterItems.filter(join => {
-      console.log("struibn")
-      console.log(join.playerCharacterId)
-      console.log(abc.currentPlayerCharacterId)
       return join.playerCharacterId == abc.currentPlayerCharacterId
     })
 
@@ -323,7 +320,7 @@ let abc = {
 
     relevantItemJoins.forEach(join => {
       let relevantItem = abc.items.filter(item => {
-        item.itemId === join.itemId
+        item.itemId == join.itemId
       })[0]
 
       console.log(relevantItem)
