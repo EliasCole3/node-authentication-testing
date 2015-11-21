@@ -198,7 +198,7 @@ var abc = {
     var htmlString = "\n    <button id='toggle-lines' class='btn btn-md btn-info'>Toggle Lines</button> <br><br>\n    <button id='show-all-powers' class='btn btn-md btn-info'>Show All Powers</button>\n    ";
 
     if (abc.userIsPlayer && !abc.userIsDM) {
-      htmlString += "<button id='show-backstory' class='btn btn-md btn-info'>Show My Backstory</button>";
+      htmlString += "<br><br><button id='show-backstory' class='btn btn-md btn-info'>Show My Backstory</button>";
     }
 
     if (abc.userIsDM) {
@@ -229,7 +229,7 @@ var abc = {
 
     $("#show-backstory").click(function (e) {
       var detailText = abc.characterDetails.filter(function (detail) {
-        detail.playerCharacterId == abc.currentPlayerCharacterId;
+        return detail.playerCharacterId == abc.currentPlayerCharacterId;
       })[0].backstory;
 
       ebot.showModal("Backstory", detailText);

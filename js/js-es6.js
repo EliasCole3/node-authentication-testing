@@ -251,7 +251,7 @@ let abc = {
     `
 
     if(abc.userIsPlayer && !abc.userIsDM) {
-      htmlString += `<button id='show-backstory' class='btn btn-md btn-info'>Show My Backstory</button>`
+      htmlString += `<br><br><button id='show-backstory' class='btn btn-md btn-info'>Show My Backstory</button>`
     }
 
     if(abc.userIsDM) {
@@ -290,7 +290,7 @@ let abc = {
 
     $("#show-backstory").click(e => {
       let detailText = abc.characterDetails.filter(detail => {
-        detail.playerCharacterId == abc.currentPlayerCharacterId
+        return detail.playerCharacterId == abc.currentPlayerCharacterId
       })[0].backstory
 
       ebot.showModal("Backstory", detailText)
