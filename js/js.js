@@ -33,7 +33,7 @@ var abc = {
       abc.setCurrentPlayerCharacterId(user);
 
       var DMs = ["a", "bliss"];
-      var players = ["a", "b", "c", "laurana", "andros", "skjor", "placeholder", "ares"];
+      var players = ["a", "b", "c", "bliss", "laurana", "andros", "skjor", "placeholder", "ares"];
 
       console.log(user.local.username);
       console.log(DMs);

@@ -33,7 +33,7 @@ let abc = {
       abc.setCurrentPlayerCharacterId(user)
 
       let DMs = ["a", "bliss"]
-      let players = ["a", "b", "c", "laurana", "andros", "skjor", "placeholder", "ares"]
+      let players = ["a", "b", "c", "bliss", "laurana", "andros", "skjor", "placeholder", "ares"]
 
       console.log(user.local.username)
       console.log(DMs)
