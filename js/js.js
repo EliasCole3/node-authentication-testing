@@ -131,6 +131,7 @@ var abc = {
     deferreds.push(ebot.retrieveEntity(abc, "playerCharacters"));
     deferreds.push(ebot.retrieveEntity(abc, "nonPlayerCharacters"));
     deferreds.push(ebot.retrieveEntity(abc, "joinPlayerCharacterItems"));
+    deferreds.push(ebot.retrieveEntity(abc, "characterDetails"));
 
     return deferreds;
   },
@@ -196,6 +197,10 @@ var abc = {
   getLeftDrawerHtml: function getLeftDrawerHtml() {
     var htmlString = "\n    <button id='toggle-lines' class='btn btn-md btn-info'>Toggle Lines</button> <br><br>\n    <button id='show-all-powers' class='btn btn-md btn-info'>Show All Powers</button>\n    ";
 
+    if (abc.userIsPlayer && !abc.userIsDM) {
+      htmlString += "<button id='show-backstory' class='btn btn-md btn-info'>Show My Backstory</button>";
+    }
+
     if (abc.userIsDM) {
       htmlString += "<br><br>\n      <select id='background-select' data-placeholder='Choose a background...'>\n        <option value=''></option>\n        <option value='blank'>Blank</option>\n        <option value='river.jpg'>River</option>\n        <option value='twooth-library.png'>Twooth Library</option>\n        <option value='slime-cave.png'>Slim Cave</option>\n      </select>\n      ";
     }
@@ -220,6 +225,14 @@ var abc = {
       var element = $(e.currentTarget);
       abc.changeBackground(element.val());
       abc.socket.emit('background changed', { background: element.val() });
+    });
+
+    $("#show-backstory").click(function (e) {
+      var detailText = abc.characterDetails.filter(function (detail) {
+        detail.playerCharacterId == abc.currentPlayerCharacterId;
+      })[0].backstory;
+
+      ebot.showModal("Backstory", detailText);
     });
   },
 
@@ -429,7 +442,9 @@ var abc = {
 
   nonPlayerCharacters: [],
 
-  joinPlayerCharacterItems: []
+  joinPlayerCharacterItems: [],
+
+  characterDetails: []
 
 };
 //# sourceMappingURL=js.js.map

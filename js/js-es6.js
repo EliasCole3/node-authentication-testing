@@ -136,6 +136,7 @@ let abc = {
     deferreds.push(ebot.retrieveEntity(abc, "playerCharacters"))
     deferreds.push(ebot.retrieveEntity(abc, "nonPlayerCharacters"))
     deferreds.push(ebot.retrieveEntity(abc, "joinPlayerCharacterItems"))
+    deferreds.push(ebot.retrieveEntity(abc, "characterDetails"))
 
     return deferreds
   },
@@ -249,6 +250,10 @@ let abc = {
     <button id='show-all-powers' class='btn btn-md btn-info'>Show All Powers</button>
     `
 
+    if(abc.userIsPlayer && !abc.userIsDM) {
+      htmlString += `<button id='show-backstory' class='btn btn-md btn-info'>Show My Backstory</button>`
+    }
+
     if(abc.userIsDM) {
       htmlString += `<br><br>
       <select id='background-select' data-placeholder='Choose a background...'>
@@ -281,6 +286,14 @@ let abc = {
       let element = $(e.currentTarget)
       abc.changeBackground(element.val())
       abc.socket.emit('background changed', {background: element.val()})
+    })
+
+    $("#show-backstory").click(e => {
+      let detailText = abc.characterDetails.filter(detail => {
+        detail.playerCharacterId == abc.currentPlayerCharacterId
+      })[0].backstory
+
+      ebot.showModal("Backstory", detailText)
     })
   },
 
@@ -521,7 +534,9 @@ let abc = {
 
   nonPlayerCharacters: [],
 
-  joinPlayerCharacterItems: []
+  joinPlayerCharacterItems: [],
+
+  characterDetails: []
 
 }
 
