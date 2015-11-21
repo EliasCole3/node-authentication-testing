@@ -211,6 +211,7 @@ let abc = {
       htmlString += `
       <select id='background-select' data-placeholder='Choose a background...'>
         <option value=''></option>
+        <option value='blank'>Blank</option>
         <option value='river.jpg'>River</option>
         <option value='twooth-library.png'>Twooth Library</option>
         <option value='slime-cave.png'>Slim Cave</option>
@@ -269,7 +270,7 @@ let abc = {
       let ranTop = ebot.getRandomInt(2, 10) * 50
       let ranLeft = ebot.getRandomInt(2, 10) * 50
       abc.addTokenItem(imageFilename, ranTop, ranLeft)
-
+ 
       let emitObj = {
         imageFilename: imageFilename,
         ranTop: ranTop,
@@ -284,7 +285,12 @@ let abc = {
 
 
   changeBackground: background => {
-    $("#wrapper").css("background-image", `url(backgrounds/${background})`).css("background-repeat", "no-repeat")
+    if(background !== "blank") {
+      $("#wrapper").css("background-image", `url(backgrounds/${background})`).css("background-repeat", "no-repeat")  
+    } else {
+      $("#wrapper").css("background-image", ``)
+    }
+    
   },
 
 
