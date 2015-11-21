@@ -28,7 +28,7 @@ var abc = {
     try {
       var user = JSON.parse($("#data-for-you").html());
       console.log(user);
-      console.log("hello " + user.local.username);
+
       var DMs = ["a"];
       var players = ["b", "c"];
 
@@ -66,10 +66,6 @@ var abc = {
       $('#' + emitObj.id).css("left", emitObj.x);
     });
 
-    abc.socket.on('div added', function () {
-      abc.createNewWireframeDiv();
-    });
-
     abc.socket.on('element resized', function (emitObj) {
       $("#" + emitObj.id).css("width", emitObj.width).css("height", emitObj.height);
     });
@@ -80,6 +76,10 @@ var abc = {
 
     abc.socket.on('user disconnected', function () {
       abc.playSound("me-user-disconnected");
+    });
+
+    abc.socket.on('token added', function (emitObj) {
+      abc.addTokenItem(emitObj.imageFilename, emitObj.ranTop, emitObj.ranLeft);
     });
   },
 
@@ -116,12 +116,24 @@ var abc = {
       var imageFilename = button.attr("item-image-filename");
       var ranTop = ebot.getRandomInt(2, 10) * 50;
       var ranLeft = ebot.getRandomInt(2, 10) * 50;
-      var id = "dynamically-added-div-" + abc.currentDynamicDivId;
-      var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='items/" + imageFilename + "'></div>";
-      $("#wrapper").append(htmlString);
-      $("#" + id).draggable(abc.draggableOptionsToken);
-      abc.currentDynamicDivId++;
+      abc.addTokenItem(imageFilename, ranTop, ranLeft);
+
+      var emitObj = {
+        imageFilename: imageFilename,
+        ranTop: ranTop,
+        ranLeft: ranLeft
+      };
+
+      abc.socket.emit('token added', emitObj);
     });
+  },
+
+  addTokenItem: function addTokenItem(imageFilename, ranTop, ranLeft) {
+    var id = "dynamically-added-div-" + abc.currentDynamicDivId;
+    var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='items/" + imageFilename + "'></div>";
+    $("#wrapper").append(htmlString);
+    $("#" + id).draggable(abc.draggableOptionsToken);
+    abc.currentDynamicDivId++;
   },
 
   makeDrawers: function makeDrawers() {
@@ -153,28 +165,6 @@ var abc = {
       contents: "#right-drawer-contents",
       opacity: opacity
     });
-  },
-
-  handlerDrag: function handlerDrag() {
-    $("#draggable").draggable(abc.draggableOptions);
-  },
-
-  handlerAddDiv: function handlerAddDiv() {
-    $("#add-div").click(function (e) {
-      abc.createNewWireframeDiv();
-      abc.socket.emit('div added');
-    });
-  },
-
-  createNewWireframeDiv: function createNewWireframeDiv() {
-    var ranTop = ebot.getRandomInt(100, 500);
-    var ranLeft = ebot.getRandomInt(100, 500);
-    var randomColor = "rgba(" + ebot.getRandomInt(0, 255) + ", " + ebot.getRandomInt(0, 255) + ", " + ebot.getRandomInt(0, 255) + ", 0.8)";
-    var id = "dynamically-added-div-" + abc.currentDynamicDivId;
-    var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; background-color: " + randomColor + "; width: 100px; height: 100px;'></div>";
-    $("#wrapper").append(htmlString);
-    $("#" + id).resizable(abc.resizableOptions).draggable(abc.draggableOptions);
-    abc.currentDynamicDivId++;
   },
 
   playSound: function playSound(sound) {

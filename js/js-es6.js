@@ -25,12 +25,10 @@ let abc = {
     abc.socket = io()
     abc.assignInitialHandlers()
 
-    
-
     try {
       let user = JSON.parse($("#data-for-you").html())
       console.log(user)
-      console.log(`hello ${user.local.username}`)
+
       let DMs = ["a"]
       let players = ["b", "c"]
 
@@ -53,7 +51,6 @@ let abc = {
       console.log(`error parsing authentication data: ${e}`)
     }
 
-    
 	  
   },
 
@@ -73,10 +70,6 @@ let abc = {
       $('#' + emitObj.id).css("left", emitObj.x)
     })
 
-    abc.socket.on('div added', () => {
-      abc.createNewWireframeDiv()
-    })
-
     abc.socket.on('element resized', emitObj => {
       $(`#${emitObj.id}`).css("width", emitObj.width).css("height", emitObj.height)
     })
@@ -87,6 +80,10 @@ let abc = {
 
     abc.socket.on('user disconnected', () => {
       abc.playSound("me-user-disconnected")
+    })
+
+    abc.socket.on('token added', emitObj => {
+      abc.addTokenItem(emitObj.imageFilename, emitObj.ranTop, emitObj.ranLeft)
     })
   },
 
@@ -125,12 +122,24 @@ let abc = {
       let imageFilename = button.attr("item-image-filename")
       let ranTop = ebot.getRandomInt(2, 10) * 50
       let ranLeft = ebot.getRandomInt(2, 10) * 50
-      let id = `dynamically-added-div-${abc.currentDynamicDivId}`
-      let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='items/${imageFilename}'></div>`
-      $("#wrapper").append(htmlString)
-      $(`#${id}`).draggable(abc.draggableOptionsToken)
-      abc.currentDynamicDivId++
+      abc.addTokenItem(imageFilename, ranTop, ranLeft)
+
+      let emitObj = {
+        imageFilename: imageFilename,
+        ranTop: ranTop,
+        ranLeft: ranLeft
+      }
+
+      abc.socket.emit('token added', emitObj)
     })
+  },
+
+  addTokenItem: (imageFilename, ranTop, ranLeft) => {
+    let id = `dynamically-added-div-${abc.currentDynamicDivId}`
+    let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='items/${imageFilename}'></div>`
+    $("#wrapper").append(htmlString)
+    $(`#${id}`).draggable(abc.draggableOptionsToken)
+    abc.currentDynamicDivId++
   },
 
   makeDrawers: () => {
@@ -162,28 +171,6 @@ let abc = {
       contents: "#right-drawer-contents",
       opacity: opacity
     })
-  },
-
-  handlerDrag: () => {
-    $("#draggable").draggable(abc.draggableOptions)
-  },
-
-  handlerAddDiv: () => {
-    $("#add-div").click(e => {
-      abc.createNewWireframeDiv()
-      abc.socket.emit('div added')
-    })
-  },
-
-  createNewWireframeDiv: () => {
-    let ranTop = ebot.getRandomInt(100, 500)
-    let ranLeft = ebot.getRandomInt(100, 500)
-    let randomColor = `rgba(${ebot.getRandomInt(0, 255)}, ${ebot.getRandomInt(0, 255)}, ${ebot.getRandomInt(0, 255)}, 0.8)`
-    let id = `dynamically-added-div-${abc.currentDynamicDivId}`
-    let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; background-color: ${randomColor}; width: 100px; height: 100px;'></div>`
-    $("#wrapper").append(htmlString)
-    $(`#${id}`).resizable(abc.resizableOptions).draggable(abc.draggableOptions)
-    abc.currentDynamicDivId++
   },
 
   playSound: sound => {

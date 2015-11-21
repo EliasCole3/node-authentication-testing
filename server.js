@@ -109,6 +109,10 @@ io.on('connection', function(socket) {
   socket.on('div added', function() {
     socket.broadcast.emit('div added')
   })
+
+  socket.on('token added', function(emitObj) {
+    socket.broadcast.emit('token added', emitObj)
+  })
 })
 
 
