@@ -111,9 +111,48 @@ let abc = {
   },
 
   getTopDrawerHtml: () => {
-    let htmlString = `
-    
-    `
+    let htmlString = `<table id='player-stats-table' class="table-condensed">`
+
+    htmlString += `<tr>
+      <th>Player Name</th>
+      <th>Character Name</th>
+      <th>HP</th>
+      <th>AC</th>
+      <th>Will</th>
+      <th>Reflex</th>
+      <th>To hit AC</th>
+      <th>To hit Will</th>
+      <th>To hit Reflex</th>
+      <th>Damage Modifier</th>
+      <th>Speed</th>
+      <th>Initiative</th>
+      <th>Action Points</th>
+      <th>Gold</th>
+      <th>XP</th>
+    </tr>`
+
+    abc.playerCharacters.forEach(player => {
+      htmlString += `<tr>
+      <td>${player.playerName}</td>
+      <td>${player.characterName}</td>
+      <td>${player.hp}</td>
+      <td>${player.ac}</td>
+      <td>${player.will}</td>
+      <td>${player.reflex}</td>
+      <td>${player.baseToHitAc}</td>
+      <td>${player.baseToHitWill}</td>
+      <td>${player.baseToHitReflex}</td>
+      <td>${player.damageModifier}</td>
+      <td>${player.speed}</td>
+      <td>${player.initiative}</td>
+      <td>${player.actionPoints}</td>
+      <td>${player.gold}</td>
+      <td>${player.xp}</td>
+
+    </tr>`
+    })
+
+    htmlString += `</table>`
 
     return htmlString
   },
@@ -158,8 +197,8 @@ let abc = {
 
   getLeftDrawerHtml: () => {
     let htmlString = `
-    <button id='toggle-lines' class='btn btn-md'>Toggle Lines</button>
-    <button id='show-all-powers' class='btn btn-md'>Toggle Lines</button>
+    <button id='toggle-lines' class='btn btn-md'>Toggle Lines</button> <br>
+    <button id='show-all-powers' class='btn btn-md'>Show All Powers</button>
     `
 
     return htmlString

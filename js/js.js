@@ -105,7 +105,15 @@ var abc = {
   },
 
   getTopDrawerHtml: function getTopDrawerHtml() {
-    var htmlString = "\n    \n    ";
+    var htmlString = "<table id='player-stats-table' class=\"table-condensed\">";
+
+    htmlString += "<tr>\n      <th>Player Name</th>\n      <th>Character Name</th>\n      <th>HP</th>\n      <th>AC</th>\n      <th>Will</th>\n      <th>Reflex</th>\n      <th>To hit AC</th>\n      <th>To hit Will</th>\n      <th>To hit Reflex</th>\n      <th>Damage Modifier</th>\n      <th>Speed</th>\n      <th>Initiative</th>\n      <th>Action Points</th>\n      <th>Gold</th>\n      <th>XP</th>\n    </tr>";
+
+    abc.playerCharacters.forEach(function (player) {
+      htmlString += "<tr>\n      <td>" + player.playerName + "</td>\n      <td>" + player.characterName + "</td>\n      <td>" + player.hp + "</td>\n      <td>" + player.ac + "</td>\n      <td>" + player.will + "</td>\n      <td>" + player.reflex + "</td>\n      <td>" + player.baseToHitAc + "</td>\n      <td>" + player.baseToHitWill + "</td>\n      <td>" + player.baseToHitReflex + "</td>\n      <td>" + player.damageModifier + "</td>\n      <td>" + player.speed + "</td>\n      <td>" + player.initiative + "</td>\n      <td>" + player.actionPoints + "</td>\n      <td>" + player.gold + "</td>\n      <td>" + player.xp + "</td>\n\n    </tr>";
+    });
+
+    htmlString += "</table>";
 
     return htmlString;
   },
@@ -139,7 +147,7 @@ var abc = {
   },
 
   getLeftDrawerHtml: function getLeftDrawerHtml() {
-    var htmlString = "\n    <button id='toggle-lines' class='btn btn-md'>Toggle Lines</button>\n    <button id='show-all-powers' class='btn btn-md'>Toggle Lines</button>\n    ";
+    var htmlString = "\n    <button id='toggle-lines' class='btn btn-md'>Toggle Lines</button> <br>\n    <button id='show-all-powers' class='btn btn-md'>Show All Powers</button>\n    ";
 
     return htmlString;
   },
