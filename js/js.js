@@ -232,7 +232,9 @@ var abc = {
         return detail.playerCharacterId == abc.currentPlayerCharacterId;
       })[0].backstory;
 
-      detailText = "<pre>" + detailText + "</pre>";
+      // detailText = `<pre>${detailText}</pre>`
+
+      detailText = "<div style=\"white-space: pre-wrap;\">" + detailText + "</div>";
 
       ebot.showModal("Backstory", detailText);
     });
