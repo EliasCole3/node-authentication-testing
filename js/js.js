@@ -258,9 +258,9 @@ var abc = {
     console.log(relevantItemJoins);
 
     relevantItemJoins.forEach(function (join) {
-      relevantItem = abc.items.filter(function (item) {
+      var relevantItem = abc.items.filter(function (item) {
         item.itemId === join.itemId;
-      });
+      })[0];
 
       console.log(relevantItem);
 

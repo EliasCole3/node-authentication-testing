@@ -321,9 +321,9 @@ let abc = {
     console.log(relevantItemJoins)
 
     relevantItemJoins.forEach(join => {
-      relevantItem = abc.items.filter(item => {
+      let relevantItem = abc.items.filter(item => {
         item.itemId === join.itemId
-      })
+      })[0]
 
       console.log(relevantItem)
 
