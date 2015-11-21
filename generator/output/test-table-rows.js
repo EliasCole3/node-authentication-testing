@@ -20,6 +20,16 @@
 
   
   <tr>
+    <td><button id='test-logs' class='btn btn-md'>Test Logs</button></td>
+    <td><button id='test-create-log' class='btn btn-md'>Test Create Log</button></td>
+    <td><button id='test-get-log' class='btn btn-md'>Test Get Log</button></td>
+    <td><button id='test-put-log' class='btn btn-md'>Test Put Log</button></td>
+    <td><button id='test-delete-log' class='btn btn-md'>Test Delete Log</button></td>
+    <td><div id='log-id'></div></td>
+  </tr>
+
+  
+  <tr>
     <td><button id='test-player-characters' class='btn btn-md'>Test Player Characters</button></td>
     <td><button id='test-create-player-character' class='btn btn-md'>Test Create Player Character</button></td>
     <td><button id='test-get-player-character' class='btn btn-md'>Test Get Player Character</button></td>
@@ -50,16 +60,6 @@
 
   
   <tr>
-    <td><button id='test-logs' class='btn btn-md'>Test Logs</button></td>
-    <td><button id='test-create-log' class='btn btn-md'>Test Create Log</button></td>
-    <td><button id='test-get-log' class='btn btn-md'>Test Get Log</button></td>
-    <td><button id='test-put-log' class='btn btn-md'>Test Put Log</button></td>
-    <td><button id='test-delete-log' class='btn btn-md'>Test Delete Log</button></td>
-    <td><div id='log-id'></div></td>
-  </tr>
-
-  
-  <tr>
     <td><button id='test-powers' class='btn btn-md'>Test Powers</button></td>
     <td><button id='test-create-power' class='btn btn-md'>Test Create Power</button></td>
     <td><button id='test-get-power' class='btn btn-md'>Test Get Power</button></td>
@@ -76,6 +76,16 @@
     <td><button id='test-put-join-player-character-item' class='btn btn-md'>Test Put Join Player Character Item</button></td>
     <td><button id='test-delete-join-player-character-item' class='btn btn-md'>Test Delete Join Player Character Item</button></td>
     <td><div id='join-player-character-item-id'></div></td>
+  </tr>
+
+  
+  <tr>
+    <td><button id='test-character-details' class='btn btn-md'>Test Character Details</button></td>
+    <td><button id='test-create-character-detail' class='btn btn-md'>Test Create Character Detail</button></td>
+    <td><button id='test-get-character-detail' class='btn btn-md'>Test Get Character Detail</button></td>
+    <td><button id='test-put-character-detail' class='btn btn-md'>Test Put Character Detail</button></td>
+    <td><button id='test-delete-character-detail' class='btn btn-md'>Test Delete Character Detail</button></td>
+    <td><div id='character-detail-id'></div></td>
   </tr>
 
   

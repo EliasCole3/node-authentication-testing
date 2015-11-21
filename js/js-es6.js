@@ -310,22 +310,14 @@ let abc = {
   getRightDrawerHtmlPlayer: () => {
     let htmlString = ``
   
-    console.log(abc.joinPlayerCharacterItems)
-
     let relevantItemJoins = abc.joinPlayerCharacterItems.filter(join => {
       return join.playerCharacterId == abc.currentPlayerCharacterId
     })
 
-    console.log(relevantItemJoins)
-
     relevantItemJoins.forEach(join => {
       let relevantItem = abc.items.filter(item => {
-        console.log(item.itemId)
-        console.log(join.itemId)
         return item.itemId == join.itemId
       })[0]
-
-      console.log(relevantItem)
 
       htmlString += `<img src='items/${relevantItem.imageFilename}' class='player-item'> x ${join.count}<br>`
     })

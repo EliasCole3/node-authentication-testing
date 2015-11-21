@@ -8,6 +8,11 @@ abc.handlerTestCreateNonPlayerCharacter()
 abc.handlerTestGetNonPlayerCharacter()
 abc.handlerTestPutNonPlayerCharacter()
 abc.handlerTestDeleteNonPlayerCharacter()
+abc.handlerTestLogs()
+abc.handlerTestCreateLog()
+abc.handlerTestGetLog()
+abc.handlerTestPutLog()
+abc.handlerTestDeleteLog()
 abc.handlerTestPlayerCharacters()
 abc.handlerTestCreatePlayerCharacter()
 abc.handlerTestGetPlayerCharacter()
@@ -23,11 +28,6 @@ abc.handlerTestCreateItem()
 abc.handlerTestGetItem()
 abc.handlerTestPutItem()
 abc.handlerTestDeleteItem()
-abc.handlerTestLogs()
-abc.handlerTestCreateLog()
-abc.handlerTestGetLog()
-abc.handlerTestPutLog()
-abc.handlerTestDeleteLog()
 abc.handlerTestPowers()
 abc.handlerTestCreatePower()
 abc.handlerTestGetPower()
@@ -38,6 +38,11 @@ abc.handlerTestCreateJoinPlayerCharacterItem()
 abc.handlerTestGetJoinPlayerCharacterItem()
 abc.handlerTestPutJoinPlayerCharacterItem()
 abc.handlerTestDeleteJoinPlayerCharacterItem()
+abc.handlerTestCharacterDetails()
+abc.handlerTestCreateCharacterDetail()
+abc.handlerTestGetCharacterDetail()
+abc.handlerTestPutCharacterDetail()
+abc.handlerTestDeleteCharacterDetail()
 
 
 
@@ -452,6 +457,140 @@ abc.handlerTestDeleteJoinPlayerCharacterItem()
       url: `${abc.apiurl}/nonPlayerCharacters/${id}`,
       success: function(data, status, jqXHR) {},
       error: function(jqXHR, status) {console.log("deleteNonPlayerCharacter() Error")}
+    }).promise()
+
+    return deferred
+  },
+
+  handlerTestLogs: () => {
+    $("#test-logs").click(e => {
+      abc.getLogs().then(data => {
+        console.log(data)
+      })
+    })
+  },
+
+  handlerTestCreateLog: () => {
+    $("#test-create-log").click(e => {
+      let logId = ":)"
+      let logName = ":)"
+      let playerCharacterId = ":)"
+
+      let jsonData = JSON.stringify({
+        "logId": logId,
+        "logName": logName,
+        "playerCharacterId": playerCharacterId
+      })
+
+      abc.createLog(jsonData).then(data => {
+        console.log(data)
+        $("#log-id").html(data.obj._id)
+      })
+    })
+  },
+
+  handlerTestGetLog: () => {
+    $("#test-get-log").click(e => {
+      let id = $("#log-id").html()
+      
+      abc.getLog(id).then(data => {
+        console.log(data)
+      })
+
+    })
+  },
+
+  handlerTestPutLog: () => {
+    $("#test-put-log").click(e => {
+      let id = $("#log-id").html()
+
+      let logId = ":D"
+      let logName = ":D"
+      let playerCharacterId = ":D"
+
+      let jsonData = JSON.stringify({
+        "logId": logId,
+        "logName": logName,
+        "playerCharacterId": playerCharacterId
+      })
+
+      abc.putLog(id, jsonData).then(data => {
+        console.log(data)
+      })
+    })
+  },
+
+  handlerTestDeleteLog: id => {
+    $("#test-delete-log").click(e => {
+      let id = $("#log-id").html()
+      
+      abc.deleteLog(id).then(() => {
+        console.log("deleted!")
+      })
+
+    })
+  },
+
+  getLogs: () => {
+    let deferred = $.ajax({
+      type: "GET",
+      url: `${abc.apiurl}/logs`,
+      success: function(data, status, jqXHR) {},
+      error: function(jqXHR, status) {console.log("getLogs() Error")}
+    }).promise()
+
+    return deferred
+  },
+
+  createLog: jsonData => {
+    let deferred = $.ajax({
+      type: "POST",
+      url: `${abc.apiurl}/logs`,
+      data: abc.convertJsonToFormData(jsonData),
+      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+      success: (data, status, jqXHR) => {},
+      error: (jqXHR, status) => {
+        ebot.notify("error creating a Log")
+        console.log(jqXHR)
+      }
+    }).promise()
+
+    return deferred
+  },
+
+  getLog: id => {
+    let deferred = $.ajax({
+      type: "GET",
+      url: `${abc.apiurl}/logs/${id}`,
+      success: function(data, status, jqXHR) {},
+      error: function(jqXHR, status) {console.log("getLog() Error")}
+    }).promise()
+
+    return deferred
+  },
+
+  putLog: (id, jsonData) => {
+    let deferred = $.ajax({
+      type: "PUT",
+      url: `${abc.apiurl}/logs/${id}`,
+      data: abc.convertJsonToFormData(jsonData),
+      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+      success: (data, status, jqXHR) => {},
+      error: (jqXHR, status) => {
+        ebot.notify("error updating a Log")
+        console.log(jqXHR)
+      }
+    }).promise()
+
+    return deferred
+  },
+
+  deleteLog: id => {
+    let deferred = $.ajax({
+      type: "DELETE",
+      url: `${abc.apiurl}/logs/${id}`,
+      success: function(data, status, jqXHR) {},
+      error: function(jqXHR, status) {console.log("deleteLog() Error")}
     }).promise()
 
     return deferred
@@ -967,140 +1106,6 @@ abc.handlerTestDeleteJoinPlayerCharacterItem()
     return deferred
   },
 
-  handlerTestLogs: () => {
-    $("#test-logs").click(e => {
-      abc.getLogs().then(data => {
-        console.log(data)
-      })
-    })
-  },
-
-  handlerTestCreateLog: () => {
-    $("#test-create-log").click(e => {
-      let logId = ":)"
-      let logName = ":)"
-      let playerCharacterId = ":)"
-
-      let jsonData = JSON.stringify({
-        "logId": logId,
-        "logName": logName,
-        "playerCharacterId": playerCharacterId
-      })
-
-      abc.createLog(jsonData).then(data => {
-        console.log(data)
-        $("#log-id").html(data.obj._id)
-      })
-    })
-  },
-
-  handlerTestGetLog: () => {
-    $("#test-get-log").click(e => {
-      let id = $("#log-id").html()
-      
-      abc.getLog(id).then(data => {
-        console.log(data)
-      })
-
-    })
-  },
-
-  handlerTestPutLog: () => {
-    $("#test-put-log").click(e => {
-      let id = $("#log-id").html()
-
-      let logId = ":D"
-      let logName = ":D"
-      let playerCharacterId = ":D"
-
-      let jsonData = JSON.stringify({
-        "logId": logId,
-        "logName": logName,
-        "playerCharacterId": playerCharacterId
-      })
-
-      abc.putLog(id, jsonData).then(data => {
-        console.log(data)
-      })
-    })
-  },
-
-  handlerTestDeleteLog: id => {
-    $("#test-delete-log").click(e => {
-      let id = $("#log-id").html()
-      
-      abc.deleteLog(id).then(() => {
-        console.log("deleted!")
-      })
-
-    })
-  },
-
-  getLogs: () => {
-    let deferred = $.ajax({
-      type: "GET",
-      url: `${abc.apiurl}/logs`,
-      success: function(data, status, jqXHR) {},
-      error: function(jqXHR, status) {console.log("getLogs() Error")}
-    }).promise()
-
-    return deferred
-  },
-
-  createLog: jsonData => {
-    let deferred = $.ajax({
-      type: "POST",
-      url: `${abc.apiurl}/logs`,
-      data: abc.convertJsonToFormData(jsonData),
-      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-      success: (data, status, jqXHR) => {},
-      error: (jqXHR, status) => {
-        ebot.notify("error creating a Log")
-        console.log(jqXHR)
-      }
-    }).promise()
-
-    return deferred
-  },
-
-  getLog: id => {
-    let deferred = $.ajax({
-      type: "GET",
-      url: `${abc.apiurl}/logs/${id}`,
-      success: function(data, status, jqXHR) {},
-      error: function(jqXHR, status) {console.log("getLog() Error")}
-    }).promise()
-
-    return deferred
-  },
-
-  putLog: (id, jsonData) => {
-    let deferred = $.ajax({
-      type: "PUT",
-      url: `${abc.apiurl}/logs/${id}`,
-      data: abc.convertJsonToFormData(jsonData),
-      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-      success: (data, status, jqXHR) => {},
-      error: (jqXHR, status) => {
-        ebot.notify("error updating a Log")
-        console.log(jqXHR)
-      }
-    }).promise()
-
-    return deferred
-  },
-
-  deleteLog: id => {
-    let deferred = $.ajax({
-      type: "DELETE",
-      url: `${abc.apiurl}/logs/${id}`,
-      success: function(data, status, jqXHR) {},
-      error: function(jqXHR, status) {console.log("deleteLog() Error")}
-    }).promise()
-
-    return deferred
-  },
-
   handlerTestPowers: () => {
     $("#test-powers").click(e => {
       abc.getPowers().then(data => {
@@ -1396,6 +1401,140 @@ abc.handlerTestDeleteJoinPlayerCharacterItem()
       url: `${abc.apiurl}/joinPlayerCharacterItems/${id}`,
       success: function(data, status, jqXHR) {},
       error: function(jqXHR, status) {console.log("deleteJoinPlayerCharacterItem() Error")}
+    }).promise()
+
+    return deferred
+  },
+
+  handlerTestCharacterDetails: () => {
+    $("#test-character-details").click(e => {
+      abc.getCharacterDetails().then(data => {
+        console.log(data)
+      })
+    })
+  },
+
+  handlerTestCreateCharacterDetail: () => {
+    $("#test-create-character-detail").click(e => {
+      let characterDetailId = ":)"
+      let backstory = ":)"
+      let playerCharacterId = ":)"
+
+      let jsonData = JSON.stringify({
+        "characterDetailId": characterDetailId,
+        "backstory": backstory,
+        "playerCharacterId": playerCharacterId
+      })
+
+      abc.createCharacterDetail(jsonData).then(data => {
+        console.log(data)
+        $("#character-detail-id").html(data.obj._id)
+      })
+    })
+  },
+
+  handlerTestGetCharacterDetail: () => {
+    $("#test-get-character-detail").click(e => {
+      let id = $("#character-detail-id").html()
+      
+      abc.getCharacterDetail(id).then(data => {
+        console.log(data)
+      })
+
+    })
+  },
+
+  handlerTestPutCharacterDetail: () => {
+    $("#test-put-character-detail").click(e => {
+      let id = $("#character-detail-id").html()
+
+      let characterDetailId = ":D"
+      let backstory = ":D"
+      let playerCharacterId = ":D"
+
+      let jsonData = JSON.stringify({
+        "characterDetailId": characterDetailId,
+        "backstory": backstory,
+        "playerCharacterId": playerCharacterId
+      })
+
+      abc.putCharacterDetail(id, jsonData).then(data => {
+        console.log(data)
+      })
+    })
+  },
+
+  handlerTestDeleteCharacterDetail: id => {
+    $("#test-delete-character-detail").click(e => {
+      let id = $("#character-detail-id").html()
+      
+      abc.deleteCharacterDetail(id).then(() => {
+        console.log("deleted!")
+      })
+
+    })
+  },
+
+  getCharacterDetails: () => {
+    let deferred = $.ajax({
+      type: "GET",
+      url: `${abc.apiurl}/characterDetails`,
+      success: function(data, status, jqXHR) {},
+      error: function(jqXHR, status) {console.log("getCharacterDetails() Error")}
+    }).promise()
+
+    return deferred
+  },
+
+  createCharacterDetail: jsonData => {
+    let deferred = $.ajax({
+      type: "POST",
+      url: `${abc.apiurl}/characterDetails`,
+      data: abc.convertJsonToFormData(jsonData),
+      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+      success: (data, status, jqXHR) => {},
+      error: (jqXHR, status) => {
+        ebot.notify("error creating a Character detail")
+        console.log(jqXHR)
+      }
+    }).promise()
+
+    return deferred
+  },
+
+  getCharacterDetail: id => {
+    let deferred = $.ajax({
+      type: "GET",
+      url: `${abc.apiurl}/characterDetails/${id}`,
+      success: function(data, status, jqXHR) {},
+      error: function(jqXHR, status) {console.log("getCharacterDetail() Error")}
+    }).promise()
+
+    return deferred
+  },
+
+  putCharacterDetail: (id, jsonData) => {
+    let deferred = $.ajax({
+      type: "PUT",
+      url: `${abc.apiurl}/characterDetails/${id}`,
+      data: abc.convertJsonToFormData(jsonData),
+      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+      success: (data, status, jqXHR) => {},
+      error: (jqXHR, status) => {
+        ebot.notify("error updating a Character detail")
+        console.log(jqXHR)
+      }
+    }).promise()
+
+    return deferred
+  },
+
+  deleteCharacterDetail: id => {
+    let deferred = $.ajax({
+      type: "DELETE",
+      url: `${abc.apiurl}/characterDetails/${id}`,
+      success: function(data, status, jqXHR) {},
+      error: function(jqXHR, status) {console.log("deleteCharacterDetail() Error")}
     }).promise()
 
     return deferred

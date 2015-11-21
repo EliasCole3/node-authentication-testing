@@ -29,6 +29,21 @@
   })
 
 
+  app.get('/crud-logs', function(req, res) {
+    res.render('CRUD/logs.ejs', {
+        user : req.user
+    })
+  })
+
+  app.get('/css/crud-logs.css', function(req, res) {
+    res.sendFile(path.resolve(__dirname + './../css/crud-logs.css'))
+  })
+
+  app.get('/js/crud-logs.js', function(req, res) {
+    res.sendFile(path.resolve(__dirname + './../js/crud-logs.js'))
+  })
+
+
   app.get('/crud-player-characters', function(req, res) {
     res.render('CRUD/player-characters.ejs', {
         user : req.user
@@ -74,21 +89,6 @@
   })
 
 
-  app.get('/crud-logs', function(req, res) {
-    res.render('CRUD/logs.ejs', {
-        user : req.user
-    })
-  })
-
-  app.get('/css/crud-logs.css', function(req, res) {
-    res.sendFile(path.resolve(__dirname + './../css/crud-logs.css'))
-  })
-
-  app.get('/js/crud-logs.js', function(req, res) {
-    res.sendFile(path.resolve(__dirname + './../js/crud-logs.js'))
-  })
-
-
   app.get('/crud-powers', function(req, res) {
     res.render('CRUD/powers.ejs', {
         user : req.user
@@ -116,5 +116,20 @@
 
   app.get('/js/crud-join-player-character-items.js', function(req, res) {
     res.sendFile(path.resolve(__dirname + './../js/crud-join-player-character-items.js'))
+  })
+
+
+  app.get('/crud-character-details', function(req, res) {
+    res.render('CRUD/character-details.ejs', {
+        user : req.user
+    })
+  })
+
+  app.get('/css/crud-character-details.css', function(req, res) {
+    res.sendFile(path.resolve(__dirname + './../css/crud-character-details.css'))
+  })
+
+  app.get('/js/crud-character-details.js', function(req, res) {
+    res.sendFile(path.resolve(__dirname + './../js/crud-character-details.js'))
   })
 

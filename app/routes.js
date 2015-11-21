@@ -364,6 +364,22 @@ module.exports = function(app, passport) {
     })
 
 
+    app.get('/crud-character-details', function(req, res) {
+      res.render('CRUD/character-details.ejs', {
+          user : req.user
+      })
+    })
+
+    app.get('/css/crud-character-details.css', function(req, res) {
+      res.sendFile(path.resolve(__dirname + './../css/crud-character-details.css'))
+    })
+
+    app.get('/js/crud-character-details.js', function(req, res) {
+      res.sendFile(path.resolve(__dirname + './../js/crud-character-details.js'))
+    })
+
+
+
 };
 
 // route middleware to make sure a user is logged in

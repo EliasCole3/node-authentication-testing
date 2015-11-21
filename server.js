@@ -80,6 +80,7 @@ require('./app/routes-log-entry.js')(app, passport)
 require('./app/routes-item.js')(app, passport)
 require('./app/routes-power.js')(app, passport)
 require('./app/routes-join-player-character-item.js')(app, passport)
+require('./app/routes-character-detail.js')(app, passport)
 
 //socket-io stuff
 io.on('connection', function(socket) {

@@ -247,22 +247,14 @@ var abc = {
   getRightDrawerHtmlPlayer: function getRightDrawerHtmlPlayer() {
     var htmlString = "";
 
-    console.log(abc.joinPlayerCharacterItems);
-
     var relevantItemJoins = abc.joinPlayerCharacterItems.filter(function (join) {
       return join.playerCharacterId == abc.currentPlayerCharacterId;
     });
 
-    console.log(relevantItemJoins);
-
     relevantItemJoins.forEach(function (join) {
       var relevantItem = abc.items.filter(function (item) {
-        console.log(item.itemId);
-        console.log(join.itemId);
         return item.itemId == join.itemId;
       })[0];
-
-      console.log(relevantItem);
 
       htmlString += "<img src='items/" + relevantItem.imageFilename + "' class='player-item'> x " + join.count + "<br>";
     });
