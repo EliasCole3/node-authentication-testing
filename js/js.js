@@ -35,6 +35,10 @@ var abc = {
       var DMs = ["a", "bliss"];
       var players = ["a", "b", "c", "laurana", "andros", "skjor", "placeholder", "ares"];
 
+      console.log(user.local.username);
+      console.log(DMs);
+      console.log(DMs.indexOf(user.local.username));
+
       if (DMs.indexOf(user.local.username) > -1) {
         abc.userIsDM = true;
       }
