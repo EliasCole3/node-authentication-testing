@@ -309,8 +309,12 @@ let abc = {
 
   getRightDrawerHtmlPlayer: () => {
     let htmlString = ``
+  
+    console.log(abc.joinPlayerCharacterItems)
 
     let relevantItemJoins = abc.joinPlayerCharacterItems.filter(join => {
+      console.log(join.playerCharacterId)
+      console.log(abc.currentPlayerCharacterId)
       return join.playerCharacterId === abc.currentPlayerCharacterId
     })
 
@@ -321,12 +325,10 @@ let abc = {
         item.itemId === join.itemId
       })
 
+      console.log(relevantItem)
+
       htmlString += `<img src='items/${relevantItem.imageFilename}' class='player-item'> x ${join.count}<br>`
     })
-
-    // abc.items.forEach(item => {
-    //   htmlString += `<button class='add-item-button' item-id='${item._id}' item-image-filename='${item.imageFilename}'><img src='items/${item.imageFilename}'></button>`
-    // })
 
     return htmlString
   },
