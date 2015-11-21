@@ -257,6 +257,8 @@ var abc = {
 
     relevantItemJoins.forEach(function (join) {
       var relevantItem = abc.items.filter(function (item) {
+        console.log(item.itemId);
+        console.log(join.itemId);
         item.itemId == join.itemId;
       })[0];
 
