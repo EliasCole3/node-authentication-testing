@@ -174,7 +174,7 @@ var abc = {
     $("#background-select").chosen(ebot.chosenOptions).change(function (e) {
       var element = $(e.currentTarget);
       console.log(element.val());
-      $("wrapper").css("background-image", "backgrounds/" + element.val());
+      $("#wrapper").css("background-image", "backgrounds/" + element.val());
     });
   },
 
