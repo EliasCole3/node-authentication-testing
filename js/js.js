@@ -35,10 +35,6 @@ var abc = {
       var DMs = ["a", "bliss"];
       var players = ["a", "b", "c", "bliss", "laurana", "andros", "skjor", "placeholder", "ares"];
 
-      console.log(user.local.username);
-      console.log(DMs);
-      console.log(DMs.indexOf(user.local.username));
-
       if (DMs.indexOf(user.local.username) > -1) {
         abc.userIsDM = true;
       }
@@ -134,6 +130,7 @@ var abc = {
     deferreds.push(ebot.retrieveEntity(abc, "creatures"));
     deferreds.push(ebot.retrieveEntity(abc, "playerCharacters"));
     deferreds.push(ebot.retrieveEntity(abc, "nonPlayerCharacters"));
+    deferreds.push(ebot.retrieveEntity(abc, "joinPlayerCharacterItems"));
 
     return deferreds;
   },
@@ -228,14 +225,16 @@ var abc = {
 
   fillRightDrawer: function fillRightDrawer() {
     if (abc.userIsDM) {
-      $("#right-drawer-contents").html(abc.getRightDrawerHtml());
+      $("#right-drawer-contents").html(abc.getRightDrawerHtmlDM());
       abc.handlerRightDrawerContents();
+    } else if (abc.userIsPlayer) {
+      $("#right-drawer-contents").html(abc.getRightDrawerHtmlPlayer());
     } else {
-      $("#right-drawer-contents").html("");
+      $("#right-drawer-contents").html("Unauthorized user detected!");
     }
   },
 
-  getRightDrawerHtml: function getRightDrawerHtml() {
+  getRightDrawerHtmlDM: function getRightDrawerHtmlDM() {
     var htmlString = "";
 
     abc.items.forEach(function (item) {
@@ -245,22 +244,51 @@ var abc = {
     return htmlString;
   },
 
-  handlerRightDrawerContents: function handlerRightDrawerContents() {
-    $(".add-item-button").click(function (e) {
-      var button = $(e.currentTarget);
-      var imageFilename = button.attr("item-image-filename");
-      var ranTop = ebot.getRandomInt(2, 10) * 50;
-      var ranLeft = ebot.getRandomInt(2, 10) * 50;
-      abc.addTokenItem(imageFilename, ranTop, ranLeft);
+  getRightDrawerHtmlPlayer: function getRightDrawerHtmlPlayer() {
+    var htmlString = "";
 
-      var emitObj = {
-        imageFilename: imageFilename,
-        ranTop: ranTop,
-        ranLeft: ranLeft
-      };
-
-      abc.socket.emit('token added', emitObj);
+    var relevantItemJoins = abc.joinPlayerCharacterItems.filter(function (join) {
+      return join.playerCharacterId === abc.currentPlayerCharacterId;
     });
+
+    console.log(relevantItemJoins);
+
+    relevantItemJoins.forEach(function (join) {
+      relevantItem = abc.items.filter(function (item) {
+        item.itemId === join.itemId;
+      });
+
+      htmlString += "<img src='items/" + relevantItem.imageFilename + "' class='player-item'> x " + join.count + "<br>";
+    });
+
+    // abc.items.forEach(item => {
+    //   htmlString += `<button class='add-item-button' item-id='${item._id}' item-image-filename='${item.imageFilename}'><img src='items/${item.imageFilename}'></button>`
+    // })
+
+    return htmlString;
+  },
+
+  handlerRightDrawerContents: function handlerRightDrawerContents() {
+
+    if (abc.userIsDM) {
+      $(".add-item-button").click(function (e) {
+        var button = $(e.currentTarget);
+        var imageFilename = button.attr("item-image-filename");
+        var ranTop = ebot.getRandomInt(2, 10) * 50;
+        var ranLeft = ebot.getRandomInt(2, 10) * 50;
+        abc.addTokenItem(imageFilename, ranTop, ranLeft);
+
+        var emitObj = {
+          imageFilename: imageFilename,
+          ranTop: ranTop,
+          ranLeft: ranLeft
+        };
+
+        abc.socket.emit('token added', emitObj);
+      });
+    } else if (abc.userIsPlayer) {
+      $("#right-drawer-contents").html(abc.getRightDrawerHtmlPlayer());
+    } else {}
   },
 
   changeBackground: function changeBackground(background) {
@@ -405,7 +433,9 @@ var abc = {
 
   playerCharacters: [],
 
-  nonPlayerCharacters: []
+  nonPlayerCharacters: [],
+
+  joinPlayerCharacterItems: []
 
 };
 //# sourceMappingURL=js.js.map

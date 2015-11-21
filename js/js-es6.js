@@ -35,10 +35,6 @@ let abc = {
       let DMs = ["a", "bliss"]
       let players = ["a", "b", "c", "bliss", "laurana", "andros", "skjor", "placeholder", "ares"]
 
-      console.log(user.local.username)
-      console.log(DMs)
-      console.log(DMs.indexOf(user.local.username))
-
       if(DMs.indexOf(user.local.username) > -1) {
         abc.userIsDM = true
       }
@@ -139,6 +135,7 @@ let abc = {
     deferreds.push(ebot.retrieveEntity(abc, "creatures"))
     deferreds.push(ebot.retrieveEntity(abc, "playerCharacters"))
     deferreds.push(ebot.retrieveEntity(abc, "nonPlayerCharacters"))
+    deferreds.push(ebot.retrieveEntity(abc, "joinPlayerCharacterItems"))
 
     return deferreds
   },
@@ -291,14 +288,16 @@ let abc = {
 
   fillRightDrawer: () => {
     if(abc.userIsDM) {
-      $(`#right-drawer-contents`).html(abc.getRightDrawerHtml())
+      $(`#right-drawer-contents`).html(abc.getRightDrawerHtmlDM())
       abc.handlerRightDrawerContents()
+    } else if(abc.userIsPlayer) {
+      $(`#right-drawer-contents`).html(abc.getRightDrawerHtmlPlayer())
     } else {
-      $(`#right-drawer-contents`).html("")
+      $(`#right-drawer-contents`).html("Unauthorized user detected!")
     }
   },
 
-  getRightDrawerHtml: () => {
+  getRightDrawerHtmlDM: () => {
     let htmlString = ``
 
     abc.items.forEach(item => {
@@ -308,22 +307,55 @@ let abc = {
     return htmlString
   },
 
-  handlerRightDrawerContents: () => {
-    $(".add-item-button").click(e => {
-      let button = $(e.currentTarget)
-      let imageFilename = button.attr("item-image-filename")
-      let ranTop = ebot.getRandomInt(2, 10) * 50
-      let ranLeft = ebot.getRandomInt(2, 10) * 50
-      abc.addTokenItem(imageFilename, ranTop, ranLeft)
- 
-      let emitObj = {
-        imageFilename: imageFilename,
-        ranTop: ranTop,
-        ranLeft: ranLeft
-      }
+  getRightDrawerHtmlPlayer: () => {
+    let htmlString = ``
 
-      abc.socket.emit('token added', emitObj)
+    let relevantItemJoins = abc.joinPlayerCharacterItems.filter(join => {
+      return join.playerCharacterId === abc.currentPlayerCharacterId
     })
+
+    console.log(relevantItemJoins)
+
+    relevantItemJoins.forEach(join => {
+      relevantItem = abc.items.filter(item => {
+        item.itemId === join.itemId
+      })
+
+      htmlString += `<img src='items/${relevantItem.imageFilename}' class='player-item'> x ${join.count}<br>`
+    })
+
+    // abc.items.forEach(item => {
+    //   htmlString += `<button class='add-item-button' item-id='${item._id}' item-image-filename='${item.imageFilename}'><img src='items/${item.imageFilename}'></button>`
+    // })
+
+    return htmlString
+  },
+
+  handlerRightDrawerContents: () => {
+
+    if(abc.userIsDM) {
+      $(".add-item-button").click(e => {
+        let button = $(e.currentTarget)
+        let imageFilename = button.attr("item-image-filename")
+        let ranTop = ebot.getRandomInt(2, 10) * 50
+        let ranLeft = ebot.getRandomInt(2, 10) * 50
+        abc.addTokenItem(imageFilename, ranTop, ranLeft)
+      
+        let emitObj = {
+          imageFilename: imageFilename,
+          ranTop: ranTop,
+          ranLeft: ranLeft
+        }
+
+        abc.socket.emit('token added', emitObj)
+      })
+    } else if(abc.userIsPlayer) {
+      $(`#right-drawer-contents`).html(abc.getRightDrawerHtmlPlayer())
+    } else {
+      
+    }
+
+    
   },
 
 
@@ -493,7 +525,9 @@ let abc = {
 
   playerCharacters: [],
 
-  nonPlayerCharacters: []
+  nonPlayerCharacters: [],
+
+  joinPlayerCharacterItems: []
 
 }
 
