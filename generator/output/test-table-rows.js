@@ -30,12 +30,12 @@
 
   
   <tr>
-    <td><button id='test-player-characters' class='btn btn-md'>Test Player Characters</button></td>
-    <td><button id='test-create-player-character' class='btn btn-md'>Test Create Player Character</button></td>
-    <td><button id='test-get-player-character' class='btn btn-md'>Test Get Player Character</button></td>
-    <td><button id='test-put-player-character' class='btn btn-md'>Test Put Player Character</button></td>
-    <td><button id='test-delete-player-character' class='btn btn-md'>Test Delete Player Character</button></td>
-    <td><div id='player-character-id'></div></td>
+    <td><button id='test-items' class='btn btn-md'>Test Items</button></td>
+    <td><button id='test-create-item' class='btn btn-md'>Test Create Item</button></td>
+    <td><button id='test-get-item' class='btn btn-md'>Test Get Item</button></td>
+    <td><button id='test-put-item' class='btn btn-md'>Test Put Item</button></td>
+    <td><button id='test-delete-item' class='btn btn-md'>Test Delete Item</button></td>
+    <td><div id='item-id'></div></td>
   </tr>
 
   
@@ -50,12 +50,12 @@
 
   
   <tr>
-    <td><button id='test-items' class='btn btn-md'>Test Items</button></td>
-    <td><button id='test-create-item' class='btn btn-md'>Test Create Item</button></td>
-    <td><button id='test-get-item' class='btn btn-md'>Test Get Item</button></td>
-    <td><button id='test-put-item' class='btn btn-md'>Test Put Item</button></td>
-    <td><button id='test-delete-item' class='btn btn-md'>Test Delete Item</button></td>
-    <td><div id='item-id'></div></td>
+    <td><button id='test-join-player-character-items' class='btn btn-md'>Test Join Player Character Items</button></td>
+    <td><button id='test-create-join-player-character-item' class='btn btn-md'>Test Create Join Player Character Item</button></td>
+    <td><button id='test-get-join-player-character-item' class='btn btn-md'>Test Get Join Player Character Item</button></td>
+    <td><button id='test-put-join-player-character-item' class='btn btn-md'>Test Put Join Player Character Item</button></td>
+    <td><button id='test-delete-join-player-character-item' class='btn btn-md'>Test Delete Join Player Character Item</button></td>
+    <td><div id='join-player-character-item-id'></div></td>
   </tr>
 
   
@@ -70,22 +70,22 @@
 
   
   <tr>
-    <td><button id='test-join-player-character-items' class='btn btn-md'>Test Join Player Character Items</button></td>
-    <td><button id='test-create-join-player-character-item' class='btn btn-md'>Test Create Join Player Character Item</button></td>
-    <td><button id='test-get-join-player-character-item' class='btn btn-md'>Test Get Join Player Character Item</button></td>
-    <td><button id='test-put-join-player-character-item' class='btn btn-md'>Test Put Join Player Character Item</button></td>
-    <td><button id='test-delete-join-player-character-item' class='btn btn-md'>Test Delete Join Player Character Item</button></td>
-    <td><div id='join-player-character-item-id'></div></td>
-  </tr>
-
-  
-  <tr>
     <td><button id='test-character-details' class='btn btn-md'>Test Character Details</button></td>
     <td><button id='test-create-character-detail' class='btn btn-md'>Test Create Character Detail</button></td>
     <td><button id='test-get-character-detail' class='btn btn-md'>Test Get Character Detail</button></td>
     <td><button id='test-put-character-detail' class='btn btn-md'>Test Put Character Detail</button></td>
     <td><button id='test-delete-character-detail' class='btn btn-md'>Test Delete Character Detail</button></td>
     <td><div id='character-detail-id'></div></td>
+  </tr>
+
+  
+  <tr>
+    <td><button id='test-player-characters' class='btn btn-md'>Test Player Characters</button></td>
+    <td><button id='test-create-player-character' class='btn btn-md'>Test Create Player Character</button></td>
+    <td><button id='test-get-player-character' class='btn btn-md'>Test Get Player Character</button></td>
+    <td><button id='test-put-player-character' class='btn btn-md'>Test Put Player Character</button></td>
+    <td><button id='test-delete-player-character' class='btn btn-md'>Test Delete Player Character</button></td>
+    <td><div id='player-character-id'></div></td>
   </tr>
 
   

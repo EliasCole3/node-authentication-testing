@@ -41,16 +41,16 @@
   },
 
   
-  babel_crud_player_characters: {
+  babel_crud_items: {
     files: [
-      'js/crud-player-characters-es6.js'
+      'js/crud-items-es6.js'
     ],
-    tasks: ['babel:crud_player_characters'],
+    tasks: ['babel:crud_items'],
   },
 
-  crud_player_characters: {
+  crud_items: {
     files: {
-      'js/crud-player-characters.js': 'js/crud-player-characters-es6.js'
+      'js/crud-items.js': 'js/crud-items-es6.js'
     }
   },
 
@@ -69,16 +69,16 @@
   },
 
   
-  babel_crud_items: {
+  babel_crud_join_player_character_items: {
     files: [
-      'js/crud-items-es6.js'
+      'js/crud-join-player-character-items-es6.js'
     ],
-    tasks: ['babel:crud_items'],
+    tasks: ['babel:crud_join_player_character_items'],
   },
 
-  crud_items: {
+  crud_join_player_character_items: {
     files: {
-      'js/crud-items.js': 'js/crud-items-es6.js'
+      'js/crud-join-player-character-items.js': 'js/crud-join-player-character-items-es6.js'
     }
   },
 
@@ -97,20 +97,6 @@
   },
 
   
-  babel_crud_join_player_character_items: {
-    files: [
-      'js/crud-join-player-character-items-es6.js'
-    ],
-    tasks: ['babel:crud_join_player_character_items'],
-  },
-
-  crud_join_player_character_items: {
-    files: {
-      'js/crud-join-player-character-items.js': 'js/crud-join-player-character-items-es6.js'
-    }
-  },
-
-  
   babel_crud_character_details: {
     files: [
       'js/crud-character-details-es6.js'
@@ -121,6 +107,20 @@
   crud_character_details: {
     files: {
       'js/crud-character-details.js': 'js/crud-character-details-es6.js'
+    }
+  },
+
+  
+  babel_crud_player_characters: {
+    files: [
+      'js/crud-player-characters-es6.js'
+    ],
+    tasks: ['babel:crud_player_characters'],
+  },
+
+  crud_player_characters: {
+    files: {
+      'js/crud-player-characters.js': 'js/crud-player-characters-es6.js'
     }
   },
 

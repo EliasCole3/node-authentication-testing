@@ -29,7 +29,7 @@
     "damage": {
       "testValue": ":)",
       "updateValue": ":D",
-      "elementType": "number"
+      "elementType": "text"
     },
     "effect": {
       "testValue": ":)",

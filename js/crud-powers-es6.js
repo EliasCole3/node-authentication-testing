@@ -152,7 +152,7 @@ let abc = {
     <label>Type</label> <input id='type' class='form-control'><br />
     <label>Flavor Text</label> <textarea id='flavor-text' class='form-control'></textarea><br /><br />
     <label>Attack Type</label> <input id='attack-type' class='form-control'><br />
-    <label>Damage</label> <input id='damage' type='number' class='form-control'><br />
+    <label>Damage</label> <input id='damage' class='form-control'><br />
     <label>Effect</label> <input id='effect' class='form-control'><br />
     <label>Description</label> <textarea id='description' class='form-control'></textarea><br /><br />
     <label>Upgrade</label> <textarea id='upgrade' class='form-control'></textarea><br /><br />
