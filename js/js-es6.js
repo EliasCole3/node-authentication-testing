@@ -49,6 +49,7 @@ let abc = {
         abc.fillTopDrawer()
         abc.fillRightDrawer()
         abc.fillLeftDrawer()
+        abc.fillBottomDrawer()
       })
     } catch(e) {
       console.log(`error parsing authentication data: ${e}`)
@@ -175,14 +176,24 @@ let abc = {
 
   getBottomDrawerHtml: () => {
     let htmlString = `
-    
+      <select id='background-select' data-placeholder='Choose a background...'>
+        <option value=''></option>
+        <option value='river.jpg'>River</option>
+        <option value='twooth-library.png'>Twooth Library</option>
+        <option value='slime-cave.png'>Slim Cave</option>
+      </select>
     `
 
     return htmlString
   },
 
   handlerBottomDrawerContents: () => {
-    
+    $("background-select").chosen(ebot.chosenOptions).change(e => {
+      let element = $(e.currentTarget)
+      console.log(element.val())
+    })
+
+  
   },
 
 

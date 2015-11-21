@@ -49,6 +49,7 @@ var abc = {
         abc.fillTopDrawer();
         abc.fillRightDrawer();
         abc.fillLeftDrawer();
+        abc.fillBottomDrawer();
       });
     } catch (e) {
       console.log("error parsing authentication data: " + e);
@@ -131,12 +132,17 @@ var abc = {
   },
 
   getBottomDrawerHtml: function getBottomDrawerHtml() {
-    var htmlString = "\n    \n    ";
+    var htmlString = "\n      <select id='background-select' data-placeholder='Choose a background...'>\n        <option value=''></option>\n        <option value='river.jpg'>River</option>\n        <option value='twooth-library.png'>Twooth Library</option>\n        <option value='slime-cave.png'>Slim Cave</option>\n      </select>\n    ";
 
     return htmlString;
   },
 
-  handlerBottomDrawerContents: function handlerBottomDrawerContents() {},
+  handlerBottomDrawerContents: function handlerBottomDrawerContents() {
+    $("background-select").chosen(ebot.chosenOptions).change(function (e) {
+      var element = $(e.currentTarget);
+      console.log(element.val());
+    });
+  },
 
   fillLeftDrawer: function fillLeftDrawer() {
     if (abc.userIsPlayer) {
