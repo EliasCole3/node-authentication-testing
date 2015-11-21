@@ -253,7 +253,7 @@ var abc = {
       console.log("struibn");
       console.log(join.playerCharacterId);
       console.log(abc.currentPlayerCharacterId);
-      return +join.playerCharacterId === +abc.currentPlayerCharacterId;
+      return join.playerCharacterId == abc.currentPlayerCharacterId;
     });
 
     console.log(relevantItemJoins);
