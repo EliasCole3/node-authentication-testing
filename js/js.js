@@ -115,7 +115,7 @@ var abc = {
       var button = $(e.currentTarget);
       var imageFilename = button.attr("item-image-filename");
       var ranTop = ebot.getRandomInt(2, 10) * 50;
-      var ranLeft = ebot.getRandomInt(2, 10) * 5;
+      var ranLeft = ebot.getRandomInt(2, 10) * 50;
       var id = "dynamically-added-div-" + abc.currentDynamicDivId;
       var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='items/" + imageFilename + "'></div>";
       $("#wrapper").append(htmlString);
