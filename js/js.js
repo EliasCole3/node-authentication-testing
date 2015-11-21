@@ -83,6 +83,10 @@ var abc = {
     abc.socket.on('token added', function (emitObj) {
       abc.addTokenItem(emitObj.imageFilename, emitObj.ranTop, emitObj.ranLeft);
     });
+
+    abc.socket.on('background changed', function (emitObj) {
+      abc.changeBackground(emitObj.background);
+    });
   },
 
   retrieveInitialModels: function retrieveInitialModels() {
@@ -173,8 +177,8 @@ var abc = {
 
     $("#background-select").chosen(ebot.chosenOptions).change(function (e) {
       var element = $(e.currentTarget);
-      console.log(element.val());
-      $("#wrapper").css("background-image", "url(backgrounds/" + element.val() + ")").css("background-repeat", "no-repeat");
+      abc.changeBackground(element.val());
+      abc.socket.emit('background changed', { background: element.val() });
     });
   },
 
@@ -213,6 +217,10 @@ var abc = {
 
       abc.socket.emit('token added', emitObj);
     });
+  },
+
+  changeBackground: function changeBackground(background) {
+    $("#wrapper").css("background-image", "url(backgrounds/" + background + ")").css("background-repeat", "no-repeat");
   },
 
   viewAllPowers: function viewAllPowers() {

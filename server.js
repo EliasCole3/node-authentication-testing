@@ -113,6 +113,10 @@ io.on('connection', function(socket) {
   socket.on('token added', function(emitObj) {
     socket.broadcast.emit('token added', emitObj)
   })
+
+  socket.on('background changed', function(emitObj) {
+    socket.broadcast.emit('background changed', emitObj)
+  })
 })
 
 
