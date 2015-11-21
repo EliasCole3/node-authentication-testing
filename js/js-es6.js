@@ -292,6 +292,8 @@ let abc = {
       let detailText = abc.characterDetails.filter(detail => {
         return detail.playerCharacterId == abc.currentPlayerCharacterId
       })[0].backstory
+      
+      detailText = `<pre>${detailText}</pre>`
 
       ebot.showModal("Backstory", detailText)
     })

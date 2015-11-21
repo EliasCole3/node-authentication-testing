@@ -232,6 +232,8 @@ var abc = {
         return detail.playerCharacterId == abc.currentPlayerCharacterId;
       })[0].backstory;
 
+      detailText = "<pre>" + detailText + "</pre>";
+
       ebot.showModal("Backstory", detailText);
     });
   },
