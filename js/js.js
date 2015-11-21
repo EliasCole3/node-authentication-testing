@@ -53,8 +53,6 @@ var abc = {
   },
 
   assignInitialHandlers: function assignInitialHandlers() {
-    abc.handlerDrag();
-    abc.handlerAddDiv();
     abc.handlersSocketEventReceived();
     abc.makeDrawers();
   },

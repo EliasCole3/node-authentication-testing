@@ -55,8 +55,6 @@ let abc = {
   },
 
   assignInitialHandlers: () => {
-    abc.handlerDrag()
-    abc.handlerAddDiv()
     abc.handlersSocketEventReceived()
     abc.makeDrawers()
     
