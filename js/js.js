@@ -138,7 +138,7 @@ var abc = {
   },
 
   handlerBottomDrawerContents: function handlerBottomDrawerContents() {
-    $("background-select").chosen(ebot.chosenOptions).change(function (e) {
+    $("#background-select").chosen(ebot.chosenOptions).change(function (e) {
       var element = $(e.currentTarget);
       console.log(element.val());
     });

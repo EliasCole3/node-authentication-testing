@@ -188,7 +188,7 @@ let abc = {
   },
 
   handlerBottomDrawerContents: () => {
-    $("background-select").chosen(ebot.chosenOptions).change(e => {
+    $("#background-select").chosen(ebot.chosenOptions).change(e => {
       let element = $(e.currentTarget)
       console.log(element.val())
     })
