@@ -114,8 +114,12 @@ let abc = {
       abc.playSound("me-user-disconnected")
     })
 
-    abc.socket.on('token added', emitObj => {
+    abc.socket.on('item token added', emitObj => {
       abc.addTokenItem(emitObj.imageFilename, emitObj.ranTop, emitObj.ranLeft)
+    })
+
+    abc.socket.on('player character token added', emitObj => {
+      abc.addTokenPlayerCharacter(emitObj.imageFilename, emitObj.ranTop, emitObj.ranLeft)
     })
 
     abc.socket.on('background changed', emitObj => {
@@ -356,6 +360,12 @@ let abc = {
       htmlString += `<button class='add-item-button' item-id='${item._id}' item-image-filename='${item.imageFilename}'><img src='items/${item.imageFilename}'></button>`
     })
 
+    htmlString += `<br><br><br>`
+
+    abc.playerCharacters.forEach(pc => {
+      htmlString += `<button class='add-player-character-button' player-character-id='${pc._id}' player-character-image-filename='${item.imageFilename}'><img src='player-characters/${pc.imageFilename}'></button>`
+    })
+
     return htmlString
   },
 
@@ -393,7 +403,23 @@ let abc = {
           ranLeft: ranLeft
         }
 
-        abc.socket.emit('token added', emitObj)
+        abc.socket.emit('item token added', emitObj)
+      })
+
+      $(".add-player-character-button").click(e => {
+        let button = $(e.currentTarget)
+        let imageFilename = button.attr("player-character-image-filename")
+        let ranTop = ebot.getRandomInt(2, 10) * 50
+        let ranLeft = ebot.getRandomInt(2, 10) * 50
+        abc.addTokenPlayerCharacter(imageFilename, ranTop, ranLeft)
+      
+        let emitObj = {
+          imageFilename: imageFilename,
+          ranTop: ranTop,
+          ranLeft: ranLeft
+        }
+
+        abc.socket.emit('player character token added', emitObj)
       })
     } else if(abc.userIsPlayer) {
       $(`#right-drawer-contents`).html(abc.getRightDrawerHtmlPlayer())
@@ -446,29 +472,6 @@ let abc = {
     return htmlString
   },
 
-  viewPlayerPowers: () => {
-    let htmlString = ``
-
-    abc.powers.forEach(power => {
-      htmlString += `
-      <div class='power-view'>
-
-        <h4>${power.name}</h4>
-        Type: ${power.type} <br>
-        Attack Type: ${power.attackType} <br>
-        Damage: ${power.damage} <br>
-        Effect: ${power.effect} <br>
-        Description: ${power.description} <br>
-        Flavor: ${power.flavorText} <br>
-        Upgrade Effects: ${power.upgrade} <br>
-
-      </div><br><br>`
-    })
-
-    return htmlString
-  },
-
-
 
 
 
@@ -478,6 +481,14 @@ let abc = {
   addTokenItem: (imageFilename, ranTop, ranLeft) => {
     let id = `dynamically-added-div-${abc.currentDynamicDivId}`
     let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='items/${imageFilename}'></div>`
+    $("#wrapper").append(htmlString)
+    $(`#${id}`).draggable(abc.draggableOptionsToken)
+    abc.currentDynamicDivId++
+  },
+
+  addTokenPlayerCharacter: (imageFilename, ranTop, ranLeft) => {
+    let id = `dynamically-added-div-${abc.currentDynamicDivId}`
+    let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='player-characters/${imageFilename}'></div>`
     $("#wrapper").append(htmlString)
     $(`#${id}`).draggable(abc.draggableOptionsToken)
     abc.currentDynamicDivId++

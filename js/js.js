@@ -109,8 +109,12 @@ var abc = {
       abc.playSound("me-user-disconnected");
     });
 
-    abc.socket.on('token added', function (emitObj) {
+    abc.socket.on('item token added', function (emitObj) {
       abc.addTokenItem(emitObj.imageFilename, emitObj.ranTop, emitObj.ranLeft);
+    });
+
+    abc.socket.on('player character token added', function (emitObj) {
+      abc.addTokenPlayerCharacter(emitObj.imageFilename, emitObj.ranTop, emitObj.ranLeft);
     });
 
     abc.socket.on('background changed', function (emitObj) {
@@ -277,6 +281,12 @@ var abc = {
       htmlString += "<button class='add-item-button' item-id='" + item._id + "' item-image-filename='" + item.imageFilename + "'><img src='items/" + item.imageFilename + "'></button>";
     });
 
+    htmlString += "<br><br><br>";
+
+    abc.playerCharacters.forEach(function (pc) {
+      htmlString += "<button class='add-player-character-button' player-character-id='" + pc._id + "' player-character-image-filename='" + item.imageFilename + "'><img src='player-characters/" + pc.imageFilename + "'></button>";
+    });
+
     return htmlString;
   },
 
@@ -314,7 +324,23 @@ var abc = {
           ranLeft: ranLeft
         };
 
-        abc.socket.emit('token added', emitObj);
+        abc.socket.emit('item token added', emitObj);
+      });
+
+      $(".add-player-character-button").click(function (e) {
+        var button = $(e.currentTarget);
+        var imageFilename = button.attr("player-character-image-filename");
+        var ranTop = ebot.getRandomInt(2, 10) * 50;
+        var ranLeft = ebot.getRandomInt(2, 10) * 50;
+        abc.addTokenPlayerCharacter(imageFilename, ranTop, ranLeft);
+
+        var emitObj = {
+          imageFilename: imageFilename,
+          ranTop: ranTop,
+          ranLeft: ranLeft
+        };
+
+        abc.socket.emit('player character token added', emitObj);
       });
     } else if (abc.userIsPlayer) {
       $("#right-drawer-contents").html(abc.getRightDrawerHtmlPlayer());
@@ -343,19 +369,17 @@ var abc = {
     return htmlString;
   },
 
-  viewPlayerPowers: function viewPlayerPowers() {
-    var htmlString = "";
-
-    abc.powers.forEach(function (power) {
-      htmlString += "\n      <div class='power-view'>\n\n        <h4>" + power.name + "</h4>\n        Type: " + power.type + " <br>\n        Attack Type: " + power.attackType + " <br>\n        Damage: " + power.damage + " <br>\n        Effect: " + power.effect + " <br>\n        Description: " + power.description + " <br>\n        Flavor: " + power.flavorText + " <br>\n        Upgrade Effects: " + power.upgrade + " <br>\n\n      </div><br><br>";
-    });
-
-    return htmlString;
-  },
-
   addTokenItem: function addTokenItem(imageFilename, ranTop, ranLeft) {
     var id = "dynamically-added-div-" + abc.currentDynamicDivId;
     var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='items/" + imageFilename + "'></div>";
+    $("#wrapper").append(htmlString);
+    $("#" + id).draggable(abc.draggableOptionsToken);
+    abc.currentDynamicDivId++;
+  },
+
+  addTokenPlayerCharacter: function addTokenPlayerCharacter(imageFilename, ranTop, ranLeft) {
+    var id = "dynamically-added-div-" + abc.currentDynamicDivId;
+    var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='player-characters/" + imageFilename + "'></div>";
     $("#wrapper").append(htmlString);
     $("#" + id).draggable(abc.draggableOptionsToken);
     abc.currentDynamicDivId++;

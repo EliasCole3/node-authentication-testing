@@ -114,8 +114,12 @@ io.on('connection', function(socket) {
     socket.broadcast.emit('div added')
   })
 
-  socket.on('token added', function(emitObj) {
-    socket.broadcast.emit('token added', emitObj)
+  socket.on('item token added', function(emitObj) {
+    socket.broadcast.emit('item token added', emitObj)
+  })
+
+  socket.on('player character token added', function(emitObj) {
+    socket.broadcast.emit('player character token added', emitObj)
   })
 
   socket.on('background changed', function(emitObj) {
