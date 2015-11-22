@@ -136,6 +136,7 @@ let abc = {
     deferreds.push(ebot.retrieveEntity(abc, "playerCharacters"))
     deferreds.push(ebot.retrieveEntity(abc, "nonPlayerCharacters"))
     deferreds.push(ebot.retrieveEntity(abc, "joinPlayerCharacterItems"))
+    deferreds.push(ebot.retrieveEntity(abc, "joinPlayerCharacterPowers"))
     deferreds.push(ebot.retrieveEntity(abc, "characterDetails"))
 
     return deferreds
@@ -251,7 +252,10 @@ let abc = {
     `
 
     if(abc.userIsPlayer && !abc.userIsDM) {
-      htmlString += `<br><br><button id='show-backstory' class='btn btn-md btn-info'>Show My Backstory</button>`
+      htmlString += `
+      <br><br><button id='show-backstory' class='btn btn-md btn-info'>Show My Backstory</button>
+      <br><br><button id='show-my-powers' class='btn btn-md btn-info'>Show My Powers</button>
+      `
     }
 
     if(abc.userIsDM) {
@@ -298,6 +302,36 @@ let abc = {
       detailText = `<div style="white-space: pre-wrap;">${detailText}</div>`
 
       ebot.showModal("Backstory", detailText)
+    })
+
+    $("#show-my-powers").click(e => {
+      let htmlString = ``
+
+      let relevantPowerJoins = abc.joinPlayerCharacterPowers.filter(join => {
+        return join.playerCharacterId == abc.currentPlayerCharacterId
+      })
+
+      relevantPowerJoins.forEach(join => {
+        let relevantPower = abc.powers.filter(power => {
+          return power.powerId == join.powerId
+        })[0]
+
+        htmlString += `
+        <div class='power-view'>
+
+          <h4>${relevantPower.name}</h4>
+          Type: ${relevantPower.type} <br>
+          Attack Type: ${relevantPower.attackType} <br>
+          Damage: ${relevantPower.damage} <br>
+          Effect: ${relevantPower.effect} <br>
+          Description: ${relevantPower.description} <br>
+          Flavor: ${relevantPower.flavorText} <br>
+          Upgrade Effects: ${relevantPower.upgrade} <br>
+
+        </div><br><br>`
+      })
+
+      ebot.showModal("My Powers", htmlString)
     })
   },
 
@@ -390,6 +424,28 @@ let abc = {
 
 
   viewAllPowers: () => {
+    let htmlString = ``
+
+    abc.powers.forEach(power => {
+      htmlString += `
+      <div class='power-view'>
+
+        <h4>${power.name}</h4>
+        Type: ${power.type} <br>
+        Attack Type: ${power.attackType} <br>
+        Damage: ${power.damage} <br>
+        Effect: ${power.effect} <br>
+        Description: ${power.description} <br>
+        Flavor: ${power.flavorText} <br>
+        Upgrade Effects: ${power.upgrade} <br>
+
+      </div><br><br>`
+    })
+
+    return htmlString
+  },
+
+  viewPlayerPowers: () => {
     let htmlString = ``
 
     abc.powers.forEach(power => {
@@ -539,6 +595,8 @@ let abc = {
   nonPlayerCharacters: [],
 
   joinPlayerCharacterItems: [],
+
+  joinPlayerCharacterPowers: [],
 
   characterDetails: []
 

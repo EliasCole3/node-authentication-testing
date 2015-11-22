@@ -131,6 +131,7 @@ var abc = {
     deferreds.push(ebot.retrieveEntity(abc, "playerCharacters"));
     deferreds.push(ebot.retrieveEntity(abc, "nonPlayerCharacters"));
     deferreds.push(ebot.retrieveEntity(abc, "joinPlayerCharacterItems"));
+    deferreds.push(ebot.retrieveEntity(abc, "joinPlayerCharacterPowers"));
     deferreds.push(ebot.retrieveEntity(abc, "characterDetails"));
 
     return deferreds;
@@ -198,7 +199,7 @@ var abc = {
     var htmlString = "\n    <button id='toggle-lines' class='btn btn-md btn-info'>Toggle Lines</button> <br><br>\n    <button id='show-all-powers' class='btn btn-md btn-info'>Show All Powers</button>\n    ";
 
     if (abc.userIsPlayer && !abc.userIsDM) {
-      htmlString += "<br><br><button id='show-backstory' class='btn btn-md btn-info'>Show My Backstory</button>";
+      htmlString += "\n      <br><br><button id='show-backstory' class='btn btn-md btn-info'>Show My Backstory</button>\n      <br><br><button id='show-my-powers' class='btn btn-md btn-info'>Show My Powers</button>\n      ";
     }
 
     if (abc.userIsDM) {
@@ -237,6 +238,24 @@ var abc = {
       detailText = "<div style=\"white-space: pre-wrap;\">" + detailText + "</div>";
 
       ebot.showModal("Backstory", detailText);
+    });
+
+    $("#show-my-powers").click(function (e) {
+      var htmlString = "";
+
+      var relevantPowerJoins = abc.joinPlayerCharacterPowers.filter(function (join) {
+        return join.playerCharacterId == abc.currentPlayerCharacterId;
+      });
+
+      relevantPowerJoins.forEach(function (join) {
+        var relevantPower = abc.powers.filter(function (power) {
+          return power.powerId == join.powerId;
+        })[0];
+
+        htmlString += "\n        <div class='power-view'>\n\n          <h4>" + relevantPower.name + "</h4>\n          Type: " + relevantPower.type + " <br>\n          Attack Type: " + relevantPower.attackType + " <br>\n          Damage: " + relevantPower.damage + " <br>\n          Effect: " + relevantPower.effect + " <br>\n          Description: " + relevantPower.description + " <br>\n          Flavor: " + relevantPower.flavorText + " <br>\n          Upgrade Effects: " + relevantPower.upgrade + " <br>\n\n        </div><br><br>";
+      });
+
+      ebot.showModal("My Powers", htmlString);
     });
   },
 
@@ -315,6 +334,16 @@ var abc = {
   },
 
   viewAllPowers: function viewAllPowers() {
+    var htmlString = "";
+
+    abc.powers.forEach(function (power) {
+      htmlString += "\n      <div class='power-view'>\n\n        <h4>" + power.name + "</h4>\n        Type: " + power.type + " <br>\n        Attack Type: " + power.attackType + " <br>\n        Damage: " + power.damage + " <br>\n        Effect: " + power.effect + " <br>\n        Description: " + power.description + " <br>\n        Flavor: " + power.flavorText + " <br>\n        Upgrade Effects: " + power.upgrade + " <br>\n\n      </div><br><br>";
+    });
+
+    return htmlString;
+  },
+
+  viewPlayerPowers: function viewPlayerPowers() {
     var htmlString = "";
 
     abc.powers.forEach(function (power) {
@@ -447,6 +476,8 @@ var abc = {
   nonPlayerCharacters: [],
 
   joinPlayerCharacterItems: [],
+
+  joinPlayerCharacterPowers: [],
 
   characterDetails: []
 
