@@ -363,7 +363,7 @@ let abc = {
     htmlString += `<br><br><br>`
 
     abc.playerCharacters.forEach(pc => {
-      htmlString += `<button class='add-player-character-button' player-character-id='${pc._id}' player-character-image-filename='${item.imageFilename}'><img src='player-characters/${pc.imageFilename}'></button>`
+      htmlString += `<button class='add-player-character-button' player-character-id='${pc._id}' player-character-image-filename='${pc.imageFilename}'><img src='player-characters/${pc.imageFilename}'></button>`
     })
 
     return htmlString
