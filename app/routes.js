@@ -379,6 +379,20 @@ module.exports = function(app, passport) {
     })
 
 
+    app.get('/crud-join-player-character-powers', function(req, res) {
+      res.render('CRUD/join-player-character-powers.ejs', {
+          user : req.user
+      })
+    })
+
+    app.get('/css/crud-join-player-character-powers.css', function(req, res) {
+      res.sendFile(path.resolve(__dirname + './../css/crud-join-player-character-powers.css'))
+    })
+
+    app.get('/js/crud-join-player-character-powers.js', function(req, res) {
+      res.sendFile(path.resolve(__dirname + './../js/crud-join-player-character-powers.js'))
+    })
+
 
 };
 

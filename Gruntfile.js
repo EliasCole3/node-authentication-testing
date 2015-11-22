@@ -81,6 +81,13 @@ module.exports = function(grunt) {
         tasks: ['babel:crud_character_details'],
       },      
 
+      babel_crud_join_player_character_powers: {
+        files: [
+          'js/crud-join-player-character-powers-es6.js'
+        ],
+        tasks: ['babel:crud_join_player_character_powers'],
+      },
+
       babel_crud_join_player_character_items: {
         files: [
           'js/crud-join-player-character-items-es6.js'
@@ -165,6 +172,12 @@ module.exports = function(grunt) {
       crud_join_player_character_items: {
         files: {
           'js/crud-join-player-character-items.js': 'js/crud-join-player-character-items-es6.js'
+        }
+      },
+
+      crud_join_player_character_powers: {
+        files: {
+          'js/crud-join-player-character-powers.js': 'js/crud-join-player-character-powers-es6.js'
         }
       }
       
