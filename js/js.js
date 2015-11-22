@@ -117,6 +117,10 @@ var abc = {
       abc.addTokenPlayerCharacter(emitObj.imageFilename, emitObj.ranTop, emitObj.ranLeft);
     });
 
+    abc.socket.on('creature token added', function (emitObj) {
+      abc.addTokenCreature(emitObj.imageFilename, emitObj.ranTop, emitObj.ranLeft);
+    });
+
     abc.socket.on('background changed', function (emitObj) {
       abc.changeBackground(emitObj.background);
     });

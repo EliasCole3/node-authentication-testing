@@ -122,6 +122,10 @@ let abc = {
       abc.addTokenPlayerCharacter(emitObj.imageFilename, emitObj.ranTop, emitObj.ranLeft)
     })
 
+    abc.socket.on('creature token added', emitObj => {
+      abc.addTokenCreature(emitObj.imageFilename, emitObj.ranTop, emitObj.ranLeft)
+    })
+
     abc.socket.on('background changed', emitObj => {
       abc.changeBackground(emitObj.background)
     })
