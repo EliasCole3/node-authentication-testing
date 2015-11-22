@@ -275,6 +275,7 @@ let abc = {
         <option value='twooth-library.png'>Twooth Library</option>
         <option value='slime-cave.png'>Slim Cave</option>
         <option value='andora-tavern.jpg'>Andora Tavern</option>
+        <option value='andora-gates.png'>Andora Gates</option>
       </select>
       `
     }
