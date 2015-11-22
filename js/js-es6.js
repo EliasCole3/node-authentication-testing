@@ -266,6 +266,7 @@ let abc = {
         <option value='river.jpg'>River</option>
         <option value='twooth-library.png'>Twooth Library</option>
         <option value='slime-cave.png'>Slim Cave</option>
+        <option value='andora-tavern.jpg'>Andora Tavern</option>
       </select>
       `
     }
