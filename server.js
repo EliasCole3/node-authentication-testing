@@ -122,6 +122,10 @@ io.on('connection', function(socket) {
     socket.broadcast.emit('player character token added', emitObj)
   })
 
+  socket.on('creature token added', function(emitObj) {
+    socket.broadcast.emit('creature token added', emitObj)
+  })
+
   socket.on('background changed', function(emitObj) {
     socket.broadcast.emit('background changed', emitObj)
   })

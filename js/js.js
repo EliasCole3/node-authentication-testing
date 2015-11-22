@@ -287,6 +287,12 @@ var abc = {
       htmlString += "<button class='add-player-character-button' player-character-id='" + pc._id + "' player-character-image-filename='" + pc.imageFilename + "'><img src='player-characters/" + pc.imageFilename + "'></button>";
     });
 
+    htmlString += "<br><br><br>";
+
+    abc.creatures.forEach(function (creature) {
+      htmlString += "<button class='add-creature-button' player-character-id='" + creature._id + "' creature-image-filename='" + creature.imageFilename + "'><img src='creatures/" + creature.imageFilename + "'></button>";
+    });
+
     return htmlString;
   },
 
@@ -342,6 +348,22 @@ var abc = {
 
         abc.socket.emit('player character token added', emitObj);
       });
+
+      $(".add-creature-button").click(function (e) {
+        var button = $(e.currentTarget);
+        var imageFilename = button.attr("creature-image-filename");
+        var ranTop = ebot.getRandomInt(2, 10) * 50;
+        var ranLeft = ebot.getRandomInt(2, 10) * 50;
+        abc.addTokenCreature(imageFilename, ranTop, ranLeft);
+
+        var emitObj = {
+          imageFilename: imageFilename,
+          ranTop: ranTop,
+          ranLeft: ranLeft
+        };
+
+        abc.socket.emit('creature token added', emitObj);
+      });
     } else if (abc.userIsPlayer) {
       $("#right-drawer-contents").html(abc.getRightDrawerHtmlPlayer());
     } else {}
@@ -380,6 +402,14 @@ var abc = {
   addTokenPlayerCharacter: function addTokenPlayerCharacter(imageFilename, ranTop, ranLeft) {
     var id = "dynamically-added-div-" + abc.currentDynamicDivId;
     var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='player-characters/" + imageFilename + "'></div>";
+    $("#wrapper").append(htmlString);
+    $("#" + id).draggable(abc.draggableOptionsToken);
+    abc.currentDynamicDivId++;
+  },
+
+  addTokenCreature: function addTokenCreature(imageFilename, ranTop, ranLeft) {
+    var id = "dynamically-added-div-" + abc.currentDynamicDivId;
+    var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='creatures/" + imageFilename + "'></div>";
     $("#wrapper").append(htmlString);
     $("#" + id).draggable(abc.draggableOptionsToken);
     abc.currentDynamicDivId++;
