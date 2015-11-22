@@ -271,6 +271,7 @@ let abc = {
       <select id='background-select' data-placeholder='Choose a background...'>
         <option value=''></option>
         <option value='blank'>Blank</option>
+        <option value='zone-map.png'>Zone Map</option>
         <option value='river.jpg'>River</option>
         <option value='twooth-library.png'>Twooth Library</option>
         <option value='slime-cave.png'>Slim Cave</option>
