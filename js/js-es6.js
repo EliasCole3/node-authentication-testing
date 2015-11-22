@@ -184,25 +184,28 @@ let abc = {
     </tr>`
 
     abc.playerCharacters.forEach(player => {
-      htmlString += `<tr>
-      <td>${player.playerName}</td>
-      <td>${player.characterName}</td>
-      <td><input id='current-hp-input-${player.playerCharacterId}' class='current-hp-input form-control' type='number' value='${player.hp}'></td>
-      <td>${player.hp}</td>
-      <td>${player.ac}</td>
-      <td>${player.will}</td>
-      <td>${player.reflex}</td>
-      <td>${player.baseToHitAc}</td>
-      <td>${player.baseToHitWill}</td>
-      <td>${player.baseToHitReflex}</td>
-      <td>${player.damageModifier}</td>
-      <td>${player.speed}</td>
-      <td>${player.initiative}</td>
-      <td>${player.actionPoints}</td>
-      <td>${player.gold}</td>
-      <td>${player.xp}</td>
+      if(player.playerName !== "npc") {
+          htmlString += `<tr>
+          <td>${player.playerName}</td>
+          <td>${player.characterName}</td>
+          <td><input id='current-hp-input-${player.playerCharacterId}' class='current-hp-input form-control' type='number' value='${player.hp}'></td>
+          <td>${player.hp}</td>
+          <td>${player.ac}</td>
+          <td>${player.will}</td>
+          <td>${player.reflex}</td>
+          <td>${player.baseToHitAc}</td>
+          <td>${player.baseToHitWill}</td>
+          <td>${player.baseToHitReflex}</td>
+          <td>${player.damageModifier}</td>
+          <td>${player.speed}</td>
+          <td>${player.initiative}</td>
+          <td>${player.actionPoints}</td>
+          <td>${player.gold}</td>
+          <td>${player.xp}</td>
 
-    </tr>`
+        </tr>`
+      }
+      
     })
 
     htmlString += `</table>`
