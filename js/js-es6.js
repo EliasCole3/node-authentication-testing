@@ -55,7 +55,7 @@ let abc = {
       })
 
       abc.handlerMouseMove()
-      
+
     } catch(e) {
       console.log(`error parsing authentication data: ${e}`)
     }
@@ -65,7 +65,7 @@ let abc = {
 
   handlerMouseMove: () => {
     $('body').on('mousemove', e => {
-      console.log(`x: ${e.pageX}, y: ${e.pageY}`)
+      // console.log(`x: ${e.pageX}, y: ${e.pageY}`)
 
       abc.socket.emit('cursor moved', {playerId: abc.currentPlayerCharacterId, x: e.pageX, y: e.pageY})
     })
@@ -150,6 +150,7 @@ let abc = {
     })
 
     abc.socket.on('cursor moved', emitObj => {
+      console.log("asdf")
       abc.updateCursorImage(emitObj)
     })
   },

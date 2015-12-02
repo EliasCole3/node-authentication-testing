@@ -62,7 +62,7 @@ var abc = {
 
   handlerMouseMove: function handlerMouseMove() {
     $('body').on('mousemove', function (e) {
-      console.log("x: " + e.pageX + ", y: " + e.pageY);
+      // console.log(`x: ${e.pageX}, y: ${e.pageY}`)
 
       abc.socket.emit('cursor moved', { playerId: abc.currentPlayerCharacterId, x: e.pageX, y: e.pageY });
     });
@@ -144,6 +144,7 @@ var abc = {
     });
 
     abc.socket.on('cursor moved', function (emitObj) {
+      console.log("asdf");
       abc.updateCursorImage(emitObj);
     });
   },
