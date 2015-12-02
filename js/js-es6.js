@@ -23,7 +23,6 @@ $(() => {
 let abc = {
   
   initialize: () => {
-    alert('aww yeah')
     abc.socket = io()
     abc.assignInitialHandlers()
 
@@ -54,11 +53,19 @@ let abc = {
         abc.fillLeftDrawer()
         abc.fillBottomDrawer()
       })
+
+      abc.handlerMouseMove()
     } catch(e) {
       console.log(`error parsing authentication data: ${e}`)
     }
 
 	  
+  },
+
+  handlerMouseMove: () => {
+    $('body').on('mousemove', e => {
+      console.log(`x: ${e.pageX}, y: ${e.pageY}`)
+    })
   },
 
   setCurrentPlayerCharacterId: user => {

@@ -23,7 +23,6 @@ $(function () {
 var abc = {
 
   initialize: function initialize() {
-    alert('aww yeah');
     abc.socket = io();
     abc.assignInitialHandlers();
 
@@ -54,9 +53,17 @@ var abc = {
         abc.fillLeftDrawer();
         abc.fillBottomDrawer();
       });
+
+      abc.handlerMouseMove();
     } catch (e) {
       console.log("error parsing authentication data: " + e);
     }
+  },
+
+  handlerMouseMove: function handlerMouseMove() {
+    $('body').on('mousemove', function (e) {
+      console.log("x: " + e.pageX + ", y: " + e.pageY);
+    });
   },
 
   setCurrentPlayerCharacterId: function setCurrentPlayerCharacterId(user) {
