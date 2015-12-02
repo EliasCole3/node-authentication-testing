@@ -23,6 +23,7 @@ $(() => {
 let abc = {
   
   initialize: () => {
+    alert('aww yeah')
     abc.socket = io()
     abc.assignInitialHandlers()
 

@@ -23,6 +23,7 @@ $(function () {
 var abc = {
 
   initialize: function initialize() {
+    alert('aww yeah');
     abc.socket = io();
     abc.assignInitialHandlers();
 
