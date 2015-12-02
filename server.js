@@ -133,6 +133,10 @@ io.on('connection', function(socket) {
   socket.on('hp changed', function(emitObj) {
     socket.broadcast.emit('hp changed', emitObj)
   })
+
+  socket.on('cursor moved', function(emitObj) {
+    socket.broadcast.emit('cursor moved', emitObj)
+  })
 })
 
 

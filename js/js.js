@@ -62,8 +62,14 @@ var abc = {
 
   handlerMouseMove: function handlerMouseMove() {
     $('body').on('mousemove', function (e) {
-      console.log("x: " + e.pageX + ", y: " + e.pageY);
+      // console.log(`x: ${e.pageX}, y: ${e.pageY}`)
+
+      abc.socket.emit('cursor moved', { playerId: abc.currentPlayerCharacterId, x: e.pageX, y: e.pageY });
     });
+  },
+
+  updateCursorImage: function updateCursorImage(emitObj) {
+    console.log(emitObj);
   },
 
   setCurrentPlayerCharacterId: function setCurrentPlayerCharacterId(user) {
@@ -135,6 +141,10 @@ var abc = {
 
     abc.socket.on('hp changed', function (emitObj) {
       abc.changeHp(emitObj.id, emitObj.val);
+    });
+
+    abc.socket.on('cursor moved', function (emitObj) {
+      abc.updateCursorImage(emitObj);
     });
   },
 

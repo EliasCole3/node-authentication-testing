@@ -64,8 +64,14 @@ let abc = {
 
   handlerMouseMove: () => {
     $('body').on('mousemove', e => {
-      console.log(`x: ${e.pageX}, y: ${e.pageY}`)
+      // console.log(`x: ${e.pageX}, y: ${e.pageY}`)
+
+      abc.socket.emit('cursor moved', {playerId: abc.currentPlayerCharacterId, x: e.pageX, y: e.pageY})
     })
+  },
+
+  updateCursorImage: emitObj => {
+    console.log(emitObj)
   },
 
   setCurrentPlayerCharacterId: user => {
@@ -140,6 +146,10 @@ let abc = {
 
     abc.socket.on('hp changed', emitObj => {
       abc.changeHp(emitObj.id, emitObj.val)
+    })
+
+    abc.socket.on('cursor moved', emitObj => {
+      abc.updateCursorImage(emitObj)
     })
   },
 
