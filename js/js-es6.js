@@ -55,6 +55,7 @@ let abc = {
       })
 
       abc.handlerMouseMove()
+      
     } catch(e) {
       console.log(`error parsing authentication data: ${e}`)
     }
