@@ -291,8 +291,9 @@ let abc = {
   handlerBottomDrawerContents: () => {
     let cursorsVisible = false
     $("#toggle-cursor-visibility").on("click", e => {
-      console.log("Called")
+      console.log(cursorsVisible)
       if(cursorsVisible) {
+        console.log("cursor was visible")
         $(".cursor")
           .velocity({opacity: 0}, {duration: 1000})
           .velocity({display: "none"}, {duration: 0})
