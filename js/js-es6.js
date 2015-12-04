@@ -74,7 +74,10 @@ let abc = {
     $('body').on('mousemove', e => {
       // console.log(`x: ${e.pageX}, y: ${e.pageY}`)
 
-      abc.socket.emit('cursor moved', {playerId: abc.currentPlayerCharacterId, x: e.pageX, y: e.pageY})
+      if(abc.cursorsVisible) {
+        abc.socket.emit('cursor moved', {playerId: abc.currentPlayerCharacterId, x: e.pageX, y: e.pageY})
+      }
+      
     })
   },
 
@@ -293,10 +296,9 @@ let abc = {
   },
 
   handlerBottomDrawerContents: () => {
-    let cursorsVisible = false
     $("#toggle-cursor-visibility").on("click", e => {
-      abc.socket.emit('cursors toggle visibility', {cursorsVisible: cursorsVisible})
-      cursorsVisible = !cursorsVisible
+      abc.socket.emit('cursors toggle visibility', {cursorsVisible: abc.cursorsVisible})
+      abc.cursorsVisible = !abc.cursorsVisible
     })
   
   },
@@ -720,7 +722,9 @@ let abc = {
 
   characterDetails: [],
 
-  cursorDelay: 0
+  cursorDelay: 0,
+
+  cursorsVisible: true
 
 }
 

@@ -68,7 +68,9 @@ var abc = {
     $('body').on('mousemove', function (e) {
       // console.log(`x: ${e.pageX}, y: ${e.pageY}`)
 
-      abc.socket.emit('cursor moved', { playerId: abc.currentPlayerCharacterId, x: e.pageX, y: e.pageY });
+      if (abc.cursorsVisible) {
+        abc.socket.emit('cursor moved', { playerId: abc.currentPlayerCharacterId, x: e.pageX, y: e.pageY });
+      }
     });
   },
 
@@ -235,10 +237,9 @@ var abc = {
   },
 
   handlerBottomDrawerContents: function handlerBottomDrawerContents() {
-    var cursorsVisible = false;
     $("#toggle-cursor-visibility").on("click", function (e) {
-      abc.socket.emit('cursors toggle visibility', { cursorsVisible: cursorsVisible });
-      cursorsVisible = !cursorsVisible;
+      abc.socket.emit('cursors toggle visibility', { cursorsVisible: abc.cursorsVisible });
+      abc.cursorsVisible = !abc.cursorsVisible;
     });
   },
 
@@ -595,7 +596,9 @@ var abc = {
 
   characterDetails: [],
 
-  cursorDelay: 0
+  cursorDelay: 0,
+
+  cursorsVisible: true
 
 };
 //# sourceMappingURL=js.js.map
