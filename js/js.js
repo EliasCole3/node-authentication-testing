@@ -161,6 +161,7 @@ var abc = {
 
     abc.socket.on('cursors toggle visibility', function (emitObj) {
       abc.toggleCursorsVisibility(emitObj.cursorsVisible);
+      abc.cursorsVisible = emitObj.cursorsVisible;
     });
   },
 

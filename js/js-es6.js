@@ -172,6 +172,7 @@ let abc = {
 
     abc.socket.on('cursors toggle visibility', emitObj => {
       abc.toggleCursorsVisibility(emitObj.cursorsVisible)
+      abc.cursorsVisible = emitObj.cursorsVisible
     })
   },
 
