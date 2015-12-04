@@ -160,7 +160,6 @@ var abc = {
     });
 
     abc.socket.on('cursors toggle visibility', function (emitObj) {
-      debugger;
       abc.toggleCursorsVisibility(emitObj.cursorsVisible);
       abc.cursorsVisible = emitObj.cursorsVisible;
     });
@@ -240,7 +239,6 @@ var abc = {
 
   handlerBottomDrawerContents: function handlerBottomDrawerContents() {
     $("#toggle-cursor-visibility").on("click", function (e) {
-      debugger;
       abc.cursorsVisible = !abc.cursorsVisible;
       abc.socket.emit('cursors toggle visibility', { cursorsVisible: abc.cursorsVisible });
     });
@@ -435,10 +433,18 @@ var abc = {
 
   changeBackground: function changeBackground(background) {
     if (background !== "blank") {
-      $("#wrapper").css("background-image", "url(backgrounds/" + background + ")").css("background-repeat", "no-repeat");
+
+      // $("#wrapper").css("background-image", `url(backgrounds/${background})`).css("background-repeat", "no-repeat")
+
+      $("#wrapper").velocity({ opacity: 0 }).velocity({ "background-image": "url(backgrounds/" + background + ")", "background-repeat": "no-repeat" }, { duration: 0 }).velocity({ opacity: 1 });
     } else {
       $("#wrapper").css("background-image", "");
     }
+
+    // .velocity({opacity: 1}, {duration: duration2, complete: () => {
+    //         ebot.notify("Systems online commander")
+    //         abc.assignHandlersAdminPanel()
+    //       }})
   },
 
   changeHp: function changeHp(id, val) {
