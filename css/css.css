@@ -64,6 +64,20 @@ html,body{height:100%;}
   width: 50px;
 }
 
+.cursor {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#cursor-0 {
+  background-color: blue;
+
+}
+
+
 
 
 

@@ -80,6 +80,7 @@ let abc = {
 
   updateCursorImage: emitObj => {
     console.log(emitObj)
+    $(`#cursor-${emitObj.playerId}`).css(`top`, emitObj.y).css(`left`, emitObj.x)
   },
 
   setCurrentPlayerCharacterId: user => {

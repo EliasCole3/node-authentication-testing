@@ -74,6 +74,7 @@ var abc = {
 
   updateCursorImage: function updateCursorImage(emitObj) {
     console.log(emitObj);
+    $("#cursor-" + emitObj.playerId).css("top", emitObj.y).css("left", emitObj.x);
   },
 
   setCurrentPlayerCharacterId: function setCurrentPlayerCharacterId(user) {
