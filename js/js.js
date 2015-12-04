@@ -224,7 +224,7 @@ var abc = {
     }
 
     if (abc.userIsDM) {
-      htmlString += "\n        <button id='toggle-cursor-visibility' class='btn btn-md btn-info'>>toggle cursors</button>\n      ";
+      htmlString += "\n        <button id='toggle-cursor-visibility' class='btn btn-md btn-info'>toggle cursors</button>\n      ";
     }
 
     return htmlString;
@@ -233,12 +233,11 @@ var abc = {
   handlerBottomDrawerContents: function handlerBottomDrawerContents() {
     var cursorsVisible = false;
     $("#toggle-cursor-visibility").on("click", function (e) {
-      console.log(cursorsVisible);
       if (cursorsVisible) {
-        console.log("cursor was visible");
         $(".cursor").velocity({ opacity: 0 }, { duration: 1000 }).velocity({ display: "none" }, { duration: 0 });
       } else {
         $(".cursor").velocity({ display: "block" }, { duration: 0 }).velocity({ opacity: .95 }, { duration: 1000 });
+        console.log($(".cursor"));
       }
       cursorsVisible = !cursorsVisible;
     });
