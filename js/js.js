@@ -247,7 +247,7 @@ var abc = {
   },
 
   toggleCursorsVisibility: function toggleCursorsVisibility(cursorsVisible) {
-    if (cursorsVisible) {
+    if (!cursorsVisible) {
       $(".cursor").velocity({ opacity: 0 }, { duration: 1000 }).velocity({ display: "none" }, { duration: 0 });
     } else {
       $(".cursor").velocity({ display: "block" }, { duration: 0 }).velocity({ opacity: .95 }, { duration: 1000 });

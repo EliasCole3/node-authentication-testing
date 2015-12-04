@@ -307,7 +307,7 @@ let abc = {
   },
 
   toggleCursorsVisibility: cursorsVisible => {
-    if(cursorsVisible) {
+    if(!cursorsVisible) {
       $(".cursor")
         .velocity({opacity: 0}, {duration: 1000})
         .velocity({display: "none"}, {duration: 0})
