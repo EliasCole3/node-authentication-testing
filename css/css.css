@@ -146,7 +146,7 @@ For Drawerify
  }
 
  #drawer-handle-left {
-   position: relative;
+   position: fixed;
    width: 50px;
  }
 
