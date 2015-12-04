@@ -70,7 +70,7 @@ html,body{height:100%;}
   position: absolute;
   top: 0px;
   left: 0px;
-  display: none;
+  /*display: none;*/
 }
 
 #cursor-0 {
