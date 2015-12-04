@@ -33,7 +33,7 @@ var abc = {
       abc.setCurrentPlayerCharacterId(user);
 
       var DMs = ["a", "bliss"];
-      var players = ["a", "b", "c", "bliss", "laurana", "andros", "skjor", "placeholder", "ares"];
+      var players = ["a", "b", "c", "bliss", "laurana", "andros", "skjor", "greg", "ares"];
 
       if (DMs.indexOf(user.local.username) > -1) {
         abc.userIsDM = true;
@@ -88,7 +88,7 @@ var abc = {
       case "skjor":
         abc.currentPlayerCharacterId = 3;
         break;
-      case "placeholder":
+      case "greg":
         abc.currentPlayerCharacterId = 4;
         break;
       case "ares":
