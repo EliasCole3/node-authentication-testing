@@ -217,7 +217,7 @@ let abc = {
           <td>${player.ac}</td>
           <td>${player.will}</td>
           <td>${player.reflex}</td>
-          <td>${player.baseToHitAc}/${player.baseToHitWill}/${player.baseToHitReflex}</td>
+          <td style="text-align:center;">${player.baseToHitAc}/${player.baseToHitWill}/${player.baseToHitReflex}</td>
           <td>${player.damageModifier}</td>
           <td>${player.speed}</td>
           <td>${player.initiative}</td>
