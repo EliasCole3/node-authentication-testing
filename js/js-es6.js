@@ -281,7 +281,7 @@ let abc = {
 
     if(abc.userIsDM) {
       htmlString += `
-        <button id='toggle-cursor-visibility' class='btn btn-md'>toggle cursors</button>
+        <button id='toggle-cursor-visibility' class='btn btn-md btn-info'>>toggle cursors</button>
       `
     }
 
@@ -291,6 +291,7 @@ let abc = {
   handlerBottomDrawerContents: () => {
     let cursorsVisible = false
     $("#toggle-cursor-visibility").on("click", e => {
+      console.log("Called")
       if(cursorsVisible) {
         $(".cursor")
           .velocity({opacity: 0}, {duration: 1000})
