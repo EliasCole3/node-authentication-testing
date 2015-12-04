@@ -599,7 +599,7 @@ var abc = {
 
   cursorDelay: 0,
 
-  cursorsVisible: true
+  cursorsVisible: false
 
 };
 //# sourceMappingURL=js.js.map
