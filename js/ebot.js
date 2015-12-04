@@ -609,7 +609,7 @@ var ebot = {
     $("#expand-toggle").click(function() {
       var sign = $(this).attr("glyphicon")
 
-      $(".expand-button").each((index, element) => {
+      $(".expand-button").each(function(index, element) {
         var row = $("tr[" + uniqueAttrName + "='" + $(element).attr(uniqueAttrName) + "']")
         if(sign === "plus") {
           row.show(ebot.showOptions)
