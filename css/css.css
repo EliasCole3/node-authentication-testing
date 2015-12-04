@@ -65,7 +65,7 @@ html,body{height:100%;}
 }
 
 .cursor {
-  width: 25px;
+  width: 50px;
   height: 25px;
   position: absolute;
   top: 0px;
@@ -73,7 +73,7 @@ html,body{height:100%;}
 }
 
 #cursor-0 {
-  background-color: blue;
+  background-color: grey;
 
 }
 
