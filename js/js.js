@@ -436,7 +436,11 @@ var abc = {
 
       // $("#wrapper").css("background-image", `url(backgrounds/${background})`).css("background-repeat", "no-repeat")
 
-      $("#wrapper").velocity({ opacity: 0 }).velocity({ "background-image": "url(backgrounds/" + background + ")", "background-repeat": "no-repeat" }, { duration: 0 }).velocity({ opacity: 1 });
+      $("#wrapper").velocity({ opacity: 0 }, { complete: function complete() {
+          $("#wrapper").css("background-image", "url(backgrounds/" + background + ")").css("background-repeat", "no-repeat");
+        } })
+      // .velocity({"background-image": `url(backgrounds/${background})`, "background-repeat": "no-repeat"}, {duration: 0})
+      .velocity({ opacity: 1 });
     } else {
       $("#wrapper").css("background-image", "");
     }
