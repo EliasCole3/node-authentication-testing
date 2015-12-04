@@ -74,7 +74,12 @@ var abc = {
 
   updateCursorImage: function updateCursorImage(emitObj) {
     console.log(emitObj);
-    $("#cursor-" + emitObj.playerId).css("top", emitObj.y).css("left", emitObj.x);
+    if (abc.cursorDelay === 10) {
+      $("#cursor-" + emitObj.playerId).css("top", emitObj.y).css("left", emitObj.x);
+      abc.cursorDelay = 0;
+    } else {
+      abc.cursorDelay++;
+    }
   },
 
   setCurrentPlayerCharacterId: function setCurrentPlayerCharacterId(user) {
@@ -562,7 +567,9 @@ var abc = {
 
   joinPlayerCharacterPowers: [],
 
-  characterDetails: []
+  characterDetails: [],
+
+  cursorDelay: 0
 
 };
 //# sourceMappingURL=js.js.map
