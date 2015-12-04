@@ -19,7 +19,7 @@ html,body{height:100%;}
 
 #top-drawer {
   width: 100%;
-  height: 150px;
+  height: 250px;
   background-color: blue;
   overflow-y: scroll;
 }

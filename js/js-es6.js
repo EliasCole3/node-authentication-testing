@@ -54,6 +54,8 @@ let abc = {
         abc.fillBottomDrawer()
       })
 
+      abc.addPlayerCursorDivs()
+
       abc.handlerMouseMove()
 
     } catch(e) {
@@ -61,6 +63,11 @@ let abc = {
     }
 
 	  
+  },
+
+
+  addPlayerCursorDivs: () => {
+
   },
 
   handlerMouseMove: () => {
@@ -122,11 +129,11 @@ let abc = {
     })
 
     abc.socket.on('user connected', () => {
-      abc.playSound("me-user-connected")
+      // abc.playSound("me-user-connected")
     })
 
     abc.socket.on('user disconnected', () => {
-      abc.playSound("me-user-disconnected")
+      // abc.playSound("me-user-disconnected")
     })
 
     abc.socket.on('item token added', emitObj => {
@@ -150,7 +157,6 @@ let abc = {
     })
 
     abc.socket.on('cursor moved', emitObj => {
-      console.log("asdf")
       abc.updateCursorImage(emitObj)
     })
   },
@@ -192,10 +198,8 @@ let abc = {
       <th>AC</th>
       <th>Will</th>
       <th>Reflex</th>
-      <th>To hit AC</th>
-      <th>To hit Will</th>
-      <th>To hit Reflex</th>
-      <th>Damage Modifier</th>
+      <th>To Hit AC/Will/Reflex</th>
+      <th>Damage Mod</th>
       <th>Speed</th>
       <th>Initiative</th>
       <th>Action Points</th>
@@ -213,9 +217,7 @@ let abc = {
           <td>${player.ac}</td>
           <td>${player.will}</td>
           <td>${player.reflex}</td>
-          <td>${player.baseToHitAc}</td>
-          <td>${player.baseToHitWill}</td>
-          <td>${player.baseToHitReflex}</td>
+          <td>${player.baseToHitAc}/${player.baseToHitWill}/${player.baseToHitReflex}</td>
           <td>${player.damageModifier}</td>
           <td>${player.speed}</td>
           <td>${player.initiative}</td>
