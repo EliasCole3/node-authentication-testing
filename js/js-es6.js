@@ -275,12 +275,33 @@ let abc = {
   getBottomDrawerHtml: () => {
     let htmlString = ``
 
+    if(abc.userIsPlayer && !abc.userIsDM) {
+      htmlString += ``
+    }
+
+    if(abc.userIsDM) {
+      htmlString += `
+        <button id='toggle-cursor-visibility' class='btn btn-md'>toggle cursors</button>
+      `
+    }
+
     return htmlString
   },
 
   handlerBottomDrawerContents: () => {
-    
-
+    let cursorsVisible = false
+    $("#toggle-cursor-visibility").on("click", e => {
+      if(cursorsVisible) {
+        $(".cursor")
+          .velocity({opacity: 0}, {duration: 1000})
+          .velocity({display: "none"}, {duration: 0})
+      } else {
+      $(".cursor")
+        .velocity({display: "block"}, {duration: 0})
+        .velocity({opacity: .95}, {duration: 1000})
+      }
+      cursorsVisible = !cursorsVisible
+    })
   
   },
 

@@ -70,10 +70,11 @@ html,body{height:100%;}
   position: absolute;
   top: 0px;
   left: 0px;
+  display: none;
 }
 
 #cursor-0 {
-  background-color: grey;
+  background-color: #D7D7D7;
 
 }
 

@@ -219,10 +219,28 @@ var abc = {
   getBottomDrawerHtml: function getBottomDrawerHtml() {
     var htmlString = "";
 
+    if (abc.userIsPlayer && !abc.userIsDM) {
+      htmlString += "";
+    }
+
+    if (abc.userIsDM) {
+      htmlString += "\n        <button id='toggle-cursor-visibility' class='btn btn-md'>toggle cursors</button>\n      ";
+    }
+
     return htmlString;
   },
 
-  handlerBottomDrawerContents: function handlerBottomDrawerContents() {},
+  handlerBottomDrawerContents: function handlerBottomDrawerContents() {
+    var cursorsVisible = false;
+    $("#toggle-cursor-visibility").on("click", function (e) {
+      if (cursorsVisible) {
+        $(".cursor").velocity({ opacity: 0 }, { duration: 1000 }).velocity({ display: "none" }, { duration: 0 });
+      } else {
+        $(".cursor").velocity({ display: "block" }, { duration: 0 }).velocity({ opacity: .95 }, { duration: 1000 });
+      }
+      cursorsVisible = !cursorsVisible;
+    });
+  },
 
   fillLeftDrawer: function fillLeftDrawer() {
     if (abc.userIsPlayer) {
