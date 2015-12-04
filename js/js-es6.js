@@ -204,7 +204,12 @@ let abc = {
       <th>Initiative</th>
       <th>Action Points</th>
       <th>Gold</th>
-      <th>XP</th>
+      <th>Str</th>
+      <th>Con</th>
+      <th>Int</th>
+      <th>Wis</th>
+      <th>Dex</th>
+      <th>Cha</th>
     </tr>`
 
     abc.playerCharacters.forEach(player => {
@@ -223,7 +228,12 @@ let abc = {
           <td>${player.initiative}</td>
           <td>${player.actionPoints}</td>
           <td>${player.gold}</td>
-          <td>${player.xp}</td>
+          <td>${player.strength}</td>
+          <td>${player.constitution}</td>
+          <td>${player.intelligence}</td>
+          <td>${player.wisdom}</td>
+          <td>${player.dexterity}</td>
+          <td>${player.charisma}</td>
 
         </tr>`
       }
