@@ -160,6 +160,7 @@ var abc = {
     });
 
     abc.socket.on('cursors toggle visibility', function (emitObj) {
+      debugger;
       abc.toggleCursorsVisibility(emitObj.cursorsVisible);
       abc.cursorsVisible = emitObj.cursorsVisible;
     });
@@ -239,8 +240,9 @@ var abc = {
 
   handlerBottomDrawerContents: function handlerBottomDrawerContents() {
     $("#toggle-cursor-visibility").on("click", function (e) {
+      debugger;
       // abc.cursorsVisible = !abc.cursorsVisible
-      abc.socket.emit('cursors toggle visibility', { cursorsVisible: !abc.cursorsVisible });
+      abc.socket.emit('cursors toggle visibility', { cursorsVisible: abc.cursorsVisible });
     });
   },
 
@@ -599,7 +601,7 @@ var abc = {
 
   cursorDelay: 0,
 
-  cursorsVisible: false
+  cursorsVisible: true
 
 };
 //# sourceMappingURL=js.js.map

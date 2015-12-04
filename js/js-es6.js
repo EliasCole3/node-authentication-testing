@@ -171,6 +171,7 @@ let abc = {
     })
 
     abc.socket.on('cursors toggle visibility', emitObj => {
+      debugger
       abc.toggleCursorsVisibility(emitObj.cursorsVisible)
       abc.cursorsVisible = emitObj.cursorsVisible
     })
@@ -298,8 +299,9 @@ let abc = {
 
   handlerBottomDrawerContents: () => {
     $("#toggle-cursor-visibility").on("click", e => {
+      debugger
       // abc.cursorsVisible = !abc.cursorsVisible
-      abc.socket.emit('cursors toggle visibility', {cursorsVisible: !abc.cursorsVisible})
+      abc.socket.emit('cursors toggle visibility', {cursorsVisible: abc.cursorsVisible})
     })
   
   },
@@ -725,7 +727,7 @@ let abc = {
 
   cursorDelay: 0,
 
-  cursorsVisible: false
+  cursorsVisible: true
 
 }
 
