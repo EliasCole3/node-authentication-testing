@@ -239,8 +239,8 @@ var abc = {
 
   handlerBottomDrawerContents: function handlerBottomDrawerContents() {
     $("#toggle-cursor-visibility").on("click", function (e) {
-      abc.cursorsVisible = !abc.cursorsVisible;
-      abc.socket.emit('cursors toggle visibility', { cursorsVisible: abc.cursorsVisible });
+      // abc.cursorsVisible = !abc.cursorsVisible
+      abc.socket.emit('cursors toggle visibility', { cursorsVisible: !abc.cursorsVisible });
     });
   },
 
