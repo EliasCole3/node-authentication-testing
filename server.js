@@ -137,6 +137,10 @@ io.on('connection', function(socket) {
   socket.on('cursor moved', function(emitObj) {
     socket.broadcast.emit('cursor moved', emitObj)
   })
+
+  socket.on('cursors toggle visibility', function(emitObj) {
+    io.emit('cursors toggle visibility', emitObj)
+  })
 })
 
 

@@ -166,6 +166,10 @@ let abc = {
     abc.socket.on('cursor moved', emitObj => {
       abc.updateCursorImage(emitObj)
     })
+
+    abc.socket.on('cursors toggle visibility', emitObj => {
+      abc.toggleCursorsVisibility(emitObj.cursorsVisible)
+    })
   },
 
   retrieveInitialModels: () => {
@@ -291,19 +295,22 @@ let abc = {
   handlerBottomDrawerContents: () => {
     let cursorsVisible = false
     $("#toggle-cursor-visibility").on("click", e => {
-      if(cursorsVisible) {
-        $(".cursor")
-          .velocity({opacity: 0}, {duration: 1000})
-          .velocity({display: "none"}, {duration: 0})
-      } else {
-      $(".cursor")
-        .velocity({display: "block"}, {duration: 0})
-        .velocity({opacity: .95}, {duration: 1000})
-        console.log($(".cursor"))
-      }
+      abc.socket.emit('cursors toggle visibility', {cursorsVisible: cursorsVisible})
       cursorsVisible = !cursorsVisible
     })
   
+  },
+
+  toggleCursorsVisibility: cursorsVisible => {
+    if(cursorsVisible) {
+      $(".cursor")
+        .velocity({opacity: 0}, {duration: 1000})
+        .velocity({display: "none"}, {duration: 0})
+    } else {
+    $(".cursor")
+      .velocity({display: "block"}, {duration: 0})
+      .velocity({opacity: .95}, {duration: 1000})
+    }
   },
 
 
