@@ -352,15 +352,15 @@ let abc = {
         <option value='andora-tavern.jpg'>Andora Tavern</option>
         <option value='andora-gates.png'>Andora Gates</option>
         <option value='andora.jpg'>Andora</option>
-        <option value='brement.jpg'>Andora</option>
-        <option value='dark-forest-1.jpg'>Andora</option>
-        <option value='desert-statue.jpg'>Andora</option>
-        <option value='dunkar.jpg'>Andora</option>
-        <option value='forest-path-1.jpg'>Andora</option>
-        <option value='forest-path-2.jpg'>Andora</option>
-        <option value='forest-1.jpg'>Andora</option>
-        <option value='plains-1.jpg'>Andora</option>
-        <option value='plains-2.jpg'>Andora</option>
+        <option value='brement.jpg'>Brement</option>
+        <option value='dark-forest-1.jpg'>Dark Forest</option>
+        <option value='desert-statue.jpg'>Desert Statue</option>
+        <option value='dunkar.jpg'>Dundar</option>
+        <option value='forest-path-1.jpg'>Forest Path 1</option>
+        <option value='forest-path-2.jpg'>Forest Path 2</option>
+        <option value='forest-1.jpg'>Forest 1</option>
+        <option value='plains-1.jpg'>Plains 1</option>
+        <option value='plains-2.jpg'>Plains 2</option>
       </select>
       `
     }
