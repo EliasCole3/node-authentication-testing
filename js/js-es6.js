@@ -591,10 +591,11 @@ let abc = {
 
     let effects = ['poison.jpg', 'ice.jpg', 'fire.jpg', 'immobile.gif', 'prone.gif']
     let id = `dynamically-added-div-${abc.currentDynamicDivId}`
+    let htmlString = ``
     if(effects.indexOf(imageFilename) > -1) {
-      let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px; opacity: 0.4;'><img src='items/${imageFilename}'></div>`
+      htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px; opacity: 0.4;'><img src='items/${imageFilename}'></div>`
     } else {
-      let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='items/${imageFilename}'></div>`
+      htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='items/${imageFilename}'></div>`
     }
     $("#wrapper").append(htmlString)
     $(`#${id}`).draggable(abc.draggableOptionsToken)
