@@ -798,7 +798,7 @@ var ebot = {
             opacity: 0
           })
           drawerHandle.removeClass("glyphicon-chevron-left").addClass("glyphicon-chevron-right").velocity({
-            left: `0px`,
+            left: `0px`
           })
           drawerVisible = false
         }

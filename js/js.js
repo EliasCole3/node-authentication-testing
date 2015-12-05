@@ -457,8 +457,14 @@ var abc = {
   },
 
   addTokenItem: function addTokenItem(imageFilename, ranTop, ranLeft) {
+
+    var effects = ['poison.jpg', 'ice.jpg', 'fire.jpg', 'immobile.gif', 'prone.gif'];
     var id = "dynamically-added-div-" + abc.currentDynamicDivId;
-    var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='items/" + imageFilename + "'></div>";
+    if (effects.indexOf(imageFilename) > -1) {
+      var _htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px; opacity: 0.4;'><img src='items/" + imageFilename + "'></div>";
+    } else {
+      var _htmlString2 = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='items/" + imageFilename + "'></div>";
+    }
     $("#wrapper").append(htmlString);
     $("#" + id).draggable(abc.draggableOptionsToken);
     abc.currentDynamicDivId++;
