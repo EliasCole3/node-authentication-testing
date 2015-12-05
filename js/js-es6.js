@@ -351,6 +351,16 @@ let abc = {
         <option value='slime-cave.png'>Slim Cave</option>
         <option value='andora-tavern.jpg'>Andora Tavern</option>
         <option value='andora-gates.png'>Andora Gates</option>
+        <option value='andora.jpg'>Andora</option>
+        <option value='brement.jpg'>Andora</option>
+        <option value='dark-forest-1.jpg'>Andora</option>
+        <option value='desert-statue.jpg'>Andora</option>
+        <option value='dunkar.jpg'>Andora</option>
+        <option value='forest-path-1.jpg'>Andora</option>
+        <option value='forest-path-2.jpg'>Andora</option>
+        <option value='forest-1.jpg'>Andora</option>
+        <option value='plains-1.jpg'>Andora</option>
+        <option value='plains-2.jpg'>Andora</option>
       </select>
       `
     }
@@ -589,6 +599,7 @@ let abc = {
 
   addTokenItem: (imageFilename, ranTop, ranLeft) => {
 
+    //I'm a bad person. Fix this
     let effects = ['poison.jpg', 'ice.jpg', 'fire.jpg', 'immobile.gif', 'prone.gif']
     let id = `dynamically-added-div-${abc.currentDynamicDivId}`
     let htmlString = ``

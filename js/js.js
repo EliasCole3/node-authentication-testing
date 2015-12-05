@@ -269,7 +269,7 @@ var abc = {
     }
 
     if (abc.userIsDM) {
-      htmlString += "<br><br>\n      <select id='background-select' data-placeholder='Choose a background...'>\n        <option value=''></option>\n        <option value='blank'>Blank</option>\n        <option value='zone-map.png'>Zone Map</option>\n        <option value='river.jpg'>River</option>\n        <option value='twooth-library.png'>Twooth Library</option>\n        <option value='slime-cave.png'>Slim Cave</option>\n        <option value='andora-tavern.jpg'>Andora Tavern</option>\n        <option value='andora-gates.png'>Andora Gates</option>\n      </select>\n      ";
+      htmlString += "<br><br>\n      <select id='background-select' data-placeholder='Choose a background...'>\n        <option value=''></option>\n        <option value='blank'>Blank</option>\n        <option value='zone-map.png'>Zone Map</option>\n        <option value='river.jpg'>River</option>\n        <option value='twooth-library.png'>Twooth Library</option>\n        <option value='slime-cave.png'>Slim Cave</option>\n        <option value='andora-tavern.jpg'>Andora Tavern</option>\n        <option value='andora-gates.png'>Andora Gates</option>\n        <option value='andora.jpg'>Andora</option>\n        <option value='brement.jpg'>Andora</option>\n        <option value='dark-forest-1.jpg'>Andora</option>\n        <option value='desert-statue.jpg'>Andora</option>\n        <option value='dunkar.jpg'>Andora</option>\n        <option value='forest-path-1.jpg'>Andora</option>\n        <option value='forest-path-2.jpg'>Andora</option>\n        <option value='forest-1.jpg'>Andora</option>\n        <option value='plains-1.jpg'>Andora</option>\n        <option value='plains-2.jpg'>Andora</option>\n      </select>\n      ";
     }
 
     return htmlString;
@@ -458,6 +458,7 @@ var abc = {
 
   addTokenItem: function addTokenItem(imageFilename, ranTop, ranLeft) {
 
+    //I'm a bad person. Fix this
     var effects = ['poison.jpg', 'ice.jpg', 'fire.jpg', 'immobile.gif', 'prone.gif'];
     var id = "dynamically-added-div-" + abc.currentDynamicDivId;
     var htmlString = "";
