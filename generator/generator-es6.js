@@ -786,14 +786,6 @@ let createCrudRoutes = def => {
     res.render('CRUD/${flect.dasherize(flect.pluralize(def.name))}.ejs', {
         user : req.user
     })
-  })
-
-  app.get('/css/crud-${flect.dasherize(flect.pluralize(def.name))}.css', function(req, res) {
-    res.sendFile(path.resolve(__dirname + './../css/crud-${flect.dasherize(flect.pluralize(def.name))}.css'))
-  })
-
-  app.get('/js/crud-${flect.dasherize(flect.pluralize(def.name))}.js', function(req, res) {
-    res.sendFile(path.resolve(__dirname + './../js/crud-${flect.dasherize(flect.pluralize(def.name))}.js'))
   })\n\n`
 
   return output

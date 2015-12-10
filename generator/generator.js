@@ -371,7 +371,7 @@ var createCrudViewJS = function createCrudViewJS(def) {
 };
 
 var createCrudRoutes = function createCrudRoutes(def) {
-  var output = '\n  app.get(\'/crud-' + flect.dasherize(flect.pluralize(def.name)) + '\', function(req, res) {\n    res.render(\'CRUD/' + flect.dasherize(flect.pluralize(def.name)) + '.ejs\', {\n        user : req.user\n    })\n  })\n\n  app.get(\'/css/crud-' + flect.dasherize(flect.pluralize(def.name)) + '.css\', function(req, res) {\n    res.sendFile(path.resolve(__dirname + \'./../css/crud-' + flect.dasherize(flect.pluralize(def.name)) + '.css\'))\n  })\n\n  app.get(\'/js/crud-' + flect.dasherize(flect.pluralize(def.name)) + '.js\', function(req, res) {\n    res.sendFile(path.resolve(__dirname + \'./../js/crud-' + flect.dasherize(flect.pluralize(def.name)) + '.js\'))\n  })\n\n';
+  var output = '\n  app.get(\'/crud-' + flect.dasherize(flect.pluralize(def.name)) + '\', function(req, res) {\n    res.render(\'CRUD/' + flect.dasherize(flect.pluralize(def.name)) + '.ejs\', {\n        user : req.user\n    })\n  })\n\n';
 
   return output;
 };
