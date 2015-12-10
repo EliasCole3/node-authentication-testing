@@ -58,7 +58,7 @@ app.use('/fonts', express.static('static/fonts'));
 app.use('/js', express.static('static/js'));
 app.use('/sounds', express.static('static/sounds'));
 app.use('/images', express.static('static/images'));
-app.use('/images/player-characters', express.static('static/images/player-characters'));
+// app.use('/images/player-characters', express.static('static/images/player-characters'));
 
 
 // required for passport

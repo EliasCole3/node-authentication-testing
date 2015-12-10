@@ -340,7 +340,7 @@ var abc = {
     var htmlString = "";
 
     abc.items.forEach(function (item) {
-      htmlString += "<button class='add-item-button' item-id='" + item._id + "' item-image-filename='" + item.imageFilename + "'><img src='items/" + item.imageFilename + "'></button>";
+      htmlString += "<button class='add-item-button' item-id='" + item._id + "' item-image-filename='" + item.imageFilename + "'><img src='images/items/" + item.imageFilename + "'></button>";
     });
 
     htmlString += "<br><br><br>";
@@ -352,7 +352,7 @@ var abc = {
     htmlString += "<br><br><br>";
 
     abc.creatures.forEach(function (creature) {
-      htmlString += "<button class='add-creature-button' player-character-id='" + creature._id + "' creature-image-filename='" + creature.imageFilename + "'><img src='images/creatures/" + creature.imageFilename + "'></button>";
+      htmlString += "<button class='add-creature-button' player-character-id='" + creature._id + "' creature-image-filename='" + creature.imageFilename + "'><img src='/images/creatures/" + creature.imageFilename + "'></button>";
     });
 
     return htmlString;

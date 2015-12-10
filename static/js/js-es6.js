@@ -448,7 +448,7 @@ let abc = {
     let htmlString = ``
 
     abc.items.forEach(item => {
-      htmlString += `<button class='add-item-button' item-id='${item._id}' item-image-filename='${item.imageFilename}'><img src='items/${item.imageFilename}'></button>`
+      htmlString += `<button class='add-item-button' item-id='${item._id}' item-image-filename='${item.imageFilename}'><img src='images/items/${item.imageFilename}'></button>`
     })
 
     htmlString += `<br><br><br>`
@@ -460,7 +460,7 @@ let abc = {
     htmlString += `<br><br><br>`
 
     abc.creatures.forEach(creature => {
-      htmlString += `<button class='add-creature-button' player-character-id='${creature._id}' creature-image-filename='${creature.imageFilename}'><img src='images/creatures/${creature.imageFilename}'></button>`
+      htmlString += `<button class='add-creature-button' player-character-id='${creature._id}' creature-image-filename='${creature.imageFilename}'><img src='/images/creatures/${creature.imageFilename}'></button>`
     })
 
     return htmlString
