@@ -370,7 +370,7 @@ var abc = {
         return item.itemId == join.itemId;
       })[0];
 
-      htmlString += "<img src='items/" + relevantItem.imageFilename + "' class='player-item'> x " + join.count + "<br>";
+      htmlString += "<img src='images/items/" + relevantItem.imageFilename + "' class='player-item'> x " + join.count + "<br>";
     });
 
     return htmlString;
@@ -463,9 +463,9 @@ var abc = {
     var id = "dynamically-added-div-" + abc.currentDynamicDivId;
     var htmlString = "";
     if (effects.indexOf(imageFilename) > -1) {
-      htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px; opacity: 0.4;'><img src='items/" + imageFilename + "'></div>";
+      htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px; opacity: 0.4;'><img src='images/items/" + imageFilename + "'></div>";
     } else {
-      htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='items/" + imageFilename + "'></div>";
+      htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='images/items/" + imageFilename + "'></div>";
     }
     $("#wrapper").append(htmlString);
     $("#" + id).draggable(abc.draggableOptionsToken);
@@ -474,7 +474,7 @@ var abc = {
 
   addTokenPlayerCharacter: function addTokenPlayerCharacter(imageFilename, ranTop, ranLeft) {
     var id = "dynamically-added-div-" + abc.currentDynamicDivId;
-    var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='player-characters/" + imageFilename + "'></div>";
+    var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='images/player-characters/" + imageFilename + "'></div>";
     $("#wrapper").append(htmlString);
     $("#" + id).draggable(abc.draggableOptionsToken);
     abc.currentDynamicDivId++;
@@ -482,7 +482,7 @@ var abc = {
 
   addTokenCreature: function addTokenCreature(imageFilename, ranTop, ranLeft) {
     var id = "dynamically-added-div-" + abc.currentDynamicDivId;
-    var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='creatures/" + imageFilename + "'></div>";
+    var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='images/creatures/" + imageFilename + "'></div>";
     $("#wrapper").append(htmlString);
     $("#" + id).draggable(abc.draggableOptionsToken);
     abc.currentDynamicDivId++;

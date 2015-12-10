@@ -478,7 +478,7 @@ let abc = {
         return item.itemId == join.itemId
       })[0]
 
-      htmlString += `<img src='items/${relevantItem.imageFilename}' class='player-item'> x ${join.count}<br>`
+      htmlString += `<img src='images/items/${relevantItem.imageFilename}' class='player-item'> x ${join.count}<br>`
     })
 
     return htmlString
@@ -605,9 +605,9 @@ let abc = {
     let id = `dynamically-added-div-${abc.currentDynamicDivId}`
     let htmlString = ``
     if(effects.indexOf(imageFilename) > -1) {
-      htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px; opacity: 0.4;'><img src='items/${imageFilename}'></div>`
+      htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px; opacity: 0.4;'><img src='images/items/${imageFilename}'></div>`
     } else {
-      htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='items/${imageFilename}'></div>`
+      htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='images/items/${imageFilename}'></div>`
     }
     $("#wrapper").append(htmlString)
     $(`#${id}`).draggable(abc.draggableOptionsToken)
@@ -616,7 +616,7 @@ let abc = {
 
   addTokenPlayerCharacter: (imageFilename, ranTop, ranLeft) => {
     let id = `dynamically-added-div-${abc.currentDynamicDivId}`
-    let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='player-characters/${imageFilename}'></div>`
+    let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='images/player-characters/${imageFilename}'></div>`
     $("#wrapper").append(htmlString)
     $(`#${id}`).draggable(abc.draggableOptionsToken)
     abc.currentDynamicDivId++
@@ -624,7 +624,7 @@ let abc = {
 
   addTokenCreature: (imageFilename, ranTop, ranLeft) => {
     let id = `dynamically-added-div-${abc.currentDynamicDivId}`
-    let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='creatures/${imageFilename}'></div>`
+    let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='images/creatures/${imageFilename}'></div>`
     $("#wrapper").append(htmlString)
     $(`#${id}`).draggable(abc.draggableOptionsToken)
     abc.currentDynamicDivId++
