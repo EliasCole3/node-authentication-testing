@@ -110,9 +110,9 @@ module.exports = function(app, passport) {
     /*
     JS
     */
-    app.get('/js/jquery.js', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../js/jquery.js'))
-    })
+    // app.get('/js/jquery.js', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../js/jquery.js'))
+    // })
 
     app.get('/js/jquery-ui.js', function(req, res) {
       res.sendFile(path.resolve(__dirname + './../js/jquery-ui.js'))
