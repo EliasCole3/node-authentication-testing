@@ -50,7 +50,7 @@ app.use(express.static('fonts'));
 app.use(express.static('images'));
 app.use(express.static('js'));
 app.use(express.static('sounds'));
-app.use(express.static('../node-authentication-testing'));
+app.use(express.static('static'));
 
 
 // required for passport
