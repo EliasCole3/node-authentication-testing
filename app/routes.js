@@ -114,49 +114,49 @@ module.exports = function(app, passport) {
     //   res.sendFile(path.resolve(__dirname + './../js/jquery.js'))
     // })
 
-    app.get('/js/jquery-ui.js', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../js/jquery-ui.js'))
-    })
+    // app.get('/js/jquery-ui.js', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../js/jquery-ui.js'))
+    // })
 
-    app.get('/js/moment.js', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../js/moment.js'))
-    })
+    // app.get('/js/moment.js', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../js/moment.js'))
+    // })
 
-    app.get('/js/vis.js', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../js/vis.js'))
-    })
+    // app.get('/js/vis.js', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../js/vis.js'))
+    // })
 
-    app.get('/js/bootstrap.js', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../js/bootstrap.js'))
-    })
+    // app.get('/js/bootstrap.js', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../js/bootstrap.js'))
+    // })
 
-    app.get('/js/inflection.js', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../js/inflection.js'))
-    })
+    // app.get('/js/inflection.js', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../js/inflection.js'))
+    // })
 
-    app.get('/js/deepcopy.js', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../js/deepcopy.js'))
-    })
+    // app.get('/js/deepcopy.js', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../js/deepcopy.js'))
+    // })
 
-    app.get('/js/socket-io.js', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../js/socket-io.js'))
-    })
+    // app.get('/js/socket-io.js', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../js/socket-io.js'))
+    // })
 
-    app.get('/js/ebot.js', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../js/ebot.js'))
-    })
+    // app.get('/js/ebot.js', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../js/ebot.js'))
+    // })
 
-    app.get('/js/js.js', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../js/js.js'))
-    })
+    // app.get('/js/js.js', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../js/js.js'))
+    // })
 
-    app.get('/js/chosen.jquery.js', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../js/chosen.jquery.js'))
-    })
+    // app.get('/js/chosen.jquery.js', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../js/chosen.jquery.js'))
+    // })
 
-    app.get('/js/velocity.js', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../js/velocity.js'))
-    })
+    // app.get('/js/velocity.js', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../js/velocity.js'))
+    // })
 
 
     /*
