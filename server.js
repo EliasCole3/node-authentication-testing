@@ -51,7 +51,7 @@ app.use(express.static('images'));
 app.use(express.static('js'));
 app.use(express.static('sounds'));
 
-// app.use(express.static('static'));
+app.use(express.static('static'));
 
 // app.use(express.static('static/css'));
 // app.use(express.static('static/fonts'));
