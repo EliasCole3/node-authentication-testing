@@ -377,7 +377,7 @@ var createCrudRoutes = function createCrudRoutes(def) {
 };
 
 var createCrudGruntFileAdditions = function createCrudGruntFileAdditions(def) {
-  var output = '\n  babel_crud_' + flect.underscore(flect.pluralize(def.name)) + ': {\n    files: [\n      \'js/crud-' + flect.dasherize(flect.pluralize(def.name)) + '-es6.js\'\n    ],\n    tasks: [\'babel:crud_' + flect.underscore(flect.pluralize(def.name)) + '\'],\n  },\n\n  crud_' + flect.underscore(flect.pluralize(def.name)) + ': {\n    files: {\n      \'js/crud-' + flect.dasherize(flect.pluralize(def.name)) + '.js\': \'js/crud-' + flect.dasherize(flect.pluralize(def.name)) + '-es6.js\'\n    }\n  },\n\n  ';
+  var output = '\n  babel_crud_' + flect.underscore(flect.pluralize(def.name)) + ': {\n    files: [\n      \'static/js/crud-' + flect.dasherize(flect.pluralize(def.name)) + '-es6.js\'\n    ],\n    tasks: [\'babel:crud_' + flect.underscore(flect.pluralize(def.name)) + '\'],\n  },\n\n  crud_' + flect.underscore(flect.pluralize(def.name)) + ': {\n    files: {\n      \'static/js/crud-' + flect.dasherize(flect.pluralize(def.name)) + '.js\': \'static/js/crud-' + flect.dasherize(flect.pluralize(def.name)) + '-es6.js\'\n    }\n  },\n\n  ';
 
   return output;
 };

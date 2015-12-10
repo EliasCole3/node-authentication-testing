@@ -795,14 +795,14 @@ let createCrudGruntFileAdditions = def => {
   let output = `
   babel_crud_${flect.underscore(flect.pluralize(def.name))}: {
     files: [
-      'js/crud-${flect.dasherize(flect.pluralize(def.name))}-es6.js'
+      'static/js/crud-${flect.dasherize(flect.pluralize(def.name))}-es6.js'
     ],
     tasks: ['babel:crud_${flect.underscore(flect.pluralize(def.name))}'],
   },
 
   crud_${flect.underscore(flect.pluralize(def.name))}: {
     files: {
-      'js/crud-${flect.dasherize(flect.pluralize(def.name))}.js': 'js/crud-${flect.dasherize(flect.pluralize(def.name))}-es6.js'
+      'static/js/crud-${flect.dasherize(flect.pluralize(def.name))}.js': 'static/js/crud-${flect.dasherize(flect.pluralize(def.name))}-es6.js'
     }
   },
 
