@@ -53,11 +53,11 @@ app.set('view engine', 'ejs'); // set up ejs for templating
 
 // app.use(express.static('static'));
 
-// app.use(express.static('static/css'));
-// app.use(express.static('static/fonts'));
-// app.use(express.static('static/images'));
+app.use('/css', express.static('static/css'));
+app.use('/fonts', express.static('static/fonts'));
+app.use('/images', express.static('static/images'));
 app.use('/js', express.static('static/js'));
-// app.use(express.static('static/sounds'));
+app.use('/sounds', express.static('static/sounds'));
 
 
 // required for passport
