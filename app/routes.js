@@ -162,33 +162,33 @@ module.exports = function(app, passport) {
     /*
     CSS
     */
-    app.get('/css/css.css', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../css/css.css'))
-    })
+    // app.get('/css/css.css', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../css/css.css'))
+    // })
 
-    app.get('/css/testing.css', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../css/testing.css'))
-    })
+    // app.get('/css/testing.css', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../css/testing.css'))
+    // })
 
-    app.get('/css/bootstrap.css', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../css/bootstrap.css'))
-    })
+    // app.get('/css/bootstrap.css', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../css/bootstrap.css'))
+    // })
 
-    app.get('/css/vis.css', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../css/vis.css'))
-    })
+    // app.get('/css/vis.css', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../css/vis.css'))
+    // })
 
-    app.get('/css/jquery-ui.css', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../css/jquery-ui.css'))
-    })
+    // app.get('/css/jquery-ui.css', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../css/jquery-ui.css'))
+    // })
 
-    app.get('/css/chosen.min.css', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../css/chosen.min.css'))
-    })
+    // app.get('/css/chosen.min.css', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../css/chosen.min.css'))
+    // })
 
-    app.get('/css/chosen-sprite.png', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../css/chosen-images/chosen-sprite.png'))
-    })
+    // app.get('/css/chosen-sprite.png', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../css/chosen-images/chosen-sprite.png'))
+    // })
 
 
     /*
