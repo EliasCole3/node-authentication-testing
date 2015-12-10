@@ -83,140 +83,6 @@ module.exports = function(app, passport) {
       res.sendFile(path.resolve(__dirname + './../js/testing.js'))
     })
 
-    // app.get('/crud-items', function(req, res) {
-    //   res.render('CRUD/items.ejs', {
-    //       user : req.user // get the user out of session and pass to template
-    //   })
-    // })
-
-    // app.get('/css/crud-items.css', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../css/crud-items.css'))
-    // })
-
-    // app.get('/js/crud-items.js', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../js/crud-items.js'))
-    // })
-
-
-
-
-
-    /*
-
-    Resources
-
-    */
-
-    /*
-    JS
-    */
-    // app.get('/js/jquery.js', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../js/jquery.js'))
-    // })
-
-    // app.get('/js/jquery-ui.js', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../js/jquery-ui.js'))
-    // })
-
-    // app.get('/js/moment.js', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../js/moment.js'))
-    // })
-
-    // app.get('/js/vis.js', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../js/vis.js'))
-    // })
-
-    // app.get('/js/bootstrap.js', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../js/bootstrap.js'))
-    // })
-
-    // app.get('/js/inflection.js', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../js/inflection.js'))
-    // })
-
-    // app.get('/js/deepcopy.js', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../js/deepcopy.js'))
-    // })
-
-    // app.get('/js/socket-io.js', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../js/socket-io.js'))
-    // })
-
-    // app.get('/js/ebot.js', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../js/ebot.js'))
-    // })
-
-    // app.get('/js/js.js', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../js/js.js'))
-    // })
-
-    // app.get('/js/chosen.jquery.js', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../js/chosen.jquery.js'))
-    // })
-
-    // app.get('/js/velocity.js', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../js/velocity.js'))
-    // })
-
-
-    /*
-    CSS
-    */
-    // app.get('/css/css.css', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../css/css.css'))
-    // })
-
-    // app.get('/css/testing.css', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../css/testing.css'))
-    // })
-
-    // app.get('/css/bootstrap.css', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../css/bootstrap.css'))
-    // })
-
-    // app.get('/css/vis.css', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../css/vis.css'))
-    // })
-
-    // app.get('/css/jquery-ui.css', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../css/jquery-ui.css'))
-    // })
-
-    // app.get('/css/chosen.min.css', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../css/chosen.min.css'))
-    // })
-
-    // app.get('/css/chosen-sprite.png', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname + './../css/chosen-images/chosen-sprite.png'))
-    // })
-
-
-    /*
-    Sounds
-    */
-    app.get('/sounds/me-ding.wav', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../sounds/me-ding.wav'))
-    })
-
-    app.get('/sounds/me-user-connected.wav', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../sounds/me-user-connected.wav'))
-    })
-
-    app.get('/sounds/me-user-disconnected.wav', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../sounds/me-user-disconnected.wav'))
-    })
-
-
-    /*
-    Fonts
-    */
-    app.get('/fonts/glyphicons-halflings-regular.woff', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../fonts/glyphicons-halflings-regular.woff'))
-    })
-
-    app.get('/fonts/glyphicons-halflings-regular.ttf', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../fonts/glyphicons-halflings-regular.ttf'))
-    })
 
 
     /*
@@ -226,14 +92,6 @@ module.exports = function(app, passport) {
       res.sendFile(path.resolve(__dirname + './../node_modules/howler/howler.js'))
     })
     
-
-
-
-
-
-
-
-
 
 
 
@@ -250,13 +108,13 @@ module.exports = function(app, passport) {
       })
     })
 
-    app.get('/css/crud-creatures.css', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../css/crud-creatures.css'))
-    })
+    // app.get('/css/crud-creatures.css', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../css/crud-creatures.css'))
+    // })
 
-    app.get('/js/crud-creatures.js', function(req, res) {
-      res.sendFile(path.resolve(__dirname + './../js/crud-creatures.js'))
-    })
+    // app.get('/js/crud-creatures.js', function(req, res) {
+    //   res.sendFile(path.resolve(__dirname + './../js/crud-creatures.js'))
+    // })
 
 
     app.get('/crud-non-player-characters', function(req, res) {
