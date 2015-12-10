@@ -53,11 +53,11 @@ app.use(express.static('sounds'));
 
 app.use(express.static('static'));
 
-// app.use(express.static('static/css'));
-// app.use(express.static('static/fonts'));
-// app.use(express.static('static/images'));
-// app.use(express.static('static/js'));
-// app.use(express.static('static/sounds'));
+app.use(express.static('static/css'));
+app.use(express.static('static/fonts'));
+app.use(express.static('static/images'));
+app.use(express.static('static/js'));
+app.use(express.static('static/sounds'));
 
 
 // required for passport
