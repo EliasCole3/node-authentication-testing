@@ -454,13 +454,13 @@ let abc = {
     htmlString += `<br><br><br>`
 
     abc.playerCharacters.forEach(pc => {
-      htmlString += `<button class='add-player-character-button' player-character-id='${pc._id}' player-character-image-filename='${pc.imageFilename}'><img src='images/player-characters/${pc.imageFilename}'></button>`
+      htmlString += `<button class='add-player-character-button' player-character-id='${pc._id}' player-character-image-filename='${pc.imageFilename}'><img src='/images/player-characters/${pc.imageFilename}'></button>`
     })
 
     htmlString += `<br><br><br>`
 
     abc.creatures.forEach(creature => {
-      htmlString += `<button class='add-creature-button' player-character-id='${creature._id}' creature-image-filename='${creature.imageFilename}'><img src='creatures/${creature.imageFilename}'></button>`
+      htmlString += `<button class='add-creature-button' player-character-id='${creature._id}' creature-image-filename='${creature.imageFilename}'><img src='images/creatures/${creature.imageFilename}'></button>`
     })
 
     return htmlString
