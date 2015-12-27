@@ -435,7 +435,7 @@ var abc = {
     if (background !== "blank") {
 
       $("#wrapper").velocity({ opacity: 0 }, { duration: 1000, complete: function complete() {
-          $("#wrapper").css("background-image", "url(backgrounds/" + background + ")").css("background-repeat", "no-repeat");
+          $("#wrapper").css("background-image", "url(images/backgrounds/" + background + ")").css("background-repeat", "no-repeat");
         } }).velocity({ opacity: 1 }, { duration: 1000 });
     } else {
       $("#wrapper").css("background-image", "");
