@@ -152,7 +152,7 @@ io.on('connection', function(socket) {
   })
 
   socket.on('reload top drawer', function() {
-    io.emit('cursors toggle visibility')
+    io.emit('reload top drawer')
   })
 })
 
