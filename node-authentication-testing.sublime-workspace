@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"player",
+				"player-characters"
+			],
+			[
 				"back",
 				"background-repeat"
 			],
@@ -195,7 +199,7 @@
 			"file": "server.js",
 			"settings":
 			{
-				"buffer_size": 5037,
+				"buffer_size": 5129,
 				"line_ending": "Windows"
 			}
 		},
@@ -211,34 +215,23 @@
 			"file": "index.ejs",
 			"settings":
 			{
-				"buffer_size": 2191,
+				"buffer_size": 2187,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "$(() => {\n  ebot.insertModalHtml(\"modal-lg\")\n  abc.initialize()\n  // ebot.updateDocumentation(abc)\n})\n\n\n\n/**\n * initialize()\n * assignInitialHandlers()\n * handlerDrag()\n * handlerAddDiv()\n * createNewWireframeDiv()\n *\n * dragDelay\n * dragCounter\n * socket\n * currentDynamicDivId\n * draggableOptions\n * resizableOptions\n */\nlet abc = {\n  \n  initialize: () => {\n    abc.socket = io()\n    abc.assignInitialHandlers()\n\n    try {\n      let user = JSON.parse($(\"#data-for-you\").html())\n      console.log(user)\n\n      abc.setCurrentPlayerCharacterId(user)\n\n      let DMs = [\"a\", \"bliss\"]\n      let players = [\"a\", \"b\", \"c\", \"bliss\", \"laurana\", \"andros\", \"skjor\", \"greg\", \"ares\"]\n\n      if(DMs.indexOf(user.local.username) > -1) {\n        abc.userIsDM = true\n      }\n\n      if(players.indexOf(user.local.username) > -1) {\n        abc.userIsPlayer = true\n      }\n\n      if(!abc.userIsDM && !abc.userIsPlayer) {\n        alert(\"whoooo aaaarrrre yoooouuuu? 0.o\")\n      }\n\n      $.when.apply($, abc.retrieveInitialModels()).done(() => {\n        abc.fillTopDrawer()\n        abc.fillRightDrawer()\n        abc.fillLeftDrawer()\n        abc.fillBottomDrawer()\n      })\n\n      abc.addPlayerCursorDivs()\n\n      abc.handlerMouseMove()\n\n    } catch(e) {\n      console.log(`error parsing authentication data: ${e}`)\n    }\n\n	  \n  },\n\n\n  addPlayerCursorDivs: () => {\n\n  },\n\n  handlerMouseMove: () => {\n    $('body').on('mousemove', e => {\n      // console.log(`x: ${e.pageX}, y: ${e.pageY}`)\n\n      if(abc.cursorsVisible) {\n        abc.socket.emit('cursor moved', {playerId: abc.currentPlayerCharacterId, x: e.pageX, y: e.pageY})\n      }\n      \n    })\n  },\n\n  updateCursorImage: emitObj => {\n    console.log(emitObj)\n    if(abc.cursorDelay === 10) {\n      $(`#cursor-${emitObj.playerId}`).css(`top`, emitObj.y).css(`left`, emitObj.x)\n      abc.cursorDelay = 0\n    } else {\n      abc.cursorDelay++\n    }\n    \n  },\n\n  setCurrentPlayerCharacterId: user => {\n\n    switch(user.local.username) {\n      case \"laurana\":\n        abc.currentPlayerCharacterId = 1\n        break\n      case \"andros\":\n        abc.currentPlayerCharacterId = 2\n        break\n      case \"skjor\":\n        abc.currentPlayerCharacterId = 3\n        break\n      case \"greg\":\n        abc.currentPlayerCharacterId = 4\n        break\n      case \"ares\":\n        abc.currentPlayerCharacterId = 5\n        break\n      case \"bliss\":\n        abc.currentPlayerCharacterId = 0\n        break\n      default:\n        console.log(`setCurrentPlayerCharacterId() fell out of switch statement. Fix me plox. Current user:`)\n        console.log(user)\n    }\n\n  },\n\n  assignInitialHandlers: () => {\n    abc.handlersSocketEventReceived()\n    abc.makeDrawers()\n    \n\n  },\n\n  handlersSocketEventReceived: () => {\n\n    abc.socket.on('element dragged', emitObj => {\n      $('#' + emitObj.id).css(\"top\", emitObj.y)\n      $('#' + emitObj.id).css(\"left\", emitObj.x)\n    })\n\n    abc.socket.on('element resized', emitObj => {\n      $(`#${emitObj.id}`).css(\"width\", emitObj.width).css(\"height\", emitObj.height)\n    })\n\n    abc.socket.on('user connected', () => {\n      // abc.playSound(\"me-user-connected\")\n    })\n\n    abc.socket.on('user disconnected', () => {\n      // abc.playSound(\"me-user-disconnected\")\n    })\n\n    abc.socket.on('item token added', emitObj => {\n      abc.addTokenItem(emitObj.imageFilename, emitObj.ranTop, emitObj.ranLeft)\n    })\n\n    abc.socket.on('player character token added', emitObj => {\n      abc.addTokenPlayerCharacter(emitObj.imageFilename, emitObj.ranTop, emitObj.ranLeft)\n    })\n\n    abc.socket.on('creature token added', emitObj => {\n      abc.addTokenCreature(emitObj.imageFilename, emitObj.ranTop, emitObj.ranLeft)\n    })\n\n    abc.socket.on('background changed', emitObj => {\n      abc.changeBackground(emitObj.background)\n    })\n\n    abc.socket.on('hp changed', emitObj => {\n      abc.changeHp(emitObj.id, emitObj.val)\n    })\n\n    abc.socket.on('cursor moved', emitObj => {\n      abc.updateCursorImage(emitObj)\n    })\n\n    abc.socket.on('cursors toggle visibility', emitObj => {\n      abc.toggleCursorsVisibility(emitObj.cursorsVisible)\n      abc.cursorsVisible = emitObj.cursorsVisible\n    })\n  },\n\n  retrieveInitialModels: () => {\n    let deferreds = []\n\n    deferreds.push(ebot.retrieveEntity(abc, \"items\"))\n    deferreds.push(ebot.retrieveEntity(abc, \"powers\"))\n    deferreds.push(ebot.retrieveEntity(abc, \"creatures\"))\n    deferreds.push(ebot.retrieveEntity(abc, \"playerCharacters\"))\n    deferreds.push(ebot.retrieveEntity(abc, \"nonPlayerCharacters\"))\n    deferreds.push(ebot.retrieveEntity(abc, \"joinPlayerCharacterItems\"))\n    deferreds.push(ebot.retrieveEntity(abc, \"joinPlayerCharacterPowers\"))\n    deferreds.push(ebot.retrieveEntity(abc, \"characterDetails\"))\n\n    return deferreds\n  },\n\n\n\n  fillTopDrawer: () => {\n    if(abc.userIsPlayer) {\n      $(`#top-drawer-contents`).html(abc.getTopDrawerHtml())\n      abc.handlerTopDrawerContents()\n    } else {\n      $(`#top-drawer-contents`).html(\"Unauthorized user detected!\")\n    }\n  },\n\n  getTopDrawerHtml: () => {\n    let htmlString = `<table id='player-stats-table' class=\"table-condensed\">`\n\n    htmlString += `<tr>\n      <th>Player Name</th>\n      <th>Character Name</th>\n      <th>Current HP</th>\n      <th>Max HP</th>\n      <th>AC</th>\n      <th>Will</th>\n      <th>Reflex</th>\n      <th>To Hit AC/Will/Reflex</th>\n      <th>Damage Mod</th>\n      <th>Speed</th>\n      <th>Initiative</th>\n      <th>Action Points</th>\n      <th>Gold</th>\n      <th>Str</th>\n      <th>Con</th>\n      <th>Int</th>\n      <th>Wis</th>\n      <th>Dex</th>\n      <th>Cha</th>\n    </tr>`\n\n    abc.playerCharacters.forEach(player => {\n      if(player.playerName !== \"npc\") {\n          htmlString += `<tr>\n          <td>${player.playerName}</td>\n          <td>${player.characterName}</td>\n          <td><input id='current-hp-input-${player.playerCharacterId}' class='current-hp-input form-control' type='number' value='${player.hp}'></td>\n          <td>${player.hp}</td>\n          <td>${player.ac}</td>\n          <td>${player.will}</td>\n          <td>${player.reflex}</td>\n          <td style=\"text-align:center;\">${player.baseToHitAc}/${player.baseToHitWill}/${player.baseToHitReflex}</td>\n          <td>${player.damageModifier}</td>\n          <td>${player.speed}</td>\n          <td>${player.initiative}</td>\n          <td>${player.actionPoints}</td>\n          <td>${player.gold}</td>\n          <td>${player.strength}</td>\n          <td>${player.constitution}</td>\n          <td>${player.intelligence}</td>\n          <td>${player.wisdom}</td>\n          <td>${player.dexterity}</td>\n          <td>${player.charisma}</td>\n\n        </tr>`\n      }\n      \n    })\n\n    htmlString += `</table>`\n\n    return htmlString\n  },\n\n  handlerTopDrawerContents: () => {\n    $(\".current-hp-input\").on(\"change\", e => {\n      let element = $(e.currentTarget)\n      let id = element.attr(\"id\")\n      let val = element.val()\n      abc.socket.emit('hp changed', {id: id, val: val})\n    })\n  },\n\n\n\n  fillBottomDrawer: () => {\n    if(abc.userIsPlayer) {\n      $(`#bottom-drawer-contents`).html(abc.getBottomDrawerHtml())\n      abc.handlerBottomDrawerContents()\n    } else {\n      $(`#bottom-drawer-contents`).html(\"Unauthorized user detected!\")\n    }\n  },\n\n  getBottomDrawerHtml: () => {\n    let htmlString = ``\n\n    if(abc.userIsPlayer && !abc.userIsDM) {\n      htmlString += ``\n    }\n\n    if(abc.userIsDM) {\n      htmlString += `\n        <button id='toggle-cursor-visibility' class='btn btn-md btn-info'>toggle cursors</button>\n      `\n    }\n\n    return htmlString\n  },\n\n  handlerBottomDrawerContents: () => {\n    $(\"#toggle-cursor-visibility\").on(\"click\", e => {\n      abc.cursorsVisible = !abc.cursorsVisible\n      abc.socket.emit('cursors toggle visibility', {cursorsVisible: abc.cursorsVisible})\n    })\n  \n  },\n\n  toggleCursorsVisibility: cursorsVisible => {\n    if(!cursorsVisible) {\n      $(\".cursor\")\n        .velocity({opacity: 0}, {duration: 1000})\n        .velocity({display: \"none\"}, {duration: 0})\n    } else {\n    $(\".cursor\")\n      .velocity({display: \"block\"}, {duration: 0})\n      .velocity({opacity: .95}, {duration: 1000})\n    }\n  },\n\n\n\n  fillLeftDrawer: () => {\n    if(abc.userIsPlayer) {\n      $(`#left-drawer-contents`).html(abc.getLeftDrawerHtml())\n      abc.handlerLeftDrawerContents()\n    } else {\n      $(`#left-drawer-contents`).html(\"Unauthorized user detected!\")\n    }\n  },\n\n  getLeftDrawerHtml: () => {\n    let htmlString = `\n    <button id='toggle-lines' class='btn btn-md btn-info'>Toggle Lines</button> <br><br>\n    <button id='show-all-powers' class='btn btn-md btn-info'>Show All Powers</button>\n    `\n\n    if(abc.userIsPlayer && !abc.userIsDM) {\n      htmlString += `\n      <br><br><button id='show-backstory' class='btn btn-md btn-info'>Show My Backstory</button>\n      <br><br><button id='show-my-powers' class='btn btn-md btn-info'>Show My Powers</button>\n      `\n    }\n\n    if(abc.userIsDM) {\n      htmlString += `<br><br>\n      <select id='background-select' data-placeholder='Choose a background...'>\n        <option value=''></option>\n        <option value='blank'>Blank</option>\n        <option value='zone-map.png'>Zone Map</option>\n        <option value='river.jpg'>River</option>\n        <option value='twooth-library.png'>Twooth Library</option>\n        <option value='slime-cave.png'>Slim Cave</option>\n        <option value='andora-tavern.jpg'>Andora Tavern</option>\n        <option value='andora-gates.png'>Andora Gates</option>\n        <option value='andora.jpg'>Andora</option>\n        <option value='brement.jpg'>Brement</option>\n        <option value='dark-forest-1.jpg'>Dark Forest</option>\n        <option value='desert-1.JPG'>Desert 1</option>\n        <option value='desert-statue.jpg'>Desert Statue</option>\n        <option value='dunkar.jpg'>Dunkar</option>\n        <option value='forest-path-1.jpg'>Forest Path 1</option>\n        <option value='forest-path-2.jpg'>Forest Path 2</option>\n        <option value='forest-1.JPG'>Forest 1</option>\n        <option value='plains-1.jpg'>Plains 1</option>\n        <option value='plains-2.jpg'>Plains 2</option>\n      </select>\n      `\n    }\n\n    return htmlString\n  },\n\n  handlerLeftDrawerContents: () => {\n    $(\"#toggle-lines\").click(e => {\n      if($(\"#lines\").css(\"opacity\") === \"0.3\") {\n        $(\"#lines\").velocity({opacity: \"0\"})\n      } else {\n        $(\"#lines\").velocity({opacity: \"0.3\"})\n      }\n    })\n\n    $(\"#show-all-powers\").click(e => {\n      ebot.showModal(\"All Powers\", abc.viewAllPowers())\n    })\n\n    $(\"#background-select\").chosen(ebot.chosenOptions).change(e => {\n      let element = $(e.currentTarget)\n      abc.changeBackground(element.val())\n      abc.socket.emit('background changed', {background: element.val()})\n    })\n\n    $(\"#show-backstory\").click(e => {\n      let detailText = abc.characterDetails.filter(detail => {\n        return detail.playerCharacterId == abc.currentPlayerCharacterId\n      })[0].backstory\n      \n      // detailText = `<pre>${detailText}</pre>`\n\n      detailText = `<div style=\"white-space: pre-wrap;\">${detailText}</div>`\n\n      ebot.showModal(\"Backstory\", detailText)\n    })\n\n    $(\"#show-my-powers\").click(e => {\n      let htmlString = ``\n\n      let relevantPowerJoins = abc.joinPlayerCharacterPowers.filter(join => {\n        return join.playerCharacterId == abc.currentPlayerCharacterId\n      })\n\n      relevantPowerJoins.forEach(join => {\n        let relevantPower = abc.powers.filter(power => {\n          return power.powerId == join.powerId\n        })[0]\n\n        htmlString += `\n        <div class='power-view'>\n\n          <h4>${relevantPower.name}</h4>\n          Type: ${relevantPower.type} <br>\n          Attack Type: ${relevantPower.attackType} <br>\n          Damage: ${relevantPower.damage} <br>\n          Effect: ${relevantPower.effect} <br>\n          Description: ${relevantPower.description} <br>\n          Flavor: ${relevantPower.flavorText} <br>\n          Upgrade Effects: ${relevantPower.upgrade} <br>\n\n        </div><br><br>`\n      })\n\n      ebot.showModal(\"My Powers\", htmlString)\n    })\n  },\n\n\n\n  fillRightDrawer: () => {\n    if(abc.userIsDM) {\n      $(`#right-drawer-contents`).html(abc.getRightDrawerHtmlDM())\n      abc.handlerRightDrawerContents()\n    } else if(abc.userIsPlayer) {\n      $(`#right-drawer-contents`).html(abc.getRightDrawerHtmlPlayer())\n    } else {\n      $(`#right-drawer-contents`).html(\"Unauthorized user detected!\")\n    }\n  },\n\n  getRightDrawerHtmlDM: () => {\n    let htmlString = ``\n\n    abc.items.forEach(item => {\n      htmlString += `<button class='add-item-button' item-id='${item._id}' item-image-filename='${item.imageFilename}'><img src='items/${item.imageFilename}'></button>`\n    })\n\n    htmlString += `<br><br><br>`\n\n    abc.playerCharacters.forEach(pc => {\n      htmlString += `<button class='add-player-character-button' player-character-id='${pc._id}' player-character-image-filename='${pc.imageFilename}'><img src='images/player-characters/${pc.imageFilename}'></button>`\n    })\n\n    htmlString += `<br><br><br>`\n\n    abc.creatures.forEach(creature => {\n      htmlString += `<button class='add-creature-button' player-character-id='${creature._id}' creature-image-filename='${creature.imageFilename}'><img src='creatures/${creature.imageFilename}'></button>`\n    })\n\n    return htmlString\n  },\n\n  getRightDrawerHtmlPlayer: () => {\n    let htmlString = ``\n  \n    let relevantItemJoins = abc.joinPlayerCharacterItems.filter(join => {\n      return join.playerCharacterId == abc.currentPlayerCharacterId\n    })\n\n    relevantItemJoins.forEach(join => {\n      let relevantItem = abc.items.filter(item => {\n        return item.itemId == join.itemId\n      })[0]\n\n      htmlString += `<img src='items/${relevantItem.imageFilename}' class='player-item'> x ${join.count}<br>`\n    })\n\n    return htmlString\n  },\n\n  handlerRightDrawerContents: () => {\n\n    if(abc.userIsDM) {\n      $(\".add-item-button\").click(e => {\n        let button = $(e.currentTarget)\n        let imageFilename = button.attr(\"item-image-filename\")\n        let ranTop = ebot.getRandomInt(2, 10) * 50\n        let ranLeft = ebot.getRandomInt(2, 10) * 50\n        abc.addTokenItem(imageFilename, ranTop, ranLeft)\n      \n        let emitObj = {\n          imageFilename: imageFilename,\n          ranTop: ranTop,\n          ranLeft: ranLeft\n        }\n\n        abc.socket.emit('item token added', emitObj)\n      })\n\n      $(\".add-player-character-button\").click(e => {\n        let button = $(e.currentTarget)\n        let imageFilename = button.attr(\"player-character-image-filename\")\n        let ranTop = ebot.getRandomInt(2, 10) * 50\n        let ranLeft = ebot.getRandomInt(2, 10) * 50\n        abc.addTokenPlayerCharacter(imageFilename, ranTop, ranLeft)\n      \n        let emitObj = {\n          imageFilename: imageFilename,\n          ranTop: ranTop,\n          ranLeft: ranLeft\n        }\n\n        abc.socket.emit('player character token added', emitObj)\n      })\n\n      $(\".add-creature-button\").click(e => {\n        let button = $(e.currentTarget)\n        let imageFilename = button.attr(\"creature-image-filename\")\n        let ranTop = ebot.getRandomInt(2, 10) * 50\n        let ranLeft = ebot.getRandomInt(2, 10) * 50\n        abc.addTokenCreature(imageFilename, ranTop, ranLeft)\n      \n        let emitObj = {\n          imageFilename: imageFilename,\n          ranTop: ranTop,\n          ranLeft: ranLeft\n        }\n\n        abc.socket.emit('creature token added', emitObj)\n      })\n\n    } else if(abc.userIsPlayer) {\n      $(`#right-drawer-contents`).html(abc.getRightDrawerHtmlPlayer())\n    } else {\n      \n    }\n\n    \n  },\n\n\n\n\n  changeBackground: background => {\n    if(background !== \"blank\") {\n  \n      $(\"#wrapper\")\n      .velocity({opacity: 0}, {duration: 1000, complete: () => {\n        $(\"#wrapper\").css(\"background-image\", `url(backgrounds/${background})`).css(\"background-repeat\", \"no-repeat\") \n      }})\n      .velocity({opacity: 1}, {duration: 1000})\n\n    } else {\n      $(\"#wrapper\").css(\"background-image\", ``)\n    }\n\n  },\n\n  changeHp: (id, val) => {\n    $(`#${id}`).val(val)\n  },\n\n\n\n\n\n  viewAllPowers: () => {\n    let htmlString = ``\n\n    abc.powers.forEach(power => {\n      htmlString += `\n      <div class='power-view'>\n\n        <h4>${power.name}</h4>\n        Type: ${power.type} <br>\n        Attack Type: ${power.attackType} <br>\n        Damage: ${power.damage} <br>\n        Effect: ${power.effect} <br>\n        Description: ${power.description} <br>\n        Flavor: ${power.flavorText} <br>\n        Upgrade Effects: ${power.upgrade} <br>\n\n      </div><br><br>`\n    })\n\n    return htmlString\n  },\n\n\n\n\n\n\n\n  addTokenItem: (imageFilename, ranTop, ranLeft) => {\n\n    //I'm a bad person. Fix this\n    let effects = ['poison.jpg', 'ice.jpg', 'fire.jpg', 'immobile.gif', 'prone.gif']\n    let id = `dynamically-added-div-${abc.currentDynamicDivId}`\n    let htmlString = ``\n    if(effects.indexOf(imageFilename) > -1) {\n      htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px; opacity: 0.4;'><img src='items/${imageFilename}'></div>`\n    } else {\n      htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='items/${imageFilename}'></div>`\n    }\n    $(\"#wrapper\").append(htmlString)\n    $(`#${id}`).draggable(abc.draggableOptionsToken)\n    abc.currentDynamicDivId++\n  },\n\n  addTokenPlayerCharacter: (imageFilename, ranTop, ranLeft) => {\n    let id = `dynamically-added-div-${abc.currentDynamicDivId}`\n    let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='player-characters/${imageFilename}'></div>`\n    $(\"#wrapper\").append(htmlString)\n    $(`#${id}`).draggable(abc.draggableOptionsToken)\n    abc.currentDynamicDivId++\n  },\n\n  addTokenCreature: (imageFilename, ranTop, ranLeft) => {\n    let id = `dynamically-added-div-${abc.currentDynamicDivId}`\n    let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='creatures/${imageFilename}'></div>`\n    $(\"#wrapper\").append(htmlString)\n    $(`#${id}`).draggable(abc.draggableOptionsToken)\n    abc.currentDynamicDivId++\n  },\n\n  makeDrawers: () => {\n    let opacity = 0.9\n    ebot.drawerify({\n      fromThe: \"top\",\n      selector: \"#top-drawer\",\n      contents: \"#top-drawer-contents\",\n      opacity: opacity\n    })\n\n    ebot.drawerify({\n      fromThe: \"left\",\n      selector: \"#left-drawer\",\n      contents: \"#left-drawer-contents\",\n      opacity: opacity\n    })\n\n    ebot.drawerify({\n      fromThe: \"bottom\",\n      selector: \"#bottom-drawer\",\n      contents: \"#bottom-drawer-contents\",\n      opacity: opacity\n    })\n\n    ebot.drawerify({\n      fromThe: \"right\",\n      selector: \"#right-drawer\",\n      contents: \"#right-drawer-contents\",\n      opacity: opacity\n    })\n  },\n\n  playSound: sound => {\n    let soundUnique = new Howl({\n      urls: [`/sounds/${sound}.wav`]\n    }).play()\n  },\n\n  draggableOptions: {\n    drag: (event, ui) => {\n      let emitObj = {\n        id: ui.helper[0].id,\n        x: $(ui.helper[0]).css(\"left\"),\n        y: $(ui.helper[0]).css(\"top\")\n      }\n\n      abc.socket.emit('element dragged', emitObj)\n    }\n  },\n\n  draggableOptionsToken: {\n    drag: (event, ui) => {\n      let emitObj = {\n        id: ui.helper[0].id,\n        x: $(ui.helper[0]).css(\"left\"),\n        y: $(ui.helper[0]).css(\"top\")\n      }\n\n      abc.socket.emit('element dragged', emitObj)\n    },\n    grid:[50, 50]\n  },\n\n  resizableOptions: {\n    resize: (event, ui) => {\n      let emitObj = {\n        id: ui.element[0].id,\n        height: ui.size.height,\n        width: ui.size.width\n      }\n\n      abc.socket.emit('element resized', emitObj)\n    }\n  },\n\n  getItems: () => {\n    let deferred = $.ajax({\n      type: \"GET\",\n      url: `${abc.apiurl}/items`,\n      success: function(data, status, jqXHR) {},\n      error: function(jqXHR, status) {console.log(\"getItems() Error\")}\n    }).promise()\n\n    return deferred\n  },\n\n  dragDelay: 1,\n  \n  dragCounter: 0,\n\n  socket: {},\n\n  currentDynamicDivId: 1,\n\n  // apiurl: \"http://localhost:8082\",\n  apiurl: \"http://192.241.203.33:8082\",\n\n  userIsPlayer: false,\n\n  userIsDM: false,\n\n  currentPlayerCharacterId: 0,\n\n  items: [],\n\n  powers: [],\n\n  creatures: [],\n\n  playerCharacters: [],\n\n  nonPlayerCharacters: [],\n\n  joinPlayerCharacterItems: [],\n\n  joinPlayerCharacterPowers: [],\n\n  characterDetails: [],\n\n  cursorDelay: 0,\n\n  cursorsVisible: true\n\n}\n\n",
-			"file": "js/js-es6.js",
-			"file_size": 20451,
-			"file_write_time": 130938167045808899,
+			"file": "static/js/js-es6.js",
 			"settings":
 			{
-				"buffer_size": 20458,
+				"buffer_size": 20518,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "css/css.css",
+			"file": "static/css/css.css",
 			"settings":
 			{
 				"buffer_size": 2118,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "generator/generator-es6.js",
-			"settings":
-			{
-				"buffer_size": 27352,
 				"line_ending": "Windows"
 			}
 		}
@@ -275,11 +268,13 @@
 	},
 	"file_history":
 	[
+		"/C/wamp/www/node-authentication-testing/Gruntfile.js",
+		"/C/wamp/www/node-authentication-testing/generator/generator-es6.js",
+		"/C/wamp/www/node-authentication-testing/css/css.css",
+		"/C/wamp/www/node-authentication-testing/js/js-es6.js",
 		"/C/wamp/www/node-authentication-testing/js/ebot.js",
 		"/C/wamp/www/node-authentication-testing/views/profile.ejs",
 		"/C/wamp/www/node-authentication-testing/js/crud-join-player-character-powers-es6.js",
-		"/C/wamp/www/node-authentication-testing/Gruntfile.js",
-		"/C/wamp/www/node-authentication-testing/generator/generator-es6.js",
 		"/C/wamp/www/node-authentication-testing/generator/definitions/join_player_character_power.js",
 		"/C/wamp/www/node-authentication-testing/generator/definitions/power.js",
 		"/C/wamp/www/node-authentication-testing/js/crud-character-details-es6.js",
@@ -335,7 +330,6 @@
 		"/C/wamp/www/Timeline/node/server.js",
 		"/C/wamp/www/Timeline/js/js-es6.js",
 		"/C/wamp/www/node-authentication-testing/js/testing.js",
-		"/C/wamp/www/node-authentication-testing/js/js-es6.js",
 		"/C/wamp/www/node-authentication-testing/js/js.js",
 		"/C/wamp/www/node-authentication-testing/index.ejs",
 		"/C/wamp/www/node-authentication-testing/app/models/log.js",
@@ -401,8 +395,7 @@
 		"/C/wamp/www/LaravelTesting/LaravelTesting/resources/views/demos/matching-game.blade.php",
 		"/C/wamp/www/LaravelTesting/LaravelTesting/resources/views/demos/assembly.blade.php",
 		"/C/wamp/www/LaravelTesting/LaravelTesting/resources/views/demos/android-fragments.blade.php",
-		"/C/wamp/www/LaravelTesting/LaravelTesting/public/index.php",
-		"/C/wamp/www/LaravelTesting/LaravelTesting/resources/views/timeline/timeline.blade.php"
+		"/C/wamp/www/LaravelTesting/LaravelTesting/public/index.php"
 	],
 	"find":
 	{
@@ -410,9 +403,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
+			"C:\\wamp\\www\\node-authentication-testing",
 			"C:\\wamp\\www\\node-authentication-testing\\js,-*.map",
 			"C:\\wamp\\www\\node-authentication-testing\\js",
 			""
@@ -423,6 +417,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"changeBackground",
+			"G.O.",
+			"G.o",
+			"src='",
+			"js/",
 			"createCrudRoutes",
 			"png",
 			"backgr",
@@ -545,12 +544,7 @@
 			"items-select",
 			"fill",
 			"select",
-			"Test",
-			"writeTests",
-			"undefine",
-			"{}",
-			"${id}",
-			"abc.apiurl}"
+			"Test"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -558,6 +552,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"static/js/",
+			"static/js",
 			"bottom",
 			"top",
 			"Bottom",
@@ -608,15 +604,15 @@
 					"file": "server.js",
 					"settings":
 					{
-						"buffer_size": 5037,
+						"buffer_size": 5129,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1640,
-								1640
+								1982,
+								1982
 							]
 						],
 						"settings":
@@ -624,7 +620,7 @@
 							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 400.0,
+						"translation.y": 580.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -650,7 +646,7 @@
 							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 142.0,
+						"translation.y": 1530.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -660,20 +656,46 @@
 					"file": "index.ejs",
 					"settings":
 					{
-						"buffer_size": 2191,
+						"buffer_size": 2187,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2174,
-								2174
+								1933,
+								1933
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "static/js/js-es6.js",
+					"settings":
+					{
+						"buffer_size": 20518,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								580,
+								580
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -682,35 +704,8 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "js/js-es6.js",
-					"settings":
-					{
-						"buffer_size": 20458,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								12947,
-								12947
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
-							"word_wrap": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 6588.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 4,
-					"file": "css/css.css",
+					"file": "static/css/css.css",
 					"settings":
 					{
 						"buffer_size": 2118,
@@ -720,39 +715,13 @@
 						"selection":
 						[
 							[
-								470,
-								470
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 135.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "generator/generator-es6.js",
-					"settings":
-					{
-						"buffer_size": 27352,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								24820,
-								24820
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

@@ -20,7 +20,7 @@ html,body{height:100%;}
 #top-drawer {
   width: 100%;
   height: 250px;
-  background-color: blue;
+  background-color: #9683EA;
   overflow-y: scroll;
 }
 
@@ -29,7 +29,7 @@ html,body{height:100%;}
   bottom: 0px;
   width: 100%;
   height: 100px;
-  background-color: green;
+  background-color: #5437E7;
 }
 
 #left-drawer {
@@ -39,7 +39,7 @@ html,body{height:100%;}
 
   height: 100%;
   width: 150px;
-  background-color: pink;
+  background-color: #735BEE;
 }
 
 #right-drawer {
@@ -48,7 +48,7 @@ html,body{height:100%;}
   right: 0px;
   height: 100%;
   width: 200px;
-  background-color: purple;
+  background-color: #735BEE;
 }
 
 .drawer {
