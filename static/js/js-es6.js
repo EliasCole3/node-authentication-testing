@@ -1,24 +1,71 @@
 $(() => {
   ebot.insertModalHtml("modal-lg")
   abc.initialize()
-  ebot.updateDocumentation(abc)
+  // ebot.updateDocumentation(abc)
 })
 
 
 
 /**
  * initialize()
+ * addPlayerCursorDivs()
+ * handlerMouseMove()
+ * updateCursorImage()
+ * setCurrentPlayerCharacterId()
  * assignInitialHandlers()
- * handlerDrag()
- * handlerAddDiv()
- * createNewWireframeDiv()
+ * handlersSocketEventReceived()
+ * retrieveInitialModels()
  *
+ * fillTopDrawer()
+ * getTopDrawerHtml()
+ * handlerTopDrawerContents()
+ * 
+ * fillBottomDrawer()
+ * getBottomDrawerHtml()
+ * handlerBottomDrawerContents()
+ *
+ * toggleCursorsVisibility()
+ * 
+ * fillLeftDrawer()
+ * getLeftDrawerHtml()
+ * handlerLeftDrawerContents()
+ * 
+ * fillRightDrawer()
+ * getRightDrawerHtmlDM()
+ * getRightDrawerHtmlPlayer()
+ * handlerRightDrawerContents()
+ * 
+ * changeBackground()
+ * changeHp()
+ * viewAllPowers()
+ * addTokenItem()
+ * addTokenPlayerCharacter()
+ * addTokenCreature()
+ * makeDrawers()
+ * playSound()
+ * draggableOptions
+ * draggableOptionsToken
+ * resizableOptions
+ * getItems()
+ * 
  * dragDelay
  * dragCounter
  * socket
  * currentDynamicDivId
- * draggableOptions
- * resizableOptions
+ * apiurl
+ * userIsPlayer
+ * userIsDM
+ * currentPlayerCharacterId
+ * items
+ * powers
+ * creatures
+ * playerCharacters
+ * nonPlayerCharacters
+ * joinPlayerCharacterItems
+ * joinPlayerCharacterPowers
+ * characterDetails
+ * cursorDelay
+ * cursorsVisible
  */
 let abc = {
   
@@ -26,6 +73,8 @@ let abc = {
     abc.socket = io()
     abc.assignInitialHandlers()
 
+    //this is a try block because the data doesn't always parse right, if the page is refreshed
+    //instead of newly navigated to.
     try {
       let user = JSON.parse($("#data-for-you").html())
       console.log(user)
@@ -67,17 +116,14 @@ let abc = {
 
 
   addPlayerCursorDivs: () => {
-
+    //currently hardcoded in index.ejs
   },
 
   handlerMouseMove: () => {
     $('body').on('mousemove', e => {
-      // console.log(`x: ${e.pageX}, y: ${e.pageY}`)
-
       if(abc.cursorsVisible) {
         abc.socket.emit('cursor moved', {playerId: abc.currentPlayerCharacterId, x: e.pageX, y: e.pageY})
       }
-      
     })
   },
 
@@ -123,8 +169,6 @@ let abc = {
   assignInitialHandlers: () => {
     abc.handlersSocketEventReceived()
     abc.makeDrawers()
-    
-
   },
 
   handlersSocketEventReceived: () => {
@@ -174,6 +218,10 @@ let abc = {
       abc.toggleCursorsVisibility(emitObj.cursorsVisible)
       abc.cursorsVisible = emitObj.cursorsVisible
     })
+
+    abc.socket.on('reload top drawer', () => {
+      abc.reloadTopDrawer()
+    })
   },
 
   retrieveInitialModels: () => {
@@ -194,7 +242,10 @@ let abc = {
 
 
   fillTopDrawer: () => {
-    if(abc.userIsPlayer) {
+    if(abc.userIsDM) {
+      $(`#top-drawer-contents`).html(abc.getTopDrawerHtmlDM())
+      abc.handlerTopDrawerContents()
+    } else if(abc.userIsPlayer) {
       $(`#top-drawer-contents`).html(abc.getTopDrawerHtml())
       abc.handlerTopDrawerContents()
     } else {
@@ -260,7 +311,67 @@ let abc = {
     return htmlString
   },
 
+  getTopDrawerHtmlDM: () => {
+    let htmlString = `<table id='player-stats-table' class="table-condensed">`
+
+    htmlString += `<tr>
+      <th>Player Name</th>
+      <th>Character Name</th>
+      <th>Current HP</th>
+      <th>Max HP</th>
+      <th>AC</th>
+      <th>Will</th>
+      <th>Reflex</th>
+      <th>To Hit AC/Will/Reflex</th>
+      <th>Damage Mod</th>
+      <th>Speed</th>
+      <th>Initiative</th>
+      <th>Action Points</th>
+      <th>Gold</th>
+      <th>Str</th>
+      <th>Con</th>
+      <th>Int</th>
+      <th>Wis</th>
+      <th>Dex</th>
+      <th>Cha</th>
+    </tr>`
+
+    abc.playerCharacters.forEach(player => {
+      if(player.playerName !== "npc") {
+          htmlString += `<tr player-character-id=${player.playerCharacterId}>
+          <td>${player.playerName}</td>
+          <td>${player.characterName}</td>
+          <td><input id='current-hp-input-${player.playerCharacterId}' class='current-hp-input form-control' type='number' value='${player.hp}'></td>
+          <td>${player.hp}</td>
+          <td>${player.ac}</td>
+          <td>${player.will}</td>
+          <td>${player.reflex}</td>
+          <td style="text-align:center;">${player.baseToHitAc}/${player.baseToHitWill}/${player.baseToHitReflex}</td>
+          <td>${player.damageModifier}</td>
+          <td>${player.speed}</td>
+          <td>${player.initiative}</td>
+          <td>${player.actionPoints}</td>
+          <td>${player.gold}</td>
+          <td>${player.strength}</td>
+          <td>${player.constitution}</td>
+          <td>${player.intelligence}</td>
+          <td>${player.wisdom}</td>
+          <td>${player.dexterity}</td>
+          <td>${player.charisma}</td>
+
+        </tr>`
+      }
+      
+    })
+
+    htmlString += `</table>`
+
+    return htmlString
+  },
+
   handlerTopDrawerContents: () => {
+    $(".current-hp-input").off("change")
+
     $(".current-hp-input").on("change", e => {
       let element = $(e.currentTarget)
       let id = element.attr("id")
@@ -290,6 +401,7 @@ let abc = {
     if(abc.userIsDM) {
       htmlString += `
         <button id='toggle-cursor-visibility' class='btn btn-md btn-info'>toggle cursors</button>
+        <button id='reload-top-drawer' class='btn btn-md btn-info'>reload top drawer</button>
       `
     }
 
@@ -301,7 +413,17 @@ let abc = {
       abc.cursorsVisible = !abc.cursorsVisible
       abc.socket.emit('cursors toggle visibility', {cursorsVisible: abc.cursorsVisible})
     })
+
+    $("#reload-top-drawer").on("click", e => {
+      abc.socket.emit('reload top drawer')
+    })
   
+  },
+
+  reloadTopDrawer: () => {
+    ebot.retrieveEntity(abc, "playerCharacters").then(() => {
+      abc.fillTopDrawer()
+    })
   },
 
   toggleCursorsVisibility: cursorsVisible => {
@@ -559,16 +681,11 @@ let abc = {
     } else {
       $("#wrapper").css("background-image", ``)
     }
-
   },
 
   changeHp: (id, val) => {
     $(`#${id}`).val(val)
   },
-
-
-
-
 
   viewAllPowers: () => {
     let htmlString = ``
@@ -692,6 +809,7 @@ let abc = {
     grid:[50, 50]
   },
 
+  //not currently being used
   resizableOptions: {
     resize: (event, ui) => {
       let emitObj = {
@@ -704,6 +822,7 @@ let abc = {
     }
   },
 
+  //not currently used
   getItems: () => {
     let deferred = $.ajax({
       type: "GET",

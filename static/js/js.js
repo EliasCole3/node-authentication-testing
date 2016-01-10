@@ -3,22 +3,69 @@
 $(function () {
   ebot.insertModalHtml("modal-lg");
   abc.initialize();
-  ebot.updateDocumentation(abc);
+  // ebot.updateDocumentation(abc)
 });
 
 /**
  * initialize()
+ * addPlayerCursorDivs()
+ * handlerMouseMove()
+ * updateCursorImage()
+ * setCurrentPlayerCharacterId()
  * assignInitialHandlers()
- * handlerDrag()
- * handlerAddDiv()
- * createNewWireframeDiv()
+ * handlersSocketEventReceived()
+ * retrieveInitialModels()
  *
+ * fillTopDrawer()
+ * getTopDrawerHtml()
+ * handlerTopDrawerContents()
+ * 
+ * fillBottomDrawer()
+ * getBottomDrawerHtml()
+ * handlerBottomDrawerContents()
+ *
+ * toggleCursorsVisibility()
+ * 
+ * fillLeftDrawer()
+ * getLeftDrawerHtml()
+ * handlerLeftDrawerContents()
+ * 
+ * fillRightDrawer()
+ * getRightDrawerHtmlDM()
+ * getRightDrawerHtmlPlayer()
+ * handlerRightDrawerContents()
+ * 
+ * changeBackground()
+ * changeHp()
+ * viewAllPowers()
+ * addTokenItem()
+ * addTokenPlayerCharacter()
+ * addTokenCreature()
+ * makeDrawers()
+ * playSound()
+ * draggableOptions
+ * draggableOptionsToken
+ * resizableOptions
+ * getItems()
+ * 
  * dragDelay
  * dragCounter
  * socket
  * currentDynamicDivId
- * draggableOptions
- * resizableOptions
+ * apiurl
+ * userIsPlayer
+ * userIsDM
+ * currentPlayerCharacterId
+ * items
+ * powers
+ * creatures
+ * playerCharacters
+ * nonPlayerCharacters
+ * joinPlayerCharacterItems
+ * joinPlayerCharacterPowers
+ * characterDetails
+ * cursorDelay
+ * cursorsVisible
  */
 var abc = {
 
@@ -26,6 +73,8 @@ var abc = {
     abc.socket = io();
     abc.assignInitialHandlers();
 
+    //this is a try block because the data doesn't always parse right, if the page is refreshed
+    //instead of newly navigated to.
     try {
       var user = JSON.parse($("#data-for-you").html());
       console.log(user);
@@ -62,12 +111,12 @@ var abc = {
     }
   },
 
-  addPlayerCursorDivs: function addPlayerCursorDivs() {},
+  addPlayerCursorDivs: function addPlayerCursorDivs() {
+    //currently hardcoded in index.ejs
+  },
 
   handlerMouseMove: function handlerMouseMove() {
     $('body').on('mousemove', function (e) {
-      // console.log(`x: ${e.pageX}, y: ${e.pageY}`)
-
       if (abc.cursorsVisible) {
         abc.socket.emit('cursor moved', { playerId: abc.currentPlayerCharacterId, x: e.pageX, y: e.pageY });
       }
@@ -163,6 +212,10 @@ var abc = {
       abc.toggleCursorsVisibility(emitObj.cursorsVisible);
       abc.cursorsVisible = emitObj.cursorsVisible;
     });
+
+    abc.socket.on('reload top drawer', function () {
+      abc.reloadTopDrawer();
+    });
   },
 
   retrieveInitialModels: function retrieveInitialModels() {
@@ -181,7 +234,10 @@ var abc = {
   },
 
   fillTopDrawer: function fillTopDrawer() {
-    if (abc.userIsPlayer) {
+    if (abc.userIsDM) {
+      $("#top-drawer-contents").html(abc.getTopDrawerHtmlDM());
+      abc.handlerTopDrawerContents();
+    } else if (abc.userIsPlayer) {
       $("#top-drawer-contents").html(abc.getTopDrawerHtml());
       abc.handlerTopDrawerContents();
     } else {
@@ -205,7 +261,25 @@ var abc = {
     return htmlString;
   },
 
+  getTopDrawerHtmlDM: function getTopDrawerHtmlDM() {
+    var htmlString = "<table id='player-stats-table' class=\"table-condensed\">";
+
+    htmlString += "<tr>\n      <th>Player Name</th>\n      <th>Character Name</th>\n      <th>Current HP</th>\n      <th>Max HP</th>\n      <th>AC</th>\n      <th>Will</th>\n      <th>Reflex</th>\n      <th>To Hit AC/Will/Reflex</th>\n      <th>Damage Mod</th>\n      <th>Speed</th>\n      <th>Initiative</th>\n      <th>Action Points</th>\n      <th>Gold</th>\n      <th>Str</th>\n      <th>Con</th>\n      <th>Int</th>\n      <th>Wis</th>\n      <th>Dex</th>\n      <th>Cha</th>\n    </tr>";
+
+    abc.playerCharacters.forEach(function (player) {
+      if (player.playerName !== "npc") {
+        htmlString += "<tr player-character-id=" + player.playerCharacterId + ">\n          <td>" + player.playerName + "</td>\n          <td>" + player.characterName + "</td>\n          <td><input id='current-hp-input-" + player.playerCharacterId + "' class='current-hp-input form-control' type='number' value='" + player.hp + "'></td>\n          <td>" + player.hp + "</td>\n          <td>" + player.ac + "</td>\n          <td>" + player.will + "</td>\n          <td>" + player.reflex + "</td>\n          <td style=\"text-align:center;\">" + player.baseToHitAc + "/" + player.baseToHitWill + "/" + player.baseToHitReflex + "</td>\n          <td>" + player.damageModifier + "</td>\n          <td>" + player.speed + "</td>\n          <td>" + player.initiative + "</td>\n          <td>" + player.actionPoints + "</td>\n          <td>" + player.gold + "</td>\n          <td>" + player.strength + "</td>\n          <td>" + player.constitution + "</td>\n          <td>" + player.intelligence + "</td>\n          <td>" + player.wisdom + "</td>\n          <td>" + player.dexterity + "</td>\n          <td>" + player.charisma + "</td>\n\n        </tr>";
+      }
+    });
+
+    htmlString += "</table>";
+
+    return htmlString;
+  },
+
   handlerTopDrawerContents: function handlerTopDrawerContents() {
+    $(".current-hp-input").off("change");
+
     $(".current-hp-input").on("change", function (e) {
       var element = $(e.currentTarget);
       var id = element.attr("id");
@@ -231,7 +305,7 @@ var abc = {
     }
 
     if (abc.userIsDM) {
-      htmlString += "\n        <button id='toggle-cursor-visibility' class='btn btn-md btn-info'>toggle cursors</button>\n      ";
+      htmlString += "\n        <button id='toggle-cursor-visibility' class='btn btn-md btn-info'>toggle cursors</button>\n        <button id='reload-top-drawer' class='btn btn-md btn-info'>reload top drawer</button>\n      ";
     }
 
     return htmlString;
@@ -241,6 +315,16 @@ var abc = {
     $("#toggle-cursor-visibility").on("click", function (e) {
       abc.cursorsVisible = !abc.cursorsVisible;
       abc.socket.emit('cursors toggle visibility', { cursorsVisible: abc.cursorsVisible });
+    });
+
+    $("#reload-top-drawer").on("click", function (e) {
+      abc.socket.emit('reload top drawer');
+    });
+  },
+
+  reloadTopDrawer: function reloadTopDrawer() {
+    ebot.retrieveEntity(abc, "playerCharacters").then(function () {
+      abc.fillTopDrawer();
     });
   },
 
@@ -550,6 +634,7 @@ var abc = {
     grid: [50, 50]
   },
 
+  //not currently being used
   resizableOptions: {
     resize: function resize(event, ui) {
       var emitObj = {
@@ -562,6 +647,7 @@ var abc = {
     }
   },
 
+  //not currently used
   getItems: function getItems() {
     var deferred = $.ajax({
       type: "GET",
