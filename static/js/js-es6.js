@@ -1,7 +1,7 @@
 $(() => {
   ebot.insertModalHtml("modal-lg")
   abc.initialize()
-  // ebot.updateDocumentation(abc)
+  ebot.updateDocumentation(abc)
 })
 
 
