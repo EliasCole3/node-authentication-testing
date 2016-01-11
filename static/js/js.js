@@ -346,7 +346,7 @@ var abc = {
   },
 
   getLeftDrawerHtml: function getLeftDrawerHtml() {
-    var htmlString = "\n    <button id='toggle-lines' class='btn btn-md btn-info'>Toggle Lines</button> <br><br>\n    <button id='show-all-powers' class='btn btn-md btn-info'>Show All Powers</button>\n    <button id='helpful-info' class='btn btn-md btn-info'>Helpful Info</button>\n    ";
+    var htmlString = "\n    <button id='toggle-lines' class='btn btn-md btn-info'>Toggle Lines</button> \n    <br><br>\n    <button id='show-all-powers' class='btn btn-md btn-info'>Show All Powers</button>\n    <br><br>\n    <button id='helpful-info' class='btn btn-md btn-info'>Helpful Info</button>\n    <br><br>\n    ";
 
     if (abc.userIsPlayer && !abc.userIsDM) {
       htmlString += "\n      <br><br><button id='show-backstory' class='btn btn-md btn-info'>Show My Backstory</button>\n      <br><br><button id='show-my-powers' class='btn btn-md btn-info'>Show My Powers</button>\n      ";

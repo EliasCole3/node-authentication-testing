@@ -451,9 +451,12 @@ let abc = {
 
   getLeftDrawerHtml: () => {
     let htmlString = `
-    <button id='toggle-lines' class='btn btn-md btn-info'>Toggle Lines</button> <br><br>
+    <button id='toggle-lines' class='btn btn-md btn-info'>Toggle Lines</button> 
+    <br><br>
     <button id='show-all-powers' class='btn btn-md btn-info'>Show All Powers</button>
+    <br><br>
     <button id='helpful-info' class='btn btn-md btn-info'>Helpful Info</button>
+    <br><br>
     `
 
     if(abc.userIsPlayer && !abc.userIsDM) {
