@@ -453,6 +453,7 @@ let abc = {
     let htmlString = `
     <button id='toggle-lines' class='btn btn-md btn-info'>Toggle Lines</button> <br><br>
     <button id='show-all-powers' class='btn btn-md btn-info'>Show All Powers</button>
+    <button id='helpful-info' class='btn btn-md btn-info'>Helpful Info</button>
     `
 
     if(abc.userIsPlayer && !abc.userIsDM) {
@@ -502,6 +503,10 @@ let abc = {
 
     $("#show-all-powers").click(e => {
       ebot.showModal("All Powers", abc.viewAllPowers())
+    })
+
+    $("#helpful-info").click(e => {
+      ebot.showModal("Helpful Info", abc.viewHelpfulInfo())
     })
 
     $("#background-select").chosen(ebot.chosenOptions).change(e => {
@@ -705,6 +710,21 @@ let abc = {
 
       </div><br><br>`
     })
+
+    return htmlString
+  },
+
+  viewHelpfulInfo: () => {
+    let htmlString = ``
+
+    htmlString += `
+    <img src='images/miscellaneous/ability-modifiers.png'>
+    <br><br>
+    <img src='images/miscellaneous/skill-table.jpg'>
+    <br><br>
+
+    `
+
 
     return htmlString
   },
