@@ -46,6 +46,7 @@ models.forEach(function (model) {
       readCount++;
 
       if (readCount === models.length) {
+
         //trigger everything else
         writeNodeFiles();
         writeNodeSnippets();
@@ -132,7 +133,7 @@ var writeTestFiles = function writeTestFiles() {
 var writeCrudFiles = function writeCrudFiles() {
   definitions.forEach(function (def) {
     // filepath = `./crud-files/crud-${flect.dasherize(flect.pluralize(def.name))}-es6.js`
-    filepath = '../js/crud-' + flect.dasherize(flect.pluralize(def.name)) + '-es6.js';
+    filepath = '../static/js/crud-' + flect.dasherize(flect.pluralize(def.name)) + '-es6.js';
     fs.writeFile(filepath, createCrudViewJS(def), function (err) {
       if (err) console.error("Could not write file: %s", err);
     });
@@ -140,7 +141,7 @@ var writeCrudFiles = function writeCrudFiles() {
 
   //this will erase any changes made to crud views
   definitions.forEach(function (def) {
-    filepath = '../css/crud-' + flect.dasherize(flect.pluralize(def.name)) + '.css';
+    filepath = '../static/css/crud-' + flect.dasherize(flect.pluralize(def.name)) + '.css';
     fs.writeFile(filepath, "", function (err) {
       if (err) console.error("Could not write file: %s", err);
     });

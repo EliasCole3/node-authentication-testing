@@ -226,7 +226,7 @@ let abc = {
     <label>Intelligence</label> <input id='intelligence' type='number' class='form-control'><br />
     <label>Wisdom</label> <input id='wisdom' type='number' class='form-control'><br />
     <label>Charisma</label> <input id='charisma' type='number' class='form-control'><br />
-    <label>Gold</label> <input id='gold' type='number' class='form-control'><br />
+    <label>Gold</label> <input id='gold' class='form-control'><br />
     <label>Xp</label> <input id='xp' type='number' class='form-control'><br />
     <label>Level</label> <input id='level' type='number' class='form-control'><br />
     <label>Base to Hit Ac</label> <input id='base-to-hit-ac' type='number' class='form-control'><br />

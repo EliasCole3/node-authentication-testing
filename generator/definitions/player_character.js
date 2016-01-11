@@ -79,7 +79,7 @@
     "gold": {
       "testValue": ":)",
       "updateValue": ":D",
-      "elementType": "number"
+      "elementType": "text"
     },
     "xp": {
       "testValue": ":)",

@@ -55,6 +55,7 @@ models.forEach(model => {
       readCount++
 
       if(readCount === models.length) {
+
         //trigger everything else
         writeNodeFiles()
         writeNodeSnippets()
@@ -150,13 +151,13 @@ let writeTestFiles = () => {
 let writeCrudFiles = () => {
   definitions.forEach(def => {
     // filepath = `./crud-files/crud-${flect.dasherize(flect.pluralize(def.name))}-es6.js`
-    filepath = `../js/crud-${flect.dasherize(flect.pluralize(def.name))}-es6.js`
+    filepath = `../static/js/crud-${flect.dasherize(flect.pluralize(def.name))}-es6.js`
     fs.writeFile(filepath, createCrudViewJS(def), err => {if(err) console.error("Could not write file: %s", err)})
   })
 
   //this will erase any changes made to crud views
   definitions.forEach(def => {
-    filepath = `../css/crud-${flect.dasherize(flect.pluralize(def.name))}.css`
+    filepath = `../static/css/crud-${flect.dasherize(flect.pluralize(def.name))}.css`
     fs.writeFile(filepath, "", err => {if(err) console.error("Could not write file: %s", err)})
   })
 
