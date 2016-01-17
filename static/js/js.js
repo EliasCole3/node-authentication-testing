@@ -673,6 +673,10 @@ var abc = {
     return deferred;
   },
 
+  toSocket: function toSocket(obj) {
+    abc.socket.emit('core', obj);
+  },
+
   dragDelay: 1,
 
   dragCounter: 0,

@@ -857,6 +857,10 @@ let abc = {
     return deferred
   },
 
+  toSocket: obj => {
+    abc.socket.emit('core', obj)
+  },
+
   dragDelay: 1,
   
   dragCounter: 0,

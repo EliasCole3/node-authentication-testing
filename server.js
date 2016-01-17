@@ -62,7 +62,15 @@ require('./app/routes-character-detail.js')(app, passport)
 require('./app/routes-join-player-character-power.js')(app, passport)
 
 
+
+
 //socket-io stuff
+
+
+// socket.emit('message', "this is a test")           // sending to sender-client only
+// io.emit('message', "this is a test")               // sending to all clients, include sender
+// socket.broadcast.emit('message', "this is a test") // sending to all clients except sender
+
 io.on('connection', function(socket) {
   console.log('a user connected')
   io.emit('user connected')
@@ -121,6 +129,10 @@ io.on('connection', function(socket) {
 
   socket.on('reload top drawer', function() {
     io.emit('reload top drawer')
+  })
+
+  socket.on('core', function(obj) {
+    io.emit('core', obj)
   })
 })
 
