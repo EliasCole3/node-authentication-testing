@@ -628,7 +628,33 @@ var abc = {
   },
 
   createTurnCounter: function createTurnCounter() {
-    console.log('createTurnCounter() called');
+    $('body').add(abc.createTurnCounterHtml());
+    abc.handlerTurnCounter();
+  },
+
+  createTurnCounterHtml: function createTurnCounterHtml() {
+    var htmlString = "";
+
+    htmlString += "\n    <div id='turn-counter-container' class=''>\n\n      <label>Current Turn:</label>\n      <span id='tc-current-turn'>0</span>\n      <button id='tc-decrement-turn' class='btn btn-sm'><i class='glyphicon glyphicon-minus'></i></button>\n      <button id='tc-increment-turn' class='btn btn-sm'><i class='glyphicon glyphicon-plus'></i></button>\n      <button id='tc-add-row' class='btn btn-sm'>Add Row</button>\n\n      <table id='turn-counter-table' class='table-compact'>\n        <tr id='tc-header-row'>\n          <th>Name</th>\n          <th>Initiative</th>\n          <th>Count</th>\n        </tr>\n        \n      </table>\n    </div>\n      \n    ";
+
+    return htmlString;
+  },
+
+  handlerTurnCounter: function handlerTurnCounter() {
+
+    $('turn-counter-container').draggable();
+
+    $('tc-add-row').click(function (e) {
+      $('#turn-counter-table').add(abc.createTurnCounterRowHtml());
+    });
+  },
+
+  createTurnCounterRowHtml: function createTurnCounterRowHtml() {
+    var htmlString = "";
+
+    htmlString += "\n    <tr>\n      <td></td>\n      <td></td>\n      <td></td>\n      <td><button id='tc-remove-row' class='btn btn-sm'><i class='glyphicon glyphicon-plus'></i></button></td>\n      <td><button id='tc-edit-row' class='btn btn-sm'><i class='glyphicon glyphicon-edit'></i></button></td>\n    </tr>";
+
+    return htmlString;
   },
 
   /*

@@ -814,11 +814,69 @@ let abc = {
     })
   },
   
+
+
+
+
   createTurnCounter: () => {
-    console.log('createTurnCounter() called')
+    $('body').add(abc.createTurnCounterHtml())
+    abc.handlerTurnCounter()
   },
 
+  createTurnCounterHtml: () => {
+    let htmlString = ``
 
+    htmlString += `
+    <div id='turn-counter-container' class=''>
+
+      <label>Current Turn:</label>
+      <span id='tc-current-turn'>0</span>
+      <button id='tc-decrement-turn' class='btn btn-sm'><i class='glyphicon glyphicon-minus'></i></button>
+      <button id='tc-increment-turn' class='btn btn-sm'><i class='glyphicon glyphicon-plus'></i></button>
+      <button id='tc-add-row' class='btn btn-sm'>Add Row</button>
+
+      <table id='turn-counter-table' class='table-compact'>
+        <tr id='tc-header-row'>
+          <th>Name</th>
+          <th>Initiative</th>
+          <th>Count</th>
+        </tr>
+        
+      </table>
+    </div>
+      
+    `
+
+    return htmlString
+  },
+
+  handlerTurnCounter: () => {
+
+    $('turn-counter-container').draggable()
+
+    $('tc-add-row').click(e => {
+      $('#turn-counter-table').add(abc.createTurnCounterRowHtml())
+    })
+
+
+  },
+
+  createTurnCounterRowHtml: () => {
+    let htmlString = ``
+
+    htmlString += `
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><button id='tc-remove-row' class='btn btn-sm'><i class='glyphicon glyphicon-plus'></i></button></td>
+      <td><button id='tc-edit-row' class='btn btn-sm'><i class='glyphicon glyphicon-edit'></i></button></td>
+    </tr>`
+
+    return htmlString
+  },
+
+  
 
 
 
