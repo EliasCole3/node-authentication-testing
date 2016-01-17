@@ -644,7 +644,7 @@ var abc = {
 
   handlerTurnCounter: function handlerTurnCounter() {
 
-    $('#turn-counter-container').draggable();
+    $('#turn-counter-container').draggable().resizable();
 
     $('#tc-add-row').click(function (e) {
       $('#turn-counter-table').append(abc.createTurnCounterRowHtml());
