@@ -820,8 +820,8 @@ let abc = {
 
   createTurnCounter: () => {
     console.log('createTurnCounter() called')
-    debugger
-    $('#wrapper').add(abc.createTurnCounterHtml())
+    // debugger
+    $('#wrapper').append(abc.createTurnCounterHtml())
     abc.handlerTurnCounter()
   },
 
@@ -857,7 +857,7 @@ let abc = {
     $('#turn-counter-container').draggable()
 
     $('#tc-add-row').click(e => {
-      $('#turn-counter-table').add(abc.createTurnCounterRowHtml())
+      $('#turn-counter-table').append(abc.createTurnCounterRowHtml())
     })
 
 
