@@ -222,6 +222,14 @@ let abc = {
     abc.socket.on('reload top drawer', () => {
       abc.reloadTopDrawer()
     })
+
+    abc.socket.on('core', obj => {
+      //branching logic based on what is in the object
+
+      if(obj.event === "create-turn-counter") {
+        abc.createTurnCounter()
+      }
+    })
   },
 
   retrieveInitialModels: () => {
@@ -402,6 +410,7 @@ let abc = {
       htmlString += `
         <button id='toggle-cursor-visibility' class='btn btn-md btn-info'>toggle cursors</button>
         <button id='reload-top-drawer' class='btn btn-md btn-info'>reload top drawer</button>
+        <button id='create-turn-counter' class='btn btn-md btn-info'>create-turn-counter</button>
       `
     }
 
@@ -416,6 +425,10 @@ let abc = {
 
     $("#reload-top-drawer").on("click", e => {
       abc.socket.emit('reload top drawer')
+    })
+
+    $("#create-turn-counter").on("click", e => {
+      abc.socket.emit('core', {event: 'create-turn-counter'})
     })
   
   },
@@ -800,7 +813,21 @@ let abc = {
       opacity: opacity
     })
   },
+  
+  createTurnCounter: () => {
+    console.log('createTurnCounter() called')
+  },
 
+
+
+
+
+
+
+
+  /*
+    Utilities
+  */
   playSound: sound => {
     let soundUnique = new Howl({
       urls: [`/sounds/${sound}.wav`]

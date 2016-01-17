@@ -216,6 +216,14 @@ var abc = {
     abc.socket.on('reload top drawer', function () {
       abc.reloadTopDrawer();
     });
+
+    abc.socket.on('core', function (obj) {
+      //branching logic based on what is in the object
+
+      if (obj.event === "create-turn-counter") {
+        abc.createTurnCounter();
+      }
+    });
   },
 
   retrieveInitialModels: function retrieveInitialModels() {
@@ -305,7 +313,7 @@ var abc = {
     }
 
     if (abc.userIsDM) {
-      htmlString += "\n        <button id='toggle-cursor-visibility' class='btn btn-md btn-info'>toggle cursors</button>\n        <button id='reload-top-drawer' class='btn btn-md btn-info'>reload top drawer</button>\n      ";
+      htmlString += "\n        <button id='toggle-cursor-visibility' class='btn btn-md btn-info'>toggle cursors</button>\n        <button id='reload-top-drawer' class='btn btn-md btn-info'>reload top drawer</button>\n        <button id='create-turn-counter' class='btn btn-md btn-info'>create-turn-counter</button>\n      ";
     }
 
     return htmlString;
@@ -319,6 +327,10 @@ var abc = {
 
     $("#reload-top-drawer").on("click", function (e) {
       abc.socket.emit('reload top drawer');
+    });
+
+    $("#create-turn-counter").on("click", function (e) {
+      abc.socket.emit('core', { event: 'create-turn-counter' });
     });
   },
 
@@ -615,6 +627,13 @@ var abc = {
     });
   },
 
+  createTurnCounter: function createTurnCounter() {
+    console.log('createTurnCounter() called');
+  },
+
+  /*
+    Utilities
+  */
   playSound: function playSound(sound) {
     var soundUnique = new Howl({
       urls: ["/sounds/" + sound + ".wav"]
