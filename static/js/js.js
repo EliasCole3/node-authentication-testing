@@ -628,6 +628,7 @@ var abc = {
   },
 
   createTurnCounter: function createTurnCounter() {
+    console.log('createTurnCounter() called');
     $('body').add(abc.createTurnCounterHtml());
     abc.handlerTurnCounter();
   },
