@@ -820,7 +820,6 @@ let abc = {
 
   createTurnCounter: () => {
     console.log('createTurnCounter() called')
-    // debugger
     $('#wrapper').append(abc.createTurnCounterHtml())
     abc.handlerTurnCounter()
   },
@@ -837,7 +836,7 @@ let abc = {
       <button id='tc-increment-turn' class='btn btn-sm'><i class='glyphicon glyphicon-plus'></i></button>
       <button id='tc-add-row' class='btn btn-sm'>Add Row</button>
 
-      <table id='turn-counter-table' class='table-compact'>
+      <table id='turn-counter-table' class='table-compact table-bordered table-striped'>
         <tr id='tc-header-row'>
           <th>Name</th>
           <th>Initiative</th>

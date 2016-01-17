@@ -629,7 +629,6 @@ var abc = {
 
   createTurnCounter: function createTurnCounter() {
     console.log('createTurnCounter() called');
-    // debugger
     $('#wrapper').append(abc.createTurnCounterHtml());
     abc.handlerTurnCounter();
   },
@@ -637,7 +636,7 @@ var abc = {
   createTurnCounterHtml: function createTurnCounterHtml() {
     var htmlString = "";
 
-    htmlString += "\n    <div id='turn-counter-container' class=''>\n\n      <label>Current Turn:</label>\n      <span id='tc-current-turn'>0</span>\n      <button id='tc-decrement-turn' class='btn btn-sm'><i class='glyphicon glyphicon-minus'></i></button>\n      <button id='tc-increment-turn' class='btn btn-sm'><i class='glyphicon glyphicon-plus'></i></button>\n      <button id='tc-add-row' class='btn btn-sm'>Add Row</button>\n\n      <table id='turn-counter-table' class='table-compact'>\n        <tr id='tc-header-row'>\n          <th>Name</th>\n          <th>Initiative</th>\n          <th>Count</th>\n        </tr>\n        \n      </table>\n    </div>\n      \n    ";
+    htmlString += "\n    <div id='turn-counter-container' class=''>\n\n      <label>Current Turn:</label>\n      <span id='tc-current-turn'>0</span>\n      <button id='tc-decrement-turn' class='btn btn-sm'><i class='glyphicon glyphicon-minus'></i></button>\n      <button id='tc-increment-turn' class='btn btn-sm'><i class='glyphicon glyphicon-plus'></i></button>\n      <button id='tc-add-row' class='btn btn-sm'>Add Row</button>\n\n      <table id='turn-counter-table' class='table-compact table-bordered table-striped'>\n        <tr id='tc-header-row'>\n          <th>Name</th>\n          <th>Initiative</th>\n          <th>Count</th>\n        </tr>\n        \n      </table>\n    </div>\n      \n    ";
 
     return htmlString;
   },
