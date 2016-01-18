@@ -85,7 +85,9 @@ html,body{height:100%;}
   border: solid 3px #e7ac37;
 }
 
-
+#tc-add-row {
+  float: right;
+}
 
 
 

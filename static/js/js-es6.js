@@ -835,6 +835,7 @@ let abc = {
       <button id='tc-decrement-turn' class='btn btn-sm'><i class='glyphicon glyphicon-minus'></i></button>
       <button id='tc-increment-turn' class='btn btn-sm'><i class='glyphicon glyphicon-plus'></i></button>
       <button id='tc-add-row' class='btn btn-sm'>Add Row</button>
+      <br>
 
       <table id='turn-counter-table' class='table-condensed'>
         <tr id='tc-header-row'>
@@ -857,6 +858,11 @@ let abc = {
 
     $('#tc-add-row').click(e => {
       $('#turn-counter-table').append(abc.createTurnCounterRowHtml())
+    })
+
+    $("#tc-increment-turn").click(e => {
+      let currentTurn = +$("#tc-current-turn").val()
+      $("#tc-current-turn").val(++currentTurn)
     })
 
 
