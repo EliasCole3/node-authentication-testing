@@ -628,7 +628,7 @@ var abc = {
   },
 
   createTurnCounter: function createTurnCounter() {
-    console.log('createTurnCounter() called');
+    // console.log('createTurnCounter() called')
     $('#wrapper').append(abc.createTurnCounterHtml());
     abc.handlerTurnCounter();
   },
@@ -652,6 +652,11 @@ var abc = {
     $("#tc-increment-turn").click(function (e) {
       var currentTurn = +$("#tc-current-turn").text();
       $("#tc-current-turn").text(++currentTurn);
+    });
+
+    $("#tc-decrement-turn").click(function (e) {
+      var currentTurn = +$("#tc-current-turn").text();
+      $("#tc-current-turn").text(--currentTurn);
     });
   },
 

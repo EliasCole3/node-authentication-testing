@@ -819,7 +819,7 @@ let abc = {
 
 
   createTurnCounter: () => {
-    console.log('createTurnCounter() called')
+    // console.log('createTurnCounter() called')
     $('#wrapper').append(abc.createTurnCounterHtml())
     abc.handlerTurnCounter()
   },
@@ -863,6 +863,11 @@ let abc = {
     $("#tc-increment-turn").click(e => {
       let currentTurn = +$("#tc-current-turn").text()
       $("#tc-current-turn").text(++currentTurn)
+    })
+
+    $("#tc-decrement-turn").click(e => {
+      let currentTurn = +$("#tc-current-turn").text()
+      $("#tc-current-turn").text(--currentTurn)
     })
 
 
