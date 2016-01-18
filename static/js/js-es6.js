@@ -861,8 +861,8 @@ let abc = {
     })
 
     $("#tc-increment-turn").click(e => {
-      let currentTurn = +$("#tc-current-turn").val()
-      $("#tc-current-turn").val(++currentTurn)
+      let currentTurn = +$("#tc-current-turn").text()
+      $("#tc-current-turn").text(++currentTurn)
     })
 
 

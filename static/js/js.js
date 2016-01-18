@@ -650,8 +650,8 @@ var abc = {
     });
 
     $("#tc-increment-turn").click(function (e) {
-      var currentTurn = +$("#tc-current-turn").val();
-      $("#tc-current-turn").val(++currentTurn);
+      var currentTurn = +$("#tc-current-turn").text();
+      $("#tc-current-turn").text(++currentTurn);
     });
   },
 
