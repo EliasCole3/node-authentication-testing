@@ -842,6 +842,8 @@ let abc = {
           <th>Name</th>
           <th>Initiative</th>
           <th>Count</th>
+          <th></th>
+          <th></th>
         </tr>
         
       </table>
@@ -881,8 +883,8 @@ let abc = {
       <td></td>
       <td></td>
       <td></td>
-      <td><button id='tc-remove-row' class='btn btn-sm'><i class='glyphicon glyphicon-plus'></i></button></td>
       <td><button id='tc-edit-row' class='btn btn-sm'><i class='glyphicon glyphicon-edit'></i></button></td>
+      <td><button id='tc-remove-row' class='btn btn-sm'><i class='glyphicon glyphicon-minus'></i></button></td>
     </tr>`
 
     return htmlString
