@@ -656,12 +656,8 @@ var abc = {
         var randId = element.attr('rand-id');
 
         var currentName = $(".td-name[id=tc-name-" + randId + "]").text();
-        var currentInitiative = $("td[id=td-initiative-" + randId + "][class~=td-initiative]").text();
-        var currentCount = $("td[id=td-count-" + randId + "][class~=td-count]").text();
-
-        console.log($(".td-name[id=tc-name-" + randId + "]"));
-        console.log($("td[id=td-initiative-" + randId + "][class~=td-initiative]"));
-        console.log($("td[id=td-count-" + randId + "][class~=td-count]"));
+        var currentInitiative = $(".td-initiative[id=tc-initiative-" + randId + "]").text();
+        var currentCount = $(".td-count[id=tc-count-" + randId + "]").text();
 
         console.log(currentName);
         console.log(currentInitiative);

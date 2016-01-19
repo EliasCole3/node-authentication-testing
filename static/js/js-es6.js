@@ -869,12 +869,8 @@ let abc = {
         let randId = element.attr('rand-id')
 
         let currentName = $(`.td-name[id=tc-name-${randId}]`).text()
-        let currentInitiative = $(`td[id=td-initiative-${randId}][class~=td-initiative]`).text()
-        let currentCount = $(`td[id=td-count-${randId}][class~=td-count]`).text()
-
-        console.log($(`.td-name[id=tc-name-${randId}]`))
-        console.log($(`td[id=td-initiative-${randId}][class~=td-initiative]`))
-        console.log($(`td[id=td-count-${randId}][class~=td-count]`))
+        let currentInitiative = $(`.td-initiative[id=tc-initiative-${randId}]`).text()
+        let currentCount = $(`.td-count[id=tc-count-${randId}]`).text()
 
         console.log(currentName)
         console.log(currentInitiative)
