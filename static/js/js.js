@@ -646,7 +646,11 @@ var abc = {
   createTurnCounterHtml: function createTurnCounterHtml() {
     var htmlString = "";
 
-    htmlString += "\n    <div id='turn-counter-container' class=''>\n\n      <label>Current Turn:</label>\n      <span id='tc-current-turn'>0</span>\n      <button id='tc-decrement-turn' class='btn btn-sm'><i class='glyphicon glyphicon-minus'></i></button>\n      <button id='tc-increment-turn' class='btn btn-sm'><i class='glyphicon glyphicon-plus'></i></button>\n      <button id='tc-add-row' class='btn btn-sm'>Add Row</button>\n      <br>\n\n      <table id='turn-counter-table' class='table-condensed'>\n        <tr id='tc-header-row'>\n          <th>Name</th>\n          <th>Initiative</th>\n          <th>Count</th>\n          <th></th>\n          <th></th>\n        </tr>\n        \n      </table>\n    </div>\n      \n    ";
+    if (abc.userIsDM) {
+      htmlString += "\n      <div id='turn-counter-container' class=''>\n\n        <label>Current Turn:</label>\n        <span id='tc-current-turn'>0</span>\n        <button id='tc-decrement-turn' class='btn btn-sm'><i class='glyphicon glyphicon-minus'></i></button>\n        <button id='tc-increment-turn' class='btn btn-sm'><i class='glyphicon glyphicon-plus'></i></button>\n        <button id='tc-add-row' class='btn btn-sm'>Add Row</button>\n        <br>\n\n        <table id='turn-counter-table' class='table-condensed'>\n          <tr id='tc-header-row'>\n            <th>Name</th>\n            <th>Initiative</th>\n            <th>Count</th>\n            <th></th>\n            <th></th>\n          </tr>\n          \n        </table>\n      </div>";
+    } else {
+      htmlString += "\n      <div id='turn-counter-container' class=''>\n\n        <label>Current Turn:</label>\n        <span id='tc-current-turn'>0</span>\n        <br>\n\n        <table id='turn-counter-table' class='table-condensed'>\n          <tr id='tc-header-row'>\n            <th>Name</th>\n            <th>Initiative</th>\n            <th>Count</th>\n            <th></th>\n            <th></th>\n          </tr>\n          \n        </table>\n      </div>";
+    }
 
     return htmlString;
   },
@@ -709,7 +713,11 @@ var abc = {
     var htmlString = "";
     var rand = ebot.getRandomInt(100000, 999999);
 
-    htmlString += "\n    <tr id='tc-" + rand + "'>\n      <td id='tc-name-" + rand + "' class='td-name'>asdf</td>\n      <td id='tc-initiative-" + rand + "' class='td-initiative'></td>\n      <td id='tc-count-" + rand + "' class='td-count'>1</td>\n      <td><button class='btn btn-sm tc-edit-row' rand-id='" + rand + "' currently-edit-icon='true'><i class='glyphicon glyphicon-edit'></i></button></td>\n      <td><button class='btn btn-sm tc-remove-row' rand-id='" + rand + "'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
+    if (abc.userIsDM) {
+      htmlString += "\n      <tr id='tc-" + rand + "'>\n        <td id='tc-name-" + rand + "' class='td-name'>asdf</td>\n        <td id='tc-initiative-" + rand + "' class='td-initiative'></td>\n        <td id='tc-count-" + rand + "' class='td-count'>1</td>\n        <td><button class='btn btn-sm tc-edit-row' rand-id='" + rand + "' currently-edit-icon='true'><i class='glyphicon glyphicon-edit'></i></button></td>\n        <td><button class='btn btn-sm tc-remove-row' rand-id='" + rand + "'><i class='glyphicon glyphicon-minus'></i></button></td>\n      </tr>";
+    } else {
+      htmlString += "\n      <tr id='tc-" + rand + "'>\n        <td id='tc-name-" + rand + "' class='td-name'>asdf</td>\n        <td id='tc-initiative-" + rand + "' class='td-initiative'></td>\n        <td id='tc-count-" + rand + "' class='td-count'>1</td>\n        <td></td>\n        <td></td>\n      </tr>";
+    }
 
     return htmlString;
   },

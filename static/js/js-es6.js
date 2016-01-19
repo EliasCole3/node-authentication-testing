@@ -837,29 +837,49 @@ let abc = {
   createTurnCounterHtml: () => {
     let htmlString = ``
 
-    htmlString += `
-    <div id='turn-counter-container' class=''>
+    if(abc.userIsDM) {
+      htmlString += `
+      <div id='turn-counter-container' class=''>
 
-      <label>Current Turn:</label>
-      <span id='tc-current-turn'>0</span>
-      <button id='tc-decrement-turn' class='btn btn-sm'><i class='glyphicon glyphicon-minus'></i></button>
-      <button id='tc-increment-turn' class='btn btn-sm'><i class='glyphicon glyphicon-plus'></i></button>
-      <button id='tc-add-row' class='btn btn-sm'>Add Row</button>
-      <br>
+        <label>Current Turn:</label>
+        <span id='tc-current-turn'>0</span>
+        <button id='tc-decrement-turn' class='btn btn-sm'><i class='glyphicon glyphicon-minus'></i></button>
+        <button id='tc-increment-turn' class='btn btn-sm'><i class='glyphicon glyphicon-plus'></i></button>
+        <button id='tc-add-row' class='btn btn-sm'>Add Row</button>
+        <br>
 
-      <table id='turn-counter-table' class='table-condensed'>
-        <tr id='tc-header-row'>
-          <th>Name</th>
-          <th>Initiative</th>
-          <th>Count</th>
-          <th></th>
-          <th></th>
-        </tr>
-        
-      </table>
-    </div>
-      
-    `
+        <table id='turn-counter-table' class='table-condensed'>
+          <tr id='tc-header-row'>
+            <th>Name</th>
+            <th>Initiative</th>
+            <th>Count</th>
+            <th></th>
+            <th></th>
+          </tr>
+          
+        </table>
+      </div>`
+    } else {
+      htmlString += `
+      <div id='turn-counter-container' class=''>
+
+        <label>Current Turn:</label>
+        <span id='tc-current-turn'>0</span>
+        <br>
+
+        <table id='turn-counter-table' class='table-condensed'>
+          <tr id='tc-header-row'>
+            <th>Name</th>
+            <th>Initiative</th>
+            <th>Count</th>
+            <th></th>
+            <th></th>
+          </tr>
+          
+        </table>
+      </div>`
+    }
+    
 
     return htmlString
   },
@@ -928,14 +948,27 @@ let abc = {
     let htmlString = ``
     let rand = ebot.getRandomInt(100000, 999999)
 
-    htmlString += `
-    <tr id='tc-${rand}'>
-      <td id='tc-name-${rand}' class='td-name'>asdf</td>
-      <td id='tc-initiative-${rand}' class='td-initiative'></td>
-      <td id='tc-count-${rand}' class='td-count'>1</td>
-      <td><button class='btn btn-sm tc-edit-row' rand-id='${rand}' currently-edit-icon='true'><i class='glyphicon glyphicon-edit'></i></button></td>
-      <td><button class='btn btn-sm tc-remove-row' rand-id='${rand}'><i class='glyphicon glyphicon-minus'></i></button></td>
-    </tr>`
+    if(abc.userIsDM) {
+      htmlString += `
+      <tr id='tc-${rand}'>
+        <td id='tc-name-${rand}' class='td-name'>asdf</td>
+        <td id='tc-initiative-${rand}' class='td-initiative'></td>
+        <td id='tc-count-${rand}' class='td-count'>1</td>
+        <td><button class='btn btn-sm tc-edit-row' rand-id='${rand}' currently-edit-icon='true'><i class='glyphicon glyphicon-edit'></i></button></td>
+        <td><button class='btn btn-sm tc-remove-row' rand-id='${rand}'><i class='glyphicon glyphicon-minus'></i></button></td>
+      </tr>`
+    } else {
+      htmlString += `
+      <tr id='tc-${rand}'>
+        <td id='tc-name-${rand}' class='td-name'>asdf</td>
+        <td id='tc-initiative-${rand}' class='td-initiative'></td>
+        <td id='tc-count-${rand}' class='td-count'>1</td>
+        <td></td>
+        <td></td>
+      </tr>`
+    }
+
+    
 
     return htmlString
   },
