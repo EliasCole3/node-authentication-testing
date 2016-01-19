@@ -654,6 +654,12 @@ var abc = {
       $('.tc-edit-row').on('click', function (e) {
         var element = $(e.currentTarget);
         var randId = element.attr('rand-id');
+
+        console.log($("td[id=td-" + randId + "][class~=td-name]").html());
+        console.log($("td[id=td-" + randId + "][class~=td-name]").val());
+        console.log($("td[id=td-" + randId + "][class~=td-name]").text());
+
+        var currentName = $("td[id=td-" + randId + "][class~=td-name]").html();
       });
 
       $('.tc-remove-row').on('click', function (e) {
@@ -678,7 +684,7 @@ var abc = {
     var htmlString = "";
     var rand = ebot.getRandomInt(100000, 999999);
 
-    htmlString += "\n    <tr id='tc-" + rand + "'>\n      <td></td>\n      <td></td>\n      <td></td>\n      <td><button class='btn btn-sm tc-edit-row' rand-id='" + rand + "'><i class='glyphicon glyphicon-edit'></i></button></td>\n      <td><button class='btn btn-sm tc-remove-row' rand-id='" + rand + "'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
+    htmlString += "\n    <tr id='tc-" + rand + "'>\n      <td id='tc-" + rand + "' class='td-name'>asdf</td>\n      <td id='tc-" + rand + "' class='td-initiative'></td>\n      <td id='tc-" + rand + "' class='td-count'></td>\n      <td><button class='btn btn-sm tc-edit-row' rand-id='" + rand + "'><i class='glyphicon glyphicon-edit'></i></button></td>\n      <td><button class='btn btn-sm tc-remove-row' rand-id='" + rand + "'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
 
     return htmlString;
   },
