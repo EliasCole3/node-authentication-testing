@@ -872,7 +872,7 @@ let abc = {
         let currentInitiative = $(`td[id=td-initiative-${randId}][class~=td-initiative]`).text()
         let currentCount = $(`td[id=td-count-${randId}][class~=td-count]`).text()
 
-        console.log($(`td[id=td-name-${randId}][class~=td-name]`))
+        console.log($(`.td-name[id=td-name-${randId}]`))
         console.log($(`td[id=td-initiative-${randId}][class~=td-initiative]`))
         console.log($(`td[id=td-count-${randId}][class~=td-count]`))
 
@@ -910,7 +910,7 @@ let abc = {
 
     htmlString += `
     <tr id='tc-${rand}'>
-      <td id='tc-name-${rand}' class='td-name'></td>
+      <td id='tc-name-${rand}' class='td-name'>asdf</td>
       <td id='tc-initiative-${rand}' class='td-initiative'></td>
       <td id='tc-count-${rand}' class='td-count'>1</td>
       <td><button class='btn btn-sm tc-edit-row' rand-id='${rand}'><i class='glyphicon glyphicon-edit'></i></button></td>
