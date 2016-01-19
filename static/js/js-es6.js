@@ -241,7 +241,7 @@ let abc = {
       }
 
       if(obj.event === "add-row-to-turn-counter") {
-        abc.addRowToTurnCounter()
+        abc.addRowToTurnCounter(obj.randId)
       }
 
       if(obj.event === "remove-turn-counter-row") {
@@ -897,8 +897,8 @@ let abc = {
     return htmlString
   },
 
-  addRowToTurnCounter: () => {
-    $('#turn-counter-table').append(abc.createTurnCounterRowHtml())
+  addRowToTurnCounter: randId => {
+    $('#turn-counter-table').append(abc.createTurnCounterRowHtml(randId))
 
     
     if(abc.userIsDM) {
@@ -947,7 +947,8 @@ let abc = {
     $('#turn-counter-container').draggable().resizable()
 
     $('#tc-add-row').click(e => {
-      abc.toSocket({event: 'add-row-to-turn-counter'})
+      let randId = ebot.getRandomInt(100000, 999999)
+      abc.toSocket({event: 'add-row-to-turn-counter', randId: randId})
     })
 
     $("#tc-increment-turn").click(e => {
@@ -963,31 +964,28 @@ let abc = {
 
   },
 
-  createTurnCounterRowHtml: () => {
+  createTurnCounterRowHtml: randId => {
     let htmlString = ``
-    let rand = ebot.getRandomInt(100000, 999999)
 
     if(abc.userIsDM) {
       htmlString += `
-      <tr id='tc-${rand}'>
-        <td id='tc-name-${rand}' class='td-name'>asdf</td>
-        <td id='tc-initiative-${rand}' class='td-initiative'></td>
-        <td id='tc-count-${rand}' class='td-count'>1</td>
-        <td><button class='btn btn-sm tc-edit-row' rand-id='${rand}' currently-edit-icon='true'><i class='glyphicon glyphicon-edit'></i></button></td>
-        <td><button class='btn btn-sm tc-remove-row' rand-id='${rand}'><i class='glyphicon glyphicon-minus'></i></button></td>
+      <tr id='tc-${randId}'>
+        <td id='tc-name-${randId}' class='td-name'>asdf</td>
+        <td id='tc-initiative-${randId}' class='td-initiative'></td>
+        <td id='tc-count-${randId}' class='td-count'>1</td>
+        <td><button class='btn btn-sm tc-edit-row' randId-id='${randId}' currently-edit-icon='true'><i class='glyphicon glyphicon-edit'></i></button></td>
+        <td><button class='btn btn-sm tc-remove-row' randId-id='${randId}'><i class='glyphicon glyphicon-minus'></i></button></td>
       </tr>`
     } else {
       htmlString += `
-      <tr id='tc-${rand}'>
-        <td id='tc-name-${rand}' class='td-name'>asdf</td>
-        <td id='tc-initiative-${rand}' class='td-initiative'></td>
-        <td id='tc-count-${rand}' class='td-count'>1</td>
+      <tr id='tc-${randId}'>
+        <td id='tc-name-${randId}' class='td-name'>asdf</td>
+        <td id='tc-initiative-${randId}' class='td-initiative'></td>
+        <td id='tc-count-${randId}' class='td-count'>1</td>
         <td></td>
         <td></td>
       </tr>`
     }
-
-    
 
     return htmlString
   },

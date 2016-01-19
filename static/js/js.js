@@ -235,7 +235,7 @@ var abc = {
       }
 
       if (obj.event === "add-row-to-turn-counter") {
-        abc.addRowToTurnCounter();
+        abc.addRowToTurnCounter(obj.randId);
       }
 
       if (obj.event === "remove-turn-counter-row") {
@@ -663,8 +663,8 @@ var abc = {
     return htmlString;
   },
 
-  addRowToTurnCounter: function addRowToTurnCounter() {
-    $('#turn-counter-table').append(abc.createTurnCounterRowHtml());
+  addRowToTurnCounter: function addRowToTurnCounter(randId) {
+    $('#turn-counter-table').append(abc.createTurnCounterRowHtml(randId));
 
     if (abc.userIsDM) {
       $('.tc-edit-row').off('click');
@@ -711,7 +711,8 @@ var abc = {
     $('#turn-counter-container').draggable().resizable();
 
     $('#tc-add-row').click(function (e) {
-      abc.toSocket({ event: 'add-row-to-turn-counter' });
+      var randId = ebot.getRandomInt(100000, 999999);
+      abc.toSocket({ event: 'add-row-to-turn-counter', randId: randId });
     });
 
     $("#tc-increment-turn").click(function (e) {
@@ -723,14 +724,13 @@ var abc = {
     });
   },
 
-  createTurnCounterRowHtml: function createTurnCounterRowHtml() {
+  createTurnCounterRowHtml: function createTurnCounterRowHtml(randId) {
     var htmlString = "";
-    var rand = ebot.getRandomInt(100000, 999999);
 
     if (abc.userIsDM) {
-      htmlString += "\n      <tr id='tc-" + rand + "'>\n        <td id='tc-name-" + rand + "' class='td-name'>asdf</td>\n        <td id='tc-initiative-" + rand + "' class='td-initiative'></td>\n        <td id='tc-count-" + rand + "' class='td-count'>1</td>\n        <td><button class='btn btn-sm tc-edit-row' rand-id='" + rand + "' currently-edit-icon='true'><i class='glyphicon glyphicon-edit'></i></button></td>\n        <td><button class='btn btn-sm tc-remove-row' rand-id='" + rand + "'><i class='glyphicon glyphicon-minus'></i></button></td>\n      </tr>";
+      htmlString += "\n      <tr id='tc-" + randId + "'>\n        <td id='tc-name-" + randId + "' class='td-name'>asdf</td>\n        <td id='tc-initiative-" + randId + "' class='td-initiative'></td>\n        <td id='tc-count-" + randId + "' class='td-count'>1</td>\n        <td><button class='btn btn-sm tc-edit-row' randId-id='" + randId + "' currently-edit-icon='true'><i class='glyphicon glyphicon-edit'></i></button></td>\n        <td><button class='btn btn-sm tc-remove-row' randId-id='" + randId + "'><i class='glyphicon glyphicon-minus'></i></button></td>\n      </tr>";
     } else {
-      htmlString += "\n      <tr id='tc-" + rand + "'>\n        <td id='tc-name-" + rand + "' class='td-name'>asdf</td>\n        <td id='tc-initiative-" + rand + "' class='td-initiative'></td>\n        <td id='tc-count-" + rand + "' class='td-count'>1</td>\n        <td></td>\n        <td></td>\n      </tr>";
+      htmlString += "\n      <tr id='tc-" + randId + "'>\n        <td id='tc-name-" + randId + "' class='td-name'>asdf</td>\n        <td id='tc-initiative-" + randId + "' class='td-initiative'></td>\n        <td id='tc-count-" + randId + "' class='td-count'>1</td>\n        <td></td>\n        <td></td>\n      </tr>";
     }
 
     return htmlString;
