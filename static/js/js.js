@@ -225,6 +225,7 @@ var abc = {
       }
 
       if (obj.event === "increment-turn") {
+        console.log("Called");
         var currentTurn = +$("#tc-current-turn").text();
         $("#tc-current-turn").text(++currentTurn);
       }
