@@ -233,6 +233,14 @@ var abc = {
         var currentTurn = +$("#tc-current-turn").text();
         $("#tc-current-turn").text(--currentTurn);
       }
+
+      if (obj.event === "add-row-to-turn-counter") {
+        abc.addRowToTurnCounter();
+      }
+
+      if (obj.event === "remove-turn-counter-row") {
+        $("tr[id=tc-" + obj.randId + "]").remove();
+      }
     });
   },
 
@@ -655,13 +663,10 @@ var abc = {
     return htmlString;
   },
 
-  handlerTurnCounter: function handlerTurnCounter() {
+  addRowToTurnCounter: function addRowToTurnCounter() {
+    $('#turn-counter-table').append(abc.createTurnCounterRowHtml());
 
-    $('#turn-counter-container').draggable().resizable();
-
-    $('#tc-add-row').click(function (e) {
-      $('#turn-counter-table').append(abc.createTurnCounterRowHtml());
-
+    if (abc.userIsDM) {
       $('.tc-edit-row').off('click');
       $('.tc-remove-row').off('click');
 
@@ -696,8 +701,17 @@ var abc = {
       $('.tc-remove-row').on('click', function (e) {
         var element = $(e.currentTarget);
         var randId = element.attr('rand-id');
-        $("tr[id=tc-" + randId + "]").remove();
+        abc.toSocket({ event: 'remove-turn-counter-row', randId: randId });
       });
+    }
+  },
+
+  handlerTurnCounter: function handlerTurnCounter() {
+
+    $('#turn-counter-container').draggable().resizable();
+
+    $('#tc-add-row').click(function (e) {
+      abc.toSocket({ event: 'add-row-to-turn-counter' });
     });
 
     $("#tc-increment-turn").click(function (e) {

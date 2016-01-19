@@ -239,6 +239,19 @@ let abc = {
         let currentTurn = +$("#tc-current-turn").text()
         $("#tc-current-turn").text(--currentTurn)
       }
+
+      if(obj.event === "add-row-to-turn-counter") {
+        abc.addRowToTurnCounter()
+      }
+
+      if(obj.event === "remove-turn-counter-row") {
+        $(`tr[id=tc-${obj.randId}]`).remove()
+      }
+
+
+
+
+
     })
   },
 
@@ -884,13 +897,11 @@ let abc = {
     return htmlString
   },
 
-  handlerTurnCounter: () => {
+  addRowToTurnCounter: () => {
+    $('#turn-counter-table').append(abc.createTurnCounterRowHtml())
 
-    $('#turn-counter-container').draggable().resizable()
-
-    $('#tc-add-row').click(e => {
-      $('#turn-counter-table').append(abc.createTurnCounterRowHtml())
-
+    
+    if(abc.userIsDM) {
       $('.tc-edit-row').off('click')
       $('.tc-remove-row').off('click')
 
@@ -919,16 +930,24 @@ let abc = {
           $(`button[rand-id='${randId}'][class~=tc-edit-row]`).html(`<i class='glyphicon glyphicon-edit'></i>`)
           $(`button[rand-id='${randId}'][class~=tc-edit-row]`).attr('currently-edit-icon', 'true')
         }
-
-
       })
 
       $('.tc-remove-row').on('click', e => {
         let element = $(e.currentTarget)
         let randId = element.attr('rand-id')
-        $(`tr[id=tc-${randId}]`).remove()
+        abc.toSocket({event: 'remove-turn-counter-row', randId: randId})
       })
+    }
 
+    
+  },
+
+  handlerTurnCounter: () => {
+
+    $('#turn-counter-container').draggable().resizable()
+
+    $('#tc-add-row').click(e => {
+      abc.toSocket({event: 'add-row-to-turn-counter'})
     })
 
     $("#tc-increment-turn").click(e => {
