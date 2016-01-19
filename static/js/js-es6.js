@@ -973,8 +973,8 @@ let abc = {
         <td id='tc-name-${randId}' class='td-name'>asdf</td>
         <td id='tc-initiative-${randId}' class='td-initiative'></td>
         <td id='tc-count-${randId}' class='td-count'>1</td>
-        <td><button class='btn btn-sm tc-edit-row' randId-id='${randId}' currently-edit-icon='true'><i class='glyphicon glyphicon-edit'></i></button></td>
-        <td><button class='btn btn-sm tc-remove-row' randId-id='${randId}'><i class='glyphicon glyphicon-minus'></i></button></td>
+        <td><button class='btn btn-sm tc-edit-row' rand-id='${randId}' currently-edit-icon='true'><i class='glyphicon glyphicon-edit'></i></button></td>
+        <td><button class='btn btn-sm tc-remove-row' rand-id='${randId}'><i class='glyphicon glyphicon-minus'></i></button></td>
       </tr>`
     } else {
       htmlString += `

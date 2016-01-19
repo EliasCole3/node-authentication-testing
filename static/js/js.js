@@ -728,7 +728,7 @@ var abc = {
     var htmlString = "";
 
     if (abc.userIsDM) {
-      htmlString += "\n      <tr id='tc-" + randId + "'>\n        <td id='tc-name-" + randId + "' class='td-name'>asdf</td>\n        <td id='tc-initiative-" + randId + "' class='td-initiative'></td>\n        <td id='tc-count-" + randId + "' class='td-count'>1</td>\n        <td><button class='btn btn-sm tc-edit-row' randId-id='" + randId + "' currently-edit-icon='true'><i class='glyphicon glyphicon-edit'></i></button></td>\n        <td><button class='btn btn-sm tc-remove-row' randId-id='" + randId + "'><i class='glyphicon glyphicon-minus'></i></button></td>\n      </tr>";
+      htmlString += "\n      <tr id='tc-" + randId + "'>\n        <td id='tc-name-" + randId + "' class='td-name'>asdf</td>\n        <td id='tc-initiative-" + randId + "' class='td-initiative'></td>\n        <td id='tc-count-" + randId + "' class='td-count'>1</td>\n        <td><button class='btn btn-sm tc-edit-row' rand-id='" + randId + "' currently-edit-icon='true'><i class='glyphicon glyphicon-edit'></i></button></td>\n        <td><button class='btn btn-sm tc-remove-row' rand-id='" + randId + "'><i class='glyphicon glyphicon-minus'></i></button></td>\n      </tr>";
     } else {
       htmlString += "\n      <tr id='tc-" + randId + "'>\n        <td id='tc-name-" + randId + "' class='td-name'>asdf</td>\n        <td id='tc-initiative-" + randId + "' class='td-initiative'></td>\n        <td id='tc-count-" + randId + "' class='td-count'>1</td>\n        <td></td>\n        <td></td>\n      </tr>";
     }
