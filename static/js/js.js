@@ -241,6 +241,12 @@ var abc = {
       if (obj.event === "remove-turn-counter-row") {
         $("tr[id=tc-" + obj.randId + "]").remove();
       }
+
+      if (obj.event === "update-turn-counter-row-values") {
+        $(".td-name[id=tc-name-" + obj.randId + "]").html(obj.updatedName);
+        $(".td-initiative[id=tc-initiative-" + obj.randId + "]").html(obj.updatedInitiative);
+        $(".td-count[id=tc-count-" + obj.randId + "]").html(obj.updatedCount);
+      }
     });
   },
 
@@ -689,9 +695,22 @@ var abc = {
           $("button[rand-id='" + randId + "'][class~=tc-edit-row]").attr('currently-edit-icon', 'false');
         } else {
           //info was just updated, retrieve it and put things back to normal
-          $(".td-name[id=tc-name-" + randId + "]").html($("#temp-input-name").val());
-          $(".td-initiative[id=tc-initiative-" + randId + "]").html($("#temp-input-initiative").val());
-          $(".td-count[id=tc-count-" + randId + "]").html($("#temp-input-count").val());
+
+          var updatedName = $("#temp-input-name").val();
+          var updatedInitiative = $("#temp-input-initiative").val();
+          var updatedCount = $("#temp-input-count").val();
+
+          abc.toSocket({
+            event: 'update-turn-counter-row-values',
+            randId: randId,
+            updatedName: updatedName,
+            updatedInitiative: updatedInitiative,
+            updatedCount: updatedCount
+          });
+
+          // $(`.td-name[id=tc-name-${randId}]`).html($(`#temp-input-name`).val())
+          // $(`.td-initiative[id=tc-initiative-${randId}]`).html($(`#temp-input-initiative`).val())
+          // $(`.td-count[id=tc-count-${randId}]`).html($(`#temp-input-count`).val())
 
           $("button[rand-id='" + randId + "'][class~=tc-edit-row]").html("<i class='glyphicon glyphicon-edit'></i>");
           $("button[rand-id='" + randId + "'][class~=tc-edit-row]").attr('currently-edit-icon', 'true');
