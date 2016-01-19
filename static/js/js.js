@@ -225,9 +225,13 @@ var abc = {
       }
 
       if (obj.event === "increment-turn") {
-        console.log("Called");
         var currentTurn = +$("#tc-current-turn").text();
         $("#tc-current-turn").text(++currentTurn);
+      }
+
+      if (obj.event === "decrement-turn") {
+        var currentTurn = +$("#tc-current-turn").text();
+        $("#tc-current-turn").text(--currentTurn);
       }
     });
   },
@@ -694,13 +698,10 @@ var abc = {
 
     $("#tc-increment-turn").click(function (e) {
       abc.toSocket({ event: 'increment-turn' });
-      // let currentTurn = +$("#tc-current-turn").text()
-      // $("#tc-current-turn").text(++currentTurn)
     });
 
     $("#tc-decrement-turn").click(function (e) {
-      var currentTurn = +$("#tc-current-turn").text();
-      $("#tc-current-turn").text(--currentTurn);
+      abc.toSocket({ event: 'decrement-turn' });
     });
   },
 

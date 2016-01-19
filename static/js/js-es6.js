@@ -231,9 +231,13 @@ let abc = {
       }
 
       if(obj.event === "increment-turn") {
-        console.log("Called")
         let currentTurn = +$("#tc-current-turn").text()
         $("#tc-current-turn").text(++currentTurn)
+      }
+
+      if(obj.event === "decrement-turn") {
+        let currentTurn = +$("#tc-current-turn").text()
+        $("#tc-current-turn").text(--currentTurn)
       }
     })
   },
@@ -909,13 +913,10 @@ let abc = {
 
     $("#tc-increment-turn").click(e => {
       abc.toSocket({event: 'increment-turn'})
-      // let currentTurn = +$("#tc-current-turn").text()
-      // $("#tc-current-turn").text(++currentTurn)
     })
 
     $("#tc-decrement-turn").click(e => {
-      let currentTurn = +$("#tc-current-turn").text()
-      $("#tc-current-turn").text(--currentTurn)
+      abc.toSocket({event: 'decrement-turn'})
     })
 
 
