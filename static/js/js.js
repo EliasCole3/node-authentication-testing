@@ -647,6 +647,12 @@ var abc = {
 
     $('#tc-add-row').click(function (e) {
       $('#turn-counter-table').append(abc.createTurnCounterRowHtml());
+
+      $(".tc-edit-row").click(function (e) {
+        console.log("Called");
+        var element = $(e.currentTarget);
+        console.log(element.attr('rand-id'));
+      });
     });
 
     $("#tc-increment-turn").click(function (e) {
@@ -657,12 +663,6 @@ var abc = {
     $("#tc-decrement-turn").click(function (e) {
       var currentTurn = +$("#tc-current-turn").text();
       $("#tc-current-turn").text(--currentTurn);
-    });
-
-    $(".tc-edit-row").click(function (e) {
-      console.log("Called");
-      var element = $(e.currentTarget);
-      console.log(element.attr('rand-id'));
     });
   },
 
