@@ -872,7 +872,7 @@ let abc = {
         let currentInitiative = $(`.td-initiative[id=tc-initiative-${randId}]`).text()
         let currentCount = $(`.td-count[id=tc-count-${randId}]`).text()
 
-        $(`button[rand-id='${rand}']`).html(`<i class='glyphicon glyphicon-save'></i>`)
+        $(`button[rand-id='${randId}']`).html(`<i class='glyphicon glyphicon-save'></i>`)
 
 
 
