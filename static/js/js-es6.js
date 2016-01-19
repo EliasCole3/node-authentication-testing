@@ -868,7 +868,7 @@ let abc = {
         let element = $(e.currentTarget)
         let randId = element.attr('rand-id')
 
-        let currentName = $(`td[id=td-name-${randId}][class~=td-name]`).text()
+        let currentName = $(`.td-name[id=td-name-${randId}]`).text()
         let currentInitiative = $(`td[id=td-initiative-${randId}][class~=td-initiative]`).text()
         let currentCount = $(`td[id=td-count-${randId}][class~=td-count]`).text()
 

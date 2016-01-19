@@ -655,7 +655,7 @@ var abc = {
         var element = $(e.currentTarget);
         var randId = element.attr('rand-id');
 
-        var currentName = $("td[id=td-name-" + randId + "][class~=td-name]").text();
+        var currentName = $(".td-name[id=td-name-" + randId + "]").text();
         var currentInitiative = $("td[id=td-initiative-" + randId + "][class~=td-initiative]").text();
         var currentCount = $("td[id=td-count-" + randId + "][class~=td-count]").text();
 
