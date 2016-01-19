@@ -655,15 +655,13 @@ var abc = {
         var element = $(e.currentTarget);
         var randId = element.attr('rand-id');
 
-        console.log($("td[id=td-" + randId + "][class~=td-name]"));
-        console.log($("td[id=td-" + randId + "][class=td-name]"));
-        console.log($("td[id=td-" + randId + "][class='td-name']"));
+        console.log($(".td-name[id=tc-name-" + randId + "]"));
 
-        console.log($("td[id=td-" + randId + "][class~=td-name]").html());
-        console.log($("td[id=td-" + randId + "][class~=td-name]").val());
-        console.log($("td[id=td-" + randId + "][class~=td-name]").text());
+        console.log($(".td-name[id=tc-name-" + randId + "]").html());
+        console.log($(".td-name[id=tc-name-" + randId + "]").val());
+        console.log($(".td-name[id=tc-name-" + randId + "]").text());
 
-        var currentName = $("td[id=td-" + randId + "][class~=td-name]").html();
+        var currentName = $("td[id=td-name-" + randId + "][class~=td-name]").html();
       });
 
       $('.tc-remove-row').on('click', function (e) {
@@ -688,7 +686,7 @@ var abc = {
     var htmlString = "";
     var rand = ebot.getRandomInt(100000, 999999);
 
-    htmlString += "\n    <tr id='tc-" + rand + "'>\n      <td id='tc-" + rand + "' class='td-name'>asdf</td>\n      <td id='tc-" + rand + "' class='td-initiative'></td>\n      <td id='tc-" + rand + "' class='td-count'></td>\n      <td><button class='btn btn-sm tc-edit-row' rand-id='" + rand + "'><i class='glyphicon glyphicon-edit'></i></button></td>\n      <td><button class='btn btn-sm tc-remove-row' rand-id='" + rand + "'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
+    htmlString += "\n    <tr id='tc-" + rand + "'>\n      <td id='tc-name-" + rand + "' class='td-name'>asdf</td>\n      <td id='tc-initiative-" + rand + "' class='td-initiative'></td>\n      <td id='tc-count-" + rand + "' class='td-count'></td>\n      <td><button class='btn btn-sm tc-edit-row' rand-id='" + rand + "'><i class='glyphicon glyphicon-edit'></i></button></td>\n      <td><button class='btn btn-sm tc-remove-row' rand-id='" + rand + "'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
 
     return htmlString;
   },
