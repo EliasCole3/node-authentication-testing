@@ -872,9 +872,10 @@ let abc = {
         let currentInitiative = $(`.td-initiative[id=tc-initiative-${randId}]`).text()
         let currentCount = $(`.td-count[id=tc-count-${randId}]`).text()
 
-        console.log(currentName)
-        console.log(currentInitiative)
-        console.log(currentCount)
+        $(`button[rand-id='${rand}']`).html(`<i class='glyphicon glyphicon-save'></i>`)
+
+
+
       })
 
       $('.tc-remove-row').on('click', e => {
