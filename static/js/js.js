@@ -672,6 +672,14 @@ var abc = {
         } else {
           //info was just updated, retrieve it and put things back to normal
 
+          var currentName = $("#temp-input-name").val();
+          var currentInitiative = $("#temp-input-initiative").val();
+          var currentCount = $("#temp-input-count").val();
+
+          $(".td-name[id=tc-name-" + randId + "]").html($("#temp-input-name").val());
+          $(".td-initiative[id=tc-initiative-" + randId + "]").html($("#temp-input-initiative").val());
+          $(".td-count[id=tc-count-" + randId + "]").html($("#temp-input-count").val());
+
           $("button[rand-id='" + randId + "'][class~=tc-edit-row]").html("<i class='glyphicon glyphicon-edit'></i>");
           $("button[rand-id='" + randId + "'][class~=tc-edit-row]").attr('currently-edit-icon', 'true');
         }

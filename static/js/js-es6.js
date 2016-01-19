@@ -883,17 +883,18 @@ let abc = {
           $(`.td-initiative[id=tc-initiative-${randId}]`).html(`<input id='temp-input-initiative' class='temp-input' value='${currentInitiative}'>`)
           $(`.td-count[id=tc-count-${randId}]`).html(`<input id='temp-input-count' class='temp-input' value='${currentCount}'>`)
 
-
-
-
           $(`button[rand-id='${randId}'][class~=tc-edit-row]`).html(`<i class='glyphicon glyphicon-floppy-disk'></i>`)
           $(`button[rand-id='${randId}'][class~=tc-edit-row]`).attr('currently-edit-icon', 'false')
-
-          
         } else { //info was just updated, retrieve it and put things back to normal
 
 
+          let currentName = $(`#temp-input-name`).val()
+          let currentInitiative = $(`#temp-input-initiative`).val()
+          let currentCount = $(`#temp-input-count`).val()
 
+          $(`.td-name[id=tc-name-${randId}]`).html($(`#temp-input-name`).val())
+          $(`.td-initiative[id=tc-initiative-${randId}]`).html($(`#temp-input-initiative`).val())
+          $(`.td-count[id=tc-count-${randId}]`).html($(`#temp-input-count`).val())
 
           $(`button[rand-id='${randId}'][class~=tc-edit-row]`).html(`<i class='glyphicon glyphicon-edit'></i>`)
           $(`button[rand-id='${randId}'][class~=tc-edit-row]`).attr('currently-edit-icon', 'true')
