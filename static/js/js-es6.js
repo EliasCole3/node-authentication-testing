@@ -868,13 +868,13 @@ let abc = {
         let element = $(e.currentTarget)
         let randId = element.attr('rand-id')
 
-        console.log($(`.td-name[id=tc-name-${randId}]`))
-        
-        console.log($(`.td-name[id=tc-name-${randId}]`).html())
-        console.log($(`.td-name[id=tc-name-${randId}]`).val())
-        console.log($(`.td-name[id=tc-name-${randId}]`).text())
+        let currentName = $(`td[id=td-name-${randId}][class~=td-name]`).text()
+        let currentInitiative = $(`td[id=td-initiative-${randId}][class~=td-initiative]`).text()
+        let currentCount = $(`td[id=td-count-${randId}][class~=td-count]`).text()
 
-        let currentName = $(`td[id=td-name-${randId}][class~=td-name]`).html()
+        console.log(currentName)
+        console.log(currentInitiative)
+        console.log(currentCount)
       })
 
       $('.tc-remove-row').on('click', e => {
@@ -906,9 +906,9 @@ let abc = {
 
     htmlString += `
     <tr id='tc-${rand}'>
-      <td id='tc-name-${rand}' class='td-name'>asdf</td>
+      <td id='tc-name-${rand}' class='td-name'></td>
       <td id='tc-initiative-${rand}' class='td-initiative'></td>
-      <td id='tc-count-${rand}' class='td-count'></td>
+      <td id='tc-count-${rand}' class='td-count'>1</td>
       <td><button class='btn btn-sm tc-edit-row' rand-id='${rand}'><i class='glyphicon glyphicon-edit'></i></button></td>
       <td><button class='btn btn-sm tc-remove-row' rand-id='${rand}'><i class='glyphicon glyphicon-minus'></i></button></td>
     </tr>`
