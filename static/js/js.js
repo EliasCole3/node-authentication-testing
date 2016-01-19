@@ -655,11 +655,11 @@ var abc = {
         var element = $(e.currentTarget);
         var randId = element.attr('rand-id');
 
-        var currentName = $(".td-name[id=td-name-" + randId + "]").text();
+        var currentName = $(".td-name[id=tc-name-" + randId + "]").text();
         var currentInitiative = $("td[id=td-initiative-" + randId + "][class~=td-initiative]").text();
         var currentCount = $("td[id=td-count-" + randId + "][class~=td-count]").text();
 
-        console.log($(".td-name[id=td-name-" + randId + "]"));
+        console.log($(".td-name[id=tc-name-" + randId + "]"));
         console.log($("td[id=td-initiative-" + randId + "][class~=td-initiative]"));
         console.log($("td[id=td-count-" + randId + "][class~=td-count]"));
 
