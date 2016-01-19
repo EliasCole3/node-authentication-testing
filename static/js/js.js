@@ -655,11 +655,26 @@ var abc = {
         var element = $(e.currentTarget);
         var randId = element.attr('rand-id');
 
-        var currentName = $(".td-name[id=tc-name-" + randId + "]").text();
-        var currentInitiative = $(".td-initiative[id=tc-initiative-" + randId + "]").text();
-        var currentCount = $(".td-count[id=tc-count-" + randId + "]").text();
+        var currentlyEditIcon = $("button[rand-id='" + randId + "'][class~=tc-edit-row]").attr('currently-edit-icon');
 
-        $("button[rand-id='" + randId + "'][class~=tc-edit-row]").html("<i class='glyphicon glyphicon-floppy-disk'></i>");
+        if (currentlyEditIcon === 'true') {
+          //everything is normal. Change everything to inputs
+          var currentName = $(".td-name[id=tc-name-" + randId + "]").text();
+          var currentInitiative = $(".td-initiative[id=tc-initiative-" + randId + "]").text();
+          var currentCount = $(".td-count[id=tc-count-" + randId + "]").text();
+
+          $(".td-name[id=tc-name-" + randId + "]").html("<input id='temp-input-name' class='temp-input' value='" + currentName + "'>");
+          $(".td-initiative[id=tc-initiative-" + randId + "]").html("<input id='temp-input-initiative' class='temp-input' value='" + currentInitiative + "'>");
+          $(".td-count[id=tc-count-" + randId + "]").html("<input id='temp-input-count' class='temp-input' value='" + currentCount + "'>");
+
+          $("button[rand-id='" + randId + "'][class~=tc-edit-row]").html("<i class='glyphicon glyphicon-floppy-disk'></i>");
+          $("button[rand-id='" + randId + "'][class~=tc-edit-row]").attr('currently-edit-icon', 'false');
+        } else {
+          //info was just updated, retrieve it and put things back to normal
+
+          $("button[rand-id='" + randId + "'][class~=tc-edit-row]").html("<i class='glyphicon glyphicon-edit'></i>");
+          $("button[rand-id='" + randId + "'][class~=tc-edit-row]").attr('currently-edit-icon', 'true');
+        }
       });
 
       $('.tc-remove-row').on('click', function (e) {
@@ -684,7 +699,7 @@ var abc = {
     var htmlString = "";
     var rand = ebot.getRandomInt(100000, 999999);
 
-    htmlString += "\n    <tr id='tc-" + rand + "'>\n      <td id='tc-name-" + rand + "' class='td-name'>asdf</td>\n      <td id='tc-initiative-" + rand + "' class='td-initiative'></td>\n      <td id='tc-count-" + rand + "' class='td-count'>1</td>\n      <td><button class='btn btn-sm tc-edit-row' rand-id='" + rand + "'><i class='glyphicon glyphicon-edit'></i></button></td>\n      <td><button class='btn btn-sm tc-remove-row' rand-id='" + rand + "'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
+    htmlString += "\n    <tr id='tc-" + rand + "'>\n      <td id='tc-name-" + rand + "' class='td-name'>asdf</td>\n      <td id='tc-initiative-" + rand + "' class='td-initiative'></td>\n      <td id='tc-count-" + rand + "' class='td-count'>1</td>\n      <td><button class='btn btn-sm tc-edit-row' rand-id='" + rand + "' currently-edit-icon='true'><i class='glyphicon glyphicon-edit'></i></button></td>\n      <td><button class='btn btn-sm tc-remove-row' rand-id='" + rand + "'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
 
     return htmlString;
   },
