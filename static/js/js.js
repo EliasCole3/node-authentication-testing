@@ -648,8 +648,9 @@ var abc = {
     $('#tc-add-row').click(function (e) {
       $('#turn-counter-table').append(abc.createTurnCounterRowHtml());
 
-      $(".tc-edit-row").click(function (e) {
-        console.log("Called");
+      $('.tc-edit-row').off('click');
+
+      $('.tc-edit-row').on('click', function (e) {
         var element = $(e.currentTarget);
         console.log(element.attr('rand-id'));
       });

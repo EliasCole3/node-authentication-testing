@@ -861,12 +861,13 @@ let abc = {
     $('#tc-add-row').click(e => {
       $('#turn-counter-table').append(abc.createTurnCounterRowHtml())
 
-      $(".tc-edit-row").click(e => {
-        console.log("Called")
+      $('.tc-edit-row').off('click')
+
+      $('.tc-edit-row').on('click', e => {
         let element = $(e.currentTarget)
         console.log(element.attr('rand-id'))
       })
-      
+
     })
 
     $("#tc-increment-turn").click(e => {
