@@ -867,6 +867,10 @@ let abc = {
       $('.tc-edit-row').on('click', e => {
         let element = $(e.currentTarget)
         let randId = element.attr('rand-id')
+
+        console.log($(`td[id=td-${randId}][class~=td-name]`))
+        console.log($(`td[id=td-${randId}][class=td-name]`))
+        console.log($(`td[id=td-${randId}][class='td-name']`))
         
         console.log($(`td[id=td-${randId}][class~=td-name]`).html())
         console.log($(`td[id=td-${randId}][class~=td-name]`).val())

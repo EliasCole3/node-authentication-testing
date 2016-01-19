@@ -655,6 +655,10 @@ var abc = {
         var element = $(e.currentTarget);
         var randId = element.attr('rand-id');
 
+        console.log($("td[id=td-" + randId + "][class~=td-name]"));
+        console.log($("td[id=td-" + randId + "][class=td-name]"));
+        console.log($("td[id=td-" + randId + "][class='td-name']"));
+
         console.log($("td[id=td-" + randId + "][class~=td-name]").html());
         console.log($("td[id=td-" + randId + "][class~=td-name]").val());
         console.log($("td[id=td-" + randId + "][class~=td-name]").text());
