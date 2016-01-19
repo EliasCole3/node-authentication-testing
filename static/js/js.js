@@ -659,7 +659,7 @@ var abc = {
         var currentInitiative = $(".td-initiative[id=tc-initiative-" + randId + "]").text();
         var currentCount = $(".td-count[id=tc-count-" + randId + "]").text();
 
-        $("button[rand-id='" + randId + "']").html("<i class='glyphicon glyphicon-save'></i>");
+        $("button[rand-id='" + randId + "'][class~=tc-edit-row]").html("<i class='glyphicon glyphicon-floppy-disk'></i>");
       });
 
       $('.tc-remove-row').on('click', function (e) {
