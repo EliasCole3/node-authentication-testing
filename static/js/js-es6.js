@@ -872,19 +872,25 @@ let abc = {
       $("#tc-current-turn").text(--currentTurn)
     })
 
+    $(".tc-edit-row").click(e => {
+      let element = $(e.currentTarget)
+      console.log(element.attr('rand-id'))
+    })
+
 
   },
 
   createTurnCounterRowHtml: () => {
     let htmlString = ``
+    let rand = ebot.getRandomInt(100000, 999999)
 
     htmlString += `
-    <tr>
+    <tr id='tc-${rand}'>
       <td></td>
       <td></td>
       <td></td>
-      <td><button id='tc-edit-row' class='btn btn-sm'><i class='glyphicon glyphicon-edit'></i></button></td>
-      <td><button id='tc-remove-row' class='btn btn-sm'><i class='glyphicon glyphicon-minus'></i></button></td>
+      <td><button class='btn btn-sm tc-edit-row' rand-id='${rand}'><i class='glyphicon glyphicon-edit'></i></button></td>
+      <td><button class='btn btn-sm tc-remove-row' rand-id='${rand}'><i class='glyphicon glyphicon-minus'></i></button></td>
     </tr>`
 
     return htmlString

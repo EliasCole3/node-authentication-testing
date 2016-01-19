@@ -658,12 +658,18 @@ var abc = {
       var currentTurn = +$("#tc-current-turn").text();
       $("#tc-current-turn").text(--currentTurn);
     });
+
+    $(".tc-edit-row").click(function (e) {
+      var element = $(e.currentTarget);
+      console.log(element.attr('rand-id'));
+    });
   },
 
   createTurnCounterRowHtml: function createTurnCounterRowHtml() {
     var htmlString = "";
+    var rand = ebot.getRandomInt(100000, 999999);
 
-    htmlString += "\n    <tr>\n      <td></td>\n      <td></td>\n      <td></td>\n      <td><button id='tc-edit-row' class='btn btn-sm'><i class='glyphicon glyphicon-edit'></i></button></td>\n      <td><button id='tc-remove-row' class='btn btn-sm'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
+    htmlString += "\n    <tr id='tc-" + rand + "'>\n      <td></td>\n      <td></td>\n      <td></td>\n      <td><button class='btn btn-sm tc-edit-row' rand-id='" + rand + "'><i class='glyphicon glyphicon-edit'></i></button></td>\n      <td><button class='btn btn-sm tc-remove-row' rand-id='" + rand + "'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
 
     return htmlString;
   },
