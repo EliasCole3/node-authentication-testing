@@ -660,6 +660,7 @@ var abc = {
     });
 
     $(".tc-edit-row").click(function (e) {
+      console.log("Called");
       var element = $(e.currentTarget);
       console.log(element.attr('rand-id'));
     });

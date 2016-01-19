@@ -873,6 +873,7 @@ let abc = {
     })
 
     $(".tc-edit-row").click(e => {
+      console.log("Called")
       let element = $(e.currentTarget)
       console.log(element.attr('rand-id'))
     })
