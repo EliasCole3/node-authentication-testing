@@ -659,6 +659,10 @@ var abc = {
         var currentInitiative = $("td[id=td-initiative-" + randId + "][class~=td-initiative]").text();
         var currentCount = $("td[id=td-count-" + randId + "][class~=td-count]").text();
 
+        console.log($("td[id=td-name-" + randId + "][class~=td-name]"));
+        console.log($("td[id=td-initiative-" + randId + "][class~=td-initiative]"));
+        console.log($("td[id=td-count-" + randId + "][class~=td-count]"));
+
         console.log(currentName);
         console.log(currentInitiative);
         console.log(currentCount);
