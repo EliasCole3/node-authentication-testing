@@ -862,10 +862,18 @@ let abc = {
       $('#turn-counter-table').append(abc.createTurnCounterRowHtml())
 
       $('.tc-edit-row').off('click')
+      $('.tc-remove-row').off('click')
 
       $('.tc-edit-row').on('click', e => {
         let element = $(e.currentTarget)
-        console.log(element.attr('rand-id'))
+        let randId = element.attr('rand-id')
+        
+      })
+
+      $('.tc-remove-row').on('click', e => {
+        let element = $(e.currentTarget)
+        let randId = element.attr('rand-id')
+        $(`tr[id=tc-${randId}]`).remove()
       })
 
     })

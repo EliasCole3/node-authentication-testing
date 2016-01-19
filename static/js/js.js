@@ -649,10 +649,17 @@ var abc = {
       $('#turn-counter-table').append(abc.createTurnCounterRowHtml());
 
       $('.tc-edit-row').off('click');
+      $('.tc-remove-row').off('click');
 
       $('.tc-edit-row').on('click', function (e) {
         var element = $(e.currentTarget);
-        console.log(element.attr('rand-id'));
+        var randId = element.attr('rand-id');
+      });
+
+      $('.tc-remove-row').on('click', function (e) {
+        var element = $(e.currentTarget);
+        var randId = element.attr('rand-id');
+        $("tr[id=tc-" + randId + "]").remove();
       });
     });
 
