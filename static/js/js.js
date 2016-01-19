@@ -223,6 +223,11 @@ var abc = {
       if (obj.event === "create-turn-counter") {
         abc.createTurnCounter();
       }
+
+      if (obj.event === "increment-turn") {
+        var currentTurn = +$("#tc-current-turn").text();
+        $("#tc-current-turn").text(++currentTurn);
+      }
     });
   },
 
@@ -654,7 +659,6 @@ var abc = {
       $('.tc-edit-row').on('click', function (e) {
         var element = $(e.currentTarget);
         var randId = element.attr('rand-id');
-
         var currentlyEditIcon = $("button[rand-id='" + randId + "'][class~=tc-edit-row]").attr('currently-edit-icon');
 
         if (currentlyEditIcon === 'true') {
@@ -671,11 +675,6 @@ var abc = {
           $("button[rand-id='" + randId + "'][class~=tc-edit-row]").attr('currently-edit-icon', 'false');
         } else {
           //info was just updated, retrieve it and put things back to normal
-
-          var currentName = $("#temp-input-name").val();
-          var currentInitiative = $("#temp-input-initiative").val();
-          var currentCount = $("#temp-input-count").val();
-
           $(".td-name[id=tc-name-" + randId + "]").html($("#temp-input-name").val());
           $(".td-initiative[id=tc-initiative-" + randId + "]").html($("#temp-input-initiative").val());
           $(".td-count[id=tc-count-" + randId + "]").html($("#temp-input-count").val());
@@ -693,8 +692,9 @@ var abc = {
     });
 
     $("#tc-increment-turn").click(function (e) {
-      var currentTurn = +$("#tc-current-turn").text();
-      $("#tc-current-turn").text(++currentTurn);
+      abc.toSocket({ event: 'increment-turn' });
+      // let currentTurn = +$("#tc-current-turn").text()
+      // $("#tc-current-turn").text(++currentTurn)
     });
 
     $("#tc-decrement-turn").click(function (e) {

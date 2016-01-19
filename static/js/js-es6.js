@@ -229,6 +229,11 @@ let abc = {
       if(obj.event === "create-turn-counter") {
         abc.createTurnCounter()
       }
+
+      if(obj.event === "increment-turn") {
+        let currentTurn = +$("#tc-current-turn").text()
+        $("#tc-current-turn").text(++currentTurn)
+      }
     })
   },
 
@@ -867,13 +872,8 @@ let abc = {
       $('.tc-edit-row').on('click', e => {
         let element = $(e.currentTarget)
         let randId = element.attr('rand-id')
-
-        
-
         let currentlyEditIcon = $(`button[rand-id='${randId}'][class~=tc-edit-row]`).attr('currently-edit-icon')
 
-
-        
         if(currentlyEditIcon === 'true') { //everything is normal. Change everything to inputs
           let currentName = $(`.td-name[id=tc-name-${randId}]`).text()
           let currentInitiative = $(`.td-initiative[id=tc-initiative-${randId}]`).text()
@@ -885,13 +885,8 @@ let abc = {
 
           $(`button[rand-id='${randId}'][class~=tc-edit-row]`).html(`<i class='glyphicon glyphicon-floppy-disk'></i>`)
           $(`button[rand-id='${randId}'][class~=tc-edit-row]`).attr('currently-edit-icon', 'false')
+
         } else { //info was just updated, retrieve it and put things back to normal
-
-
-          let currentName = $(`#temp-input-name`).val()
-          let currentInitiative = $(`#temp-input-initiative`).val()
-          let currentCount = $(`#temp-input-count`).val()
-
           $(`.td-name[id=tc-name-${randId}]`).html($(`#temp-input-name`).val())
           $(`.td-initiative[id=tc-initiative-${randId}]`).html($(`#temp-input-initiative`).val())
           $(`.td-count[id=tc-count-${randId}]`).html($(`#temp-input-count`).val())
@@ -912,8 +907,9 @@ let abc = {
     })
 
     $("#tc-increment-turn").click(e => {
-      let currentTurn = +$("#tc-current-turn").text()
-      $("#tc-current-turn").text(++currentTurn)
+      abc.toSocket({event: 'increment-turn'})
+      // let currentTurn = +$("#tc-current-turn").text()
+      // $("#tc-current-turn").text(++currentTurn)
     })
 
     $("#tc-decrement-turn").click(e => {
