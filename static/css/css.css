@@ -82,8 +82,10 @@ html,body{height:100%;}
 #turn-counter-container {
   width: 300px;
   height: 485px;
-  background-color: #5437E7;
-  border: solid 3px #e7ac37;
+  padding-left: 15px;
+  color: #fff;
+  background-color: #070129;
+  border: solid 3px #6D685F;
 }
 
 #tc-add-row {
