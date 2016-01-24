@@ -530,6 +530,7 @@ let abc = {
         <option value='forest-1.JPG'>Forest 1</option>
         <option value='plains-1.jpg'>Plains 1</option>
         <option value='plains-2.jpg'>Plains 2</option>
+        <option value='twooth.jpg'>Twooth</option>
       </select>
       `
     }
@@ -905,7 +906,6 @@ let abc = {
 
   addRowToTurnCounter: randId => {
     $('#turn-counter-table').append(abc.createTurnCounterRowHtml(randId))
-
     
     if(abc.userIsDM) {
       $('.tc-edit-row').off('click')
@@ -942,10 +942,6 @@ let abc = {
             updatedCount: updatedCount
           })
 
-          // $(`.td-name[id=tc-name-${randId}]`).html($(`#temp-input-name`).val())
-          // $(`.td-initiative[id=tc-initiative-${randId}]`).html($(`#temp-input-initiative`).val())
-          // $(`.td-count[id=tc-count-${randId}]`).html($(`#temp-input-count`).val())
-
           $(`button[rand-id='${randId}'][class~=tc-edit-row]`).html(`<i class='glyphicon glyphicon-edit'></i>`)
           $(`button[rand-id='${randId}'][class~=tc-edit-row]`).attr('currently-edit-icon', 'true')
         }
@@ -977,9 +973,6 @@ let abc = {
     $("#tc-decrement-turn").click(e => {
       abc.toSocket({event: 'decrement-turn'})
     })
-
-
-
 
   },
 

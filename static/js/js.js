@@ -389,7 +389,7 @@ var abc = {
     }
 
     if (abc.userIsDM) {
-      htmlString += "<br><br>\n      <select id='background-select' data-placeholder='Choose a background...'>\n        <option value=''></option>\n        <option value='blank'>Blank</option>\n        <option value='zone-map.png'>Zone Map</option>\n        <option value='river.jpg'>River</option>\n        <option value='twooth-library.png'>Twooth Library</option>\n        <option value='slime-cave.png'>Slime Cave</option>\n        <option value='andora-tavern.jpg'>Andora Tavern</option>\n        <option value='andora-gates.png'>Andora Gates</option>\n        <option value='andora.jpg'>Andora</option>\n        <option value='brement.jpg'>Brement</option>\n        <option value='dark-forest-1.jpg'>Dark Forest</option>\n        <option value='desert-1.JPG'>Desert 1</option>\n        <option value='desert-statue.jpg'>Desert Statue</option>\n        <option value='dunkar.jpg'>Dunkar</option>\n        <option value='forest-path-1.jpg'>Forest Path 1</option>\n        <option value='forest-path-2.jpg'>Forest Path 2</option>\n        <option value='forest-1.JPG'>Forest 1</option>\n        <option value='plains-1.jpg'>Plains 1</option>\n        <option value='plains-2.jpg'>Plains 2</option>\n      </select>\n      ";
+      htmlString += "<br><br>\n      <select id='background-select' data-placeholder='Choose a background...'>\n        <option value=''></option>\n        <option value='blank'>Blank</option>\n        <option value='zone-map.png'>Zone Map</option>\n        <option value='river.jpg'>River</option>\n        <option value='twooth-library.png'>Twooth Library</option>\n        <option value='slime-cave.png'>Slime Cave</option>\n        <option value='andora-tavern.jpg'>Andora Tavern</option>\n        <option value='andora-gates.png'>Andora Gates</option>\n        <option value='andora.jpg'>Andora</option>\n        <option value='brement.jpg'>Brement</option>\n        <option value='dark-forest-1.jpg'>Dark Forest</option>\n        <option value='desert-1.JPG'>Desert 1</option>\n        <option value='desert-statue.jpg'>Desert Statue</option>\n        <option value='dunkar.jpg'>Dunkar</option>\n        <option value='forest-path-1.jpg'>Forest Path 1</option>\n        <option value='forest-path-2.jpg'>Forest Path 2</option>\n        <option value='forest-1.JPG'>Forest 1</option>\n        <option value='plains-1.jpg'>Plains 1</option>\n        <option value='plains-2.jpg'>Plains 2</option>\n        <option value='twooth.jpg'>Twooth</option>\n      </select>\n      ";
     }
 
     return htmlString;
@@ -707,10 +707,6 @@ var abc = {
             updatedInitiative: updatedInitiative,
             updatedCount: updatedCount
           });
-
-          // $(`.td-name[id=tc-name-${randId}]`).html($(`#temp-input-name`).val())
-          // $(`.td-initiative[id=tc-initiative-${randId}]`).html($(`#temp-input-initiative`).val())
-          // $(`.td-count[id=tc-count-${randId}]`).html($(`#temp-input-count`).val())
 
           $("button[rand-id='" + randId + "'][class~=tc-edit-row]").html("<i class='glyphicon glyphicon-edit'></i>");
           $("button[rand-id='" + randId + "'][class~=tc-edit-row]").attr('currently-edit-icon', 'true');
