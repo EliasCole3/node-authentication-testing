@@ -530,6 +530,7 @@ let abc = {
         <option value='forest-1.JPG'>Forest 1</option>
         <option value='plains-1.jpg'>Plains 1</option>
         <option value='plains-2.jpg'>Plains 2</option>
+        <option value='spider-den.jpg'>Spider Den</option>
         <option value='twooth.jpg'>Twooth</option>
       </select>
       `
