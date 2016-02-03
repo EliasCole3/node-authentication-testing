@@ -193,7 +193,7 @@ var abc = {
     });
 
     abc.socket.on('creature token added', function (emitObj) {
-      abc.addTokenCreature(emitObj.imageFilename, emitObj.ranTop, emitObj.ranLeft);
+      abc.addTokenCreature(emitObj.imageFilename, emitObj.ranTop, emitObj.ranLeft, emitObj.id);
     });
 
     abc.socket.on('background changed', function (emitObj) {
@@ -476,7 +476,7 @@ var abc = {
     htmlString += "<br><br><br>";
 
     abc.creatures.forEach(function (creature) {
-      htmlString += "<button class='add-creature-button' player-character-id='" + creature._id + "' creature-image-filename='" + creature.imageFilename + "'><img src='/images/creatures/" + creature.imageFilename + "'></button>";
+      htmlString += "<button class='add-creature-button' creature-id='" + creature._id + "' creature-image-filename='" + creature.imageFilename + "'><img src='/images/creatures/" + creature.imageFilename + "'></button>";
     });
 
     return htmlString;
@@ -538,14 +538,16 @@ var abc = {
       $(".add-creature-button").click(function (e) {
         var button = $(e.currentTarget);
         var imageFilename = button.attr("creature-image-filename");
+        var id = button.attr("creature-id");
         var ranTop = ebot.getRandomInt(2, 10) * 50;
         var ranLeft = ebot.getRandomInt(2, 10) * 50;
-        abc.addTokenCreature(imageFilename, ranTop, ranLeft);
+        abc.addTokenCreature(imageFilename, ranTop, ranLeft, id);
 
         var emitObj = {
           imageFilename: imageFilename,
           ranTop: ranTop,
-          ranLeft: ranLeft
+          ranLeft: ranLeft,
+          id: id
         };
 
         abc.socket.emit('creature token added', emitObj);
@@ -612,11 +614,14 @@ var abc = {
     abc.currentDynamicDivId++;
   },
 
-  addTokenCreature: function addTokenCreature(imageFilename, ranTop, ranLeft) {
+  addTokenCreature: function addTokenCreature(imageFilename, ranTop, ranLeft, creatureId) {
     var id = "dynamically-added-div-" + abc.currentDynamicDivId;
     var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='images/creatures/" + imageFilename + "'></div>";
     $("#wrapper").append(htmlString);
     $("#" + id).draggable(abc.draggableOptionsToken);
+
+    var creature = abc.getCreature(creatureId);
+
     abc.currentDynamicDivId++;
   },
 
@@ -812,6 +817,19 @@ var abc = {
     return deferred;
   },
 
+  getCreature: function getCreature(creatureId) {
+
+    //grab out of local array, not an ajax request
+    var creature = abc.creatures.filter(function (creature) {
+      return creature._id === creatureId;
+    });
+    console.log(creature);
+
+    //need to deep copy creature
+
+    return creature;
+  },
+
   toSocket: function toSocket(obj) {
     abc.socket.emit('core', obj);
   },
@@ -848,6 +866,8 @@ var abc = {
   joinPlayerCharacterPowers: [],
 
   characterDetails: [],
+
+  activeCreatures: [],
 
   cursorDelay: 0,
 

@@ -199,7 +199,7 @@ let abc = {
     })
 
     abc.socket.on('creature token added', emitObj => {
-      abc.addTokenCreature(emitObj.imageFilename, emitObj.ranTop, emitObj.ranLeft)
+      abc.addTokenCreature(emitObj.imageFilename, emitObj.ranTop, emitObj.ranLeft, emitObj.id)
     })
 
     abc.socket.on('background changed', emitObj => {
@@ -634,7 +634,7 @@ let abc = {
     htmlString += `<br><br><br>`
 
     abc.creatures.forEach(creature => {
-      htmlString += `<button class='add-creature-button' player-character-id='${creature._id}' creature-image-filename='${creature.imageFilename}'><img src='/images/creatures/${creature.imageFilename}'></button>`
+      htmlString += `<button class='add-creature-button' creature-id='${creature._id}' creature-image-filename='${creature.imageFilename}'><img src='/images/creatures/${creature.imageFilename}'></button>`
     })
 
     return htmlString
@@ -696,14 +696,16 @@ let abc = {
       $(".add-creature-button").click(e => {
         let button = $(e.currentTarget)
         let imageFilename = button.attr("creature-image-filename")
+        let id = button.attr("creature-id")
         let ranTop = ebot.getRandomInt(2, 10) * 50
         let ranLeft = ebot.getRandomInt(2, 10) * 50
-        abc.addTokenCreature(imageFilename, ranTop, ranLeft)
+        abc.addTokenCreature(imageFilename, ranTop, ranLeft, id)
       
         let emitObj = {
           imageFilename: imageFilename,
           ranTop: ranTop,
-          ranLeft: ranLeft
+          ranLeft: ranLeft,
+          id: id
         }
 
         abc.socket.emit('creature token added', emitObj)
@@ -806,11 +808,16 @@ let abc = {
     abc.currentDynamicDivId++
   },
 
-  addTokenCreature: (imageFilename, ranTop, ranLeft) => {
+  addTokenCreature: (imageFilename, ranTop, ranLeft, creatureId) => {
     let id = `dynamically-added-div-${abc.currentDynamicDivId}`
     let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='images/creatures/${imageFilename}'></div>`
     $("#wrapper").append(htmlString)
     $(`#${id}`).draggable(abc.draggableOptionsToken)
+
+    let creature = abc.getCreature(creatureId)
+
+
+
     abc.currentDynamicDivId++
   },
 
@@ -1069,6 +1076,19 @@ let abc = {
     return deferred
   },
 
+  getCreature: creatureId => {
+
+    //grab out of local array, not an ajax request
+    let creature = abc.creatures.filter(creature => {
+      return creature._id === creatureId
+    })
+    console.log(creature)
+
+    //need to deep copy creature
+
+    return creature
+  },
+
   toSocket: obj => {
     abc.socket.emit('core', obj)
   },
@@ -1105,6 +1125,8 @@ let abc = {
   joinPlayerCharacterPowers: [],
 
   characterDetails: [],
+
+  activeCreatures: [],
 
   cursorDelay: 0,
 
