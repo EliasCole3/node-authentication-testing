@@ -831,27 +831,18 @@ var abc = {
       });
 
       function addBorderToToken(e, mouseEnter) {
-        // let element = $(e.currentTarget)
-        // let creatureId = element.attr('creature-id')
-        // if(creatureId !== undefined) {
-        //   let creature = abc.activeCreatures.filter(aCreature => {
-        //     return aCreature._id === creatureId
-        //   })[0]
-
-        //   let tokenId = creature.tokenId
-
-        //   let borderString = mouseEnter ? 'solid gold 3px' : ''
-
-        //   $(`#dynamically-added-div-${tokenId}`).css('border', borderString)
-        // }
-
-        var element = $(e.currentTarget);
-        var tokenId = element.attr('token-id');
+        var tokenId = $(e.currentTarget).attr('token-id');
         if (tokenId !== undefined) {
           var borderString = mouseEnter ? 'solid gold 3px' : '';
           $("#dynamically-added-div-" + tokenId).css('border', borderString);
         }
       }
+
+      $('#creature-table tr td').tooltip({
+        placement: 'left',
+        title: '<b>working<b>',
+        html: true
+      });
     });
   },
 
