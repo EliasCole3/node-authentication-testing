@@ -807,7 +807,7 @@ var abc = {
     $(".creature-table-hp-input").off("change");
     $(".creature-table-hp-input").on("change", function (e) {
 
-      console.log(abc.activeCreatures);
+      console.log(abc.activeCreatures[0].hp);
 
       var element = $(e.currentTarget);
       var creatureId = element.attr("creature-id");
@@ -819,7 +819,7 @@ var abc = {
 
       creature.hp = val;
 
-      console.log(abc.activeCreatures);
+      console.log(abc.activeCreatures[0].hp);
     });
   },
 
