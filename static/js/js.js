@@ -621,7 +621,7 @@ var abc = {
     $("#" + id).draggable(abc.draggableOptionsToken);
     $("#" + id).on("click", function (e) {
       var element = $(e.currentTarget);
-      var tokenId = element.attr('token-id');
+      var tokenId = +element.attr('token-id');
       var creature = abc.activeCreatures.filter(function (aCreature) {
         console.log(aCreature.tokenId);
         console.log(tokenId);
