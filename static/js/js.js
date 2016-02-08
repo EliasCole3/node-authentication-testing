@@ -800,7 +800,7 @@ var abc = {
   addCreatureToCreatureTable: function addCreatureToCreatureTable(creature) {
     var htmlString = "";
 
-    htmlString += "\n    <tr id='' creature-id='" + creature._id + "'>\n      <td id=''>" + creature.name + "</td>\n      <td id=''><input class='form-control creature-table-hp-input' creature-id='" + creature._id + "' type='number' value='" + creature.hp + "'></td>\n      <td id=''><input class='form-control creature-table-status'></td>\n      <td><button class='btn btn-sm ct-remove'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
+    htmlString += "\n    <tr id='' creature-id='" + creature._id + "' token-id='" + creature.tokenId + "'>\n      <td id=''>" + creature.name + "</td>\n      <td id=''><input class='form-control creature-table-hp-input' creature-id='" + creature._id + "' type='number' value='" + creature.hp + "'></td>\n      <td id=''><input class='form-control creature-table-status'></td>\n      <td><button class='btn btn-sm ct-remove'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
 
     $('#creature-table').append(htmlString);
 
@@ -819,73 +819,36 @@ var abc = {
     // $("#myElement").unbind('mouseenter mouseleave');
     // $('#myElement').off('hover');
 
-    // $("table.planning_grid").on({
-    //     mouseenter: function() {
-
-    //     },
-    //     mouseleave: function() {
-
-    //     }
-    // })
-
-    // $("#creature-table tr").hover(e => {
-    //   let element = $(e.currentTarget)
-    //   let creatureId = element.attr('creature-id')
-    //   if(creatureId !== undefined) {
-    //     let creature = abc.activeCreatures.filter(aCreature => {
-    //       return aCreature._id === creatureId
-    //     })[0]
-
-    //     let tokenId = creature.tokenId
-
-    //     $(`#dynamically-added-div-${tokenId}`).css('border', 'solid gold 3px')
-    //   }
-    // })
-
     $("#creature-table tr").hover(function (e) {
 
       $("#creature-table tr").on({
         mouseenter: function mouseenter(e) {
-          var element = $(e.currentTarget);
-          var creatureId = element.attr('creature-id');
-          if (creatureId !== undefined) {
-            var _creature = abc.activeCreatures.filter(function (aCreature) {
-              return aCreature._id === creatureId;
-            })[0];
-
-            var tokenId = _creature.tokenId;
-
-            $("#dynamically-added-div-" + tokenId).css('border', 'solid gold 3px');
-          }
+          addBorderToToken(e, true);
         },
         mouseleave: function mouseleave(e) {
-          // let element = $(e.currentTarget)
-          // let creatureId = element.attr('creature-id')
-          // if(creatureId !== undefined) {
-          //   let creature = abc.activeCreatures.filter(aCreature => {
-          //     return aCreature._id === creatureId
-          //   })[0]
-
-          //   let tokenId = creature.tokenId
-
-          //   $(`#dynamically-added-div-${tokenId}`).css('border', '')
-          // }
           addBorderToToken(e, false);
         }
       });
 
       function addBorderToToken(e, mouseEnter) {
+        // let element = $(e.currentTarget)
+        // let creatureId = element.attr('creature-id')
+        // if(creatureId !== undefined) {
+        //   let creature = abc.activeCreatures.filter(aCreature => {
+        //     return aCreature._id === creatureId
+        //   })[0]
+
+        //   let tokenId = creature.tokenId
+
+        //   let borderString = mouseEnter ? 'solid gold 3px' : ''
+
+        //   $(`#dynamically-added-div-${tokenId}`).css('border', borderString)
+        // }
+
         var element = $(e.currentTarget);
-        var creatureId = element.attr('creature-id');
-        if (creatureId !== undefined) {
-          var _creature2 = abc.activeCreatures.filter(function (aCreature) {
-            return aCreature._id === creatureId;
-          })[0];
-
-          var tokenId = _creature2.tokenId;
-
+        var tokenId = element.attr('token-id');
+        if (tokenId !== undefined) {
           var borderString = mouseEnter ? 'solid gold 3px' : '';
-
           $("#dynamically-added-div-" + tokenId).css('border', borderString);
         }
       }

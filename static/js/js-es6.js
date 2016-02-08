@@ -1073,7 +1073,7 @@ let abc = {
     let htmlString = ``
 
     htmlString += `
-    <tr id='' creature-id='${creature._id}'>
+    <tr id='' creature-id='${creature._id}' token-id='${creature.tokenId}'>
       <td id=''>${creature.name}</td>
       <td id=''><input class='form-control creature-table-hp-input' creature-id='${creature._id}' type='number' value='${creature.hp}'></td>
       <td id=''><input class='form-control creature-table-status'></td>
@@ -1097,73 +1097,36 @@ let abc = {
     // $("#myElement").unbind('mouseenter mouseleave');
     // $('#myElement').off('hover');
 
-    // $("table.planning_grid").on({
-    //     mouseenter: function() {
-
-    //     },
-    //     mouseleave: function() {
-
-    //     }
-    // })
-
-    // $("#creature-table tr").hover(e => {
-    //   let element = $(e.currentTarget)
-    //   let creatureId = element.attr('creature-id')
-    //   if(creatureId !== undefined) {
-    //     let creature = abc.activeCreatures.filter(aCreature => {
-    //       return aCreature._id === creatureId
-    //     })[0]
-
-    //     let tokenId = creature.tokenId
-
-    //     $(`#dynamically-added-div-${tokenId}`).css('border', 'solid gold 3px')
-    //   }
-    // })
-
     $("#creature-table tr").hover(e => {
 
       $("#creature-table tr").on({
         mouseenter: e => {
-          let element = $(e.currentTarget)
-          let creatureId = element.attr('creature-id')
-          if(creatureId !== undefined) {
-            let creature = abc.activeCreatures.filter(aCreature => {
-              return aCreature._id === creatureId
-            })[0]
-
-            let tokenId = creature.tokenId
-
-            $(`#dynamically-added-div-${tokenId}`).css('border', 'solid gold 3px')
-          }
+          addBorderToToken(e, true)
         },
         mouseleave: e => {
-          // let element = $(e.currentTarget)
-          // let creatureId = element.attr('creature-id')
-          // if(creatureId !== undefined) {
-          //   let creature = abc.activeCreatures.filter(aCreature => {
-          //     return aCreature._id === creatureId
-          //   })[0]
-
-          //   let tokenId = creature.tokenId
-
-          //   $(`#dynamically-added-div-${tokenId}`).css('border', '')
-          // }
           addBorderToToken(e, false)
         }
       })
 
       function addBorderToToken(e, mouseEnter) {
-        let element = $(e.currentTarget)
-        let creatureId = element.attr('creature-id')
-        if(creatureId !== undefined) {
-          let creature = abc.activeCreatures.filter(aCreature => {
-            return aCreature._id === creatureId
-          })[0]
+        // let element = $(e.currentTarget)
+        // let creatureId = element.attr('creature-id')
+        // if(creatureId !== undefined) {
+        //   let creature = abc.activeCreatures.filter(aCreature => {
+        //     return aCreature._id === creatureId
+        //   })[0]
 
-          let tokenId = creature.tokenId
+        //   let tokenId = creature.tokenId
           
-          let borderString = mouseEnter ? 'solid gold 3px' : ''
+        //   let borderString = mouseEnter ? 'solid gold 3px' : ''
 
+        //   $(`#dynamically-added-div-${tokenId}`).css('border', borderString)
+        // }
+
+        let element = $(e.currentTarget)
+        let tokenId = element.attr('token-id')
+        if(tokenId !== undefined) {
+          let borderString = mouseEnter ? 'solid gold 3px' : ''
           $(`#dynamically-added-div-${tokenId}`).css('border', borderString)
         }
       }
