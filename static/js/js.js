@@ -800,7 +800,7 @@ var abc = {
   addCreatureToCreatureTable: function addCreatureToCreatureTable(creature) {
     var htmlString = "";
 
-    htmlString += "\n    <tr id='' creature-id='" + creature._id + "' token-id='" + creature.tokenId + "'>\n      <td id=''>" + creature.name + "</td>\n      <td id=''><input class='form-control creature-table-hp-input' creature-id='" + creature._id + "' type='number' value='" + creature.hp + "'></td>\n      <td id=''><input class='form-control creature-table-status'></td>\n      <td><button class='btn btn-sm ct-remove'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
+    htmlString += "\n    <tr id='' creature-id='" + creature._id + "' token-id='" + creature.tokenId + "'>\n      <td id='creature-table-name-" + creature.tokenId + "' class='creature-table-name'>" + creature.name + "</td>\n      <td id=''><input class='form-control creature-table-hp-input' creature-id='" + creature._id + "' type='number' value='" + creature.hp + "'></td>\n      <td id=''><input class='form-control creature-table-status'></td>\n      <td><button class='btn btn-sm ct-remove'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
 
     $('#creature-table').append(htmlString);
 
@@ -838,9 +838,9 @@ var abc = {
         }
       }
 
-      $('#creature-table tr td').tooltip({
+      $("#creature-table-name-" + creature.tokenId).tooltip({
         placement: 'left',
-        title: '<b>working<b>',
+        title: "<b>working<b>\n          hp: " + creature.hp + "\n        ",
         html: true
       });
     });

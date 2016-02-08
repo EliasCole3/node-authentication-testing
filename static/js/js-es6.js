@@ -1074,7 +1074,7 @@ let abc = {
 
     htmlString += `
     <tr id='' creature-id='${creature._id}' token-id='${creature.tokenId}'>
-      <td id=''>${creature.name}</td>
+      <td id='creature-table-name-${creature.tokenId}' class='creature-table-name'>${creature.name}</td>
       <td id=''><input class='form-control creature-table-hp-input' creature-id='${creature._id}' type='number' value='${creature.hp}'></td>
       <td id=''><input class='form-control creature-table-status'></td>
       <td><button class='btn btn-sm ct-remove'><i class='glyphicon glyphicon-minus'></i></button></td>
@@ -1116,9 +1116,11 @@ let abc = {
         }
       }
 
-      $('#creature-table tr td').tooltip({
+      $(`#creature-table-name-${creature.tokenId}`).tooltip({
         placement: 'left',
-        title: '<b>working<b>',
+        title: `<b>working<b>
+          hp: ${creature.hp}
+        `,
         html: true
       })
 
