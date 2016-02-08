@@ -1110,6 +1110,8 @@ let abc = {
       let element = $(e.currentTarget)
       let creatureId = element.attr('creature-id')
       let tokenId = abc.activeCreatures.filter(aCreature => {
+        console.log(aCreature._id)
+        console.log(creatureId)
         return aCreature._id === creatureId
       })[0].tokenId
 

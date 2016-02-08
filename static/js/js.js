@@ -832,6 +832,8 @@ var abc = {
       var element = $(e.currentTarget);
       var creatureId = element.attr('creature-id');
       var tokenId = abc.activeCreatures.filter(function (aCreature) {
+        console.log(aCreature._id);
+        console.log(creatureId);
         return aCreature._id === creatureId;
       })[0].tokenId;
 
