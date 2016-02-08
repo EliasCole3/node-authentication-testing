@@ -859,19 +859,36 @@ var abc = {
           }
         },
         mouseleave: function mouseleave(e) {
-          var element = $(e.currentTarget);
-          var creatureId = element.attr('creature-id');
-          if (creatureId !== undefined) {
-            var _creature2 = abc.activeCreatures.filter(function (aCreature) {
-              return aCreature._id === creatureId;
-            })[0];
+          // let element = $(e.currentTarget)
+          // let creatureId = element.attr('creature-id')
+          // if(creatureId !== undefined) {
+          //   let creature = abc.activeCreatures.filter(aCreature => {
+          //     return aCreature._id === creatureId
+          //   })[0]
 
-            var tokenId = _creature2.tokenId;
+          //   let tokenId = creature.tokenId
 
-            $("#dynamically-added-div-" + tokenId).css('border', '');
-          }
+          //   $(`#dynamically-added-div-${tokenId}`).css('border', '')
+          // }
+          addBorderToToken(e, false);
         }
       });
+
+      function addBorderToToken(e, mouseEnter) {
+        var element = $(e.currentTarget);
+        var creatureId = element.attr('creature-id');
+        if (creatureId !== undefined) {
+          var _creature2 = abc.activeCreatures.filter(function (aCreature) {
+            return aCreature._id === creatureId;
+          })[0];
+
+          var tokenId = _creature2.tokenId;
+
+          var borderString = mouseEnter ? 'solid gold 3px' : '';
+
+          $("#dynamically-added-div-" + tokenId).css('border', borderString);
+        }
+      }
     });
   },
 

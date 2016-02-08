@@ -1137,19 +1137,36 @@ let abc = {
           }
         },
         mouseleave: e => {
-          let element = $(e.currentTarget)
-          let creatureId = element.attr('creature-id')
-          if(creatureId !== undefined) {
-            let creature = abc.activeCreatures.filter(aCreature => {
-              return aCreature._id === creatureId
-            })[0]
+          // let element = $(e.currentTarget)
+          // let creatureId = element.attr('creature-id')
+          // if(creatureId !== undefined) {
+          //   let creature = abc.activeCreatures.filter(aCreature => {
+          //     return aCreature._id === creatureId
+          //   })[0]
 
-            let tokenId = creature.tokenId
+          //   let tokenId = creature.tokenId
 
-            $(`#dynamically-added-div-${tokenId}`).css('border', '')
-          }
+          //   $(`#dynamically-added-div-${tokenId}`).css('border', '')
+          // }
+          addBorderToToken(e, false)
         }
       })
+
+      function addBorderToToken(e, mouseEnter) {
+        let element = $(e.currentTarget)
+        let creatureId = element.attr('creature-id')
+        if(creatureId !== undefined) {
+          let creature = abc.activeCreatures.filter(aCreature => {
+            return aCreature._id === creatureId
+          })[0]
+
+          let tokenId = creature.tokenId
+          
+          let borderString = mouseEnter ? 'solid gold 3px' : ''
+
+          $(`#dynamically-added-div-${tokenId}`).css('border', borderString)
+        }
+      }
 
     })
 
