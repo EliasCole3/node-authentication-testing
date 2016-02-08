@@ -626,7 +626,7 @@ var abc = {
         console.log(aCreature.tokenId);
         console.log(tokenId);
         return aCreature.tokenId === tokenId;
-      });
+      })[0];
       console.log(creature);
       console.log(creature.hp);
     });
