@@ -1082,11 +1082,7 @@ let abc = {
 
     $('#creature-table').append(htmlString)
 
-    $(".creature-table-hp-input").off("change")
-    $(".creature-table-hp-input").on("change", e => {
-
-      console.log(abc.activeCreatures[0].hp)
-
+    $(".creature-table-hp-input").off("change").on("change", e => {
       let element = $(e.currentTarget)
       let creatureId = element.attr("creature-id")
       let val = element.val()
@@ -1096,8 +1092,23 @@ let abc = {
       })[0]
 
       creature.hp = val
+    })
 
-      console.log(abc.activeCreatures[0].hp)
+    // $("#myElement").unbind('mouseenter mouseleave');
+    // $('#myElement').off('hover');
+
+    // $("table.planning_grid").on({
+    //     mouseenter: function() {
+
+    //     },
+    //     mouseleave: function() {
+
+    //     }
+    // })
+
+    $("#creature-table tr").hover(e => {
+      let element = $(e.currentTarget)
+      console.log(element)
     })
 
   },
