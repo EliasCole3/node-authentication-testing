@@ -620,7 +620,13 @@ var abc = {
     $("#wrapper").append(htmlString);
     $("#" + id).draggable(abc.draggableOptionsToken);
 
-    var creature = abc.getCreature(creatureId);
+    var newCopy = abc.getCreature(creatureId);
+
+    newCopy.tokenId = abc.currentDynamicDivId;
+
+    abc.activeCreatures.push(newCopy);
+
+    console.log(abc.activeCreatures);
 
     abc.currentDynamicDivId++;
   },
@@ -819,19 +825,21 @@ var abc = {
 
   getCreature: function getCreature(creatureId) {
 
-    //grab out of local array, not an ajax request
     var creature = abc.creatures.filter(function (creature) {
       return creature._id === creatureId;
-    });
+    })[0];
+
     console.log(creature);
 
-    //need to deep copy creature
-
-    return creature;
+    return abc.deepCopy(creature);
   },
 
   toSocket: function toSocket(obj) {
     abc.socket.emit('core', obj);
+  },
+
+  deepCopy: function deepCopy(obj) {
+    return JSON.parse(JSON.stringify(obj));
   },
 
   dragDelay: 1,

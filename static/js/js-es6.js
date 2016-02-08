@@ -814,9 +814,13 @@ let abc = {
     $("#wrapper").append(htmlString)
     $(`#${id}`).draggable(abc.draggableOptionsToken)
 
-    let creature = abc.getCreature(creatureId)
+    let newCopy = abc.getCreature(creatureId)
+    
+    newCopy.tokenId = abc.currentDynamicDivId
 
+    abc.activeCreatures.push(newCopy)
 
+    console.log(abc.activeCreatures)
 
     abc.currentDynamicDivId++
   },
@@ -1078,19 +1082,21 @@ let abc = {
 
   getCreature: creatureId => {
 
-    //grab out of local array, not an ajax request
     let creature = abc.creatures.filter(creature => {
       return creature._id === creatureId
-    })
+    })[0]
+
     console.log(creature)
 
-    //need to deep copy creature
-
-    return creature
+    return abc.deepCopy(creature)
   },
 
   toSocket: obj => {
     abc.socket.emit('core', obj)
+  },
+
+  deepCopy: (obj) => {
+    return JSON.parse(JSON.stringify(obj))
   },
 
   dragDelay: 1,

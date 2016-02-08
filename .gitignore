@@ -27,3 +27,5 @@ build/Release
 node_modules
 
 images
+
+node-authentication-testing.sublime-workspace
