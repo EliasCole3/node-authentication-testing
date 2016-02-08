@@ -817,11 +817,9 @@ let abc = {
       let element = $(e.currentTarget)
       let tokenId = +element.attr('token-id')
       let creature = abc.activeCreatures.filter(aCreature => {
-        console.log(aCreature.tokenId)
-        console.log(tokenId)
         return aCreature.tokenId === tokenId
       })[0]
-      console.log(creature)
+
       console.log(creature.hp)
 
     })
@@ -874,7 +872,6 @@ let abc = {
 
 
   createTurnCounter: () => {
-    // console.log('createTurnCounter() called')
     $('#wrapper').append(abc.createTurnCounterHtml())
     abc.handlerTurnCounter()
   },
@@ -1028,7 +1025,42 @@ let abc = {
   },
 
   
+  createCreatureTable: () => {
+    $('#wrapper').append(abc.createCreatureTableHtml())
+    abc.handlerCreatureTable()
+  },
 
+  createCreatureTableHtml: () => {
+    let htmlString = ``
+
+    htmlString += `
+    <div id='creature-table-container'>
+
+      <label>Current Turn:</label>
+      <span id='tc-current-turn'>0</span>
+      <button id='tc-decrement-turn' class='btn btn-sm'><i class='glyphicon glyphicon-minus'></i></button>
+      <button id='tc-increment-turn' class='btn btn-sm'><i class='glyphicon glyphicon-plus'></i></button>
+      <button id='tc-add-row' class='btn btn-sm'>Add Row</button>
+      <br>
+
+      <table id='turn-counter-table' class='table-condensed'>
+        <tr id='tc-header-row'>
+          <th>Name</th>
+          <th>Initiative</th>
+          <th>Count</th>
+          <th></th>
+          <th></th>
+        </tr>
+        
+      </table>
+    </div>`
+
+    return htmlString
+  },
+
+  handlerCreatureTable: () => {
+
+  },
 
 
 

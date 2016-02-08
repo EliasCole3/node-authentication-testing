@@ -623,11 +623,9 @@ var abc = {
       var element = $(e.currentTarget);
       var tokenId = +element.attr('token-id');
       var creature = abc.activeCreatures.filter(function (aCreature) {
-        console.log(aCreature.tokenId);
-        console.log(tokenId);
         return aCreature.tokenId === tokenId;
       })[0];
-      console.log(creature);
+
       console.log(creature.hp);
     });
 
@@ -674,7 +672,6 @@ var abc = {
   },
 
   createTurnCounter: function createTurnCounter() {
-    // console.log('createTurnCounter() called')
     $('#wrapper').append(abc.createTurnCounterHtml());
     abc.handlerTurnCounter();
   },
@@ -772,6 +769,21 @@ var abc = {
 
     return htmlString;
   },
+
+  createCreatureTable: function createCreatureTable() {
+    $('#wrapper').append(abc.createCreatureTableHtml());
+    abc.handlerCreatureTable();
+  },
+
+  createCreatureTableHtml: function createCreatureTableHtml() {
+    var htmlString = "";
+
+    htmlString += "\n    <div id='creature-table-container'>\n\n      <label>Current Turn:</label>\n      <span id='tc-current-turn'>0</span>\n      <button id='tc-decrement-turn' class='btn btn-sm'><i class='glyphicon glyphicon-minus'></i></button>\n      <button id='tc-increment-turn' class='btn btn-sm'><i class='glyphicon glyphicon-plus'></i></button>\n      <button id='tc-add-row' class='btn btn-sm'>Add Row</button>\n      <br>\n\n      <table id='turn-counter-table' class='table-condensed'>\n        <tr id='tc-header-row'>\n          <th>Name</th>\n          <th>Initiative</th>\n          <th>Count</th>\n          <th></th>\n          <th></th>\n        </tr>\n        \n      </table>\n    </div>";
+
+    return htmlString;
+  },
+
+  handlerCreatureTable: function handlerCreatureTable() {},
 
   /*
     Utilities
