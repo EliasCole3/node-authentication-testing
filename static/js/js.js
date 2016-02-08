@@ -795,12 +795,14 @@ var abc = {
     return htmlString;
   },
 
-  handlerCreatureTable: function handlerCreatureTable() {},
+  handlerCreatureTable: function handlerCreatureTable() {
+    $('#creature-table-container').draggable().resizable();
+  },
 
   addCreatureToCreatureTable: function addCreatureToCreatureTable(creature) {
     var htmlString = "";
 
-    htmlString += "\n    <tr id='' creature-id='" + creature._id + "'>\n      <td id=''>" + creature.name + "</td>\n      <td id=''><input class='form-control creature-table-hp-input' creature-id='" + creature._id + "' type='number' value='" + creature.hp + "'></td>\n      <td id=''><input class='creature-table-status'></td>\n      <td><button class='btn btn-sm ct-remove'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
+    htmlString += "\n    <tr id='' creature-id='" + creature._id + "'>\n      <td id=''>" + creature.name + "</td>\n      <td id=''><input class='form-control creature-table-hp-input' creature-id='" + creature._id + "' type='number' value='" + creature.hp + "'></td>\n      <td id=''><input class='form-control creature-table-status'></td>\n      <td><button class='btn btn-sm ct-remove'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
 
     $('#creature-table').append(htmlString);
   },

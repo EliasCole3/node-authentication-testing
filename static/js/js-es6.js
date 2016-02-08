@@ -1068,7 +1068,7 @@ let abc = {
   },
 
   handlerCreatureTable: () => {
-
+    $('#creature-table-container').draggable().resizable()
   },
 
   addCreatureToCreatureTable: creature => {
@@ -1078,7 +1078,7 @@ let abc = {
     <tr id='' creature-id='${creature._id}'>
       <td id=''>${creature.name}</td>
       <td id=''><input class='form-control creature-table-hp-input' creature-id='${creature._id}' type='number' value='${creature.hp}'></td>
-      <td id=''><input class='creature-table-status'></td>
+      <td id=''><input class='form-control creature-table-status'></td>
       <td><button class='btn btn-sm ct-remove'><i class='glyphicon glyphicon-minus'></i></button></td>
     </tr>`
 
