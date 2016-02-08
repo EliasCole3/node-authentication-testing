@@ -810,12 +810,22 @@ let abc = {
 
   addTokenCreature: (imageFilename, ranTop, ranLeft, creatureId) => {
     let id = `dynamically-added-div-${abc.currentDynamicDivId}`
-    let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='images/creatures/${imageFilename}'></div>`
+    let htmlString = `<div id='${id}' token-id='${abc.currentDynamicDivId}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='images/creatures/${imageFilename}'></div>`
     $("#wrapper").append(htmlString)
     $(`#${id}`).draggable(abc.draggableOptionsToken)
+    $(`#${id}`).on("click", e => {
+      let element = $(e.currentTarget)
+      let tokenId = element.attr('token-id')
+      let creature = abc.activeCreatures.filter(aCreature => {
+        return aCreature.tokenId === tokenId
+      })
+      console.log(creature.hp)
+
+    })
+
 
     let newCopy = abc.getCreature(creatureId)
-    
+
     newCopy.tokenId = abc.currentDynamicDivId
 
     abc.activeCreatures.push(newCopy)

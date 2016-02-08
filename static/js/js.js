@@ -616,9 +616,17 @@ var abc = {
 
   addTokenCreature: function addTokenCreature(imageFilename, ranTop, ranLeft, creatureId) {
     var id = "dynamically-added-div-" + abc.currentDynamicDivId;
-    var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='images/creatures/" + imageFilename + "'></div>";
+    var htmlString = "<div id='" + id + "' token-id='" + abc.currentDynamicDivId + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='images/creatures/" + imageFilename + "'></div>";
     $("#wrapper").append(htmlString);
     $("#" + id).draggable(abc.draggableOptionsToken);
+    $("#" + id).on("click", function (e) {
+      var element = $(e.currentTarget);
+      var tokenId = element.attr('token-id');
+      var creature = abc.activeCreatures.filter(function (aCreature) {
+        return aCreature.tokenId === tokenId;
+      });
+      console.log(creature.hp);
+    });
 
     var newCopy = abc.getCreature(creatureId);
 
