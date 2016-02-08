@@ -788,12 +788,20 @@ var abc = {
   createCreatureTableHtml: function createCreatureTableHtml() {
     var htmlString = "";
 
-    htmlString += "\n    <div id='creature-table-container'>\n\n      <label>Current Turn:</label>\n      <span id='tc-current-turn'>0</span>\n      <button id='tc-decrement-turn' class='btn btn-sm'><i class='glyphicon glyphicon-minus'></i></button>\n      <button id='tc-increment-turn' class='btn btn-sm'><i class='glyphicon glyphicon-plus'></i></button>\n      <button id='tc-add-row' class='btn btn-sm'>Add Row</button>\n      <br>\n\n      <table id='turn-counter-table' class='table-condensed'>\n        <tr id='tc-header-row'>\n          <th>Name</th>\n          <th>Initiative</th>\n          <th>Count</th>\n          <th></th>\n          <th></th>\n        </tr>\n        \n      </table>\n    </div>";
+    htmlString += "\n    <div id='creature-table-container'>\n\n      <table id='creature-table' class='table-condensed'>\n        <tr id='ct-header-row'>\n          <th>Name</th>\n          <th>HP</th>\n          <th>Status</th>\n          <th></th>\n        </tr>\n      </table>\n\n    </div>";
 
     return htmlString;
   },
 
   handlerCreatureTable: function handlerCreatureTable() {},
+
+  addCreatureToCreatureTable: function addCreatureToCreatureTable(creature) {
+    var htmlString = "";
+
+    htmlString += "\n    <tr id='' creature-id='" + creature._id + "'>\n      <td id=''>" + creature.name + "</td>\n      <td id=''><input class='form-control creature-table-hp-input' creature-id='" + creature._id + "' type='number' value='" + creature.hp + "'></td>\n      <td id=''><input class='creature-table-status'></td>\n      <td><button class='btn btn-sm ct-remove'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
+
+    $('#creature-table').append(abc.htmlString);
+  },
 
   /*
     Utilities

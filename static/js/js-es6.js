@@ -1035,6 +1035,10 @@ let abc = {
   },
 
   
+
+
+
+
   createCreatureTable: () => {
     $('#wrapper').append(abc.createCreatureTableHtml())
     abc.handlerCreatureTable()
@@ -1047,29 +1051,36 @@ let abc = {
     htmlString += `
     <div id='creature-table-container'>
 
-      <label>Current Turn:</label>
-      <span id='tc-current-turn'>0</span>
-      <button id='tc-decrement-turn' class='btn btn-sm'><i class='glyphicon glyphicon-minus'></i></button>
-      <button id='tc-increment-turn' class='btn btn-sm'><i class='glyphicon glyphicon-plus'></i></button>
-      <button id='tc-add-row' class='btn btn-sm'>Add Row</button>
-      <br>
-
-      <table id='turn-counter-table' class='table-condensed'>
-        <tr id='tc-header-row'>
+      <table id='creature-table' class='table-condensed'>
+        <tr id='ct-header-row'>
           <th>Name</th>
-          <th>Initiative</th>
-          <th>Count</th>
-          <th></th>
+          <th>HP</th>
+          <th>Status</th>
           <th></th>
         </tr>
-        
       </table>
+
     </div>`
 
     return htmlString
   },
 
   handlerCreatureTable: () => {
+
+  },
+
+  addCreatureToCreatureTable: creature => {
+    let htmlString = ``
+
+    htmlString += `
+    <tr id='' creature-id='${creature._id}'>
+      <td id=''>${creature.name}</td>
+      <td id=''><input class='form-control creature-table-hp-input' creature-id='${creature._id}' type='number' value='${creature.hp}'></td>
+      <td id=''><input class='creature-table-status'></td>
+      <td><button class='btn btn-sm ct-remove'><i class='glyphicon glyphicon-minus'></i></button></td>
+    </tr>`
+
+     $('#creature-table').append(abc.htmlString)
 
   },
 
