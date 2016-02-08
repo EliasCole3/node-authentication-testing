@@ -1107,7 +1107,7 @@ let abc = {
     // })
 
     $("#creature-table tr").hover(e => {
-      let element = $(e.currentTarget)
+      let element = $(e.currentTarget[0])
       console.log(element)
     })
 

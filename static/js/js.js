@@ -829,7 +829,7 @@ var abc = {
     // })
 
     $("#creature-table tr").hover(function (e) {
-      var element = $(e.currentTarget);
+      var element = $(e.currentTarget[0]);
       console.log(element);
     });
   },
