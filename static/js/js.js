@@ -838,9 +838,15 @@ var abc = {
         }
       }
 
+      var tooltipString = "";
+
+      for (var prop in creature) {
+        tooltipString += prop + ": " + creature[prop] + "<br>";
+      }
+
       $("#creature-table-name-" + creature.tokenId).tooltip({
         placement: 'left',
-        title: "<b>working<b> <br>\n          hp: " + creature.hp + "\n        ",
+        title: tooltipString,
         html: true
       });
     });

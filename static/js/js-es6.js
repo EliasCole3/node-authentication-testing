@@ -1116,11 +1116,15 @@ let abc = {
         }
       }
 
+      let tooltipString = ``
+
+      for(let prop in creature) {
+        tooltipString += `${prop}: ${creature[prop]}<br>`
+      }
+
       $(`#creature-table-name-${creature.tokenId}`).tooltip({
         placement: 'left',
-        title: `<b>working<b> <br>
-          hp: ${creature.hp}
-        `,
+        title: tooltipString,
         html: true
       })
 
