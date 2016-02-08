@@ -1106,21 +1106,54 @@ let abc = {
     //     }
     // })
 
+    // $("#creature-table tr").hover(e => {
+    //   let element = $(e.currentTarget)
+    //   let creatureId = element.attr('creature-id')
+    //   if(creatureId !== undefined) {
+    //     let creature = abc.activeCreatures.filter(aCreature => {
+    //       return aCreature._id === creatureId
+    //     })[0]
+
+    //     let tokenId = creature.tokenId
+
+    //     $(`#dynamically-added-div-${tokenId}`).css('border', 'solid gold 3px')
+    //   }
+    // })
+
     $("#creature-table tr").hover(e => {
-      let element = $(e.currentTarget)
-      let creatureId = element.attr('creature-id')
-      if(creatureId !== undefined) {
-        let creature = abc.activeCreatures.filter(aCreature => {
-          return aCreature._id === creatureId
-        })[0]
 
-        let tokenId = creature.tokenId
+      $("#creature-table tr").on({
+        mouseenter: e => {
+          let element = $(e.currentTarget)
+          let creatureId = element.attr('creature-id')
+          if(creatureId !== undefined) {
+            let creature = abc.activeCreatures.filter(aCreature => {
+              return aCreature._id === creatureId
+            })[0]
 
-        $(`#dynamically-added-div-${tokenId}`).css('border', 'solid gold 3px')
-      }
-      
+            let tokenId = creature.tokenId
+
+            $(`#dynamically-added-div-${tokenId}`).css('border', 'solid gold 3px')
+          }
+        },
+        mouseleave: e => {
+          let element = $(e.currentTarget)
+          let creatureId = element.attr('creature-id')
+          if(creatureId !== undefined) {
+            let creature = abc.activeCreatures.filter(aCreature => {
+              return aCreature._id === creatureId
+            })[0]
+
+            let tokenId = creature.tokenId
+
+            $(`#dynamically-added-div-${tokenId}`).css('border', '')
+          }
+        }
+      })
 
     })
+
+
 
   },
 

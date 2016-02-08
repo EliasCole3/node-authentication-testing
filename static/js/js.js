@@ -828,18 +828,50 @@ var abc = {
     //     }
     // })
 
+    // $("#creature-table tr").hover(e => {
+    //   let element = $(e.currentTarget)
+    //   let creatureId = element.attr('creature-id')
+    //   if(creatureId !== undefined) {
+    //     let creature = abc.activeCreatures.filter(aCreature => {
+    //       return aCreature._id === creatureId
+    //     })[0]
+
+    //     let tokenId = creature.tokenId
+
+    //     $(`#dynamically-added-div-${tokenId}`).css('border', 'solid gold 3px')
+    //   }
+    // })
+
     $("#creature-table tr").hover(function (e) {
-      var element = $(e.currentTarget);
-      var creatureId = element.attr('creature-id');
-      if (creatureId !== undefined) {
-        var _creature = abc.activeCreatures.filter(function (aCreature) {
-          return aCreature._id === creatureId;
-        })[0];
 
-        var tokenId = _creature.tokenId;
+      $("#creature-table tr").on({
+        mouseenter: function mouseenter(e) {
+          var element = $(e.currentTarget);
+          var creatureId = element.attr('creature-id');
+          if (creatureId !== undefined) {
+            var _creature = abc.activeCreatures.filter(function (aCreature) {
+              return aCreature._id === creatureId;
+            })[0];
 
-        $("#dynamically-added-div-" + tokenId).css('border', 'solid gold 3px');
-      }
+            var tokenId = _creature.tokenId;
+
+            $("#dynamically-added-div-" + tokenId).css('border', 'solid gold 3px');
+          }
+        },
+        mouseleave: function mouseleave(e) {
+          var element = $(e.currentTarget);
+          var creatureId = element.attr('creature-id');
+          if (creatureId !== undefined) {
+            var _creature2 = abc.activeCreatures.filter(function (aCreature) {
+              return aCreature._id === creatureId;
+            })[0];
+
+            var tokenId = _creature2.tokenId;
+
+            $("#dynamically-added-div-" + tokenId).css('border', '');
+          }
+        }
+      });
     });
   },
 
