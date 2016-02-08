@@ -821,6 +821,7 @@ let abc = {
         console.log(tokenId)
         return aCreature.tokenId === tokenId
       })
+      console.log(creature)
       console.log(creature.hp)
 
     })
