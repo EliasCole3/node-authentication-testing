@@ -644,6 +644,8 @@ var abc = {
 
     abc.activeCreatures.push(newCopy);
 
+    abc.addCreatureToCreatureTable(newCopy);
+
     console.log(abc.activeCreatures);
 
     abc.currentDynamicDivId++;

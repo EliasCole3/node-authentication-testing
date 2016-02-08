@@ -841,6 +841,8 @@ let abc = {
 
     abc.activeCreatures.push(newCopy)
 
+    abc.addCreatureToCreatureTable(newCopy)
+
     console.log(abc.activeCreatures)
 
     abc.currentDynamicDivId++
@@ -1080,7 +1082,7 @@ let abc = {
       <td><button class='btn btn-sm ct-remove'><i class='glyphicon glyphicon-minus'></i></button></td>
     </tr>`
 
-     $('#creature-table').append(abc.htmlString)
+    $('#creature-table').append(abc.htmlString)
 
   },
 
