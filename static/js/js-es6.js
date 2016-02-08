@@ -1118,7 +1118,7 @@ let abc = {
 
       $(`#creature-table-name-${creature.tokenId}`).tooltip({
         placement: 'left',
-        title: `<b>working<b>
+        title: `<b>working<b> <br>
           hp: ${creature.hp}
         `,
         html: true
