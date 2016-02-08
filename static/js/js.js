@@ -839,9 +839,12 @@ var abc = {
       }
 
       var tooltipString = "";
+      var propsToIgnore = ['_id', 'imageFilename', '__v', 'tokenId'];
 
       for (var prop in creature) {
-        tooltipString += prop + ": " + creature[prop] + "<br>";
+        if (propsToIgnore.indexOf(prop) === -1) {
+          tooltipString += prop + ": " + creature[prop] + "<br>";
+        }
       }
 
       $("#creature-table-name-" + creature.tokenId).tooltip({
