@@ -687,7 +687,7 @@ var ebot = {
         .css("height", "0px")
 
       drawerContents
-        .css("opacity", 0)
+        .css("opacity", 0).css("display", "none")
 
       var drawerHandleContainer = $("#drawer-handle-top")
       var drawerHandle = $("#drawer-handle-top i")
@@ -725,7 +725,7 @@ var ebot = {
         .css("height", "0px")
 
       drawerContents
-        .css("opacity", 0)
+        .css("opacity", 0).css("display", "none")
 
       var drawerHandleContainer = $("#drawer-handle-bottom")
       var drawerHandle = $("#drawer-handle-bottom i")
@@ -770,7 +770,7 @@ var ebot = {
         .css("width", "0px")
 
       drawerContents
-        .css("opacity", 0)
+        .css("opacity", 0).css("display", "none")
 
       var drawerHandleContainer = $("#drawer-handle-left")
       var drawerHandle = $("#drawer-handle-left i")
@@ -813,7 +813,7 @@ var ebot = {
         .css("width", "0px")
 
       drawerContents
-        .css("opacity", 0)
+        .css("opacity", 0).css("display", "none")
 
       var drawerHandleContainer = $("#drawer-handle-right")
       var drawerHandle = $("#drawer-handle-right i")
