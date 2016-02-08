@@ -96,6 +96,7 @@ html,body{height:100%;}
   background-color: #070129;
   border: solid 3px #6D685F;
   min-width: 300px;
+  min-height: 80px;
 }
 
 #tc-add-row {
