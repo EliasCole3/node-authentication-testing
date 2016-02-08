@@ -817,6 +817,8 @@ let abc = {
       let element = $(e.currentTarget)
       let tokenId = element.attr('token-id')
       let creature = abc.activeCreatures.filter(aCreature => {
+        console.log(aCreature.tokenId)
+        console.log(tokenId)
         return aCreature.tokenId === tokenId
       })
       console.log(creature.hp)
