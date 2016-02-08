@@ -462,7 +462,7 @@ let abc = {
     })
 
     $("#create-creature-table").on("click", e => {
-      abc.createTurnCounter()
+      abc.createCreatureTable()
     })
   
   },

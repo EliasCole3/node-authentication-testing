@@ -358,7 +358,7 @@ var abc = {
     });
 
     $("#create-creature-table").on("click", function (e) {
-      abc.createTurnCounter();
+      abc.createCreatureTable();
     });
   },
 
