@@ -1084,6 +1084,26 @@ let abc = {
 
     $('#creature-table').append(htmlString)
 
+    $(".creature-table-hp-input").off("change")
+    $(".creature-table-hp-input").on("change", e => {
+
+      console.log(abc.activeCreatures)
+
+      let element = $(e.currentTarget)
+      let creatureId = element.attr("creature-id")
+      let val = element.val()
+
+      abc.socket.emit('hp changed', {id: id, val: val})
+
+      let creature = abc.activeCreatures.filter(aCreature => {
+        return aCreature._id === creatureId
+      })[0]
+
+      creature.hp = val
+
+      console.log(abc.activeCreatures)
+    })
+
   },
 
 

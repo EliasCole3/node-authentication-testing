@@ -805,6 +805,26 @@ var abc = {
     htmlString += "\n    <tr id='' creature-id='" + creature._id + "'>\n      <td id=''>" + creature.name + "</td>\n      <td id=''><input class='form-control creature-table-hp-input' creature-id='" + creature._id + "' type='number' value='" + creature.hp + "'></td>\n      <td id=''><input class='form-control creature-table-status'></td>\n      <td><button class='btn btn-sm ct-remove'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
 
     $('#creature-table').append(htmlString);
+
+    $(".creature-table-hp-input").off("change");
+    $(".creature-table-hp-input").on("change", function (e) {
+
+      console.log(abc.activeCreatures);
+
+      var element = $(e.currentTarget);
+      var creatureId = element.attr("creature-id");
+      var val = element.val();
+
+      abc.socket.emit('hp changed', { id: id, val: val });
+
+      var creature = abc.activeCreatures.filter(function (aCreature) {
+        return aCreature._id === creatureId;
+      })[0];
+
+      creature.hp = val;
+
+      console.log(abc.activeCreatures);
+    });
   },
 
   /*

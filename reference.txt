@@ -1,0 +1,6 @@
+How to dump the database
+--------------------------------------------------
+mongodump -d DnDv2 --out ~/MongoDBDumps --host localhost:27017
+{ftp’d the dump over to nova}
+
+This came from 11.20.15, more there
