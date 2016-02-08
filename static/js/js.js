@@ -829,11 +829,13 @@ var abc = {
     // })
 
     $("#creature-table tr").hover(function (e) {
-      // console.log(e)
-      // console.log(e.currentTarget)
       var element = $(e.currentTarget);
-      // console.log(element)
-      console.log(element.attr('creature-id'));
+      var creatureId = element.attr('creature-id');
+      var tokenId = abc.activeCreatures.filter(function (aCreature) {
+        return aCreature._id === creatureId;
+      })[0].tokenId;
+
+      $("dynamically-added-div-" + tokenId).css('border', 'solid gold 3px');
     });
   },
 

@@ -1107,11 +1107,14 @@ let abc = {
     // })
 
     $("#creature-table tr").hover(e => {
-      // console.log(e)
-      // console.log(e.currentTarget)
       let element = $(e.currentTarget)
-      // console.log(element)
-      console.log(element.attr('creature-id'))
+      let creatureId = element.attr('creature-id')
+      let tokenId = abc.activeCreatures.filter(aCreature => {
+        return aCreature._id === creatureId
+      })[0].tokenId
+
+      $(`dynamically-added-div-${tokenId}`).css('border', 'solid gold 3px')
+
     })
 
   },
