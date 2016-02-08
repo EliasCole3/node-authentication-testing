@@ -843,8 +843,6 @@ let abc = {
 
     abc.addCreatureToCreatureTable(newCopy)
 
-    console.log(abc.activeCreatures)
-
     abc.currentDynamicDivId++
   },
 
@@ -1093,8 +1091,6 @@ let abc = {
       let creatureId = element.attr("creature-id")
       let val = element.val()
 
-      abc.socket.emit('hp changed', {id: id, val: val})
-
       let creature = abc.activeCreatures.filter(aCreature => {
         return aCreature._id === creatureId
       })[0]
@@ -1170,12 +1166,9 @@ let abc = {
   },
 
   getCreature: creatureId => {
-
     let creature = abc.creatures.filter(creature => {
       return creature._id === creatureId
     })[0]
-
-    console.log(creature)
 
     return abc.deepCopy(creature)
   },

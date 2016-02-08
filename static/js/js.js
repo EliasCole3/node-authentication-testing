@@ -646,8 +646,6 @@ var abc = {
 
     abc.addCreatureToCreatureTable(newCopy);
 
-    console.log(abc.activeCreatures);
-
     abc.currentDynamicDivId++;
   },
 
@@ -815,8 +813,6 @@ var abc = {
       var creatureId = element.attr("creature-id");
       var val = element.val();
 
-      abc.socket.emit('hp changed', { id: id, val: val });
-
       var creature = abc.activeCreatures.filter(function (aCreature) {
         return aCreature._id === creatureId;
       })[0];
@@ -889,12 +885,9 @@ var abc = {
   },
 
   getCreature: function getCreature(creatureId) {
-
     var creature = abc.creatures.filter(function (creature) {
       return creature._id === creatureId;
     })[0];
-
-    console.log(creature);
 
     return abc.deepCopy(creature);
   },
