@@ -831,15 +831,15 @@ var abc = {
     $("#creature-table tr").hover(function (e) {
       var element = $(e.currentTarget);
       var creatureId = element.attr('creature-id');
-      var creature = abc.activeCreatures.filter(function (aCreature) {
-        return aCreature._id === creatureId;
-      })[0];
+      if (creatureId !== undefined) {
+        var _creature = abc.activeCreatures.filter(function (aCreature) {
+          return aCreature._id === creatureId;
+        })[0];
 
-      console.log(creature);
+        var tokenId = _creature.tokenId;
 
-      var tokenId = creature.tokenId;
-
-      $("dynamically-added-div-" + tokenId).css('border', 'solid gold 3px');
+        $("#dynamically-added-div-" + tokenId).css('border', 'solid gold 3px');
+      }
     });
   },
 

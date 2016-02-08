@@ -1109,15 +1109,16 @@ let abc = {
     $("#creature-table tr").hover(e => {
       let element = $(e.currentTarget)
       let creatureId = element.attr('creature-id')
-      let creature = abc.activeCreatures.filter(aCreature => {
-        return aCreature._id === creatureId
-      })[0]
+      if(creatureId !== undefined) {
+        let creature = abc.activeCreatures.filter(aCreature => {
+          return aCreature._id === creatureId
+        })[0]
 
-      console.log(creature)
+        let tokenId = creature.tokenId
 
-      let tokenId = creature.tokenId
-
-      $(`dynamically-added-div-${tokenId}`).css('border', 'solid gold 3px')
+        $(`#dynamically-added-div-${tokenId}`).css('border', 'solid gold 3px')
+      }
+      
 
     })
 
