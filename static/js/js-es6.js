@@ -439,7 +439,8 @@ let abc = {
       htmlString += `
         <button id='toggle-cursor-visibility' class='btn btn-md btn-info'>toggle cursors</button>
         <button id='reload-top-drawer' class='btn btn-md btn-info'>reload top drawer</button>
-        <button id='create-turn-counter' class='btn btn-md btn-info'>create-turn-counter</button>
+        <button id='create-turn-counter' class='btn btn-md btn-info'>Create Turn Counter</button>
+        <button id='create-creature-table' class='btn btn-md btn-info'>Create Creature Table</button>
       `
     }
 
@@ -458,6 +459,10 @@ let abc = {
 
     $("#create-turn-counter").on("click", e => {
       abc.socket.emit('core', {event: 'create-turn-counter'})
+    })
+
+    $("#create-creature-table").on("click", e => {
+      abc.createTurnCounter()
     })
   
   },

@@ -337,7 +337,7 @@ var abc = {
     }
 
     if (abc.userIsDM) {
-      htmlString += "\n        <button id='toggle-cursor-visibility' class='btn btn-md btn-info'>toggle cursors</button>\n        <button id='reload-top-drawer' class='btn btn-md btn-info'>reload top drawer</button>\n        <button id='create-turn-counter' class='btn btn-md btn-info'>create-turn-counter</button>\n      ";
+      htmlString += "\n        <button id='toggle-cursor-visibility' class='btn btn-md btn-info'>toggle cursors</button>\n        <button id='reload-top-drawer' class='btn btn-md btn-info'>reload top drawer</button>\n        <button id='create-turn-counter' class='btn btn-md btn-info'>Create Turn Counter</button>\n        <button id='create-creature-table' class='btn btn-md btn-info'>Create Creature Table</button>\n      ";
     }
 
     return htmlString;
@@ -355,6 +355,10 @@ var abc = {
 
     $("#create-turn-counter").on("click", function (e) {
       abc.socket.emit('core', { event: 'create-turn-counter' });
+    });
+
+    $("#create-creature-table").on("click", function (e) {
+      abc.createTurnCounter();
     });
   },
 
