@@ -623,6 +623,11 @@ var abc = {
     var htmlString = "<div id='" + id + "' token-id='" + abc.currentDynamicDivId + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: 50px; height: 50px;'><img src='images/creatures/" + imageFilename + "'></div>";
     $("#wrapper").append(htmlString);
     $("#" + id).draggable(abc.draggableOptionsToken);
+
+    if (!abc.creatureTableCreated) {
+      abc.createCreatureTable();
+    }
+
     $("#" + id).on("click", function (e) {
       var element = $(e.currentTarget);
       var tokenId = +element.attr('token-id');
@@ -678,6 +683,7 @@ var abc = {
   createTurnCounter: function createTurnCounter() {
     $('#wrapper').append(abc.createTurnCounterHtml());
     abc.handlerTurnCounter();
+    abc.creatureTableCreated = true;
   },
 
   createTurnCounterHtml: function createTurnCounterHtml() {
@@ -906,7 +912,9 @@ var abc = {
 
   cursorDelay: 0,
 
-  cursorsVisible: true
+  cursorsVisible: true,
+
+  creatureTableCreated: false
 
 };
 //# sourceMappingURL=js.js.map

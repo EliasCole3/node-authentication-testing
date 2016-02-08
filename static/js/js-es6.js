@@ -818,6 +818,11 @@ let abc = {
     let htmlString = `<div id='${id}' token-id='${abc.currentDynamicDivId}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: 50px; height: 50px;'><img src='images/creatures/${imageFilename}'></div>`
     $("#wrapper").append(htmlString)
     $(`#${id}`).draggable(abc.draggableOptionsToken)
+
+    if(!abc.creatureTableCreated) {
+      abc.createCreatureTable()
+    }
+
     $(`#${id}`).on("click", e => {
       let element = $(e.currentTarget)
       let tokenId = +element.attr('token-id')
@@ -879,6 +884,7 @@ let abc = {
   createTurnCounter: () => {
     $('#wrapper').append(abc.createTurnCounterHtml())
     abc.handlerTurnCounter()
+    abc.creatureTableCreated = true
   },
 
   createTurnCounterHtml: () => {
@@ -1186,7 +1192,9 @@ let abc = {
 
   cursorDelay: 0,
 
-  cursorsVisible: true
+  cursorsVisible: true,
+
+  creatureTableCreated: false
 
 }
 
