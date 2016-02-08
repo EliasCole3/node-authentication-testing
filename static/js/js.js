@@ -831,11 +831,13 @@ var abc = {
     $("#creature-table tr").hover(function (e) {
       var element = $(e.currentTarget);
       var creatureId = element.attr('creature-id');
-      var tokenId = abc.activeCreatures.filter(function (aCreature) {
-        console.log(aCreature._id);
-        console.log(creatureId);
+      var creature = abc.activeCreatures.filter(function (aCreature) {
         return aCreature._id === creatureId;
-      })[0].tokenId;
+      })[0];
+
+      console.log(creature);
+
+      var tokenId = creature.tokenId;
 
       $("dynamically-added-div-" + tokenId).css('border', 'solid gold 3px');
     });
