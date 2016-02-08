@@ -683,7 +683,6 @@ var abc = {
   createTurnCounter: function createTurnCounter() {
     $('#wrapper').append(abc.createTurnCounterHtml());
     abc.handlerTurnCounter();
-    abc.creatureTableCreated = true;
   },
 
   createTurnCounterHtml: function createTurnCounterHtml() {
@@ -783,6 +782,7 @@ var abc = {
   createCreatureTable: function createCreatureTable() {
     $('#wrapper').append(abc.createCreatureTableHtml());
     abc.handlerCreatureTable();
+    abc.creatureTableCreated = true;
   },
 
   createCreatureTableHtml: function createCreatureTableHtml() {

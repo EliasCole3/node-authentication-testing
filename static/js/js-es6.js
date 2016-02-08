@@ -884,7 +884,6 @@ let abc = {
   createTurnCounter: () => {
     $('#wrapper').append(abc.createTurnCounterHtml())
     abc.handlerTurnCounter()
-    abc.creatureTableCreated = true
   },
 
   createTurnCounterHtml: () => {
@@ -1039,6 +1038,7 @@ let abc = {
   createCreatureTable: () => {
     $('#wrapper').append(abc.createCreatureTableHtml())
     abc.handlerCreatureTable()
+    abc.creatureTableCreated = true
   },
 
   createCreatureTableHtml: () => {
