@@ -1107,10 +1107,11 @@ let abc = {
     // })
 
     $("#creature-table tr").hover(e => {
-      console.log(e)
-      console.log(e.currentTarget)
-      let element = $(e.currentTarget[0])
-      console.log(element)
+      // console.log(e)
+      // console.log(e.currentTarget)
+      let element = $(e.currentTarget)
+      // console.log(element)
+      console.log(element.attr('creature-id'))
     })
 
   },
