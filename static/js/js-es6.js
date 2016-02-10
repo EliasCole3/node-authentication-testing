@@ -1063,6 +1063,7 @@ let abc = {
 
     htmlString += `
     <div id='creature-table-container'>
+      <button id='remove-creature-table' class='btn btn-md'><i class='glyphicon glyphicon-minus'></i></button>
 
       <table id='creature-table' class='table-condensed'>
         <tr id='ct-header-row'>
@@ -1080,6 +1081,10 @@ let abc = {
 
   handlerCreatureTable: () => {
     $('#creature-table-container').draggable().resizable()
+
+    $("#remove-creature-table").click(e => {
+      $('#creature-table-container').remove()
+    })
   },
 
   addCreatureToCreatureTable: creature => {

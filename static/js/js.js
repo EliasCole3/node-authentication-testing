@@ -802,13 +802,17 @@ var abc = {
   createCreatureTableHtml: function createCreatureTableHtml() {
     var htmlString = "";
 
-    htmlString += "\n    <div id='creature-table-container'>\n\n      <table id='creature-table' class='table-condensed'>\n        <tr id='ct-header-row'>\n          <th>Name</th>\n          <th>HP</th>\n          <th>Status</th>\n          <th></th>\n        </tr>\n      </table>\n\n    </div>";
+    htmlString += "\n    <div id='creature-table-container'>\n      <button id='remove-creature-table' class='btn btn-md'><i class='glyphicon glyphicon-minus'></i></button>\n\n      <table id='creature-table' class='table-condensed'>\n        <tr id='ct-header-row'>\n          <th>Name</th>\n          <th>HP</th>\n          <th>Status</th>\n          <th></th>\n        </tr>\n      </table>\n\n    </div>";
 
     return htmlString;
   },
 
   handlerCreatureTable: function handlerCreatureTable() {
     $('#creature-table-container').draggable().resizable();
+
+    $("#remove-creature-table").click(function (e) {
+      $('#creature-table-container').remove();
+    });
   },
 
   addCreatureToCreatureTable: function addCreatureToCreatureTable(creature) {
