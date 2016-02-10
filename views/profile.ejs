@@ -37,23 +37,32 @@
 
     <div id='' class=''>
 		<a href="/socket-main-page" class="btn btn-default btn-md">Take me to the socket magic!</a>
-		<a href="/testing" class="btn btn-default btn-md">Take me to the testing page!</a>
-		<a href="/crud-items" class="btn btn-default btn-md">CRUD - Items</a>
-		<a href="/crud-powers" class="btn btn-default btn-md">CRUD - Powers</a>
-		<a href="/crud-creatures" class="btn btn-default btn-md">CRUD - Creatures</a>
-		<a href="/crud-logs" class="btn btn-default btn-md">CRUD - Logs</a>
-		<a href="/crud-log-entries" class="btn btn-default btn-md">CRUD - Log Entries</a>
-		<a href="/crud-player-characters" class="btn btn-default btn-md">CRUD - Player Characters</a>
-		<a href="/crud-non-player-characters" class="btn btn-default btn-md">CRUD - Non-Player Characters</a>
-		<a href="/crud-join-player-character-items" class="btn btn-default btn-md">CRUD - Join Player Character Items</a>
-		<a href="/crud-join-player-character-powers" class="btn btn-default btn-md">CRUD - Join Player Character Powers</a>
-		<a href="/crud-character-details" class="btn btn-default btn-md">CRUD - Character Details</a>
+
+		<div id='dm-buttons'>
+			<a href="/testing" class="btn btn-default btn-md">Take me to the testing page!</a>
+			<a href="/crud-items" class="btn btn-default btn-md">CRUD - Items</a>
+			<a href="/crud-powers" class="btn btn-default btn-md">CRUD - Powers</a>
+			<a href="/crud-creatures" class="btn btn-default btn-md">CRUD - Creatures</a>
+			<a href="/crud-logs" class="btn btn-default btn-md">CRUD - Logs</a>
+			<a href="/crud-log-entries" class="btn btn-default btn-md">CRUD - Log Entries</a>
+			<a href="/crud-player-characters" class="btn btn-default btn-md">CRUD - Player Characters</a>
+			<a href="/crud-non-player-characters" class="btn btn-default btn-md">CRUD - Non-Player Characters</a>
+			<a href="/crud-join-player-character-items" class="btn btn-default btn-md">CRUD - Join Player Character Items</a>
+			<a href="/crud-join-player-character-powers" class="btn btn-default btn-md">CRUD - Join Player Character Powers</a>
+			<a href="/crud-character-details" class="btn btn-default btn-md">CRUD - Character Details</a>
+		</div>
     </div>
 
 
     <div id='data-for-you' style='display: none;'>
 		<%- JSON.stringify(user) %>
     </div>
+
+    <script type="text/javascript">
+		if(<%- user.local.username %> !== 'bliss') {
+		  $("#dm-buttons").hide()
+		}
+    </script>
 </div>
 </body>
 </html>
