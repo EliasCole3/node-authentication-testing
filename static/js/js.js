@@ -220,6 +220,8 @@ var abc = {
     abc.socket.on('core', function (obj) {
       //branching logic based on what is in the object
 
+      console.log(obj);
+
       if (obj.event === "create-turn-counter") {
         abc.createTurnCounter();
       }
@@ -632,19 +634,21 @@ var abc = {
     $("#wrapper").append(htmlString);
     $("#" + id).draggable(abc.draggableOptionsToken);
 
-    if (!abc.creatureTableCreated) {
+    if (!abc.creatureTableCreated && abc.userIsDM) {
       abc.createCreatureTable();
     }
 
-    $("#" + id).on("click", function (e) {
-      var element = $(e.currentTarget);
-      var tokenId = +element.attr('token-id');
-      var creature = abc.activeCreatures.filter(function (aCreature) {
-        return aCreature.tokenId === tokenId;
-      })[0];
+    // testing to make sure I had unique local copies of the creatures
+    // $(`#${id}`).on("click", e => {
+    //   let element = $(e.currentTarget)
+    //   let tokenId = +element.attr('token-id')
+    //   let creature = abc.activeCreatures.filter(aCreature => {
+    //     return aCreature.tokenId === tokenId
+    //   })[0]
 
-      console.log(creature.hp);
-    });
+    //   console.log(creature.hp)
+
+    // })
 
     var newCopy = abc.getCreature(creatureId);
 
@@ -652,7 +656,9 @@ var abc = {
 
     abc.activeCreatures.push(newCopy);
 
-    abc.addCreatureToCreatureTable(newCopy);
+    if (abc.userIsDM) {
+      abc.addCreatureToCreatureTable(newCopy);
+    }
 
     abc.currentDynamicDivId++;
   },
