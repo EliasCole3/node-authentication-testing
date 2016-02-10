@@ -254,11 +254,19 @@ let abc = {
         $(`.td-count[id=tc-count-${obj.randId}]`).html(obj.updatedCount)
       }
 
+      if(obj.event === "creature-table-remove-row") {
+        abc.removeToken(obj.tokenId)
+      }
+
 
 
 
 
     })
+  },
+
+  removeToken: tokenId => {
+    $(`dynamically-added-div-${tokenId}`).remove()
   },
 
   retrieveInitialModels: () => {
@@ -1077,7 +1085,7 @@ let abc = {
       <td id='creature-table-name-${creature.tokenId}' class='creature-table-name'>${creature.name}</td>
       <td id=''><input class='form-control creature-table-hp-input' creature-id='${creature._id}' type='number' value='${creature.hp}'></td>
       <td id=''><input class='form-control creature-table-status'></td>
-      <td><button class='btn btn-sm ct-remove'><i class='glyphicon glyphicon-minus'></i></button></td>
+      <td><button class='btn btn-sm ct-remove' token-id='${creature.tokenId}'><i class='glyphicon glyphicon-minus'></i></button></td>
     </tr>`
 
     $('#creature-table').append(htmlString)
@@ -1130,7 +1138,16 @@ let abc = {
         title: tooltipString,
         html: true
       })
+    })
 
+    $(".ct-remove").click(e => {
+      let element = $(e.currentTarget)
+      let tokenId = element.attr('token-id')
+      abc.toSocket({
+        event: 'creature-table-remove-row',
+        tokenId: tokenId
+      })
+      $(`tr[token-id=${tokenId}]`).remove()
     })
 
 

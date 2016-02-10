@@ -247,7 +247,15 @@ var abc = {
         $(".td-initiative[id=tc-initiative-" + obj.randId + "]").html(obj.updatedInitiative);
         $(".td-count[id=tc-count-" + obj.randId + "]").html(obj.updatedCount);
       }
+
+      if (obj.event === "creature-table-remove-row") {
+        abc.removeToken(obj.tokenId);
+      }
     });
+  },
+
+  removeToken: function removeToken(tokenId) {
+    $("dynamically-added-div-" + tokenId).remove();
   },
 
   retrieveInitialModels: function retrieveInitialModels() {
@@ -800,7 +808,7 @@ var abc = {
   addCreatureToCreatureTable: function addCreatureToCreatureTable(creature) {
     var htmlString = "";
 
-    htmlString += "\n    <tr id='' creature-id='" + creature._id + "' token-id='" + creature.tokenId + "'>\n      <td id='creature-table-name-" + creature.tokenId + "' class='creature-table-name'>" + creature.name + "</td>\n      <td id=''><input class='form-control creature-table-hp-input' creature-id='" + creature._id + "' type='number' value='" + creature.hp + "'></td>\n      <td id=''><input class='form-control creature-table-status'></td>\n      <td><button class='btn btn-sm ct-remove'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
+    htmlString += "\n    <tr id='' creature-id='" + creature._id + "' token-id='" + creature.tokenId + "'>\n      <td id='creature-table-name-" + creature.tokenId + "' class='creature-table-name'>" + creature.name + "</td>\n      <td id=''><input class='form-control creature-table-hp-input' creature-id='" + creature._id + "' type='number' value='" + creature.hp + "'></td>\n      <td id=''><input class='form-control creature-table-status'></td>\n      <td><button class='btn btn-sm ct-remove' token-id='" + creature.tokenId + "'><i class='glyphicon glyphicon-minus'></i></button></td>\n    </tr>";
 
     $('#creature-table').append(htmlString);
 
@@ -852,6 +860,16 @@ var abc = {
         title: tooltipString,
         html: true
       });
+    });
+
+    $(".ct-remove").click(function (e) {
+      var element = $(e.currentTarget);
+      var tokenId = element.attr('token-id');
+      abc.toSocket({
+        event: 'creature-table-remove-row',
+        tokenId: tokenId
+      });
+      $("tr[token-id=" + tokenId + "]").remove();
     });
   },
 
