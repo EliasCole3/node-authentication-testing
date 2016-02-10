@@ -59,9 +59,12 @@
     </div>
 
     <script type="text/javascript">
-		if('<%-user.local.username%>' !== 'bliss') {
-		  $("#dm-buttons").hide()
-		}
+    $(function() {
+    	if('<%-user.local.username%>' !== 'bliss') {
+    	  $("#dm-buttons").hide()
+    	}
+    })
+		
     </script>
 </div>
 </body>
