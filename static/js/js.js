@@ -257,6 +257,7 @@ var abc = {
   },
 
   removeToken: function removeToken(tokenId) {
+    console.log("Called");
     $("dynamically-added-div-" + tokenId).remove();
   },
 

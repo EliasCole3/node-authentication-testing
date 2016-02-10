@@ -268,6 +268,7 @@ let abc = {
   },
 
   removeToken: tokenId => {
+    console.log("Called")
     $(`dynamically-added-div-${tokenId}`).remove()
   },
 
