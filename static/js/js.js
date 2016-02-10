@@ -220,7 +220,7 @@ var abc = {
     abc.socket.on('core', function (obj) {
       //branching logic based on what is in the object
 
-      console.log(obj);
+      // console.log(obj)
 
       if (obj.event === "create-turn-counter") {
         abc.createTurnCounter();
@@ -257,8 +257,7 @@ var abc = {
   },
 
   removeToken: function removeToken(tokenId) {
-    console.log("Called");
-    $("dynamically-added-div-" + tokenId).remove();
+    $("#dynamically-added-div-" + tokenId).remove();
   },
 
   retrieveInitialModels: function retrieveInitialModels() {
@@ -869,7 +868,7 @@ var abc = {
       });
     });
 
-    $(".ct-remove").click(function (e) {
+    $(".ct-remove").off('click').on('click', function (e) {
       var element = $(e.currentTarget);
       var tokenId = element.attr('token-id');
       abc.toSocket({

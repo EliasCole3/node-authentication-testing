@@ -226,7 +226,7 @@ let abc = {
     abc.socket.on('core', obj => {
       //branching logic based on what is in the object
 
-      console.log(obj)
+      // console.log(obj)
 
       if(obj.event === "create-turn-counter") {
         abc.createTurnCounter()
@@ -268,8 +268,7 @@ let abc = {
   },
 
   removeToken: tokenId => {
-    console.log("Called")
-    $(`dynamically-added-div-${tokenId}`).remove()
+    $(`#dynamically-added-div-${tokenId}`).remove()
   },
 
   retrieveInitialModels: () => {
@@ -1146,7 +1145,7 @@ let abc = {
       })
     })
 
-    $(".ct-remove").click(e => {
+    $(".ct-remove").off('click').on('click', (e => {
       let element = $(e.currentTarget)
       let tokenId = element.attr('token-id')
       abc.toSocket({
@@ -1154,7 +1153,7 @@ let abc = {
         tokenId: tokenId
       })
       $(`tr[token-id=${tokenId}]`).remove()
-    })
+    }))
 
 
 
