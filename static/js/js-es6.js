@@ -326,7 +326,7 @@ let abc = {
     </tr>`
 
     abc.playerCharacters.forEach(player => {
-      if(player.playerName !== "npc") {
+      if(player.playerName !== "npc" && player.playerName !== "Ryland") {
           htmlString += `<tr>
           <td>${player.playerName}</td>
           <td>${player.characterName}</td>
