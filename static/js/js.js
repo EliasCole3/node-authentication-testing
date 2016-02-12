@@ -82,7 +82,7 @@ var abc = {
       abc.setCurrentPlayerCharacterId(user);
 
       var DMs = ["a", "bliss"];
-      var players = ["a", "b", "c", "bliss", "laurana", "andros", "skjor", "greg", "ares"];
+      var players = ["a", "b", "c", "bliss", "laurana", "andros", "skjor", "greg", "ares", "wild"];
 
       if (DMs.indexOf(user.local.username) > -1) {
         abc.userIsDM = true;
@@ -150,6 +150,9 @@ var abc = {
         break;
       case "ares":
         abc.currentPlayerCharacterId = 5;
+        break;
+      case "wild":
+        abc.currentPlayerCharacterId = 6;
         break;
       case "bliss":
         abc.currentPlayerCharacterId = 0;
@@ -309,7 +312,7 @@ var abc = {
     htmlString += "<tr>\n      <th>Player Name</th>\n      <th>Character Name</th>\n      <th>Current HP</th>\n      <th>Max HP</th>\n      <th>AC</th>\n      <th>Will</th>\n      <th>Reflex</th>\n      <th>To Hit AC/Will/Reflex</th>\n      <th>Damage Mod</th>\n      <th>Speed</th>\n      <th>Initiative</th>\n      <th>Action Points</th>\n      <th>Gold</th>\n      <th>Str</th>\n      <th>Con</th>\n      <th>Int</th>\n      <th>Wis</th>\n      <th>Dex</th>\n      <th>Cha</th>\n    </tr>";
 
     abc.playerCharacters.forEach(function (player) {
-      if (player.playerName !== "npc") {
+      if (player.playerName !== "npc" && player.playerName !== "Ryland") {
         htmlString += "<tr player-character-id=" + player.playerCharacterId + ">\n          <td>" + player.playerName + "</td>\n          <td>" + player.characterName + "</td>\n          <td><input id='current-hp-input-" + player.playerCharacterId + "' class='current-hp-input form-control' type='number' value='" + player.hp + "'></td>\n          <td>" + player.hp + "</td>\n          <td>" + player.ac + "</td>\n          <td>" + player.will + "</td>\n          <td>" + player.reflex + "</td>\n          <td style=\"text-align:center;\">" + player.baseToHitAc + "/" + player.baseToHitWill + "/" + player.baseToHitReflex + "</td>\n          <td>" + player.damageModifier + "</td>\n          <td>" + player.speed + "</td>\n          <td>" + player.initiative + "</td>\n          <td>" + player.actionPoints + "</td>\n          <td>" + player.gold + "</td>\n          <td>" + player.strength + "</td>\n          <td>" + player.constitution + "</td>\n          <td>" + player.intelligence + "</td>\n          <td>" + player.wisdom + "</td>\n          <td>" + player.dexterity + "</td>\n          <td>" + player.charisma + "</td>\n\n        </tr>";
       }
     });

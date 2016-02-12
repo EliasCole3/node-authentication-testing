@@ -82,7 +82,7 @@ let abc = {
       abc.setCurrentPlayerCharacterId(user)
 
       let DMs = ["a", "bliss"]
-      let players = ["a", "b", "c", "bliss", "laurana", "andros", "skjor", "greg", "ares"]
+      let players = ["a", "b", "c", "bliss", "laurana", "andros", "skjor", "greg", "ares", "wild"]
 
       if(DMs.indexOf(user.local.username) > -1) {
         abc.userIsDM = true
@@ -155,6 +155,9 @@ let abc = {
         break
       case "ares":
         abc.currentPlayerCharacterId = 5
+        break
+      case "wild":
+        abc.currentPlayerCharacterId = 6
         break
       case "bliss":
         abc.currentPlayerCharacterId = 0
@@ -384,7 +387,7 @@ let abc = {
     </tr>`
 
     abc.playerCharacters.forEach(player => {
-      if(player.playerName !== "npc") {
+      if(player.playerName !== "npc" && player.playerName !== "Ryland") {
           htmlString += `<tr player-character-id=${player.playerCharacterId}>
           <td>${player.playerName}</td>
           <td>${player.characterName}</td>
