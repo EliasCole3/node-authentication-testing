@@ -329,7 +329,8 @@ let abc = {
     </tr>`
 
     abc.playerCharacters.forEach(player => {
-      if(player.playerName !== "npc" && player.playerName !== "Ryland") {
+      // if(player.playerName !== "npc" && player.playerName !== "Ryland") {
+      if(abc.doNotInclude.indexOf(player.playerName) === -1) {
           htmlString += `<tr>
           <td>${player.playerName}</td>
           <td>${player.characterName}</td>
@@ -387,7 +388,7 @@ let abc = {
     </tr>`
 
     abc.playerCharacters.forEach(player => {
-      if(player.playerName !== "npc" && player.playerName !== "Ryland") {
+      if(abc.doNotInclude.indexOf(player.playerName) === -1) {
           htmlString += `<tr player-character-id=${player.playerCharacterId}>
           <td>${player.playerName}</td>
           <td>${player.characterName}</td>
@@ -1285,7 +1286,9 @@ let abc = {
 
   cursorsVisible: true,
 
-  creatureTableCreated: false
+  creatureTableCreated: false,
+
+  doNotInclude: ['npc', 'Ryland', 'Jon', 'Nick']
 
 }
 
