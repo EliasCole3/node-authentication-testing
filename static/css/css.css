@@ -180,42 +180,45 @@ html,body{height:100%;}
 For Drawerify
 */
 #drawer-handle-top {
-   width: 50px;
-   margin: 0 auto;
-   background: linear-gradient(135deg, rgba(194,232,222,0.8), rgba(38,99,82,1));
-   background-size: 400% 400%;
-   animation: gradient-transition 5s ease infinite;
- }
+  width: 50px;
+  margin: 0 auto;
+}
 
- #drawer-handle-bottom {
-   position: fixed;
-   bottom: 0px;
-   width: 50px;
- }
+#drawer-handle-top i {
+  background: linear-gradient(135deg, rgba(194,232,222,0.8), rgba(38,99,82,1));
+  background-size: 400% 400%;
+  animation: gradient-transition 15s ease infinite;
+}
 
- #drawer-handle-left {
-   position: fixed;
-   width: 50px;
- }
+#drawer-handle-bottom {
+  position: fixed;
+  bottom: 0px;
+  width: 50px;
+}
+
+#drawer-handle-left {
+  position: fixed;
+  width: 50px;
+}
 
 #drawer-handle-right {
-   position: fixed;
-   width: 50px;
- }
- 
- .drawer-handle i {
-   font-size: 35px;
-   opacity: 1;
- }
- 
- .drawer-handle i:hover {
-   -webkit-filter: invert(20%);
- }
+  position: fixed;
+  width: 50px;
+}
+
+.drawer-handle i {
+  font-size: 35px;
+  opacity: 1;
+}
+
+.drawer-handle i:hover {
+  -webkit-filter: invert(20%);
+}
 
 
 
- @keyframes gradient-transition { 
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+@keyframes gradient-transition { 
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
