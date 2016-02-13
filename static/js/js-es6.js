@@ -329,7 +329,6 @@ let abc = {
     </tr>`
 
     abc.playerCharacters.forEach(player => {
-      // if(player.playerName !== "npc" && player.playerName !== "Ryland") {
       if(abc.doNotInclude.indexOf(player.playerName) === -1) {
           htmlString += `<tr>
           <td>${player.playerName}</td>
@@ -551,6 +550,7 @@ let abc = {
         <option value='plains-2.jpg'>Plains 2</option>
         <option value='spider-den.jpg'>Spider Den</option>
         <option value='twooth.jpg'>Twooth</option>
+        <option value='ameretis-flashback-1.jpg'>Flashback 1</option>
       </select>
       `
     }
