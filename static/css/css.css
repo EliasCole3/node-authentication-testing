@@ -121,7 +121,9 @@ html,body{height:100%;}
   float: right;
 }
 
-
+#background-select {
+  width: 100%;
+}
 
 
 
