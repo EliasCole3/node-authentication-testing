@@ -435,6 +435,8 @@ var abc = {
       abc.socket.emit('background changed', { background: element.val() });
     });
 
+    $('#background_select_chosen').css('width', '100%');
+
     $("#show-backstory").click(function (e) {
       var detailText = abc.characterDetails.filter(function (detail) {
         return detail.playerCharacterId == abc.currentPlayerCharacterId;

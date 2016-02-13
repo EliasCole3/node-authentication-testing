@@ -581,6 +581,8 @@ let abc = {
       abc.socket.emit('background changed', {background: element.val()})
     })
 
+    $('#background_select_chosen').css('width', '100%')
+
     $("#show-backstory").click(e => {
       let detailText = abc.characterDetails.filter(detail => {
         return detail.playerCharacterId == abc.currentPlayerCharacterId
