@@ -862,7 +862,7 @@ var abc = {
       }
 
       var tooltipString = "";
-      var propsToIgnore = ['_id', 'imageFilename', '__v', 'tokenId', 'creatureId'];
+      var propsToIgnore = ['_id', 'imageFilename', '__v', 'tokenId', 'creatureId', 'level', 'xpValue', 'goldValue', 'race', 'name'];
 
       for (var prop in creature) {
         if (propsToIgnore.indexOf(prop) === -1) {

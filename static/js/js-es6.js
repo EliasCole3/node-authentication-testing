@@ -1141,7 +1141,7 @@ let abc = {
       }
 
       let tooltipString = ``
-      let propsToIgnore = ['_id', 'imageFilename', '__v', 'tokenId', 'creatureId']
+      let propsToIgnore = ['_id', 'imageFilename', '__v', 'tokenId', 'creatureId', 'level', 'xpValue', 'goldValue', 'race', 'name']
 
       for(let prop in creature) {
         if(propsToIgnore.indexOf(prop) === -1) {
