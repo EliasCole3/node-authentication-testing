@@ -798,7 +798,7 @@ let abc = {
       htmlString += `
       <div class='power-view'>
 
-        <b>${power.name}</b>
+        <b>${power.name}</b> <br>
         Type: ${power.type} <br>
         Attack Type: ${power.attackType} <br>
         Damage: ${power.damage} <br>
