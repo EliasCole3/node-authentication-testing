@@ -900,14 +900,14 @@ let abc = {
         htmlString += `
           <div class='power-view'>
 
-            <b>${power.name}</b> <br>
-            Type: ${power.type} <br>
-            Attack Type: ${power.attackType} <br>
-            Damage: ${power.damage} <br>
-            Effect: ${power.effect} <br>
-            Description: ${power.description} <br>
-            Flavor: ${power.flavorText} <br>
-            Upgrade Effects: ${power.upgrade} <br>
+            <b>${relevantPower.name}</b> <br>
+            Type: ${relevantPower.type} <br>
+            Attack Type: ${relevantPower.attackType} <br>
+            Damage: ${relevantPower.damage} <br>
+            Effect: ${relevantPower.effect} <br>
+            Description: ${relevantPower.description} <br>
+            Flavor: ${relevantPower.flavorText} <br>
+            Upgrade Effects: ${relevantPower.upgrade} <br>
 
           </div>`
       })

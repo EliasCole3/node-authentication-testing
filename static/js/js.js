@@ -662,7 +662,7 @@ var abc = {
           return power.powerId == join.powerId;
         })[0];
 
-        htmlString += "\n          <div class='power-view'>\n\n            <b>" + power.name + "</b> <br>\n            Type: " + power.type + " <br>\n            Attack Type: " + power.attackType + " <br>\n            Damage: " + power.damage + " <br>\n            Effect: " + power.effect + " <br>\n            Description: " + power.description + " <br>\n            Flavor: " + power.flavorText + " <br>\n            Upgrade Effects: " + power.upgrade + " <br>\n\n          </div>";
+        htmlString += "\n          <div class='power-view'>\n\n            <b>" + relevantPower.name + "</b> <br>\n            Type: " + relevantPower.type + " <br>\n            Attack Type: " + relevantPower.attackType + " <br>\n            Damage: " + relevantPower.damage + " <br>\n            Effect: " + relevantPower.effect + " <br>\n            Description: " + relevantPower.description + " <br>\n            Flavor: " + relevantPower.flavorText + " <br>\n            Upgrade Effects: " + relevantPower.upgrade + " <br>\n\n          </div>";
       });
 
       $("#powers").html(htmlString);
