@@ -798,6 +798,13 @@ let abc = {
 
     htmlString += `<br><br>`
 
+    htmlString += `
+      <input id='filter-text'>
+      <br>
+      <button id='filter' class='btn btn-sm'>Filter</button>
+      <div id='powers'>
+    `
+
     let uniqueTypes = ebot.getUniqueFields(abc.powers, 'type')
     console.log(uniqueTypes)
 
@@ -818,13 +825,65 @@ let abc = {
       </div>`
     })
 
+    htmlString += `</div>`
+
     return htmlString
   },
 
   handlerAllPowersImproved: () => {
+    $("#filter").click(e => {
+      let htmlString = ``
+      let filterText = $("#filter-text").val()
+      
+      if(filterText === '' || filterText === null) {
+        htmlString += abc.viewAllPowersJustPowers()
+      } else {
+        abc.powers.forEach(power => {
+          if(power.type.indexOf(filterText) > -1) {
+            htmlString += `
+            <div class='power-view'>
 
+              <b>${power.name}</b> <br>
+              Type: ${power.type} <br>
+              Attack Type: ${power.attackType} <br>
+              Damage: ${power.damage} <br>
+              Effect: ${power.effect} <br>
+              Description: ${power.description} <br>
+              Flavor: ${power.flavorText} <br>
+              Upgrade Effects: ${power.upgrade} <br>
+
+            </div>`
+          }
+          
+        })
+      }
+
+      $("#powers").html(htmlString)
+
+    })
   },
 
+  viewAllPowersJustPowers: () => {
+    let htmlString = ``
+
+    abc.powers.forEach(power => {
+      htmlString += `
+      <div class='power-view'>
+
+        <b>${power.name}</b> <br>
+        Type: ${power.type} <br>
+        Attack Type: ${power.attackType} <br>
+        Damage: ${power.damage} <br>
+        Effect: ${power.effect} <br>
+        Description: ${power.description} <br>
+        Flavor: ${power.flavorText} <br>
+        Upgrade Effects: ${power.upgrade} <br>
+
+      </div>`
+    })
+
+    return htmlString
+  },
 
 
 

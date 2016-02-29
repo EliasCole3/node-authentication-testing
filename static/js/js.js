@@ -611,6 +611,8 @@ var abc = {
 
     htmlString += "<br><br>";
 
+    htmlString += "\n      <input id='filter-text'>\n      <br>\n      <button id='filter' class='btn btn-sm'>Filter</button>\n      <div id='powers'>\n    ";
+
     var uniqueTypes = ebot.getUniqueFields(abc.powers, 'type');
     console.log(uniqueTypes);
 
@@ -618,10 +620,39 @@ var abc = {
       htmlString += "\n      <div class='power-view'>\n\n        <b>" + power.name + "</b> <br>\n        Type: " + power.type + " <br>\n        Attack Type: " + power.attackType + " <br>\n        Damage: " + power.damage + " <br>\n        Effect: " + power.effect + " <br>\n        Description: " + power.description + " <br>\n        Flavor: " + power.flavorText + " <br>\n        Upgrade Effects: " + power.upgrade + " <br>\n\n      </div>";
     });
 
+    htmlString += "</div>";
+
     return htmlString;
   },
 
-  handlerAllPowersImproved: function handlerAllPowersImproved() {},
+  handlerAllPowersImproved: function handlerAllPowersImproved() {
+    $("#filter").click(function (e) {
+      var htmlString = "";
+      var filterText = $("#filter-text").val();
+
+      if (filterText === '' || filterText === null) {
+        htmlString += abc.viewAllPowersJustPowers();
+      } else {
+        abc.powers.forEach(function (power) {
+          if (power.type.indexOf(filterText) > -1) {
+            htmlString += "\n            <div class='power-view'>\n\n              <b>" + power.name + "</b> <br>\n              Type: " + power.type + " <br>\n              Attack Type: " + power.attackType + " <br>\n              Damage: " + power.damage + " <br>\n              Effect: " + power.effect + " <br>\n              Description: " + power.description + " <br>\n              Flavor: " + power.flavorText + " <br>\n              Upgrade Effects: " + power.upgrade + " <br>\n\n            </div>";
+          }
+        });
+      }
+
+      $("#powers").html(htmlString);
+    });
+  },
+
+  viewAllPowersJustPowers: function viewAllPowersJustPowers() {
+    var htmlString = "";
+
+    abc.powers.forEach(function (power) {
+      htmlString += "\n      <div class='power-view'>\n\n        <b>" + power.name + "</b> <br>\n        Type: " + power.type + " <br>\n        Attack Type: " + power.attackType + " <br>\n        Damage: " + power.damage + " <br>\n        Effect: " + power.effect + " <br>\n        Description: " + power.description + " <br>\n        Flavor: " + power.flavorText + " <br>\n        Upgrade Effects: " + power.upgrade + " <br>\n\n      </div>";
+    });
+
+    return htmlString;
+  },
 
   viewHelpfulInfo: function viewHelpfulInfo() {
     var htmlString = "";
