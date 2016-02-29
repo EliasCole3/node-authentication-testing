@@ -652,18 +652,22 @@ var abc = {
       var countPowers = 0;
       var htmlString = "";
 
-      var relevantPowerJoins = abc.joinPlayerCharacterPowers.filter(function (join) {
-        return join.playerCharacterId == playerCharacterId;
-      });
+      if (playerCharacterId === '') {
+        htmlString += abc.viewAllPowersJustPowers();
+      } else {
+        var relevantPowerJoins = abc.joinPlayerCharacterPowers.filter(function (join) {
+          return join.playerCharacterId == playerCharacterId;
+        });
 
-      relevantPowerJoins.forEach(function (join) {
-        countPowers++;
-        var relevantPower = abc.powers.filter(function (power) {
-          return power.powerId == join.powerId;
-        })[0];
+        relevantPowerJoins.forEach(function (join) {
+          countPowers++;
+          var relevantPower = abc.powers.filter(function (power) {
+            return power.powerId == join.powerId;
+          })[0];
 
-        htmlString += "\n          <div class='power-view'>\n\n            <b>" + relevantPower.name + "</b> <br>\n            Type: " + relevantPower.type + " <br>\n            Attack Type: " + relevantPower.attackType + " <br>\n            Damage: " + relevantPower.damage + " <br>\n            Effect: " + relevantPower.effect + " <br>\n            Description: " + relevantPower.description + " <br>\n            Flavor: " + relevantPower.flavorText + " <br>\n            Upgrade Effects: " + relevantPower.upgrade + " <br>\n\n          </div>";
-      });
+          htmlString += "\n            <div class='power-view'>\n\n              <b>" + relevantPower.name + "</b> <br>\n              Type: " + relevantPower.type + " <br>\n              Attack Type: " + relevantPower.attackType + " <br>\n              Damage: " + relevantPower.damage + " <br>\n              Effect: " + relevantPower.effect + " <br>\n              Description: " + relevantPower.description + " <br>\n              Flavor: " + relevantPower.flavorText + " <br>\n              Upgrade Effects: " + relevantPower.upgrade + " <br>\n\n            </div>";
+        });
+      }
 
       $("#powers").html(htmlString);
       $('#count-powers').html(countPowers);

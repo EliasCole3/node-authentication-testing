@@ -887,30 +887,36 @@ let abc = {
       let countPowers = 0
       let htmlString = ``
 
-      let relevantPowerJoins = abc.joinPlayerCharacterPowers.filter(join => {
-        return join.playerCharacterId == playerCharacterId
-      })
+      if(playerCharacterId === '') {
+        htmlString += abc.viewAllPowersJustPowers()
+      } else {
+        let relevantPowerJoins = abc.joinPlayerCharacterPowers.filter(join => {
+          return join.playerCharacterId == playerCharacterId
+        })
 
-      relevantPowerJoins.forEach(join => {
-        countPowers++
-        let relevantPower = abc.powers.filter(power => {
-          return power.powerId == join.powerId
-        })[0]
+        relevantPowerJoins.forEach(join => {
+          countPowers++
+          let relevantPower = abc.powers.filter(power => {
+            return power.powerId == join.powerId
+          })[0]
 
-        htmlString += `
-          <div class='power-view'>
+          htmlString += `
+            <div class='power-view'>
 
-            <b>${relevantPower.name}</b> <br>
-            Type: ${relevantPower.type} <br>
-            Attack Type: ${relevantPower.attackType} <br>
-            Damage: ${relevantPower.damage} <br>
-            Effect: ${relevantPower.effect} <br>
-            Description: ${relevantPower.description} <br>
-            Flavor: ${relevantPower.flavorText} <br>
-            Upgrade Effects: ${relevantPower.upgrade} <br>
+              <b>${relevantPower.name}</b> <br>
+              Type: ${relevantPower.type} <br>
+              Attack Type: ${relevantPower.attackType} <br>
+              Damage: ${relevantPower.damage} <br>
+              Effect: ${relevantPower.effect} <br>
+              Description: ${relevantPower.description} <br>
+              Flavor: ${relevantPower.flavorText} <br>
+              Upgrade Effects: ${relevantPower.upgrade} <br>
 
-          </div>`
-      })
+            </div>`
+        })
+      }
+
+
 
       $("#powers").html(htmlString)
       $('#count-powers').html(countPowers)
