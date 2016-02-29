@@ -801,7 +801,7 @@ let abc = {
     htmlString += `
       <input id='filter-text'>
       <br>
-      <button id='filter' class='btn btn-sm'>Filter</button>
+      <button id='filter' class='btn btn-sm'>Filter</button> <div id='count-powers'>${abc.powers.length}</div>
       <div id='powers'>
     `
 
@@ -834,12 +834,15 @@ let abc = {
     $("#filter").click(e => {
       let htmlString = ``
       let filterText = $("#filter-text").val()
+      let countPowers = 0
       
       if(filterText === '' || filterText === null) {
         htmlString += abc.viewAllPowersJustPowers()
+        countPowers = abc.powers.length
       } else {
         abc.powers.forEach(power => {
           if(power.type.indexOf(filterText) > -1) {
+            countPowers++
             htmlString += `
             <div class='power-view'>
 
@@ -859,6 +862,7 @@ let abc = {
       }
 
       $("#powers").html(htmlString)
+      $('#count-powers').html(countPowers)
 
     })
   },
