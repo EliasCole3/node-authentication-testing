@@ -822,8 +822,6 @@ let abc = {
 
 
     let uniqueTypes = ebot.getUniqueFields(abc.powers, 'type')
-    console.log(uniqueTypes)
-
 
     abc.powers.forEach(power => {
       htmlString += `
@@ -887,7 +885,7 @@ let abc = {
       let element = $(e.currentTarget)
       let playerCharacterId = element.val()
       let countPowers = 0
-      console.log(playerCharacterId)
+      let htmlString = ``
 
       let relevantPowerJoins = abc.joinPlayerCharacterPowers.filter(join => {
         return join.playerCharacterId == playerCharacterId
@@ -913,6 +911,9 @@ let abc = {
 
           </div>`
       })
+
+      $("#powers").html(htmlString)
+      $('#count-powers').html(countPowers)
 
     })
   },
