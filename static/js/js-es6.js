@@ -774,7 +774,7 @@ let abc = {
 
     abc.powers.forEach(power => {
       htmlString += `
-      <div class='power-view'>
+      <div>
 
         <h4>${power.name}</h4>
         Type: ${power.type} <br>
@@ -791,8 +791,16 @@ let abc = {
     return htmlString
   },
 
+
+
   viewAllPowersImproved: () => {
     let htmlString = ``
+
+    htmlString += `<br><br>`
+
+    let uniqueTypes = ebot.getUniqueFields(abc.powers, 'type')
+    console.log(uniqueTypes)
+
 
     abc.powers.forEach(power => {
       htmlString += `
@@ -816,6 +824,9 @@ let abc = {
   handlerAllPowersImproved: () => {
 
   },
+
+
+
 
   viewHelpfulInfo: () => {
     let htmlString = ``
