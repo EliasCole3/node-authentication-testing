@@ -399,7 +399,7 @@ var abc = {
   },
 
   getLeftDrawerHtml: function getLeftDrawerHtml() {
-    var htmlString = "\n    <button id='toggle-lines' class='btn btn-md btn-info'>Toggle Lines</button> \n    <br><br>\n    <button id='show-all-powers' class='btn btn-md btn-info'>Show All Powers</button>\n    <br><br>\n    <button id='helpful-info' class='btn btn-md btn-info'>Helpful Info</button>\n    \n    ";
+    var htmlString = "\n    <button id='toggle-lines' class='btn btn-md btn-info'>Toggle Lines</button> \n    <br><br>\n    <button id='show-all-powers' class='btn btn-md btn-info'>Show All Powers</button>\n    <br><br>\n    <button id='show-all-powers-improved' class='btn btn-md btn-info'>Show All Powers+</button>\n    <br><br>\n    <button id='helpful-info' class='btn btn-md btn-info'>Helpful Info</button>\n    \n    ";
 
     if (abc.userIsPlayer && !abc.userIsDM) {
       htmlString += "\n      <br><br><button id='show-backstory' class='btn btn-md btn-info'>Show My Backstory</button>\n      <br><br><button id='show-my-powers' class='btn btn-md btn-info'>Show My Powers</button>\n      ";
@@ -423,6 +423,11 @@ var abc = {
 
     $("#show-all-powers").click(function (e) {
       ebot.showModal("All Powers", abc.viewAllPowers());
+    });
+
+    $("#show-all-powers-improved").click(function (e) {
+      ebot.showModal("All Powers+", abc.viewAllPowersImproved());
+      abc.handlerAllPowersImproved();
     });
 
     $("#helpful-info").click(function (e) {
@@ -600,6 +605,18 @@ var abc = {
 
     return htmlString;
   },
+
+  viewAllPowersImproved: function viewAllPowersImproved() {
+    var htmlString = "";
+
+    abc.powers.forEach(function (power) {
+      htmlString += "\n      <div class='power-view'>\n\n        <h5>" + power.name + "</h5>\n        Type: " + power.type + " <br>\n        Attack Type: " + power.attackType + " <br>\n        Damage: " + power.damage + " <br>\n        Effect: " + power.effect + " <br>\n        Description: " + power.description + " <br>\n        Flavor: " + power.flavorText + " <br>\n        Upgrade Effects: " + power.upgrade + " <br>\n\n      </div>";
+    });
+
+    return htmlString;
+  },
+
+  handlerAllPowersImproved: function handlerAllPowersImproved() {},
 
   viewHelpfulInfo: function viewHelpfulInfo() {
     var htmlString = "";

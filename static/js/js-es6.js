@@ -515,6 +515,8 @@ let abc = {
     <br><br>
     <button id='show-all-powers' class='btn btn-md btn-info'>Show All Powers</button>
     <br><br>
+    <button id='show-all-powers-improved' class='btn btn-md btn-info'>Show All Powers+</button>
+    <br><br>
     <button id='helpful-info' class='btn btn-md btn-info'>Helpful Info</button>
     
     `
@@ -569,6 +571,11 @@ let abc = {
 
     $("#show-all-powers").click(e => {
       ebot.showModal("All Powers", abc.viewAllPowers())
+    })
+
+    $("#show-all-powers-improved").click(e => {
+      ebot.showModal("All Powers+", abc.viewAllPowersImproved())
+      abc.handlerAllPowersImproved()
     })
 
     $("#helpful-info").click(e => {
@@ -782,6 +789,32 @@ let abc = {
     })
 
     return htmlString
+  },
+
+  viewAllPowersImproved: () => {
+    let htmlString = ``
+
+    abc.powers.forEach(power => {
+      htmlString += `
+      <div class='power-view'>
+
+        <h5>${power.name}</h5>
+        Type: ${power.type} <br>
+        Attack Type: ${power.attackType} <br>
+        Damage: ${power.damage} <br>
+        Effect: ${power.effect} <br>
+        Description: ${power.description} <br>
+        Flavor: ${power.flavorText} <br>
+        Upgrade Effects: ${power.upgrade} <br>
+
+      </div>`
+    })
+
+    return htmlString
+  },
+
+  handlerAllPowersImproved: () => {
+
   },
 
   viewHelpfulInfo: () => {
