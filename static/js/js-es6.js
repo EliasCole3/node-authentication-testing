@@ -802,8 +802,24 @@ let abc = {
       <input id='filter-text'>
       <br>
       <button id='filter' class='btn btn-sm'>Filter</button> <div id='count-powers'>${abc.powers.length}</div>
+
+      <select id='character-filter'>
+        <option value=''>All</option>
+        <option value='1'>Laurana Lightbrand</option>
+        <option value='2'>Andros Vexstine</option>
+        <option value='3'>Skjor the Scarred</option>
+        <option value='4'>Greg Symbol</option>
+        <option value='5'>Ares Icharyd</option>
+        <option value='6'>WildKat</option>
+      </select>
+
       <div id='powers'>
     `
+
+
+
+
+
 
     let uniqueTypes = ebot.getUniqueFields(abc.powers, 'type')
     console.log(uniqueTypes)
@@ -863,6 +879,40 @@ let abc = {
 
       $("#powers").html(htmlString)
       $('#count-powers').html(countPowers)
+
+    })
+
+
+    $("#character-filter").change(e => {
+      let element = $(e.currentTarget)
+      let playerCharacterId = element.val()
+      let countPowers = 0
+      console.log(playerCharacterId)
+
+      let relevantPowerJoins = abc.joinPlayerCharacterPowers.filter(join => {
+        return join.playerCharacterId == playerCharacterId
+      })
+
+      relevantPowerJoins.forEach(join => {
+        countPowers++
+        let relevantPower = abc.powers.filter(power => {
+          return power.powerId == join.powerId
+        })[0]
+
+        htmlString += `
+          <div class='power-view'>
+
+            <b>${power.name}</b> <br>
+            Type: ${power.type} <br>
+            Attack Type: ${power.attackType} <br>
+            Damage: ${power.damage} <br>
+            Effect: ${power.effect} <br>
+            Description: ${power.description} <br>
+            Flavor: ${power.flavorText} <br>
+            Upgrade Effects: ${power.upgrade} <br>
+
+          </div>`
+      })
 
     })
   },

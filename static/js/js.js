@@ -611,7 +611,7 @@ var abc = {
 
     htmlString += "<br><br>";
 
-    htmlString += "\n      <input id='filter-text'>\n      <br>\n      <button id='filter' class='btn btn-sm'>Filter</button> <div id='count-powers'>" + abc.powers.length + "</div>\n      <div id='powers'>\n    ";
+    htmlString += "\n      <input id='filter-text'>\n      <br>\n      <button id='filter' class='btn btn-sm'>Filter</button> <div id='count-powers'>" + abc.powers.length + "</div>\n\n      <select id='character-filter'>\n        <option value=''>All</option>\n        <option value='1'>Laurana Lightbrand</option>\n        <option value='2'>Andros Vexstine</option>\n        <option value='3'>Skjor the Scarred</option>\n        <option value='4'>Greg Symbol</option>\n        <option value='5'>Ares Icharyd</option>\n        <option value='6'>WildKat</option>\n      </select>\n\n      <div id='powers'>\n    ";
 
     var uniqueTypes = ebot.getUniqueFields(abc.powers, 'type');
     console.log(uniqueTypes);
@@ -645,6 +645,26 @@ var abc = {
 
       $("#powers").html(htmlString);
       $('#count-powers').html(countPowers);
+    });
+
+    $("#character-filter").change(function (e) {
+      var element = $(e.currentTarget);
+      var playerCharacterId = element.val();
+      var countPowers = 0;
+      console.log(playerCharacterId);
+
+      var relevantPowerJoins = abc.joinPlayerCharacterPowers.filter(function (join) {
+        return join.playerCharacterId == playerCharacterId;
+      });
+
+      relevantPowerJoins.forEach(function (join) {
+        countPowers++;
+        var relevantPower = abc.powers.filter(function (power) {
+          return power.powerId == join.powerId;
+        })[0];
+
+        htmlString += "\n          <div class='power-view'>\n\n            <b>" + power.name + "</b> <br>\n            Type: " + power.type + " <br>\n            Attack Type: " + power.attackType + " <br>\n            Damage: " + power.damage + " <br>\n            Effect: " + power.effect + " <br>\n            Description: " + power.description + " <br>\n            Flavor: " + power.flavorText + " <br>\n            Upgrade Effects: " + power.upgrade + " <br>\n\n          </div>";
+      });
     });
   },
 
