@@ -889,6 +889,7 @@ let abc = {
 
       if(playerCharacterId === '') {
         htmlString += abc.viewAllPowersJustPowers()
+        countPowers = abc.powers.length
       } else {
         let relevantPowerJoins = abc.joinPlayerCharacterPowers.filter(join => {
           return join.playerCharacterId == playerCharacterId

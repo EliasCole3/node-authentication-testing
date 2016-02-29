@@ -654,6 +654,7 @@ var abc = {
 
       if (playerCharacterId === '') {
         htmlString += abc.viewAllPowersJustPowers();
+        countPowers = abc.powers.length;
       } else {
         var relevantPowerJoins = abc.joinPlayerCharacterPowers.filter(function (join) {
           return join.playerCharacterId == playerCharacterId;
