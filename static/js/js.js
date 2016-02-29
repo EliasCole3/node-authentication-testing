@@ -610,7 +610,7 @@ var abc = {
     var htmlString = "";
 
     abc.powers.forEach(function (power) {
-      htmlString += "\n      <div class='power-view'>\n\n        <h5>" + power.name + "</h5>\n        Type: " + power.type + " <br>\n        Attack Type: " + power.attackType + " <br>\n        Damage: " + power.damage + " <br>\n        Effect: " + power.effect + " <br>\n        Description: " + power.description + " <br>\n        Flavor: " + power.flavorText + " <br>\n        Upgrade Effects: " + power.upgrade + " <br>\n\n      </div>";
+      htmlString += "\n      <div class='power-view'>\n\n        <b>" + power.name + "</b>\n        Type: " + power.type + " <br>\n        Attack Type: " + power.attackType + " <br>\n        Damage: " + power.damage + " <br>\n        Effect: " + power.effect + " <br>\n        Description: " + power.description + " <br>\n        Flavor: " + power.flavorText + " <br>\n        Upgrade Effects: " + power.upgrade + " <br>\n\n      </div>";
     });
 
     return htmlString;
