@@ -611,7 +611,7 @@ var abc = {
 
     htmlString += "<br><br>";
 
-    htmlString += "\n      <input id='filter-text'>\n      <br>\n      <button id='filter' class='btn btn-sm'>Filter</button> <div id='count-powers'>" + abc.powers.length + "</div>\n\n      <select id='character-filter'>\n        <option value=''>All</option>\n        <option value='1'>Laurana Lightbrand</option>\n        <option value='2'>Andros Vexstine</option>\n        <option value='3'>Skjor the Scarred</option>\n        <option value='4'>Greg Symbol</option>\n        <option value='5'>Ares Icharyd</option>\n        <option value='6'>WildKat</option>\n      </select>\n\n      <div id='powers'>\n    ";
+    htmlString += "\n      <input id='filter-text'>\n      <br>\n      <button id='filter' class='btn btn-sm'>Filter</button> <div id='count-powers'>" + abc.powers.length + "</div>\n\n      <select id='character-filter'>\n        <option value=''>All</option>\n        <option value='1'>Laurana Lightbrand</option>\n        <option value='2'>Andros Vexstine</option>\n        <option value='3'>Skjor the Scarred</option>\n        <option value='4'>Greg Symbol</option>\n        <option value='5'>Ares Icharyd</option>\n        <option value='8'>WildKat</option>\n        <option value='9'>Scree Lo Tal</option>\n      </select>\n\n      <div id='powers'>\n    ";
 
     var uniqueTypes = ebot.getUniqueFields(abc.powers, 'type');
 

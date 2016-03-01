@@ -810,7 +810,8 @@ let abc = {
         <option value='3'>Skjor the Scarred</option>
         <option value='4'>Greg Symbol</option>
         <option value='5'>Ares Icharyd</option>
-        <option value='6'>WildKat</option>
+        <option value='8'>WildKat</option>
+        <option value='9'>Scree Lo Tal</option>
       </select>
 
       <div id='powers'>
