@@ -650,6 +650,7 @@ var abc = {
       } else {
         abc.powers.forEach(function (power) {
           // if(power.type.indexOf(filterText) > -1) {
+          console.log(power);
           console.log(power[propOnWhichToFilter]);
           if (power[propOnWhichToFilter].indexOf(filterText) > -1) {
             countPowers++;
