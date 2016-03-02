@@ -825,9 +825,13 @@ let abc = {
       <input id='filter-text'>
       <button id='filter' class='btn btn-sm'>Filter</button>
 
-      <label>Current Powers Shown:</label><div id='count-powers'>${abc.powers.length}</div>
+      <br>
 
-      <select id='character-filter'>
+      <label>Current Powers Shown:
+        <div id='count-powers'>${abc.powers.length}</div>
+      </label>
+
+      <select id='character-filter' class='form-control'>
         <option value=''>All</option>
         <option value='1'>Laurana Lightbrand</option>
         <option value='2'>Andros Vexstine</option>
