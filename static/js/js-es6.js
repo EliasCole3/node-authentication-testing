@@ -687,6 +687,7 @@ let abc = {
       return pc.playerCharacterId === abc.currentPlayerCharacterId
     })[0]
 
+    console.log("Called")
     console.log(currentPlayerCharacter)
 
 
