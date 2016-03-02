@@ -890,6 +890,7 @@ let abc = {
       } else {
         abc.powers.forEach(power => {
           // if(power.type.indexOf(filterText) > -1) {
+            console.log(power[propOnWhichToFilter])
           if(power[propOnWhichToFilter].indexOf(filterText) > -1) {
             countPowers++
             htmlString += `

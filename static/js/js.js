@@ -650,6 +650,7 @@ var abc = {
       } else {
         abc.powers.forEach(function (power) {
           // if(power.type.indexOf(filterText) > -1) {
+          console.log(power[propOnWhichToFilter]);
           if (power[propOnWhichToFilter].indexOf(filterText) > -1) {
             countPowers++;
             htmlString += "\n            <div class='power-view'>\n\n              <b>" + power.name + "</b> <br>\n              Type: " + power.type + " <br>\n              Attack Type: " + power.attackType + " <br>\n              Damage: " + power.damage + " <br>\n              Effect: " + power.effect + " <br>\n              Description: " + power.description + " <br>\n              Flavor: " + power.flavorText + " <br>\n              Upgrade Effects: " + power.upgrade + " <br>\n\n            </div>";
