@@ -694,7 +694,6 @@ let abc = {
       htmlString += `<br>${item}`
     })
 
-
     return htmlString
   },
 
@@ -811,9 +810,22 @@ let abc = {
     htmlString += `<br><br>`
 
     htmlString += `
-      <input id='filter-text'>
+      <label class="radio-inline">
+        <input type="radio" name="power-filter-radio" id="title" value="title"> Title
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="power-filter-radio" id="type" value="type"> Type
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="power-filter-radio" id="attack-type" value="attack-type"> Attack Type
+      </label>
+
       <br>
-      <button id='filter' class='btn btn-sm'>Filter</button> <div id='count-powers'>${abc.powers.length}</div>
+
+      <input id='filter-text'>
+      <button id='filter' class='btn btn-sm'>Filter</button>
+
+      <label>Current Powers Shown:</label><div id='count-powers'>${abc.powers.length}</div>
 
       <select id='character-filter'>
         <option value=''>All</option>
