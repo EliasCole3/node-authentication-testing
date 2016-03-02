@@ -827,10 +827,6 @@ let abc = {
 
       <br>
 
-      <label>Current Powers Shown:
-        <div id='count-powers'>${abc.powers.length}</div>
-      </label>
-
       <select id='character-filter' class='form-control'>
         <option value=''>All</option>
         <option value='1'>Laurana Lightbrand</option>
@@ -841,6 +837,12 @@ let abc = {
         <option value='8'>WildKat</option>
         <option value='9'>Scree Lo Tal</option>
       </select>
+
+      <label>Current Powers Shown:
+        <div id='count-powers'>${abc.powers.length}</div>
+      </label>
+
+      <br><br>
 
       <div id='powers'>
     `
