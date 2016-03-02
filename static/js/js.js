@@ -641,6 +641,9 @@ var abc = {
       var filterText = $("#filter-text").val();
       var countPowers = 0;
 
+      var propOnWhichToFilter = $('input:radio[name=power-filter-radio]:checked').val();
+      console.log(propOnWhichToFilter);
+
       if (filterText === '' || filterText === null) {
         htmlString += abc.viewAllPowersJustPowers();
         countPowers = abc.powers.length;

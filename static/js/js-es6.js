@@ -880,6 +880,9 @@ let abc = {
       let htmlString = ``
       let filterText = $("#filter-text").val()
       let countPowers = 0
+
+      let propOnWhichToFilter = $('input:radio[name=power-filter-radio]:checked').val()
+      console.log(propOnWhichToFilter)
       
       if(filterText === '' || filterText === null) {
         htmlString += abc.viewAllPowersJustPowers()
