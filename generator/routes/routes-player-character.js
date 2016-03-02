@@ -41,6 +41,7 @@
       playerCharacter.initiative = req.body.initiative
       playerCharacter.actionPoints = req.body.actionPoints
       playerCharacter.imageFilename = req.body.imageFilename
+      playerCharacter.items = req.body.items
 
       playerCharacter.save(function(err) {
         if(err)
@@ -86,6 +87,7 @@
         playerCharacter.initiative = req.body.initiative
         playerCharacter.actionPoints = req.body.actionPoints
         playerCharacter.imageFilename = req.body.imageFilename
+        playerCharacter.items = req.body.items
 
         playerCharacter.save(function(err) {
           if(err)

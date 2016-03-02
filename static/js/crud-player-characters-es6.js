@@ -49,6 +49,7 @@ let abc = {
       <th>Initiative</th>
       <th>Action Points</th>
       <th>Image Filename</th>
+      <th>Items</th>
       <th></th>
       <th></th>
     </tr>`
@@ -81,6 +82,7 @@ let abc = {
       htmlString += `<td>${playerCharacter.initiative}</td>`
       htmlString += `<td>${playerCharacter.actionPoints}</td>`
       htmlString += `<td>${playerCharacter.imageFilename}</td>`
+      htmlString += `<td>${playerCharacter.items}</td>`
       htmlString += `<td><button class='btn btn-sm update-player-character' data-id='${playerCharacter._id}'>Update</button></td>`
       htmlString += `<td><button class='btn btn-sm delete-player-character' data-id='${playerCharacter._id}'>Delete</button></td>`
       htmlString += `</tr>`
@@ -144,7 +146,8 @@ let abc = {
         "speed": $("#speed").val(),
         "initiative": $("#initiative").val(),
         "actionPoints": $("#action-points").val(),
-        "imageFilename": $("#image-filename").val()
+        "imageFilename": $("#image-filename").val(),
+        "items": $("#items").val()
       })
 
       abc.createPlayerCharacter(jsonData).then(data => {
@@ -185,7 +188,8 @@ let abc = {
         "speed": $("#speed").val(),
         "initiative": $("#initiative").val(),
         "actionPoints": $("#action-points").val(),
-        "imageFilename": $("#image-filename").val()
+        "imageFilename": $("#image-filename").val(),
+        "items": $("#items").val()
       })
 
       abc.updatePlayerCharacter(id, jsonData).then(data => {
@@ -237,6 +241,7 @@ let abc = {
     <label>Initiative</label> <input id='initiative' type='number' class='form-control'><br />
     <label>Action Points</label> <input id='action-points' type='number' class='form-control'><br />
     <label>Image Filename</label> <input id='image-filename' class='form-control'><br />
+    <label>Items</label> <textarea id='items' class='form-control'></textarea><br /><br />
     <button id='submit' class='form-control' type='submit'>Submit</button>`
     return htmlString
   },
@@ -268,7 +273,8 @@ let abc = {
       $("#speed").val(data.speed),
       $("#initiative").val(data.initiative),
       $("#action-points").val(data.actionPoints),
-      $("#image-filename").val(data.imageFilename)
+      $("#image-filename").val(data.imageFilename),
+      $("#items").val(data.items)
     })
   },
 

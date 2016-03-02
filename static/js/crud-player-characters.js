@@ -23,7 +23,7 @@ var abc = {
   createTable: function createTable() {
     var htmlString = "<table id='player-character-table' class='table'>";
 
-    htmlString += "\n    <tr>\n      <th>Player Character Id</th>\n      <th>Player Name</th>\n      <th>Character Name</th>\n      <th>Race</th>\n      <th>G Class</th>\n      <th>Hp</th>\n      <th>Ac</th>\n      <th>Will</th>\n      <th>Reflex</th>\n      <th>Strength</th>\n      <th>Constitution</th>\n      <th>Dexterity</th>\n      <th>Intelligence</th>\n      <th>Wisdom</th>\n      <th>Charisma</th>\n      <th>Gold</th>\n      <th>Xp</th>\n      <th>Level</th>\n      <th>Base to Hit Ac</th>\n      <th>Base to Hit Will</th>\n      <th>Base to Hit Reflex</th>\n      <th>Damage Modifier</th>\n      <th>Speed</th>\n      <th>Initiative</th>\n      <th>Action Points</th>\n      <th>Image Filename</th>\n      <th></th>\n      <th></th>\n    </tr>";
+    htmlString += "\n    <tr>\n      <th>Player Character Id</th>\n      <th>Player Name</th>\n      <th>Character Name</th>\n      <th>Race</th>\n      <th>G Class</th>\n      <th>Hp</th>\n      <th>Ac</th>\n      <th>Will</th>\n      <th>Reflex</th>\n      <th>Strength</th>\n      <th>Constitution</th>\n      <th>Dexterity</th>\n      <th>Intelligence</th>\n      <th>Wisdom</th>\n      <th>Charisma</th>\n      <th>Gold</th>\n      <th>Xp</th>\n      <th>Level</th>\n      <th>Base to Hit Ac</th>\n      <th>Base to Hit Will</th>\n      <th>Base to Hit Reflex</th>\n      <th>Damage Modifier</th>\n      <th>Speed</th>\n      <th>Initiative</th>\n      <th>Action Points</th>\n      <th>Image Filename</th>\n      <th>Items</th>\n      <th></th>\n      <th></th>\n    </tr>";
 
     abc.playerCharacters.forEach(function (playerCharacter) {
       htmlString += "<tr data-id='" + playerCharacter._id + "'>";
@@ -53,6 +53,7 @@ var abc = {
       htmlString += "<td>" + playerCharacter.initiative + "</td>";
       htmlString += "<td>" + playerCharacter.actionPoints + "</td>";
       htmlString += "<td>" + playerCharacter.imageFilename + "</td>";
+      htmlString += "<td>" + playerCharacter.items + "</td>";
       htmlString += "<td><button class='btn btn-sm update-player-character' data-id='" + playerCharacter._id + "'>Update</button></td>";
       htmlString += "<td><button class='btn btn-sm delete-player-character' data-id='" + playerCharacter._id + "'>Delete</button></td>";
       htmlString += "</tr>";
@@ -115,7 +116,8 @@ var abc = {
         "speed": $("#speed").val(),
         "initiative": $("#initiative").val(),
         "actionPoints": $("#action-points").val(),
-        "imageFilename": $("#image-filename").val()
+        "imageFilename": $("#image-filename").val(),
+        "items": $("#items").val()
       });
 
       abc.createPlayerCharacter(jsonData).then(function (data) {
@@ -156,7 +158,8 @@ var abc = {
         "speed": $("#speed").val(),
         "initiative": $("#initiative").val(),
         "actionPoints": $("#action-points").val(),
-        "imageFilename": $("#image-filename").val()
+        "imageFilename": $("#image-filename").val(),
+        "items": $("#items").val()
       });
 
       abc.updatePlayerCharacter(id, jsonData).then(function (data) {
@@ -181,13 +184,13 @@ var abc = {
   },
 
   getPlayerCharacterForm: function getPlayerCharacterForm() {
-    var htmlString = "\n    <label>Player Character Id</label> <input id='player-character-id' type='number' class='form-control'><br />\n    <label>Player Name</label> <input id='player-name' class='form-control'><br />\n    <label>Character Name</label> <input id='character-name' class='form-control'><br />\n    <label>Race</label> <input id='race' class='form-control'><br />\n    <label>G Class</label> <input id='g-class' class='form-control'><br />\n    <label>Hp</label> <input id='hp' type='number' class='form-control'><br />\n    <label>Ac</label> <input id='ac' type='number' class='form-control'><br />\n    <label>Will</label> <input id='will' type='number' class='form-control'><br />\n    <label>Reflex</label> <input id='reflex' type='number' class='form-control'><br />\n    <label>Strength</label> <input id='strength' type='number' class='form-control'><br />\n    <label>Constitution</label> <input id='constitution' type='number' class='form-control'><br />\n    <label>Dexterity</label> <input id='dexterity' type='number' class='form-control'><br />\n    <label>Intelligence</label> <input id='intelligence' type='number' class='form-control'><br />\n    <label>Wisdom</label> <input id='wisdom' type='number' class='form-control'><br />\n    <label>Charisma</label> <input id='charisma' type='number' class='form-control'><br />\n    <label>Gold</label> <input id='gold' class='form-control'><br />\n    <label>Xp</label> <input id='xp' type='number' class='form-control'><br />\n    <label>Level</label> <input id='level' type='number' class='form-control'><br />\n    <label>Base to Hit Ac</label> <input id='base-to-hit-ac' type='number' class='form-control'><br />\n    <label>Base to Hit Will</label> <input id='base-to-hit-will' type='number' class='form-control'><br />\n    <label>Base to Hit Reflex</label> <input id='base-to-hit-reflex' type='number' class='form-control'><br />\n    <label>Damage Modifier</label> <input id='damage-modifier' type='number' class='form-control'><br />\n    <label>Speed</label> <input id='speed' type='number' class='form-control'><br />\n    <label>Initiative</label> <input id='initiative' type='number' class='form-control'><br />\n    <label>Action Points</label> <input id='action-points' type='number' class='form-control'><br />\n    <label>Image Filename</label> <input id='image-filename' class='form-control'><br />\n    <button id='submit' class='form-control' type='submit'>Submit</button>";
+    var htmlString = "\n    <label>Player Character Id</label> <input id='player-character-id' type='number' class='form-control'><br />\n    <label>Player Name</label> <input id='player-name' class='form-control'><br />\n    <label>Character Name</label> <input id='character-name' class='form-control'><br />\n    <label>Race</label> <input id='race' class='form-control'><br />\n    <label>G Class</label> <input id='g-class' class='form-control'><br />\n    <label>Hp</label> <input id='hp' type='number' class='form-control'><br />\n    <label>Ac</label> <input id='ac' type='number' class='form-control'><br />\n    <label>Will</label> <input id='will' type='number' class='form-control'><br />\n    <label>Reflex</label> <input id='reflex' type='number' class='form-control'><br />\n    <label>Strength</label> <input id='strength' type='number' class='form-control'><br />\n    <label>Constitution</label> <input id='constitution' type='number' class='form-control'><br />\n    <label>Dexterity</label> <input id='dexterity' type='number' class='form-control'><br />\n    <label>Intelligence</label> <input id='intelligence' type='number' class='form-control'><br />\n    <label>Wisdom</label> <input id='wisdom' type='number' class='form-control'><br />\n    <label>Charisma</label> <input id='charisma' type='number' class='form-control'><br />\n    <label>Gold</label> <input id='gold' class='form-control'><br />\n    <label>Xp</label> <input id='xp' type='number' class='form-control'><br />\n    <label>Level</label> <input id='level' type='number' class='form-control'><br />\n    <label>Base to Hit Ac</label> <input id='base-to-hit-ac' type='number' class='form-control'><br />\n    <label>Base to Hit Will</label> <input id='base-to-hit-will' type='number' class='form-control'><br />\n    <label>Base to Hit Reflex</label> <input id='base-to-hit-reflex' type='number' class='form-control'><br />\n    <label>Damage Modifier</label> <input id='damage-modifier' type='number' class='form-control'><br />\n    <label>Speed</label> <input id='speed' type='number' class='form-control'><br />\n    <label>Initiative</label> <input id='initiative' type='number' class='form-control'><br />\n    <label>Action Points</label> <input id='action-points' type='number' class='form-control'><br />\n    <label>Image Filename</label> <input id='image-filename' class='form-control'><br />\n    <label>Items</label> <textarea id='items' class='form-control'></textarea><br /><br />\n    <button id='submit' class='form-control' type='submit'>Submit</button>";
     return htmlString;
   },
 
   fillPlayerCharacterFormWithOldData: function fillPlayerCharacterFormWithOldData(id) {
     abc.getPlayerCharacter(id).then(function (data) {
-      $("#player-character-id").val(data.playerCharacterId), $("#player-name").val(data.playerName), $("#character-name").val(data.characterName), $("#race").val(data.race), $("#g-class").val(data.gClass), $("#hp").val(data.hp), $("#ac").val(data.ac), $("#will").val(data.will), $("#reflex").val(data.reflex), $("#strength").val(data.strength), $("#constitution").val(data.constitution), $("#dexterity").val(data.dexterity), $("#intelligence").val(data.intelligence), $("#wisdom").val(data.wisdom), $("#charisma").val(data.charisma), $("#gold").val(data.gold), $("#xp").val(data.xp), $("#level").val(data.level), $("#base-to-hit-ac").val(data.baseToHitAc), $("#base-to-hit-will").val(data.baseToHitWill), $("#base-to-hit-reflex").val(data.baseToHitReflex), $("#damage-modifier").val(data.damageModifier), $("#speed").val(data.speed), $("#initiative").val(data.initiative), $("#action-points").val(data.actionPoints), $("#image-filename").val(data.imageFilename);
+      $("#player-character-id").val(data.playerCharacterId), $("#player-name").val(data.playerName), $("#character-name").val(data.characterName), $("#race").val(data.race), $("#g-class").val(data.gClass), $("#hp").val(data.hp), $("#ac").val(data.ac), $("#will").val(data.will), $("#reflex").val(data.reflex), $("#strength").val(data.strength), $("#constitution").val(data.constitution), $("#dexterity").val(data.dexterity), $("#intelligence").val(data.intelligence), $("#wisdom").val(data.wisdom), $("#charisma").val(data.charisma), $("#gold").val(data.gold), $("#xp").val(data.xp), $("#level").val(data.level), $("#base-to-hit-ac").val(data.baseToHitAc), $("#base-to-hit-will").val(data.baseToHitWill), $("#base-to-hit-reflex").val(data.baseToHitReflex), $("#damage-modifier").val(data.damageModifier), $("#speed").val(data.speed), $("#initiative").val(data.initiative), $("#action-points").val(data.actionPoints), $("#image-filename").val(data.imageFilename), $("#items").val(data.items);
     });
   },
 

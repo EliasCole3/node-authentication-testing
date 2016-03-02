@@ -130,6 +130,11 @@
       "testValue": ":)",
       "updateValue": ":D",
       "elementType": "text"
+    },
+    "items": {
+      "testValue": "item1",
+      "updateValue": "item2",
+      "elementType": "textarea"
     }
   }
 }

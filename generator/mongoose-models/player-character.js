@@ -28,7 +28,8 @@ var playerCharacterSchema = new Schema({
   speed: String,
   initiative: String,
   actionPoints: String,
-  imageFilename: String
+  imageFilename: String,
+  items: String
 })
 
 module.exports = mongoose.model('PlayerCharacter', playerCharacterSchema, 'player_characters')
