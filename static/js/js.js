@@ -622,7 +622,7 @@ var abc = {
 
     htmlString += "<br><br>";
 
-    htmlString += "\n      <label class=\"radio-inline\">\n        <input type=\"radio\" name=\"power-filter-radio\" id=\"title\" value=\"title\"> Title\n      </label>\n      <label class=\"radio-inline\">\n        <input type=\"radio\" name=\"power-filter-radio\" id=\"type\" value=\"type\"> Type\n      </label>\n      <label class=\"radio-inline\">\n        <input type=\"radio\" name=\"power-filter-radio\" id=\"attack-type\" value=\"attack-type\"> Attack Type\n      </label>\n\n      <br>\n\n      <input id='filter-text'>\n      <button id='filter' class='btn btn-sm'>Filter</button>\n\n      <br>\n\n      <select id='character-filter' class='form-control'>\n        <option value=''>All</option>\n        <option value='1'>Laurana Lightbrand</option>\n        <option value='2'>Andros Vexstine</option>\n        <option value='3'>Skjor the Scarred</option>\n        <option value='4'>Greg Symbol</option>\n        <option value='5'>Ares Icharyd</option>\n        <option value='8'>WildKat</option>\n        <option value='9'>Scree Lo Tal</option>\n      </select>\n\n      <label>Current Powers Shown:\n        <div id='count-powers'>" + abc.powers.length + "</div>\n      </label>\n\n      <br><br>\n\n      <div id='powers'>\n    ";
+    htmlString += "\n      <label class=\"radio-inline\">\n        <input type=\"radio\" name=\"power-filter-radio\" id=\"title\" value=\"title\"> Title\n      </label>\n      <label class=\"radio-inline\">\n        <input type=\"radio\" name=\"power-filter-radio\" id=\"type\" value=\"type\"> Type\n      </label>\n      <label class=\"radio-inline\">\n        <input type=\"radio\" name=\"power-filter-radio\" id=\"attack-type\" value=\"attackType\"> Attack Type\n      </label>\n\n      <br>\n\n      <input id='filter-text'>\n      <button id='filter' class='btn btn-sm'>Filter</button>\n\n      <br>\n\n      <select id='character-filter' class='form-control'>\n        <option value=''>All</option>\n        <option value='1'>Laurana Lightbrand</option>\n        <option value='2'>Andros Vexstine</option>\n        <option value='3'>Skjor the Scarred</option>\n        <option value='4'>Greg Symbol</option>\n        <option value='5'>Ares Icharyd</option>\n        <option value='8'>WildKat</option>\n        <option value='9'>Scree Lo Tal</option>\n      </select>\n\n      <label>Current Powers Shown:\n        <div id='count-powers'>" + abc.powers.length + "</div>\n      </label>\n\n      <br><br>\n\n      <div id='powers'>\n    ";
 
     var uniqueTypes = ebot.getUniqueFields(abc.powers, 'type');
 
@@ -649,7 +649,8 @@ var abc = {
         countPowers = abc.powers.length;
       } else {
         abc.powers.forEach(function (power) {
-          if (power.type.indexOf(filterText) > -1) {
+          // if(power.type.indexOf(filterText) > -1) {
+          if (power[propOnWhichToFilter].indexOf(filterText) > -1) {
             countPowers++;
             htmlString += "\n            <div class='power-view'>\n\n              <b>" + power.name + "</b> <br>\n              Type: " + power.type + " <br>\n              Attack Type: " + power.attackType + " <br>\n              Damage: " + power.damage + " <br>\n              Effect: " + power.effect + " <br>\n              Description: " + power.description + " <br>\n              Flavor: " + power.flavorText + " <br>\n              Upgrade Effects: " + power.upgrade + " <br>\n\n            </div>";
           }

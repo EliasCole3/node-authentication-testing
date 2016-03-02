@@ -817,7 +817,7 @@ let abc = {
         <input type="radio" name="power-filter-radio" id="type" value="type"> Type
       </label>
       <label class="radio-inline">
-        <input type="radio" name="power-filter-radio" id="attack-type" value="attack-type"> Attack Type
+        <input type="radio" name="power-filter-radio" id="attack-type" value="attackType"> Attack Type
       </label>
 
       <br>
@@ -889,7 +889,8 @@ let abc = {
         countPowers = abc.powers.length
       } else {
         abc.powers.forEach(power => {
-          if(power.type.indexOf(filterText) > -1) {
+          // if(power.type.indexOf(filterText) > -1) {
+          if(power[propOnWhichToFilter].indexOf(filterText) > -1) {
             countPowers++
             htmlString += `
             <div class='power-view'>
