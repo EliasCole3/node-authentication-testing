@@ -811,7 +811,7 @@ let abc = {
 
     htmlString += `
       <label class="radio-inline">
-        <input type="radio" name="power-filter-radio" id="title" value="title"> Title
+        <input type="radio" name="power-filter-radio" id="name" value="name"> Title
       </label>
       <label class="radio-inline">
         <input type="radio" name="power-filter-radio" id="type" value="type"> Type
