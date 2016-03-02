@@ -684,10 +684,9 @@ let abc = {
     })
 
     let currentPlayerCharacter = abc.playerCharacters.filter(pc => {
-      return pc.playerCharacterId === abc.currentPlayerCharacterId
+      return pc.playerCharacterId == abc.currentPlayerCharacterId
     })[0]
 
-    console.log("Called")
     console.log(currentPlayerCharacter)
 
 

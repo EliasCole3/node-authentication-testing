@@ -522,10 +522,9 @@ var abc = {
     });
 
     var currentPlayerCharacter = abc.playerCharacters.filter(function (pc) {
-      return pc.playerCharacterId === abc.currentPlayerCharacterId;
+      return pc.playerCharacterId == abc.currentPlayerCharacterId;
     })[0];
 
-    console.log("Called");
     console.log(currentPlayerCharacter);
 
     return htmlString;
