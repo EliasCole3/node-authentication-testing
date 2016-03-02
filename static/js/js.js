@@ -527,6 +527,11 @@ var abc = {
 
     console.log(currentPlayerCharacter);
 
+    var items = currentPlayerCharacter.items.split(', ');
+    items.forEach(function (item) {
+      htmlString += "<br>" + item;
+    });
+
     return htmlString;
   },
 

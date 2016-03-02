@@ -689,6 +689,11 @@ let abc = {
 
     console.log(currentPlayerCharacter)
 
+    let items = currentPlayerCharacter.items.split(', ')
+    items.forEach(item => {
+      htmlString += `<br>${item}`
+    })
+
 
     return htmlString
   },
