@@ -683,6 +683,13 @@ let abc = {
       htmlString += `<img src='images/items/${relevantItem.imageFilename}' class='player-item'> x ${join.count}<br>`
     })
 
+    let currentPlayerCharacter = abc.playerCharacters.filter(pc => {
+      return pc.playerCharacterId === abc.currentPlayerCharacterId
+    })[0]
+
+    console.log(currentPlayerCharacter)
+
+
     return htmlString
   },
 

@@ -521,6 +521,12 @@ var abc = {
       htmlString += "<img src='images/items/" + relevantItem.imageFilename + "' class='player-item'> x " + join.count + "<br>";
     });
 
+    var currentPlayerCharacter = abc.playerCharacters.filter(function (pc) {
+      return pc.playerCharacterId === abc.currentPlayerCharacterId;
+    })[0];
+
+    console.log(currentPlayerCharacter);
+
     return htmlString;
   },
 
