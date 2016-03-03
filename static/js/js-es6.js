@@ -673,7 +673,7 @@ let abc = {
 
     // add-custom-token
     htmlString += `
-      <button class='add-custom-token' image-filename='test.png' token-height='100' token-width='100'><img height='50' width='50' src='/images/custom/test.png'></button>
+      <button class='add-custom-token' image-filename='test.png' token-height='100' token-width='100' opacity='.3'><img height='50' width='50' src='/images/custom/test.png'></button>
     `
 
     return htmlString
@@ -766,6 +766,7 @@ let abc = {
         let ranLeft = ebot.getRandomInt(2, 10) * 50
         let height = button.attr("token-height")
         let width = button.attr("token-width")
+        let opacity = button.attr("opacity")
         // abc.addCustomToken(imageFilename, ranTop, ranLeft, height, width)
       
         let emitObj = {
@@ -774,7 +775,8 @@ let abc = {
           ranTop: ranTop,
           ranLeft: ranLeft,
           height: height,
-          width: width
+          width: width,
+          opacity: opacity
         }
 
         abc.toSocket(emitObj)
@@ -1097,9 +1099,9 @@ let abc = {
     abc.currentDynamicDivId++
   },
 
-  addCustomToken: (imageFilename, ranTop, ranLeft, height, width) => {
+  addCustomToken: (imageFilename, ranTop, ranLeft, height, width, opacity) => {
     let id = `dynamically-added-div-${abc.currentDynamicDivId}`
-    let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: ${width}px; height: ${height}px;'><img src='images/custom/${imageFilename}'></div>`
+    let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: ${width}px; height: ${height}px; opacity: ${opacity};'><img src='images/custom/${imageFilename}'></div>`
     $("#wrapper").append(htmlString)
     $(`#${id}`).draggable(abc.draggableOptionsToken)
     abc.currentDynamicDivId++
