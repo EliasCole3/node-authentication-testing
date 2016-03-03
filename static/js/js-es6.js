@@ -264,7 +264,7 @@ let abc = {
       }
 
       if(obj.event === "add-custom-token") {
-        abc.addCustomToken(obj.imageFilename, obj.ranTop, obj.ranLeft, obj.height, obj.width)
+        abc.addCustomToken(obj.imageFilename, obj.ranTop, obj.ranLeft, obj.height, obj.width, obj.opacity)
       }
 
     
