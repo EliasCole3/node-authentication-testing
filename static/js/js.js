@@ -256,6 +256,10 @@ var abc = {
       if (obj.event === "creature-table-remove-row") {
         abc.removeToken(obj.tokenId);
       }
+
+      if (obj.event === "add-custom-token") {
+        abc.addCustomToken(obj.imageFilename, obj.ranTop, obj.ranLeft, obj.height, obj.width);
+      }
     });
   },
 
@@ -503,6 +507,11 @@ var abc = {
       htmlString += "<button class='add-creature-button' creature-id='" + creature._id + "' creature-image-filename='" + creature.imageFilename + "'><img src='/images/creatures/" + creature.imageFilename + "'></button>";
     });
 
+    htmlString += "<br><br><br>";
+
+    // add-custom-token
+    htmlString += "\n      <button class='add-custom-token' image-filename='test.png' token-height='100' token-width='100'><img height='50' width='50' src='/images/custom/test.png'></button>\n    ";
+
     return htmlString;
   },
 
@@ -524,8 +533,6 @@ var abc = {
     var currentPlayerCharacter = abc.playerCharacters.filter(function (pc) {
       return pc.playerCharacterId == abc.currentPlayerCharacterId;
     })[0];
-
-    console.log(currentPlayerCharacter);
 
     var items = currentPlayerCharacter.items.split(', ');
     items.forEach(function (item) {
@@ -586,6 +593,27 @@ var abc = {
         };
 
         abc.socket.emit('creature token added', emitObj);
+      });
+
+      $(".add-custom-token").click(function (e) {
+        var button = $(e.currentTarget);
+        var imageFilename = button.attr("image-filename");
+        var ranTop = ebot.getRandomInt(2, 10) * 50;
+        var ranLeft = ebot.getRandomInt(2, 10) * 50;
+        var height = button.attr("token-height");
+        var width = button.attr("token-width");
+        // abc.addCustomToken(imageFilename, ranTop, ranLeft, height, width)
+
+        var emitObj = {
+          event: 'add-custom-token',
+          imageFilename: imageFilename,
+          ranTop: ranTop,
+          ranLeft: ranLeft,
+          height: height,
+          width: width
+        };
+
+        abc.toSocket(emitObj);
       });
     } else if (abc.userIsPlayer) {
       $("#right-drawer-contents").html(abc.getRightDrawerHtmlPlayer());
@@ -766,6 +794,14 @@ var abc = {
       abc.addCreatureToCreatureTable(newCopy);
     }
 
+    abc.currentDynamicDivId++;
+  },
+
+  addCustomToken: function addCustomToken(imageFilename, ranTop, ranLeft, height, width) {
+    var id = "dynamically-added-div-" + abc.currentDynamicDivId;
+    var htmlString = "<div id='" + id + "' style='position:absolute; top:" + ranTop + "px; left:" + ranLeft + "px; width: " + width + "px; height: " + height + "px;'><img src='images/custom/" + imageFilename + "'></div>";
+    $("#wrapper").append(htmlString);
+    $("#" + id).draggable(abc.draggableOptionsToken);
     abc.currentDynamicDivId++;
   },
 

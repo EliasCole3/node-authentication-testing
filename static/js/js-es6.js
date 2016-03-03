@@ -263,7 +263,11 @@ let abc = {
         abc.removeToken(obj.tokenId)
       }
 
+      if(obj.event === "add-custom-token") {
+        abc.addCustomToken(obj.imageFilename, obj.ranTop, obj.ranLeft, obj.height, obj.width)
+      }
 
+    
 
 
 
@@ -665,6 +669,13 @@ let abc = {
       htmlString += `<button class='add-creature-button' creature-id='${creature._id}' creature-image-filename='${creature.imageFilename}'><img src='/images/creatures/${creature.imageFilename}'></button>`
     })
 
+    htmlString += `<br><br><br>`
+
+    // add-custom-token
+    htmlString += `
+      <button class='add-custom-token' image-filename='test.png' token-height='100' token-width='100'><img height='50' width='50' src='/images/custom/test.png'></button>
+    `
+
     return htmlString
   },
 
@@ -686,8 +697,6 @@ let abc = {
     let currentPlayerCharacter = abc.playerCharacters.filter(pc => {
       return pc.playerCharacterId == abc.currentPlayerCharacterId
     })[0]
-
-    console.log(currentPlayerCharacter)
 
     let items = currentPlayerCharacter.items.split(', ')
     items.forEach(item => {
@@ -748,6 +757,27 @@ let abc = {
         }
 
         abc.socket.emit('creature token added', emitObj)
+      })
+
+      $(".add-custom-token").click(e => {
+        let button = $(e.currentTarget)
+        let imageFilename = button.attr("image-filename")
+        let ranTop = ebot.getRandomInt(2, 10) * 50
+        let ranLeft = ebot.getRandomInt(2, 10) * 50
+        let height = button.attr("token-height")
+        let width = button.attr("token-width")
+        // abc.addCustomToken(imageFilename, ranTop, ranLeft, height, width)
+      
+        let emitObj = {
+          event: 'add-custom-token',
+          imageFilename: imageFilename,
+          ranTop: ranTop,
+          ranLeft: ranLeft,
+          height: height,
+          width: width
+        }
+
+        abc.toSocket(emitObj)
       })
 
     } else if(abc.userIsPlayer) {
@@ -1066,6 +1096,15 @@ let abc = {
 
     abc.currentDynamicDivId++
   },
+
+  addCustomToken: (imageFilename, ranTop, ranLeft, height, width) => {
+    let id = `dynamically-added-div-${abc.currentDynamicDivId}`
+    let htmlString = `<div id='${id}' style='position:absolute; top:${ranTop}px; left:${ranLeft}px; width: ${width}px; height: ${height}px;'><img src='images/custom/${imageFilename}'></div>`
+    $("#wrapper").append(htmlString)
+    $(`#${id}`).draggable(abc.draggableOptionsToken)
+    abc.currentDynamicDivId++
+  },
+
 
   makeDrawers: () => {
     let opacity = 0.9
