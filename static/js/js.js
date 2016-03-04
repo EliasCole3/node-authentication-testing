@@ -124,7 +124,7 @@ var abc = {
   },
 
   updateCursorImage: function updateCursorImage(emitObj) {
-    console.log(emitObj);
+    // console.log(emitObj)
     if (abc.cursorDelay === 10) {
       $("#cursor-" + emitObj.playerId).css("top", emitObj.y).css("left", emitObj.x);
       abc.cursorDelay = 0;
@@ -1145,7 +1145,7 @@ var abc = {
 
   creatureTableCreated: false,
 
-  doNotInclude: ['npc', 'Ryland', 'Jon', 'Nick']
+  doNotInclude: ['npc', 'Ryland']
 
 };
 //# sourceMappingURL=js.js.map
