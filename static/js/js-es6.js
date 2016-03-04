@@ -81,6 +81,9 @@ let abc = {
 
       abc.setCurrentPlayerCharacterId(user)
 
+      console.log(abc.currentPlayerCharacter)
+      console.log(abc.currentPlayerCharacterId)
+
       let DMs = ["a", "bliss"]
       let players = ["a", "b", "c", "bliss", "laurana", "andros", "skjor", "greg", "ares", "wild"]
 
@@ -157,7 +160,7 @@ let abc = {
         abc.currentPlayerCharacterId = 5
         break
       case "wild":
-        abc.currentPlayerCharacterId = 6
+        abc.currentPlayerCharacterId = 8
         break
       case "bliss":
         abc.currentPlayerCharacterId = 0
