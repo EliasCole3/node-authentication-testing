@@ -19,13 +19,7 @@ html,body{height:100%;}
 
 #top-drawer {
   width: 100%;
-
-  /*5 people*/
   height: 250px;
-
-   /* 3 people */
-  /*height: 165px;*/
-  
   background-color: #9683EA;
   overflow-y: scroll;
 }
