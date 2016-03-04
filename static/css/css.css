@@ -19,8 +19,13 @@ html,body{height:100%;}
 
 #top-drawer {
   width: 100%;
+
+  /*5 people*/
   height: 250px;
-  /*height: 165px; /* 3 people */*/
+
+   /* 3 people */
+  /*height: 165px;*/
+  
   background-color: #9683EA;
   overflow-y: scroll;
 }
@@ -72,7 +77,7 @@ html,body{height:100%;}
   position: absolute;
   top: 0px;
   left: 0px;
-  /*display: none;*/
+  /*display: none;
   background-color: #D7D7D7;
 }
 
