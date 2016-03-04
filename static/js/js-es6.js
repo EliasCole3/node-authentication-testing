@@ -675,11 +675,11 @@ let abc = {
 
     // add-custom-token
     htmlString += `
-      <button class='add-custom-token' image-filename='test.png' token-height='100' token-width='100' opacity='.3'><img height='50' width='50' src='/images/custom/test.png'></button>
-      <button class='add-custom-token' image-filename='blizzard.png' token-height='150' token-width='150' opacity='.3'><img height='50' width='50' src='/images/custom/blizzard.png'></button>
-      <button class='add-custom-token' image-filename='caution.png' token-height='100' token-width='100' opacity='.3'><img height='50' width='50' src='/images/custom/caution.png'></button>
-      <button class='add-custom-token' image-filename='sorrow.png' token-height='150' token-width='150' opacity='.3'><img height='50' width='50' src='/images/custom/sorrow.png'></button>
-      <button class='add-custom-token' image-filename='green3.png' token-height='150' token-width='150' opacity='.3'><img height='50' width='50' src='/images/custom/green3.png'></button>
+      <button class='add-custom-token' image-filename='test.png' token-height='100' token-width='100' opacity='.3'><img height='50' width='50' src='/images/custom/test.png'></button> <br>
+      blizzard: <button class='add-custom-token' image-filename='blizzard.png' token-height='150' token-width='150' opacity='.3'><img height='50' width='50' src='/images/custom/blizzard.png'></button> <br>
+      caution: <button class='add-custom-token' image-filename='caution.png' token-height='100' token-width='100' opacity='.3'><img height='50' width='50' src='/images/custom/caution.png'></button> <br>
+      sorrow: <button class='add-custom-token' image-filename='sorrow.png' token-height='150' token-width='150' opacity='.3'><img height='50' width='50' src='/images/custom/sorrow.png'></button> <br>
+      heals: <button class='add-custom-token' image-filename='green3.png' token-height='150' token-width='150' opacity='.3'><img height='50' width='50' src='/images/custom/green3.png'></button>
     `
 
     return htmlString
