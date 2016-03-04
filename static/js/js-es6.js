@@ -390,8 +390,10 @@ let abc = {
       <th>Cha</th>
     </tr>`
 
+    console.log(abc.doNotInclude)
     abc.playerCharacters.forEach(player => {
-      console.log(player)
+      console.log(player.playerName)
+
       if(abc.doNotInclude.indexOf(player.playerName) === -1) {
           htmlString += `<tr player-character-id=${player.playerCharacterId}>
           <td>${player.playerName}</td>
