@@ -395,7 +395,9 @@ var abc = {
   },
 
   fillLeftDrawer: function fillLeftDrawer() {
+    console.log("Called");
     if (abc.userIsPlayer) {
+      console.log("Called");
       $("#left-drawer-contents").html(abc.getLeftDrawerHtml());
       abc.handlerLeftDrawerContents();
     } else {
