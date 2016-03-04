@@ -81,9 +81,6 @@ var abc = {
 
       abc.setCurrentPlayerCharacterId(user);
 
-      console.log(abc.currentPlayerCharacter);
-      console.log(abc.currentPlayerCharacterId);
-
       var DMs = ["a", "bliss"];
       var players = ["a", "b", "c", "bliss", "laurana", "andros", "skjor", "greg", "ares", "wild"];
 
@@ -398,9 +395,7 @@ var abc = {
   },
 
   fillLeftDrawer: function fillLeftDrawer() {
-    console.log("Called");
     if (abc.userIsPlayer) {
-      console.log("Called");
       $("#left-drawer-contents").html(abc.getLeftDrawerHtml());
       abc.handlerLeftDrawerContents();
     } else {
@@ -516,7 +511,7 @@ var abc = {
     htmlString += "<br><br><br>";
 
     // add-custom-token
-    htmlString += "\n      <button class='add-custom-token' image-filename='test.png' token-height='100' token-width='100' opacity='.3'><img height='50' width='50' src='/images/custom/test.png'></button>\n    ";
+    htmlString += "\n      <button class='add-custom-token' image-filename='test.png' token-height='100' token-width='100' opacity='.3'><img height='50' width='50' src='/images/custom/test.png'></button>\n      <button class='add-custom-token' image-filename='blizzard.png' token-height='150' token-width='150' opacity='.3'><img height='50' width='50' src='/images/custom/blizzard.png'></button>\n      <button class='add-custom-token' image-filename='caution.png' token-height='100' token-width='100' opacity='.3'><img height='50' width='50' src='/images/custom/caution.png'></button>\n      <button class='add-custom-token' image-filename='sorrow.png' token-height='150' token-width='150' opacity='.3'><img height='50' width='50' src='/images/custom/sorrow.png'></button>\n      <button class='add-custom-token' image-filename='green3.png' token-height='150' token-width='150' opacity='.3'><img height='50' width='50' src='/images/custom/green3.png'></button>\n    ";
 
     return htmlString;
   },
