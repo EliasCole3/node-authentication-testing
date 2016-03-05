@@ -736,7 +736,7 @@ var abc = {
   viewHelpfulInfo: function viewHelpfulInfo() {
     var htmlString = "";
 
-    htmlString += "\n    <img src='images/miscellaneous/ability-modifiers.png'>\n    <br><br>\n    <img src='images/miscellaneous/skill-table.jpg'>\n    <br><br>\n\n    ";
+    htmlString += "\n    <img src='images/miscellaneous/ability-modifiers.png'>\n    <br><br>\n    <img src='images/miscellaneous/skill-table.jpg'>\n    <br><br>\n\n    <br> Level 2 - 2 Defense points, +1 Base damage\n    <br> Level 3 - Power point + 2 x To hit +1\n    <br> Level 4 - Base damage +2\n    <br> Level 5 - +3 Ability Score, Power point\n    <br> Level 6 - 2 Defense points, +1 Base damage\n    <br> Level 7 - Power point\n    <br> Level 8 - 2 Defense points\n    <br> Level 9 - 2 x To hit +1\n    <br> Level 10 - +1 Action point, 1 Power point, +3 Ability Score, Choose: Initiative +4, Speed +1, +3 Base damage\n\n    \n    ";
 
     return htmlString;
   },

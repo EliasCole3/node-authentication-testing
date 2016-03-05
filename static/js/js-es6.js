@@ -1033,6 +1033,17 @@ let abc = {
     <img src='images/miscellaneous/skill-table.jpg'>
     <br><br>
 
+    <br> Level 2 - 2 Defense points, +1 Base damage
+    <br> Level 3 - Power point + 2 x To hit +1
+    <br> Level 4 - Base damage +2
+    <br> Level 5 - +3 Ability Score, Power point
+    <br> Level 6 - 2 Defense points, +1 Base damage
+    <br> Level 7 - Power point
+    <br> Level 8 - 2 Defense points
+    <br> Level 9 - 2 x To hit +1
+    <br> Level 10 - +1 Action point, 1 Power point, +3 Ability Score, Choose: Initiative +4, Speed +1, +3 Base damage
+
+    
     `
 
 
