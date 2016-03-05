@@ -124,7 +124,7 @@ var abc = {
   },
 
   updateCursorImage: function updateCursorImage(emitObj) {
-    // console.log(emitObj)
+    console.log(emitObj);
     if (abc.cursorDelay === 10) {
       $("#cursor-" + emitObj.playerId).css("top", emitObj.y).css("left", emitObj.x);
       abc.cursorDelay = 0;
